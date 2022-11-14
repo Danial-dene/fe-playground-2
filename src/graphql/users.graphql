@@ -1,0 +1,65 @@
+fragment UserFields on User {
+  appleId
+  avatar
+  company {
+    avatar
+    createdAt
+    createdBy
+    deletedAt
+    deletedBy
+    id
+    name
+  }
+  companyId
+  createdAt
+  email
+  facebookId
+  fcmToken
+  googleId
+  id
+  isEmailVerified
+  isFirstTimeLogin
+  lastLogin
+  name
+  phoneNo
+  position
+  reportTo
+  type
+}
+
+query getUsers(
+  $paging: OffsetPaging
+  $filter: UserFilter
+  $sorting: [UserSort!]
+) {
+  users(paging: $paging, filter: $filter, sorting: $sorting) {
+    totalCount
+    nodes {
+      ...UserFields
+    }
+  }
+}
+
+query getUser($id: ID!) {
+  user(id: $id) {
+    ...UserFields
+  }
+}
+
+# mutation createCustomer($input: CreateOneCustomerInput!) {
+#   createOneCustomer(input: $input) {
+#     id
+#   }
+# }
+
+# mutation updateCustomer($input: UpdateOneCustomerInput!) {
+#   updateOneCustomer(input: $input) {
+#     id
+#   }
+# }
+
+# mutation deleteCustomer($input: DeleteOneCustomerInput!) {
+#   deleteOneCustomer(input: $input) {
+#     id
+#   }
+# }

@@ -1,0 +1,45 @@
+fragment AdminFields on Admin {
+  email
+  id
+  isActive
+  name
+  type
+  createdAt
+}
+
+query getAdmins(
+  $paging: OffsetPaging
+  $filter: AdminFilter
+  $sorting: [AdminSort!]
+) {
+  admins(paging: $paging, filter: $filter, sorting: $sorting) {
+    totalCount
+    nodes {
+      ...AdminFields
+    }
+  }
+}
+
+query getOneAdmin($id: ID!) {
+  admin(id: $id) {
+    ...AdminFields
+  }
+}
+
+mutation createAdmin($input: CreateOneAdminInput!) {
+  createOneAdmin(input: $input) {
+    id
+  }
+}
+
+mutation updateAdmin($input: UpdateOneAdminInput!) {
+  updateOneAdmin(input: $input) {
+    id
+  }
+}
+
+mutation deleteAdmin($input: DeleteOneAdminInput!) {
+  deleteOneAdmin(input: $input) {
+    id
+  }
+}

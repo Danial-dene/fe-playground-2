@@ -1,0 +1,19 @@
+fragment MeFields on Admin {
+  email
+  id
+  isActive
+  name
+  type
+}
+
+query getMe {
+  getAdminMe {
+    ...MeFields
+  }
+}
+
+mutation updateMe($input: UpdateAdminInputDTO!) {
+  updateAdminMe(input: $input) {
+    id
+  }
+}

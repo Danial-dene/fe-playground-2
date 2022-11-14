@@ -1,0 +1,28 @@
+.imageUploader :global {
+  .ant-upload {
+    border: 0px;
+    width: auto;
+    background-color: transparent;
+    height: auto;
+    .upload-wrapper {
+      display: flex;
+      align-items: center;
+      .photo-wrapper {
+        background-color: #ebe0c7;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-right: 12px;
+        overflow: hidden;
+  
+        svg {
+          color: #846c30;
+        }
+      }
+    }
+    
+  }
+}
