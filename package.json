@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "simple-push": "git add . && git commit -m $msg --no-verify && git push origin",
-    "dev": "next dev",
+    "dev": "next dev -p 3005",
     "build": "next build",
     "build:export": "next build && next export",
     "start": "next start -p 3001",

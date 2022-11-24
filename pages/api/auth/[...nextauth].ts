@@ -26,7 +26,7 @@ export default NextAuth({
 
           const res = await axios({
             method: "post",
-            url: `${process.env.NEXT_AUTH_PUBLIC_API_URL}/api/auth/admin/sign-in`,
+            url: `${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`,
             headers: {
               "Content-Type": "application/json",
             },
@@ -42,7 +42,8 @@ export default NextAuth({
             return null;
           }
         } catch (e: any) {
-          throw new Error("There was an error on admin authentication");
+          console.log("e", e);
+          throw new Error("Something wrong with authentication");
         }
       },
     }),
@@ -51,6 +52,7 @@ export default NextAuth({
     //if true
     async signIn({ user }) {
       let token: any = null;
+      console.log("user", user);
       if (token) {
         user.accessToken = token.accessToken;
         user.refreshToken = token.refreshToken;
@@ -109,7 +111,7 @@ const refreshAccessToken = async (tokenObject: JWT) => {
   try {
     // Get a new set of tokens with a refreshToken
     const tokenResponse = await apiCaller.post(
-      `${process.env.NEXTAUTH_URL}/api/auth/admin/revoke-authentication`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/auth/admin/revoke-authentication`,
       {
         refreshToken: tokenObject.refreshToken,
       }

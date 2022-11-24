@@ -26,7 +26,7 @@ const Login: React.FC = () => {
 
   const onFinish = async (values: FormValues) => {
     setSubmitting(true);
-
+    console.log("values", values);
     try {
       //@ts-ignore
       const { error } = await signIn("credentials", {
@@ -35,7 +35,7 @@ const Login: React.FC = () => {
         password: values.password,
         callbackUrl: "/",
       });
-
+      console.log("error", error);
       if (error) message.error("Invalid email and password");
     } catch (e) {
       throw e;
@@ -52,10 +52,12 @@ const Login: React.FC = () => {
             <Card>
               <div className="text-center py-5">
                 <div className="aspect-[1] relative self-center w-[80px] inline-block">
-                  <Image alt="" src="/assets/logo.png" layout="fill" />
+                  {/* <Image alt="" src="/assets/logo.png" layout="fill" /> */}
                 </div>
               </div>
-              <h1 className="mb-6 text-center text-h1">Login to BINA Admin</h1>
+              <h1 className="mb-6 text-center text-h1">
+                Login to Salary System Management
+              </h1>
 
               <Form
                 layout="vertical"
@@ -68,7 +70,7 @@ const Login: React.FC = () => {
                 <Form.Item
                   className="content-none"
                   name="email"
-                  label="Email address"
+                  label="Email"
                   rules={[
                     { required: true, message: "Email is required" },
                     { type: "email", message: "Email format invalid" },
