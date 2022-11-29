@@ -36,6 +36,7 @@ export default NextAuth({
             },
           });
 
+          console.log("res.data.accessToken", res.data.accesssToken);
           if (res.data.accessToken) {
             return res.data;
           } else {
@@ -52,7 +53,7 @@ export default NextAuth({
     //if true
     async signIn({ user }) {
       let token: any = null;
-      console.log("user", user);
+
       if (token) {
         user.accessToken = token.accessToken;
         user.refreshToken = token.refreshToken;

@@ -17,7 +17,7 @@ const Login: React.FC = () => {
   const router = useRouter();
   const [isSubmitting, setSubmitting] = useState(false);
   const { status } = useSession();
-  console.log("status", status);
+
   if (status === "authenticated") {
     router.push("/");
   }
@@ -29,14 +29,14 @@ const Login: React.FC = () => {
     console.log("values", values);
     try {
       //@ts-ignore
-      const { error } = await signIn("credentials", {
+      const { error, status, ok, url } = await signIn("credentials", {
         redirect: false,
         email: values.email,
         password: values.password,
         callbackUrl: "/",
       });
-      console.log("error", error);
-      if (error) message.error("Invalid email and password");
+      console.log("error", error, status, ok, url);
+      if (error) message.error("Invalid email or password");
     } catch (e) {
       throw e;
     } finally {

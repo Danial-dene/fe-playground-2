@@ -103,7 +103,7 @@ export class UserAuthService {
     options: IRequestOptions = {}
   ): Promise<AuthTokenResDTO> {
     return new Promise((resolve, reject) => {
-      let url = basePath + "/api/auth/admin/sign-in";
+      let url = basePath + "/api/auth/login";
       console.log("url", url);
       const configs: IRequestConfig = getConfigs(
         "post",
