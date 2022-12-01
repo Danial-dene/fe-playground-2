@@ -1,0 +1,44 @@
+fragment EmployeeFields on Employee {
+  createdAt
+  id
+  name
+  icNo
+}
+
+query getEmployees(
+  $paging: CursorPaging
+  $filter: EmployeeFilter
+  $sorting: [EmployeeSort!]
+) {
+  employees(paging: $paging, filter: $filter, sorting: $sorting) {
+    edges {
+      node {
+        ...EmployeeFields
+      }
+    }
+  }
+}
+
+# query getOneAdmin($id: ID!) {
+#   admin(id: $id) {
+#     ...AdminFields
+#   }
+# }
+
+mutation createEmployee($input: CreateOneEmployeeInput!) {
+  createOneEmployee(input: $input) {
+    id
+  }
+}
+
+# mutation updateAdmin($input: UpdateOneAdminInput!) {
+#   updateOneAdmin(input: $input) {
+#     id
+#   }
+# }
+
+# mutation deleteAdmin($input: DeleteOneAdminInput!) {
+#   deleteOneAdmin(input: $input) {
+#     id
+#   }
+# }

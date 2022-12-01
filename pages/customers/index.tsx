@@ -14,16 +14,17 @@ const Customers = () => {
   const router = useRouter();
   const { setTitle } = useHeader();
 
-  const { data, loading, refetch, error } = Gql.useGetCustomersQuery({
+  const { data, loading, refetch, error } = Gql.useGetEmployeesQuery({
     notifyOnNetworkStatusChange: true,
     fetchPolicy: "network-only",
     variables: {
-      paging: {
-        limit: 10,
-        offset: 0,
-      },
+      // paging: {
+      //   limit: 10,
+      //   offset: 0,
+      // },
     },
   });
+  console.log("data", data);
 
   const parseFilter = () => {
     const query = router.query;
@@ -38,10 +39,10 @@ const Customers = () => {
     return res;
   };
 
-  const totalCount = data?.companies?.totalCount || 0;
+  const totalCount = data?.employees || [];
 
   useEffect(() => {
-    setTitle("Customers");
+    setTitle("Employees");
   }, []);
 
   // const menu = (
@@ -93,10 +94,10 @@ const Customers = () => {
     <>
       <div className="p-9">
         <CommonTableView
-          tableTitle={`Customers (${totalCount})`}
+          tableTitle={`Employees (${totalCount})`}
           filterItems={[
             {
-              title: "Company Name",
+              title: "Name",
               render: (
                 <Form.Item name="name" className="mb-0">
                   <Input prefix={<SearchOutlined />} placeholder="Name" />
@@ -108,8 +109,8 @@ const Customers = () => {
           columns={columns}
           loading={loading}
           refetch={refetch}
-          dataSource={data?.companies?.nodes}
-          totalCount={totalCount}
+          dataSource={data?.employees?.edges}
+          totalCount={0}
           gqlFilters={parseFilter()}
           onRow={onRow}
         />

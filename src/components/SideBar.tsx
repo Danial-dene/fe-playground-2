@@ -66,20 +66,20 @@ const items: MenuItemProps[] = [
     label: "Settings",
     collapsible: true,
     items: [
-      {
-        label: "Account Settings",
-        key: "account-settings",
-        to: "/account-settings",
-        icon: SettingOutlined,
-      },
-      {
-        label: "Log out",
-        key: "logout",
-        icon: PoweroffOutlined,
-        onClick: () => {
-          signOut();
-        },
-      },
+      // {
+      //   label: "Account Settings",
+      //   key: "account-settings",
+      //   to: "/account-settings",
+      //   icon: SettingOutlined,
+      // },
+      // {
+      //   label: "Log out",
+      //   key: "logout",
+      //   icon: PoweroffOutlined,
+      //   onClick: () => {
+      //     signOut();
+      //   },
+      // },
     ],
   },
 ];
