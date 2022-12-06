@@ -55,9 +55,9 @@ const items: MenuItemProps[] = [
         icon: UserOutlined,
       },
       {
-        label: "Customers",
-        key: "customers",
-        to: "/customers",
+        label: "Employees",
+        key: "employees",
+        to: "/employees",
         icon: TeamOutlined,
       },
     ],

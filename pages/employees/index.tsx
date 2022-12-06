@@ -24,7 +24,7 @@ const Customers = () => {
       // },
     },
   });
-  console.log("data", data);
+  console.log("error", error);
 
   const parseFilter = () => {
     const query = router.query;

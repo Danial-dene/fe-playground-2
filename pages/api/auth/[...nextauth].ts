@@ -36,7 +36,7 @@ export default NextAuth({
             },
           });
 
-          console.log("res.data.accessToken", res.data.accesssToken);
+          // console.log("res.data.accessToken", res.data.accesssToken);
           if (res.data.accessToken) {
             return res.data;
           } else {
