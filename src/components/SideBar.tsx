@@ -134,7 +134,7 @@ const SideBar = () => {
           >
             {!collapsed && (
               <div className="flex items-center">
-                <Image src="/assets/logo.png" width={48} height={48} />
+                {/* <Image src="/assets/logo.png" width={48} height={48} /> */}
               </div>
             )}
             <div

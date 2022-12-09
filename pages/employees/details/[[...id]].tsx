@@ -29,79 +29,52 @@ const CustomerDetail = () => {
   }, []);
 
   const {
-    data: companyData,
-    loading: companyLoading,
+    data: employeeData,
+    loading: userLoading,
     error,
-  } = Gql.useGetCustomerQuery({
+  } = Gql.useGetOneEmployeeQuery({
     notifyOnNetworkStatusChange: true,
     fetchPolicy: "network-only",
+    skip: !id,
     variables: { id: _.toString(id) },
   });
 
-  const { data: userData, loading: userLoading } = Gql.useGetUsersQuery({
-    notifyOnNetworkStatusChange: true,
-    fetchPolicy: "network-only",
-    variables: { filter: { companyId: { eq: _.toString(id) } } },
-  });
+  console.log("error", error, employeeData);
 
-  const loading = companyLoading || userLoading;
-  const userDetail = _.get(userData, "users.nodes", []);
-  const companyDetail = _.get(companyData, "company");
+  const loading = userLoading;
+  const employeeDetail = _.get(employeeData, "employee");
+  // const companyDetail = _.get(companyData, "company");
 
   return (
     <div className="p-9">
       <Card loading={loading} title="Company Detail">
-        <Descriptions column={1} bordered>
+        <Descriptions column={2} bordered>
           <Descriptions.Item label="Name">
-            {companyDetail?.name}
+            {employeeDetail?.name}
           </Descriptions.Item>
 
-          <Descriptions.Item label="Users">
-            {_.map(userDetail, (o: any, index: number) => {
-              return (
-                <div>
-                  <UserComp key={index} userData={o} />
-                </div>
-              );
-            })}
+          <Descriptions.Item label="Employee No.">
+            {employeeDetail?.employeeNo}
+          </Descriptions.Item>
+
+          <Descriptions.Item label="IC No.">
+            {employeeDetail?.icNo}
+          </Descriptions.Item>
+
+          <Descriptions.Item label="Loan">
+            {employeeDetail?.loan}
+          </Descriptions.Item>
+
+          <Descriptions.Item label="Account No.">
+            {employeeDetail?.accountNo}
+          </Descriptions.Item>
+
+          <Descriptions.Item label="Bank Type">
+            {employeeDetail?.bankType}
           </Descriptions.Item>
         </Descriptions>
       </Card>
     </div>
-  );
-};
-
-type UserProps = {
-  userData: Gql.User;
-};
-const UserComp: React.FC<UserProps> = ({ userData }) => {
-  return (
-    <>
-      <Card className="my-4">
-        <Row>
-          <Col span={3} className="font-bold">
-            <p>Name</p>
-            <p>Position</p>
-            <p>Phone No.</p>
-            <p>Email</p>
-          </Col>
-
-          <Col span={1} className="font-bold">
-            <p>:</p>
-            <p>:</p>
-            <p>:</p>
-            <p>:</p>
-          </Col>
-
-          <Col span={5}>
-            <p>{userData?.name || "-"}</p>
-            <p>{userData?.position || "-"}</p>
-            <p>{userData?.phoneNo || "-"}</p>
-            <p>{userData?.email || "-"}</p>
-          </Col>
-        </Row>
-      </Card>
-    </>
   );
 };
 

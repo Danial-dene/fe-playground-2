@@ -3,27 +3,35 @@ fragment EmployeeFields on Employee {
   id
   name
   icNo
+  employeeNo
+  employeeEpf
+  employerEpf
+  employeeSocso
+  employerSocso
+  backPayment
+  loan
+  accountNo
+  bankType
 }
 
 query getEmployees(
-  $paging: CursorPaging
+  $paging: OffsetPaging
   $filter: EmployeeFilter
   $sorting: [EmployeeSort!]
 ) {
   employees(paging: $paging, filter: $filter, sorting: $sorting) {
-    edges {
-      node {
-        ...EmployeeFields
-      }
+    totalCount
+    nodes {
+      ...EmployeeFields
     }
   }
 }
 
-# query getOneAdmin($id: ID!) {
-#   admin(id: $id) {
-#     ...AdminFields
-#   }
-# }
+query getOneEmployee($id: String!) {
+  employee(id: $id) {
+    ...EmployeeFields
+  }
+}
 
 mutation createEmployee($input: CreateOneEmployeeInput!) {
   createOneEmployee(input: $input) {
@@ -31,12 +39,11 @@ mutation createEmployee($input: CreateOneEmployeeInput!) {
   }
 }
 
-# mutation updateAdmin($input: UpdateOneAdminInput!) {
-#   updateOneAdmin(input: $input) {
-#     id
-#   }
-# }
-
+mutation updateEmployee($input: UpdateOneEmployeeInput!) {
+  updateOneEmployee(input: $input) {
+    id
+  }
+}
 # mutation deleteAdmin($input: DeleteOneAdminInput!) {
 #   deleteOneAdmin(input: $input) {
 #     id

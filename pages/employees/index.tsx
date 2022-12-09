@@ -9,7 +9,6 @@ import { useHeader } from "@components/HeaderProvider";
 import { SearchOutlined } from "@ant-design/icons";
 import Link from "next/link";
 
-//NOTE: Customer is list of company
 const Customers = () => {
   const router = useRouter();
   const { setTitle } = useHeader();
@@ -38,55 +37,57 @@ const Customers = () => {
 
     return res;
   };
+  console.log("data", data);
 
-  const totalCount = data?.employees || [];
+  const totalCount = data?.employees?.totalCount || 0;
 
   useEffect(() => {
     setTitle("Employees");
   }, []);
 
-  // const menu = (
-  //   <Menu
-  //     items={[
-  //       {
-  //         label: "Delete",
-  //         key: "0",
-  //       },
-  //     ]}
-  //   />
-  // );
+  const menu = (
+    <Menu
+      items={[
+        {
+          label: "Delete",
+          key: "0",
+        },
+      ]}
+    />
+  );
 
   const columns = [
     {
-      title: "Avatar",
-      dataIndex: "avatar",
-      sorter: true,
-      width: 150,
-      render: (avatar: string) => (
-        <Avatar src={avatar} icon={!_.isEmpty(avatar) && <UserOutlined />} />
-      ),
-    },
-    {
-      title: "Company Name",
+      title: "Name",
       dataIndex: "name",
       sorter: true,
     },
-    // {
-    //   title: "",
-    //   key: "action",
-    //   render: (data: any) => (
-    //     <div onClick={(e) => e.stopPropagation()}>
-    //       <Dropdown overlay={menu} trigger={["click"]}>
-    //         <Icon name="dots" />
-    //       </Dropdown>
-    //     </div>
-    //   ),
-    // },
+    {
+      title: "Employee No.",
+      dataIndex: "employeeNo",
+      sorter: true,
+    },
+    {
+      title: "IC No.",
+      dataIndex: "icNo",
+      sorter: true,
+    },
+    {
+      title: "",
+      key: "action",
+      render: (data: any) => (
+        <div onClick={(e) => e.stopPropagation()}>
+          <Dropdown overlay={menu} trigger={["click"]}>
+            <Icon name="dots" />
+          </Dropdown>
+        </div>
+      ),
+    },
   ];
 
-  const onRow = (customer: any) => {
+  const onRow = (employee: any) => {
     return {
-      onClick: () => router.push(`/customers/details/${customer?.id}`),
+      onClick: () => router.push(`/employees/add-or-edit/${employee?.id}`),
     };
   };
 
@@ -95,6 +96,11 @@ const Customers = () => {
       <div className="p-9">
         <CommonTableView
           tableTitle={`Employees (${totalCount})`}
+          actions={
+            <div>
+              <Button type="primary">Add</Button>
+            </div>
+          }
           filterItems={[
             {
               title: "Name",
@@ -109,7 +115,7 @@ const Customers = () => {
           columns={columns}
           loading={loading}
           refetch={refetch}
-          dataSource={data?.employees?.edges}
+          dataSource={data?.employees?.nodes}
           totalCount={0}
           gqlFilters={parseFilter()}
           onRow={onRow}
