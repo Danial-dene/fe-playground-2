@@ -1,0 +1,42 @@
+fragment UsersFields on User {
+  id
+  name
+  email
+}
+
+query getUsers(
+  $paging: OffsetPaging
+  $filter: UserFilter
+  $sorting: [UserSort!]
+) {
+  users(paging: $paging, filter: $filter, sorting: $sorting) {
+    totalCount
+    nodes {
+      ...UsersFields
+    }
+  }
+}
+
+query getOneUser($id: String!) {
+  user(id: $id) {
+    ...UsersFields
+  }
+}
+
+mutation createUser($input: CreateOneUserInput!) {
+  createOneUser(input: $input) {
+    id
+  }
+}
+
+mutation updateUser($input: UpdateOneUserInput!) {
+  updateOneUser(input: $input) {
+    id
+  }
+}
+
+mutation deleteUser($input: DeleteOneUserInput!) {
+  deleteOneUser(input: $input) {
+    id
+  }
+}

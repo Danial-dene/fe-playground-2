@@ -44,7 +44,7 @@ const CustomerEdit = () => {
     );
   }, []);
 
-  const [getAdmin, { data, loading: adminLoading }] =
+  const [getEmployee, { data, loading: adminLoading }] =
     Gql.useGetOneEmployeeLazyQuery({
       onCompleted: (obj) => {
         form.setFieldsValue(obj.employee);
@@ -55,13 +55,13 @@ const CustomerEdit = () => {
     });
 
   useEffect(() => {
-    if (id) getAdmin({ variables: { id: _.toString(id) } });
+    if (id) getEmployee({ variables: { id: _.toString(id) } });
   }, [router]);
 
-  const [updateAdmin, { loading: isSubmitting }] =
+  const [updateEmployee, { loading: isSubmitting }] =
     Gql.useUpdateEmployeeMutation({
       onCompleted: () => {
-        message.success("Admin successfully saved!");
+        message.success("Employee successfully saved!");
         router.back();
       },
       onError: (e) => {
@@ -69,10 +69,10 @@ const CustomerEdit = () => {
       },
     });
 
-  const [addAdmin, { loading: addAdminLoading }] =
+  const [addEmployee, { loading: addAdminLoading }] =
     Gql.useCreateEmployeeMutation({
       onCompleted: () => {
-        message.success("Admin successfully added!");
+        message.success("Employee successfully added!");
         router.back();
       },
       onError: (e) => {
@@ -86,13 +86,11 @@ const CustomerEdit = () => {
     let input = { ...values };
 
     if (id) {
-      updateAdmin({
+      updateEmployee({
         variables: { input: { id: _.toString(id), update: input } },
       });
     } else {
-      addAdmin({ variables: { input: { admin: input } } });
-
-      // form.resetFields()
+      addEmployee({ variables: { input: { employee: input } } });
     }
   };
 
@@ -149,16 +147,6 @@ const CustomerEdit = () => {
               >
                 <Input />
               </Form.Item>
-
-              {!id && (
-                <Form.Item
-                  label="Password"
-                  name="password"
-                  rules={[{ required: true }]}
-                >
-                  <Input.Password />
-                </Form.Item>
-              )}
 
               <Button
                 loading={loading}

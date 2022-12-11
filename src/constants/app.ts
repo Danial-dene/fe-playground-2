@@ -1,1 +1,1 @@
-export const APP_NAME ="Bina Admin Dashboard"
+export const APP_NAME ="Salary System"

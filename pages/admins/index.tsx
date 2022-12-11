@@ -21,7 +21,7 @@ const Customers = () => {
     loading: adminLoading,
     refetch,
     error,
-  } = Gql.useGetAdminsQuery({
+  } = Gql.useGetUsersQuery({
     // notifyOnNetworkStatusChange: true,
     fetchPolicy: "network-only",
     variables: {
@@ -36,7 +36,7 @@ const Customers = () => {
     refetch();
   }, [data !== undefined]);
 
-  const [deleteAdmin, { loading: deleting }] = Gql.useDeleteAdminMutation({
+  const [deleteAdmin, { loading: deleting }] = Gql.useDeleteUserMutation({
     onCompleted: () => {
       refetch();
       message.success("Admin successfully deleted!");
@@ -46,7 +46,7 @@ const Customers = () => {
     },
   });
 
-  const [updateAdmin, { loading: isSubmitting }] = Gql.useUpdateAdminMutation({
+  const [updateAdmin, { loading: isSubmitting }] = Gql.useUpdateUserMutation({
     onCompleted: () => {
       refetch();
       message.success("Admin successfully saved!");
@@ -70,16 +70,11 @@ const Customers = () => {
         or: [{ email: { like: `%${query.email}%` } }],
       });
     }
-    if (query.type) {
-      res.and.push({
-        or: [{ type: { eq: `%${query.type}%` } }],
-      });
-    }
 
     return res;
   };
 
-  const totalCount = data?.admins?.totalCount || 0;
+  const totalCount = data?.users?.totalCount || 0;
 
   useEffect(() => {
     setTitle("Admins");
@@ -95,23 +90,6 @@ const Customers = () => {
       title: "E-mail",
       dataIndex: "email",
       sorter: true,
-    },
-    {
-      title: "Type",
-      dataIndex: "type",
-      sorter: true,
-    },
-    {
-      title: "Status",
-      dataIndex: "isActive",
-      // className: "text-center",
-      sorter: true,
-      render: (isActive: boolean) => {
-        const color = isActive ? "blue" : "red";
-        const text = isActive ? "Active" : "Inactive";
-
-        return <Tag color={color}>{text}</Tag>;
-      },
     },
     {
       title: "",
@@ -140,15 +118,15 @@ const Customers = () => {
               {
                 label: `${text}`,
                 key: "3",
-                onClick: () =>
-                  updateAdmin({
-                    variables: {
-                      input: {
-                        id: data?.id,
-                        update: { isActive: !data?.isActive },
-                      },
-                    },
-                  }),
+                // onClick: () =>
+                //   updateAdmin({
+                //     variables: {
+                //       input: {
+                //         id: data?.id,
+                //         update: { isActive: !data?.isActive },
+                //       },
+                //     },
+                //   }),
               },
             ]}
           />
@@ -214,7 +192,7 @@ const Customers = () => {
           columns={columns}
           loading={loading}
           refetch={refetch}
-          dataSource={data?.admins?.nodes}
+          dataSource={data?.users?.nodes || []}
           totalCount={totalCount}
           gqlFilters={parseFilter()}
           onRow={onRow}

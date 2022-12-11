@@ -1,0 +1,41 @@
+fragment ShiftFields on Shift {
+  id
+  date
+}
+
+query getShifts(
+  $paging: OffsetPaging
+  $filter: ShiftFilter
+  $sorting: [ShiftSort!]
+) {
+  shifts(paging: $paging, filter: $filter, sorting: $sorting) {
+    totalCount
+    nodes {
+      ...ShiftFields
+    }
+  }
+}
+
+query getOneShift($id: String!) {
+  shift(id: $id) {
+    ...ShiftFields
+  }
+}
+
+mutation createShift($input: CreateOneShiftInput!) {
+  createOneShift(input: $input) {
+    id
+  }
+}
+
+mutation updateShift($input: UpdateOneShiftInput!) {
+  updateOneShift(input: $input) {
+    id
+  }
+}
+
+mutation deleteShift($input: DeleteOneShiftInput!) {
+  deleteOneShift(input: $input) {
+    id
+  }
+}

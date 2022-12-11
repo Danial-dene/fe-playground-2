@@ -130,6 +130,7 @@ export type CreateShiftOptions = {
 export type CreateUser = {
   email?: InputMaybe<Scalars["String"]>;
   id?: InputMaybe<Scalars["String"]>;
+  name?: InputMaybe<Scalars["String"]>;
   password?: InputMaybe<Scalars["String"]>;
 };
 
@@ -321,12 +322,32 @@ export type DeleteManyResponse = {
   deletedCount: Scalars["Int"];
 };
 
+export type DeleteManyShiftsInput = {
+  /** Filter to find records to delete */
+  filter: ShiftDeleteFilter;
+};
+
+export type DeleteManyUsersInput = {
+  /** Filter to find records to delete */
+  filter: UserDeleteFilter;
+};
+
 export type DeleteOneDayInput = {
   /** The id of the record to delete. */
   id: Scalars["String"];
 };
 
 export type DeleteOneEmployeeInput = {
+  /** The id of the record to delete. */
+  id: Scalars["String"];
+};
+
+export type DeleteOneShiftInput = {
+  /** The id of the record to delete. */
+  id: Scalars["String"];
+};
+
+export type DeleteOneUserInput = {
   /** The id of the record to delete. */
   id: Scalars["String"];
 };
@@ -611,12 +632,20 @@ export type Mutation = {
   createOneUser: User;
   deleteManyDays: DeleteManyResponse;
   deleteManyEmployees: DeleteManyResponse;
+  deleteManyShifts: DeleteManyResponse;
+  deleteManyUsers: DeleteManyResponse;
   deleteOneDay: DayDeleteResponse;
   deleteOneEmployee: EmployeeDeleteResponse;
+  deleteOneShift: ShiftDeleteResponse;
+  deleteOneUser: UserDeleteResponse;
   updateManyDays: UpdateManyResponse;
   updateManyEmployees: UpdateManyResponse;
+  updateManyShifts: UpdateManyResponse;
+  updateManyUsers: UpdateManyResponse;
   updateOneDay: Day;
   updateOneEmployee: Employee;
+  updateOneShift: Shift;
+  updateOneUser: User;
 };
 
 export type MutationCreateManyDaysArgs = {
@@ -667,12 +696,28 @@ export type MutationDeleteManyEmployeesArgs = {
   input: DeleteManyEmployeesInput;
 };
 
+export type MutationDeleteManyShiftsArgs = {
+  input: DeleteManyShiftsInput;
+};
+
+export type MutationDeleteManyUsersArgs = {
+  input: DeleteManyUsersInput;
+};
+
 export type MutationDeleteOneDayArgs = {
   input: DeleteOneDayInput;
 };
 
 export type MutationDeleteOneEmployeeArgs = {
   input: DeleteOneEmployeeInput;
+};
+
+export type MutationDeleteOneShiftArgs = {
+  input: DeleteOneShiftInput;
+};
+
+export type MutationDeleteOneUserArgs = {
+  input: DeleteOneUserInput;
 };
 
 export type MutationUpdateManyDaysArgs = {
@@ -683,12 +728,28 @@ export type MutationUpdateManyEmployeesArgs = {
   input: UpdateManyEmployeesInput;
 };
 
+export type MutationUpdateManyShiftsArgs = {
+  input: UpdateManyShiftsInput;
+};
+
+export type MutationUpdateManyUsersArgs = {
+  input: UpdateManyUsersInput;
+};
+
 export type MutationUpdateOneDayArgs = {
   input: UpdateOneDayInput;
 };
 
 export type MutationUpdateOneEmployeeArgs = {
   input: UpdateOneEmployeeInput;
+};
+
+export type MutationUpdateOneShiftArgs = {
+  input: UpdateOneShiftInput;
+};
+
+export type MutationUpdateOneUserArgs = {
+  input: UpdateOneUserInput;
 };
 
 export type NumberFieldComparison = {
@@ -836,6 +897,31 @@ export type ShiftCountAggregate = {
   id?: Maybe<Scalars["Int"]>;
   updatedAt?: Maybe<Scalars["Int"]>;
   updatedBy?: Maybe<Scalars["Int"]>;
+};
+
+export type ShiftDeleteFilter = {
+  and?: InputMaybe<Array<ShiftDeleteFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  date?: InputMaybe<DateFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<ShiftDeleteFilter>>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type ShiftDeleteResponse = {
+  __typename?: "ShiftDeleteResponse";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  date?: Maybe<Scalars["DateTime"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
 };
 
 export type ShiftFilter = {
@@ -1013,6 +1099,19 @@ export type ShiftSumAggregate = {
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
+export type ShiftUpdateFilter = {
+  and?: InputMaybe<Array<ShiftUpdateFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  date?: InputMaybe<DateFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<ShiftUpdateFilter>>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
 /** Sort Directions */
 export enum SortDirection {
   Asc = "ASC",
@@ -1094,6 +1193,20 @@ export type UpdateManyResponse = {
   updatedCount: Scalars["Int"];
 };
 
+export type UpdateManyShiftsInput = {
+  /** Filter used to find fields to update */
+  filter: ShiftUpdateFilter;
+  /** The update to apply to all records found using the filter */
+  update: UpdateShift;
+};
+
+export type UpdateManyUsersInput = {
+  /** Filter used to find fields to update */
+  filter: UserUpdateFilter;
+  /** The update to apply to all records found using the filter */
+  update: UpdateUser;
+};
+
 export type UpdateOneDayInput = {
   /** The id of the record to update */
   id: Scalars["String"];
@@ -1108,10 +1221,43 @@ export type UpdateOneEmployeeInput = {
   update: UpdateEmployee;
 };
 
+export type UpdateOneShiftInput = {
+  /** The id of the record to update */
+  id: Scalars["String"];
+  /** The update to apply. */
+  update: UpdateShift;
+};
+
+export type UpdateOneUserInput = {
+  /** The id of the record to update */
+  id: Scalars["String"];
+  /** The update to apply. */
+  update: UpdateUser;
+};
+
+export type UpdateShift = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  date?: InputMaybe<Scalars["DateTime"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
+  id?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
+};
+
+export type UpdateUser = {
+  email?: InputMaybe<Scalars["String"]>;
+  id?: InputMaybe<Scalars["String"]>;
+  name?: InputMaybe<Scalars["String"]>;
+  password?: InputMaybe<Scalars["String"]>;
+};
+
 export type User = {
   __typename?: "User";
   email: Scalars["String"];
   id: Scalars["String"];
+  name: Scalars["String"];
   password: Scalars["String"];
 };
 
@@ -1119,6 +1265,7 @@ export type UserAggregateGroupBy = {
   __typename?: "UserAggregateGroupBy";
   email?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
 };
 
@@ -1136,13 +1283,32 @@ export type UserCountAggregate = {
   __typename?: "UserCountAggregate";
   email?: Maybe<Scalars["Int"]>;
   id?: Maybe<Scalars["Int"]>;
+  name?: Maybe<Scalars["Int"]>;
   password?: Maybe<Scalars["Int"]>;
+};
+
+export type UserDeleteFilter = {
+  and?: InputMaybe<Array<UserDeleteFilter>>;
+  email?: InputMaybe<StringFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  name?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<UserDeleteFilter>>;
+  password?: InputMaybe<StringFieldComparison>;
+};
+
+export type UserDeleteResponse = {
+  __typename?: "UserDeleteResponse";
+  email?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["String"]>;
 };
 
 export type UserFilter = {
   and?: InputMaybe<Array<UserFilter>>;
   email?: InputMaybe<StringFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
+  name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<UserFilter>>;
   password?: InputMaybe<StringFieldComparison>;
 };
@@ -1151,6 +1317,7 @@ export type UserMaxAggregate = {
   __typename?: "UserMaxAggregate";
   email?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
 };
 
@@ -1158,6 +1325,7 @@ export type UserMinAggregate = {
   __typename?: "UserMinAggregate";
   email?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
 };
 
@@ -1170,8 +1338,18 @@ export type UserSort = {
 export enum UserSortFields {
   Email = "email",
   Id = "id",
+  Name = "name",
   Password = "password",
 }
+
+export type UserUpdateFilter = {
+  and?: InputMaybe<Array<UserUpdateFilter>>;
+  email?: InputMaybe<StringFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  name?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<UserUpdateFilter>>;
+  password?: InputMaybe<StringFieldComparison>;
+};
 
 export type EmployeeFieldsFragment = {
   __typename?: "Employee";
@@ -1262,6 +1440,143 @@ export type UpdateEmployeeMutation = {
   updateOneEmployee: { __typename?: "Employee"; id: string };
 };
 
+export type DeleteEmployeeMutationVariables = Exact<{
+  input: DeleteOneEmployeeInput;
+}>;
+
+export type DeleteEmployeeMutation = {
+  __typename?: "Mutation";
+  deleteOneEmployee: {
+    __typename?: "EmployeeDeleteResponse";
+    id?: string | null;
+  };
+};
+
+export type ShiftFieldsFragment = {
+  __typename?: "Shift";
+  id: string;
+  date: any;
+};
+
+export type GetShiftsQueryVariables = Exact<{
+  paging?: InputMaybe<OffsetPaging>;
+  filter?: InputMaybe<ShiftFilter>;
+  sorting?: InputMaybe<Array<ShiftSort> | ShiftSort>;
+}>;
+
+export type GetShiftsQuery = {
+  __typename?: "Query";
+  shifts: {
+    __typename?: "ShiftConnection";
+    totalCount: number;
+    nodes: Array<{ __typename?: "Shift"; id: string; date: any }>;
+  };
+};
+
+export type GetOneShiftQueryVariables = Exact<{
+  id: Scalars["String"];
+}>;
+
+export type GetOneShiftQuery = {
+  __typename?: "Query";
+  shift?: { __typename?: "Shift"; id: string; date: any } | null;
+};
+
+export type CreateShiftMutationVariables = Exact<{
+  input: CreateOneShiftInput;
+}>;
+
+export type CreateShiftMutation = {
+  __typename?: "Mutation";
+  createOneShift: { __typename?: "Shift"; id: string };
+};
+
+export type UpdateShiftMutationVariables = Exact<{
+  input: UpdateOneShiftInput;
+}>;
+
+export type UpdateShiftMutation = {
+  __typename?: "Mutation";
+  updateOneShift: { __typename?: "Shift"; id: string };
+};
+
+export type DeleteShiftMutationVariables = Exact<{
+  input: DeleteOneShiftInput;
+}>;
+
+export type DeleteShiftMutation = {
+  __typename?: "Mutation";
+  deleteOneShift: { __typename?: "ShiftDeleteResponse"; id?: string | null };
+};
+
+export type UsersFieldsFragment = {
+  __typename?: "User";
+  id: string;
+  name: string;
+  email: string;
+};
+
+export type GetUsersQueryVariables = Exact<{
+  paging?: InputMaybe<OffsetPaging>;
+  filter?: InputMaybe<UserFilter>;
+  sorting?: InputMaybe<Array<UserSort> | UserSort>;
+}>;
+
+export type GetUsersQuery = {
+  __typename?: "Query";
+  users: {
+    __typename?: "UserConnection";
+    totalCount: number;
+    nodes: Array<{
+      __typename?: "User";
+      id: string;
+      name: string;
+      email: string;
+    }>;
+  };
+};
+
+export type GetOneUserQueryVariables = Exact<{
+  id: Scalars["String"];
+}>;
+
+export type GetOneUserQuery = {
+  __typename?: "Query";
+  user?: {
+    __typename?: "User";
+    id: string;
+    name: string;
+    email: string;
+  } | null;
+};
+
+export type CreateUserMutationVariables = Exact<{
+  input: CreateOneUserInput;
+}>;
+
+export type CreateUserMutation = {
+  __typename?: "Mutation";
+  createOneUser: { __typename?: "User"; id: string };
+};
+
+export type UpdateUserMutationVariables = Exact<{
+  input: UpdateOneUserInput;
+}>;
+
+export type UpdateUserMutation = {
+  __typename?: "Mutation";
+  updateOneUser: { __typename?: "User"; id: string };
+};
+
+export type DeleteUserMutationVariables = Exact<{
+  input: DeleteOneUserInput;
+}>;
+
+export type DeleteUserMutation = {
+  __typename?: "Mutation";
+  deleteOneUser: { __typename?: "UserDeleteResponse"; id?: string | null };
+};
+
 export const EmployeeFieldsFragmentDoc = gql`
   fragment EmployeeFields on Employee {
     createdAt
@@ -1277,6 +1592,19 @@ export const EmployeeFieldsFragmentDoc = gql`
     loan
     accountNo
     bankType
+  }
+`;
+export const ShiftFieldsFragmentDoc = gql`
+  fragment ShiftFields on Shift {
+    id
+    date
+  }
+`;
+export const UsersFieldsFragmentDoc = gql`
+  fragment UsersFields on User {
+    id
+    name
+    email
   }
 `;
 export const GetEmployeesDocument = gql`
@@ -1471,7 +1799,7 @@ export type UpdateEmployeeMutationFn = Apollo.MutationFunction<
 /**
  * __useUpdateEmployeeMutation__
  *
- * To run a mutation, you first call `useoyeeMutation` within a React component and pass it any options that fit your needs.
+ * To run a mutation, you first call `useUpdateEmployeeMutation` within a React component and pass it any options that fit your needs.
  * When your component renders, `useUpdateEmployeeMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
@@ -1505,4 +1833,594 @@ export type UpdateEmployeeMutationResult =
 export type UpdateEmployeeMutationOptions = Apollo.BaseMutationOptions<
   UpdateEmployeeMutation,
   UpdateEmployeeMutationVariables
+>;
+export const DeleteEmployeeDocument = gql`
+  mutation deleteEmployee($input: DeleteOneEmployeeInput!) {
+    deleteOneEmployee(input: $input) {
+      id
+    }
+  }
+`;
+export type DeleteEmployeeMutationFn = Apollo.MutationFunction<
+  DeleteEmployeeMutation,
+  DeleteEmployeeMutationVariables
+>;
+
+/**
+ * __useDeleteEmployeeMutation__
+ *
+ * To run a mutation, you first call `useDeleteEmployeeMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteEmployeeMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteEmployeeMutation, { data, loading, error }] = useDeleteEmployeeMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useDeleteEmployeeMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteEmployeeMutation,
+    DeleteEmployeeMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    DeleteEmployeeMutation,
+    DeleteEmployeeMutationVariables
+  >(DeleteEmployeeDocument, options);
+}
+export type DeleteEmployeeMutationHookResult = ReturnType<
+  typeof useDeleteEmployeeMutation
+>;
+export type DeleteEmployeeMutationResult =
+  Apollo.MutationResult<DeleteEmployeeMutation>;
+export type DeleteEmployeeMutationOptions = Apollo.BaseMutationOptions<
+  DeleteEmployeeMutation,
+  DeleteEmployeeMutationVariables
+>;
+export const GetShiftsDocument = gql`
+  query getShifts(
+    $paging: OffsetPaging
+    $filter: ShiftFilter
+    $sorting: [ShiftSort!]
+  ) {
+    shifts(paging: $paging, filter: $filter, sorting: $sorting) {
+      totalCount
+      nodes {
+        ...ShiftFields
+      }
+    }
+  }
+  ${ShiftFieldsFragmentDoc}
+`;
+
+/**
+ * __useGetShiftsQuery__
+ *
+ * To run a query within a React component, call `useGetShiftsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetShiftsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetShiftsQuery({
+ *   variables: {
+ *      paging: // value for 'paging'
+ *      filter: // value for 'filter'
+ *      sorting: // value for 'sorting'
+ *   },
+ * });
+ */
+export function useGetShiftsQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetShiftsQuery, GetShiftsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetShiftsQuery, GetShiftsQueryVariables>(
+    GetShiftsDocument,
+    options
+  );
+}
+export function useGetShiftsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetShiftsQuery,
+    GetShiftsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetShiftsQuery, GetShiftsQueryVariables>(
+    GetShiftsDocument,
+    options
+  );
+}
+export type GetShiftsQueryHookResult = ReturnType<typeof useGetShiftsQuery>;
+export type GetShiftsLazyQueryHookResult = ReturnType<
+  typeof useGetShiftsLazyQuery
+>;
+export type GetShiftsQueryResult = Apollo.QueryResult<
+  GetShiftsQuery,
+  GetShiftsQueryVariables
+>;
+export const GetOneShiftDocument = gql`
+  query getOneShift($id: String!) {
+    shift(id: $id) {
+      ...ShiftFields
+    }
+  }
+  ${ShiftFieldsFragmentDoc}
+`;
+
+/**
+ * __useGetOneShiftQuery__
+ *
+ * To run a query within a React component, call `useGetOneShiftQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetOneShiftQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetOneShiftQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetOneShiftQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetOneShiftQuery,
+    GetOneShiftQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetOneShiftQuery, GetOneShiftQueryVariables>(
+    GetOneShiftDocument,
+    options
+  );
+}
+export function useGetOneShiftLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetOneShiftQuery,
+    GetOneShiftQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetOneShiftQuery, GetOneShiftQueryVariables>(
+    GetOneShiftDocument,
+    options
+  );
+}
+export type GetOneShiftQueryHookResult = ReturnType<typeof useGetOneShiftQuery>;
+export type GetOneShiftLazyQueryHookResult = ReturnType<
+  typeof useGetOneShiftLazyQuery
+>;
+export type GetOneShiftQueryResult = Apollo.QueryResult<
+  GetOneShiftQuery,
+  GetOneShiftQueryVariables
+>;
+export const CreateShiftDocument = gql`
+  mutation createShift($input: CreateOneShiftInput!) {
+    createOneShift(input: $input) {
+      id
+    }
+  }
+`;
+export type CreateShiftMutationFn = Apollo.MutationFunction<
+  CreateShiftMutation,
+  CreateShiftMutationVariables
+>;
+
+/**
+ * __useCreateShiftMutation__
+ *
+ * To run a mutation, you first call `useCreateShiftMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateShiftMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createShiftMutation, { data, loading, error }] = useCreateShiftMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateShiftMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateShiftMutation,
+    CreateShiftMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<CreateShiftMutation, CreateShiftMutationVariables>(
+    CreateShiftDocument,
+    options
+  );
+}
+export type CreateShiftMutationHookResult = ReturnType<
+  typeof useCreateShiftMutation
+>;
+export type CreateShiftMutationResult =
+  Apollo.MutationResult<CreateShiftMutation>;
+export type CreateShiftMutationOptions = Apollo.BaseMutationOptions<
+  CreateShiftMutation,
+  CreateShiftMutationVariables
+>;
+export const UpdateShiftDocument = gql`
+  mutation updateShift($input: UpdateOneShiftInput!) {
+    updateOneShift(input: $input) {
+      id
+    }
+  }
+`;
+export type UpdateShiftMutationFn = Apollo.MutationFunction<
+  UpdateShiftMutation,
+  UpdateShiftMutationVariables
+>;
+
+/**
+ * __useUpdateShiftMutation__
+ *
+ * To run a mutation, you first call `useUpdateShiftMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateShiftMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateShiftMutation, { data, loading, error }] = useUpdateShiftMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateShiftMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateShiftMutation,
+    UpdateShiftMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<UpdateShiftMutation, UpdateShiftMutationVariables>(
+    UpdateShiftDocument,
+    options
+  );
+}
+export type UpdateShiftMutationHookResult = ReturnType<
+  typeof useUpdateShiftMutation
+>;
+export type UpdateShiftMutationResult =
+  Apollo.MutationResult<UpdateShiftMutation>;
+export type UpdateShiftMutationOptions = Apollo.BaseMutationOptions<
+  UpdateShiftMutation,
+  UpdateShiftMutationVariables
+>;
+export const DeleteShiftDocument = gql`
+  mutation deleteShift($input: DeleteOneShiftInput!) {
+    deleteOneShift(input: $input) {
+      id
+    }
+  }
+`;
+export type DeleteShiftMutationFn = Apollo.MutationFunction<
+  DeleteShiftMutation,
+  DeleteShiftMutationVariables
+>;
+
+/**
+ * __useDeleteShiftMutation__
+ *
+ * To run a mutation, you first call `useDeleteShiftMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteShiftMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteShiftMutation, { data, loading, error }] = useDeleteShiftMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useDeleteShiftMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteShiftMutation,
+    DeleteShiftMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<DeleteShiftMutation, DeleteShiftMutationVariables>(
+    DeleteShiftDocument,
+    options
+  );
+}
+export type DeleteShiftMutationHookResult = ReturnType<
+  typeof useDeleteShiftMutation
+>;
+export type DeleteShiftMutationResult =
+  Apollo.MutationResult<DeleteShiftMutation>;
+export type DeleteShiftMutationOptions = Apollo.BaseMutationOptions<
+  DeleteShiftMutation,
+  DeleteShiftMutationVariables
+>;
+export const GetUsersDocument = gql`
+  query getUsers(
+    $paging: OffsetPaging
+    $filter: UserFilter
+    $sorting: [UserSort!]
+  ) {
+    users(paging: $paging, filter: $filter, sorting: $sorting) {
+      totalCount
+      nodes {
+        ...UsersFields
+      }
+    }
+  }
+  ${UsersFieldsFragmentDoc}
+`;
+
+/**
+ * __useGetUsersQuery__
+ *
+ * To run a query within a React component, call `useGetUsersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUsersQuery({
+ *   variables: {
+ *      paging: // value for 'paging'
+ *      filter: // value for 'filter'
+ *      sorting: // value for 'sorting'
+ *   },
+ * });
+ */
+export function useGetUsersQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetUsersQuery, GetUsersQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetUsersQuery, GetUsersQueryVariables>(
+    GetUsersDocument,
+    options
+  );
+}
+export function useGetUsersLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetUsersQuery,
+    GetUsersQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetUsersQuery, GetUsersQueryVariables>(
+    GetUsersDocument,
+    options
+  );
+}
+export type GetUsersQueryHookResult = ReturnType<typeof useGetUsersQuery>;
+export type GetUsersLazyQueryHookResult = ReturnType<
+  typeof useGetUsersLazyQuery
+>;
+export type GetUsersQueryResult = Apollo.QueryResult<
+  GetUsersQuery,
+  GetUsersQueryVariables
+>;
+export const GetOneUserDocument = gql`
+  query getOneUser($id: String!) {
+    user(id: $id) {
+      ...UsersFields
+    }
+  }
+  ${UsersFieldsFragmentDoc}
+`;
+
+/**
+ * __useGetOneUserQuery__
+ *
+ * To run a query within a React component, call `useGetOneUserQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetOneUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetOneUserQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetOneUserQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetOneUserQuery,
+    GetOneUserQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetOneUserQuery, GetOneUserQueryVariables>(
+    GetOneUserDocument,
+    options
+  );
+}
+export function useGetOneUserLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetOneUserQuery,
+    GetOneUserQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetOneUserQuery, GetOneUserQueryVariables>(
+    GetOneUserDocument,
+    options
+  );
+}
+export type GetOneUserQueryHookResult = ReturnType<typeof useGetOneUserQuery>;
+export type GetOneUserLazyQueryHookResult = ReturnType<
+  typeof useGetOneUserLazyQuery
+>;
+export type GetOneUserQueryResult = Apollo.QueryResult<
+  GetOneUserQuery,
+  GetOneUserQueryVariables
+>;
+export const CreateUserDocument = gql`
+  mutation createUser($input: CreateOneUserInput!) {
+    createOneUser(input: $input) {
+      id
+    }
+  }
+`;
+export type CreateUserMutationFn = Apollo.MutationFunction<
+  CreateUserMutation,
+  CreateUserMutationVariables
+>;
+
+/**
+ * __useCreateUserMutation__
+ *
+ * To run a mutation, you first call `useCreateUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createUserMutation, { data, loading, error }] = useCreateUserMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateUserMutation,
+    CreateUserMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<CreateUserMutation, CreateUserMutationVariables>(
+    CreateUserDocument,
+    options
+  );
+}
+export type CreateUserMutationHookResult = ReturnType<
+  typeof useCreateUserMutation
+>;
+export type CreateUserMutationResult =
+  Apollo.MutationResult<CreateUserMutation>;
+export type CreateUserMutationOptions = Apollo.BaseMutationOptions<
+  CreateUserMutation,
+  CreateUserMutationVariables
+>;
+export const UpdateUserDocument = gql`
+  mutation updateUser($input: UpdateOneUserInput!) {
+    updateOneUser(input: $input) {
+      id
+    }
+  }
+`;
+export type UpdateUserMutationFn = Apollo.MutationFunction<
+  UpdateUserMutation,
+  UpdateUserMutationVariables
+>;
+
+/**
+ * __useUpdateUserMutation__
+ *
+ * To run a mutation, you first call `useUpdateUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateUserMutation, { data, loading, error }] = useUpdateUserMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateUserMutation,
+    UpdateUserMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<UpdateUserMutation, UpdateUserMutationVariables>(
+    UpdateUserDocument,
+    options
+  );
+}
+export type UpdateUserMutationHookResult = ReturnType<
+  typeof useUpdateUserMutation
+>;
+export type UpdateUserMutationResult =
+  Apollo.MutationResult<UpdateUserMutation>;
+export type UpdateUserMutationOptions = Apollo.BaseMutationOptions<
+  UpdateUserMutation,
+  UpdateUserMutationVariables
+>;
+export const DeleteUserDocument = gql`
+  mutation deleteUser($input: DeleteOneUserInput!) {
+    deleteOneUser(input: $input) {
+      id
+    }
+  }
+`;
+export type DeleteUserMutationFn = Apollo.MutationFunction<
+  DeleteUserMutation,
+  DeleteUserMutationVariables
+>;
+
+/**
+ * __useDeleteUserMutation__
+ *
+ * To run a mutation, you first call `useDeleteUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteUserMutation, { data, loading, error }] = useDeleteUserMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useDeleteUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteUserMutation,
+    DeleteUserMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<DeleteUserMutation, DeleteUserMutationVariables>(
+    DeleteUserDocument,
+    options
+  );
+}
+export type DeleteUserMutationHookResult = ReturnType<
+  typeof useDeleteUserMutation
+>;
+export type DeleteUserMutationResult =
+  Apollo.MutationResult<DeleteUserMutation>;
+export type DeleteUserMutationOptions = Apollo.BaseMutationOptions<
+  DeleteUserMutation,
+  DeleteUserMutationVariables
 >;

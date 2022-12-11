@@ -12,18 +12,16 @@ import apolloClient from "@lib/apollo";
 import { getErrorMessage } from "@utils";
 import { deleteModal } from "@components/popup";
 
-const Customers = () => {
+const Shift = () => {
   const router = useRouter();
+  const { id } = router.query;
   const { setTitle } = useHeader();
 
-  const { data, loading, refetch, error } = Gql.useGetEmployeesQuery({
+  const { data, loading, refetch, error } = Gql.useGetShiftsQuery({
     notifyOnNetworkStatusChange: true,
     fetchPolicy: "network-only",
     variables: {
-      // paging: {
-      //   limit: 10,
-      //   offset: 0,
-      // },
+      filter:{}
     },
   });
 
@@ -162,6 +160,6 @@ const Customers = () => {
   );
 };
 
-Customers.auth = true;
+Shift.auth = true;
 
-export default Customers;
+export default Shift;

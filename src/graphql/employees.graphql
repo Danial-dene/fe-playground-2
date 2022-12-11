@@ -44,8 +44,8 @@ mutation updateEmployee($input: UpdateOneEmployeeInput!) {
     id
   }
 }
-# mutation deleteAdmin($input: DeleteOneAdminInput!) {
-#   deleteOneAdmin(input: $input) {
-#     id
-#   }
-# }
+mutation deleteEmployee($input: DeleteOneEmployeeInput!) {
+  deleteOneEmployee(input: $input) {
+    id
+  }
+}
