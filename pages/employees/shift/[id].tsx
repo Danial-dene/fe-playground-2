@@ -42,7 +42,7 @@ const Shift = () => {
   const totalCount = data?.employees?.totalCount || 0;
 
   useEffect(() => {
-    setTitle("Employees");
+    setTitle("Shifts");
   }, []);
 
   const [deleteEmployee, { loading: deleting }] = Gql.useDeleteEmployeeMutation(
@@ -129,7 +129,7 @@ const Shift = () => {
             <div>
               <Button
                 type="primary"
-                onClick={() => router.push("/employees/add-or-edit")}
+                onClick={() => router.push("/employees/shift/add-or-edit")}
               >
                 Add
               </Button>
