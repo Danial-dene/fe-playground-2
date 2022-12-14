@@ -18,10 +18,10 @@ const Customers = () => {
 
   const {
     data,
-    loading: adminLoading,
+    loading: shiftOptionLoading,
     refetch,
     error,
-  } = Gql.useGetUsersQuery({
+  } = Gql.useGetShiftsOptionsQuery({
     // notifyOnNetworkStatusChange: true,
     fetchPolicy: "network-only",
     variables: {
@@ -36,25 +36,17 @@ const Customers = () => {
     refetch();
   }, [data !== undefined]);
 
-  const [deleteAdmin, { loading: deleting }] = Gql.useDeleteUserMutation({
-    onCompleted: () => {
-      refetch();
-      message.success("Admin successfully deleted!");
-    },
-    onError: (e) => {
-      message.error(getErrorMessage(e));
-    },
-  });
-
-  const [updateAdmin, { loading: isSubmitting }] = Gql.useUpdateUserMutation({
-    onCompleted: () => {
-      refetch();
-      message.success("Admin successfully saved!");
-    },
-    onError: (e) => {
-      message.error(getErrorMessage(e));
-    },
-  });
+  const [deleteShiftOptions, { loading: deleting }] =
+    Gql.useDeleteShiftOptionsMutation({
+      onCompleted: () => {
+        refetch();
+        message.success("Admin successfully deleted!");
+      },
+      onError: (e) => {
+        message.error(getErrorMessage(e));
+      },
+    });
+  console.log("data", data);
 
   const parseFilter = () => {
     const query = router.query;
@@ -74,7 +66,7 @@ const Customers = () => {
     return res;
   };
 
-  const totalCount = data?.users?.totalCount || 0;
+  const totalCount = data?.shiftOptions?.totalCount || 0;
 
   useEffect(() => {
     setTitle("Admins");
@@ -87,9 +79,16 @@ const Customers = () => {
       sorter: true,
     },
     {
-      title: "E-mail",
-      dataIndex: "email",
+      title: "Rate",
+      dataIndex: "rate",
       sorter: true,
+      render: (rate: number) => `RM ${rate.toFixed(2)} per hour`,
+    },
+    {
+      title: "OT Rate",
+      dataIndex: "otRate",
+      sorter: true,
+      render: (otRate: number) => `RM ${otRate.toFixed(2)} per hour`,
     },
     {
       title: "",
@@ -107,7 +106,7 @@ const Customers = () => {
                   deleteModal({
                     name: data?.name,
                     onOk: () =>
-                      deleteAdmin({
+                      deleteShiftOptions({
                         variables: {
                           input: { id: data?.id },
                         },
@@ -130,20 +129,20 @@ const Customers = () => {
     },
   ];
 
-  const onRow = (admin: any) => {
+  const onRow = (shiftOption: any) => {
     return {
-      onClick: () => router.push(`/admins/add-or-edit/${admin.id}`),
+      onClick: () => router.push(`/rates/add-or-edit/${shiftOption.id}`),
     };
   };
 
-  const loading = deleting || adminLoading || isSubmitting;
+  const loading = deleting || shiftOptionLoading;
   return (
     <>
       <div className="p-9">
         <CommonTableView
           tableTitle={`Admins (${totalCount})`}
           actions={
-            <Link href="/admins/add-or-edit">
+            <Link href="/rates/add-or-edit">
               <Button type="primary" className="w-[100px]">
                 Add new
               </Button>
@@ -179,7 +178,7 @@ const Customers = () => {
           columns={columns}
           loading={loading}
           refetch={refetch}
-          dataSource={data?.users?.nodes || []}
+          dataSource={data?.shiftOptions?.nodes || []}
           totalCount={totalCount}
           gqlFilters={parseFilter()}
           onRow={onRow}

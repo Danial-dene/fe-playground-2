@@ -1,18 +1,16 @@
 import { Col, Divider, Layout, Menu, Row } from "antd";
 
 import _ from "lodash";
-import { signOut, useSession } from "next-auth/react";
-import Image from "next/image";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { Icon } from "@commons";
 import {
   PieChartOutlined,
-  PoweroffOutlined,
-  SettingOutlined,
   UserOutlined,
   TeamOutlined,
+  MoneyCollectOutlined 
 } from "@ant-design/icons";
 import Head from "next/head";
 import { APP_NAME } from "@constants";
@@ -59,6 +57,12 @@ const items: MenuItemProps[] = [
         key: "employees",
         to: "/employees",
         icon: TeamOutlined,
+      },
+      {
+        label: "Rates",
+        key: "rates",
+        to: "/rates",
+        icon: MoneyCollectOutlined,
       },
     ],
   },

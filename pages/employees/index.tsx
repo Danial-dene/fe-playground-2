@@ -98,7 +98,7 @@ const Customers = () => {
               {
                 label: "View shift",
                 key: "1",
-                onClick: () => router.push(`/employees/shifts/${data.id}`),
+                onClick: () => router.push(`/employees/shift/${data.id}`),
               },
             ]}
           />

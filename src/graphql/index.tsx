@@ -23,6 +23,13 @@ export type Scalars = {
   DateTime: any;
 };
 
+export type AddEmployeesToShiftInput = {
+  /** The id of the record. */
+  id: Scalars["String"];
+  /** The ids of the relations. */
+  relationIds: Array<Scalars["String"]>;
+};
+
 export type CreateDay = {
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   createdBy?: InputMaybe<Scalars["Float"]>;
@@ -67,7 +74,7 @@ export type CreateManyEmployeesInput = {
 
 export type CreateManyShiftOptionsInput = {
   /** Array of records to create */
-  shiftOptions: Array<CreateShiftOptions>;
+  shiftOptions: Array<CreateShiftOption>;
 };
 
 export type CreateManyShiftsInput = {
@@ -95,9 +102,9 @@ export type CreateOneShiftInput = {
   shift: CreateShift;
 };
 
-export type CreateOneShiftOptionsInput = {
+export type CreateOneShiftOptionInput = {
   /** The record to create */
-  shiftOptions: CreateShiftOptions;
+  shiftOption: CreateShiftOption;
 };
 
 export type CreateOneUserInput = {
@@ -116,13 +123,15 @@ export type CreateShift = {
   updatedBy?: InputMaybe<Scalars["Float"]>;
 };
 
-export type CreateShiftOptions = {
+export type CreateShiftOption = {
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   createdBy?: InputMaybe<Scalars["Float"]>;
   deletedAt?: InputMaybe<Scalars["DateTime"]>;
   deletedBy?: InputMaybe<Scalars["Float"]>;
   id?: InputMaybe<Scalars["String"]>;
   name?: InputMaybe<Scalars["String"]>;
+  otRate?: InputMaybe<Scalars["Float"]>;
+  rate?: InputMaybe<Scalars["Float"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedBy?: InputMaybe<Scalars["Float"]>;
 };
@@ -322,6 +331,11 @@ export type DeleteManyResponse = {
   deletedCount: Scalars["Int"];
 };
 
+export type DeleteManyShiftOptionsInput = {
+  /** Filter to find records to delete */
+  filter: ShiftOptionDeleteFilter;
+};
+
 export type DeleteManyShiftsInput = {
   /** Filter to find records to delete */
   filter: ShiftDeleteFilter;
@@ -343,6 +357,11 @@ export type DeleteOneEmployeeInput = {
 };
 
 export type DeleteOneShiftInput = {
+  /** The id of the record to delete. */
+  id: Scalars["String"];
+};
+
+export type DeleteOneShiftOptionInput = {
   /** The id of the record to delete. */
   id: Scalars["String"];
 };
@@ -620,32 +639,43 @@ export type EmployeeUpdateFilter = {
 
 export type Mutation = {
   __typename?: "Mutation";
+  addEmployeesToShift: Shift;
   createManyDays: Array<Day>;
   createManyEmployees: Array<Employee>;
-  createManyShiftOptions: Array<ShiftOptions>;
+  createManyShiftOptions: Array<ShiftOption>;
   createManyShifts: Array<Shift>;
   createManyUsers: Array<User>;
   createOneDay: Day;
   createOneEmployee: Employee;
   createOneShift: Shift;
-  createOneShiftOptions: ShiftOptions;
+  createOneShiftOption: ShiftOption;
   createOneUser: User;
   deleteManyDays: DeleteManyResponse;
   deleteManyEmployees: DeleteManyResponse;
+  deleteManyShiftOptions: DeleteManyResponse;
   deleteManyShifts: DeleteManyResponse;
   deleteManyUsers: DeleteManyResponse;
   deleteOneDay: DayDeleteResponse;
   deleteOneEmployee: EmployeeDeleteResponse;
   deleteOneShift: ShiftDeleteResponse;
+  deleteOneShiftOption: ShiftOptionDeleteResponse;
   deleteOneUser: UserDeleteResponse;
+  removeEmployeesFromShift: Shift;
+  setEmployeesOnShift: Shift;
   updateManyDays: UpdateManyResponse;
   updateManyEmployees: UpdateManyResponse;
+  updateManyShiftOptions: UpdateManyResponse;
   updateManyShifts: UpdateManyResponse;
   updateManyUsers: UpdateManyResponse;
   updateOneDay: Day;
   updateOneEmployee: Employee;
   updateOneShift: Shift;
+  updateOneShiftOption: ShiftOption;
   updateOneUser: User;
+};
+
+export type MutationAddEmployeesToShiftArgs = {
+  input: AddEmployeesToShiftInput;
 };
 
 export type MutationCreateManyDaysArgs = {
@@ -680,8 +710,8 @@ export type MutationCreateOneShiftArgs = {
   input: CreateOneShiftInput;
 };
 
-export type MutationCreateOneShiftOptionsArgs = {
-  input: CreateOneShiftOptionsInput;
+export type MutationCreateOneShiftOptionArgs = {
+  input: CreateOneShiftOptionInput;
 };
 
 export type MutationCreateOneUserArgs = {
@@ -694,6 +724,10 @@ export type MutationDeleteManyDaysArgs = {
 
 export type MutationDeleteManyEmployeesArgs = {
   input: DeleteManyEmployeesInput;
+};
+
+export type MutationDeleteManyShiftOptionsArgs = {
+  input: DeleteManyShiftOptionsInput;
 };
 
 export type MutationDeleteManyShiftsArgs = {
@@ -716,8 +750,20 @@ export type MutationDeleteOneShiftArgs = {
   input: DeleteOneShiftInput;
 };
 
+export type MutationDeleteOneShiftOptionArgs = {
+  input: DeleteOneShiftOptionInput;
+};
+
 export type MutationDeleteOneUserArgs = {
   input: DeleteOneUserInput;
+};
+
+export type MutationRemoveEmployeesFromShiftArgs = {
+  input: RemoveEmployeesFromShiftInput;
+};
+
+export type MutationSetEmployeesOnShiftArgs = {
+  input: SetEmployeesOnShiftInput;
 };
 
 export type MutationUpdateManyDaysArgs = {
@@ -726,6 +772,10 @@ export type MutationUpdateManyDaysArgs = {
 
 export type MutationUpdateManyEmployeesArgs = {
   input: UpdateManyEmployeesInput;
+};
+
+export type MutationUpdateManyShiftOptionsArgs = {
+  input: UpdateManyShiftOptionsInput;
 };
 
 export type MutationUpdateManyShiftsArgs = {
@@ -746,6 +796,10 @@ export type MutationUpdateOneEmployeeArgs = {
 
 export type MutationUpdateOneShiftArgs = {
   input: UpdateOneShiftInput;
+};
+
+export type MutationUpdateOneShiftOptionArgs = {
+  input: UpdateOneShiftOptionInput;
 };
 
 export type MutationUpdateOneUserArgs = {
@@ -794,7 +848,8 @@ export type Query = {
   employee?: Maybe<Employee>;
   employees: EmployeeConnection;
   shift?: Maybe<Shift>;
-  shiftOptions: ShiftOptionsConnection;
+  shiftOption?: Maybe<ShiftOption>;
+  shiftOptions: ShiftOptionConnection;
   shifts: ShiftConnection;
   user?: Maybe<User>;
   users: UserConnection;
@@ -824,10 +879,14 @@ export type QueryShiftArgs = {
   id: Scalars["String"];
 };
 
+export type QueryShiftOptionArgs = {
+  id: Scalars["String"];
+};
+
 export type QueryShiftOptionsArgs = {
-  filter?: InputMaybe<ShiftOptionsFilter>;
+  filter?: InputMaybe<ShiftOptionFilter>;
   paging?: InputMaybe<OffsetPaging>;
-  sorting?: InputMaybe<Array<ShiftOptionsSort>>;
+  sorting?: InputMaybe<Array<ShiftOptionSort>>;
 };
 
 export type QueryShiftsArgs = {
@@ -846,6 +905,20 @@ export type QueryUsersArgs = {
   sorting?: InputMaybe<Array<UserSort>>;
 };
 
+export type RemoveEmployeesFromShiftInput = {
+  /** The id of the record. */
+  id: Scalars["String"];
+  /** The ids of the relations. */
+  relationIds: Array<Scalars["String"]>;
+};
+
+export type SetEmployeesOnShiftInput = {
+  /** The id of the record. */
+  id: Scalars["String"];
+  /** The ids of the relations. */
+  relationIds: Array<Scalars["String"]>;
+};
+
 export type Shift = {
   __typename?: "Shift";
   createdAt?: Maybe<Scalars["DateTime"]>;
@@ -853,9 +926,16 @@ export type Shift = {
   date: Scalars["DateTime"];
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
+  employees?: Maybe<ShiftEmployeesConnection>;
   id: Scalars["String"];
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type ShiftEmployeesArgs = {
+  filter?: InputMaybe<EmployeeFilter>;
+  paging?: InputMaybe<OffsetPaging>;
+  sorting?: InputMaybe<Array<EmployeeSort>>;
 };
 
 export type ShiftAggregateGroupBy = {
@@ -924,6 +1004,16 @@ export type ShiftDeleteResponse = {
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
+export type ShiftEmployeesConnection = {
+  __typename?: "ShiftEmployeesConnection";
+  /** Array of nodes. */
+  nodes: Array<Employee>;
+  /** Paging information */
+  pageInfo: OffsetPageInfo;
+  /** Fetch total count of records */
+  totalCount: Scalars["Int"];
+};
+
 export type ShiftFilter = {
   and?: InputMaybe<Array<ShiftFilter>>;
   createdAt?: InputMaybe<DateFieldComparison>;
@@ -931,8 +1021,32 @@ export type ShiftFilter = {
   date?: InputMaybe<DateFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   deletedBy?: InputMaybe<NumberFieldComparison>;
+  employees?: InputMaybe<ShiftFilterEmployeeFilter>;
   id?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<ShiftFilter>>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type ShiftFilterEmployeeFilter = {
+  accountNo?: InputMaybe<NumberFieldComparison>;
+  and?: InputMaybe<Array<ShiftFilterEmployeeFilter>>;
+  backPayment?: InputMaybe<NumberFieldComparison>;
+  bankType?: InputMaybe<StringFieldComparison>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  employeeEpf?: InputMaybe<NumberFieldComparison>;
+  employeeNo?: InputMaybe<StringFieldComparison>;
+  employeeSocso?: InputMaybe<NumberFieldComparison>;
+  employerEpf?: InputMaybe<NumberFieldComparison>;
+  employerSocso?: InputMaybe<NumberFieldComparison>;
+  icNo?: InputMaybe<StringFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  loan?: InputMaybe<NumberFieldComparison>;
+  name?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<ShiftFilterEmployeeFilter>>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -961,118 +1075,180 @@ export type ShiftMinAggregate = {
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type ShiftOptions = {
-  __typename?: "ShiftOptions";
+export type ShiftOption = {
+  __typename?: "ShiftOption";
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
   id: Scalars["String"];
   name: Scalars["String"];
+  otRate: Scalars["Float"];
+  rate: Scalars["Float"];
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type ShiftOptionsAggregateGroupBy = {
-  __typename?: "ShiftOptionsAggregateGroupBy";
+export type ShiftOptionAggregateGroupBy = {
+  __typename?: "ShiftOptionAggregateGroupBy";
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
   id?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
+  otRate?: Maybe<Scalars["Float"]>;
+  rate?: Maybe<Scalars["Float"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type ShiftOptionsAvgAggregate = {
-  __typename?: "ShiftOptionsAvgAggregate";
+export type ShiftOptionAvgAggregate = {
+  __typename?: "ShiftOptionAvgAggregate";
   createdBy?: Maybe<Scalars["Float"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
+  otRate?: Maybe<Scalars["Float"]>;
+  rate?: Maybe<Scalars["Float"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type ShiftOptionsConnection = {
-  __typename?: "ShiftOptionsConnection";
+export type ShiftOptionConnection = {
+  __typename?: "ShiftOptionConnection";
   /** Array of nodes. */
-  nodes: Array<ShiftOptions>;
+  nodes: Array<ShiftOption>;
   /** Paging information */
   pageInfo: OffsetPageInfo;
   /** Fetch total count of records */
   totalCount: Scalars["Int"];
 };
 
-export type ShiftOptionsCountAggregate = {
-  __typename?: "ShiftOptionsCountAggregate";
+export type ShiftOptionCountAggregate = {
+  __typename?: "ShiftOptionCountAggregate";
   createdAt?: Maybe<Scalars["Int"]>;
   createdBy?: Maybe<Scalars["Int"]>;
   deletedAt?: Maybe<Scalars["Int"]>;
   deletedBy?: Maybe<Scalars["Int"]>;
   id?: Maybe<Scalars["Int"]>;
   name?: Maybe<Scalars["Int"]>;
+  otRate?: Maybe<Scalars["Int"]>;
+  rate?: Maybe<Scalars["Int"]>;
   updatedAt?: Maybe<Scalars["Int"]>;
   updatedBy?: Maybe<Scalars["Int"]>;
 };
 
-export type ShiftOptionsFilter = {
-  and?: InputMaybe<Array<ShiftOptionsFilter>>;
+export type ShiftOptionDeleteFilter = {
+  and?: InputMaybe<Array<ShiftOptionDeleteFilter>>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   deletedBy?: InputMaybe<NumberFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<ShiftOptionsFilter>>;
+  or?: InputMaybe<Array<ShiftOptionDeleteFilter>>;
+  otRate?: InputMaybe<NumberFieldComparison>;
+  rate?: InputMaybe<NumberFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
-export type ShiftOptionsMaxAggregate = {
-  __typename?: "ShiftOptionsMaxAggregate";
+export type ShiftOptionDeleteResponse = {
+  __typename?: "ShiftOptionDeleteResponse";
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
   id?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
+  otRate?: Maybe<Scalars["Float"]>;
+  rate?: Maybe<Scalars["Float"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type ShiftOptionsMinAggregate = {
-  __typename?: "ShiftOptionsMinAggregate";
+export type ShiftOptionFilter = {
+  and?: InputMaybe<Array<ShiftOptionFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  name?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<ShiftOptionFilter>>;
+  otRate?: InputMaybe<NumberFieldComparison>;
+  rate?: InputMaybe<NumberFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type ShiftOptionMaxAggregate = {
+  __typename?: "ShiftOptionMaxAggregate";
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
   id?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
+  otRate?: Maybe<Scalars["Float"]>;
+  rate?: Maybe<Scalars["Float"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type ShiftOptionsSort = {
+export type ShiftOptionMinAggregate = {
+  __typename?: "ShiftOptionMinAggregate";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
+  otRate?: Maybe<Scalars["Float"]>;
+  rate?: Maybe<Scalars["Float"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type ShiftOptionSort = {
   direction: SortDirection;
-  field: ShiftOptionsSortFields;
+  field: ShiftOptionSortFields;
   nulls?: InputMaybe<SortNulls>;
 };
 
-export enum ShiftOptionsSortFields {
+export enum ShiftOptionSortFields {
   CreatedAt = "createdAt",
   CreatedBy = "createdBy",
   DeletedAt = "deletedAt",
   DeletedBy = "deletedBy",
   Id = "id",
   Name = "name",
+  OtRate = "otRate",
+  Rate = "rate",
   UpdatedAt = "updatedAt",
   UpdatedBy = "updatedBy",
 }
 
-export type ShiftOptionsSumAggregate = {
-  __typename?: "ShiftOptionsSumAggregate";
+export type ShiftOptionSumAggregate = {
+  __typename?: "ShiftOptionSumAggregate";
   createdBy?: Maybe<Scalars["Float"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
+  otRate?: Maybe<Scalars["Float"]>;
+  rate?: Maybe<Scalars["Float"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type ShiftOptionUpdateFilter = {
+  and?: InputMaybe<Array<ShiftOptionUpdateFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  name?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<ShiftOptionUpdateFilter>>;
+  otRate?: InputMaybe<NumberFieldComparison>;
+  rate?: InputMaybe<NumberFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
 export type ShiftSort = {
@@ -1193,6 +1369,13 @@ export type UpdateManyResponse = {
   updatedCount: Scalars["Int"];
 };
 
+export type UpdateManyShiftOptionsInput = {
+  /** Filter used to find fields to update */
+  filter: ShiftOptionUpdateFilter;
+  /** The update to apply to all records found using the filter */
+  update: UpdateShiftOption;
+};
+
 export type UpdateManyShiftsInput = {
   /** Filter used to find fields to update */
   filter: ShiftUpdateFilter;
@@ -1228,6 +1411,13 @@ export type UpdateOneShiftInput = {
   update: UpdateShift;
 };
 
+export type UpdateOneShiftOptionInput = {
+  /** The id of the record to update */
+  id: Scalars["String"];
+  /** The update to apply. */
+  update: UpdateShiftOption;
+};
+
 export type UpdateOneUserInput = {
   /** The id of the record to update */
   id: Scalars["String"];
@@ -1242,6 +1432,19 @@ export type UpdateShift = {
   deletedAt?: InputMaybe<Scalars["DateTime"]>;
   deletedBy?: InputMaybe<Scalars["Float"]>;
   id?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
+};
+
+export type UpdateShiftOption = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
+  id?: InputMaybe<Scalars["String"]>;
+  name?: InputMaybe<Scalars["String"]>;
+  otRate?: InputMaybe<Scalars["Float"]>;
+  rate?: InputMaybe<Scalars["Float"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedBy?: InputMaybe<Scalars["Float"]>;
 };
@@ -1452,6 +1655,80 @@ export type DeleteEmployeeMutation = {
   };
 };
 
+export type ShiftOptionFieldsFragment = {
+  __typename?: "ShiftOption";
+  id: string;
+  name: string;
+  rate: number;
+  otRate: number;
+};
+
+export type GetShiftsOptionsQueryVariables = Exact<{
+  paging?: InputMaybe<OffsetPaging>;
+  filter?: InputMaybe<ShiftOptionFilter>;
+  sorting?: InputMaybe<Array<ShiftOptionSort> | ShiftOptionSort>;
+}>;
+
+export type GetShiftsOptionsQuery = {
+  __typename?: "Query";
+  shiftOptions: {
+    __typename?: "ShiftOptionConnection";
+    totalCount: number;
+    nodes: Array<{
+      __typename?: "ShiftOption";
+      id: string;
+      name: string;
+      rate: number;
+      otRate: number;
+    }>;
+  };
+};
+
+export type GetOneShiftOptionQueryVariables = Exact<{
+  id: Scalars["String"];
+}>;
+
+export type GetOneShiftOptionQuery = {
+  __typename?: "Query";
+  shiftOption?: {
+    __typename?: "ShiftOption";
+    id: string;
+    name: string;
+    rate: number;
+    otRate: number;
+  } | null;
+};
+
+export type CreateShiftOptionMutationVariables = Exact<{
+  input: CreateOneShiftOptionInput;
+}>;
+
+export type CreateShiftOptionMutation = {
+  __typename?: "Mutation";
+  createOneShiftOption: { __typename?: "ShiftOption"; id: string };
+};
+
+export type UpdateShiftOptionsMutationVariables = Exact<{
+  input: UpdateOneShiftOptionInput;
+}>;
+
+export type UpdateShiftOptionsMutation = {
+  __typename?: "Mutation";
+  updateOneShiftOption: { __typename?: "ShiftOption"; id: string };
+};
+
+export type DeleteShiftOptionsMutationVariables = Exact<{
+  input: DeleteOneShiftOptionInput;
+}>;
+
+export type DeleteShiftOptionsMutation = {
+  __typename?: "Mutation";
+  deleteOneShiftOption: {
+    __typename?: "ShiftOptionDeleteResponse";
+    id?: string | null;
+  };
+};
+
 export type ShiftFieldsFragment = {
   __typename?: "Shift";
   id: string;
@@ -1592,6 +1869,14 @@ export const EmployeeFieldsFragmentDoc = gql`
     loan
     accountNo
     bankType
+  }
+`;
+export const ShiftOptionFieldsFragmentDoc = gql`
+  fragment ShiftOptionFields on ShiftOption {
+    id
+    name
+    rate
+    otRate
   }
 `;
 export const ShiftFieldsFragmentDoc = gql`
@@ -1883,6 +2168,283 @@ export type DeleteEmployeeMutationResult =
 export type DeleteEmployeeMutationOptions = Apollo.BaseMutationOptions<
   DeleteEmployeeMutation,
   DeleteEmployeeMutationVariables
+>;
+export const GetShiftsOptionsDocument = gql`
+  query getShiftsOptions(
+    $paging: OffsetPaging
+    $filter: ShiftOptionFilter
+    $sorting: [ShiftOptionSort!]
+  ) {
+    shiftOptions(paging: $paging, filter: $filter, sorting: $sorting) {
+      totalCount
+      nodes {
+        ...ShiftOptionFields
+      }
+    }
+  }
+  ${ShiftOptionFieldsFragmentDoc}
+`;
+
+/**
+ * __useGetShiftsOptionsQuery__
+ *
+ * To run a query within a React component, call `useGetShiftsOptionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetShiftsOptionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetShiftsOptionsQuery({
+ *   variables: {
+ *      paging: // value for 'paging'
+ *      filter: // value for 'filter'
+ *      sorting: // value for 'sorting'
+ *   },
+ * });
+ */
+export function useGetShiftsOptionsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetShiftsOptionsQuery,
+    GetShiftsOptionsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetShiftsOptionsQuery, GetShiftsOptionsQueryVariables>(
+    GetShiftsOptionsDocument,
+    options
+  );
+}
+export function useGetShiftsOptionsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetShiftsOptionsQuery,
+    GetShiftsOptionsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetShiftsOptionsQuery,
+    GetShiftsOptionsQueryVariables
+  >(GetShiftsOptionsDocument, options);
+}
+export type GetShiftsOptionsQueryHookResult = ReturnType<
+  typeof useGetShiftsOptionsQuery
+>;
+export type GetShiftsOptionsLazyQueryHookResult = ReturnType<
+  typeof useGetShiftsOptionsLazyQuery
+>;
+export type GetShiftsOptionsQueryResult = Apollo.QueryResult<
+  GetShiftsOptionsQuery,
+  GetShiftsOptionsQueryVariables
+>;
+export const GetOneShiftOptionDocument = gql`
+  query getOneShiftOption($id: String!) {
+    shiftOption(id: $id) {
+      ...ShiftOptionFields
+    }
+  }
+  ${ShiftOptionFieldsFragmentDoc}
+`;
+
+/**
+ * __useGetOneShiftOptionQuery__
+ *
+ * To run a query within a React component, call `useGetOneShiftOptionQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetOneShiftOptionQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetOneShiftOptionQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetOneShiftOptionQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetOneShiftOptionQuery,
+    GetOneShiftOptionQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetOneShiftOptionQuery,
+    GetOneShiftOptionQueryVariables
+  >(GetOneShiftOptionDocument, options);
+}
+export function useGetOneShiftOptionLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetOneShiftOptionQuery,
+    GetOneShiftOptionQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetOneShiftOptionQuery,
+    GetOneShiftOptionQueryVariables
+  >(GetOneShiftOptionDocument, options);
+}
+export type GetOneShiftOptionQueryHookResult = ReturnType<
+  typeof useGetOneShiftOptionQuery
+>;
+export type GetOneShiftOptionLazyQueryHookResult = ReturnType<
+  typeof useGetOneShiftOptionLazyQuery
+>;
+export type GetOneShiftOptionQueryResult = Apollo.QueryResult<
+  GetOneShiftOptionQuery,
+  GetOneShiftOptionQueryVariables
+>;
+export const CreateShiftOptionDocument = gql`
+  mutation createShiftOption($input: CreateOneShiftOptionInput!) {
+    createOneShiftOption(input: $input) {
+      id
+    }
+  }
+`;
+export type CreateShiftOptionMutationFn = Apollo.MutationFunction<
+  CreateShiftOptionMutation,
+  CreateShiftOptionMutationVariables
+>;
+
+/**
+ * __useCreateShiftOptionMutation__
+ *
+ * To run a mutation, you first call `useCreateShiftOptionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateShiftOptionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createShiftOptionMutation, { data, loading, error }] = useCreateShiftOptionMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateShiftOptionMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateShiftOptionMutation,
+    CreateShiftOptionMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    CreateShiftOptionMutation,
+    CreateShiftOptionMutationVariables
+  >(CreateShiftOptionDocument, options);
+}
+export type CreateShiftOptionMutationHookResult = ReturnType<
+  typeof useCreateShiftOptionMutation
+>;
+export type CreateShiftOptionMutationResult =
+  Apollo.MutationResult<CreateShiftOptionMutation>;
+export type CreateShiftOptionMutationOptions = Apollo.BaseMutationOptions<
+  CreateShiftOptionMutation,
+  CreateShiftOptionMutationVariables
+>;
+export const UpdateShiftOptionsDocument = gql`
+  mutation updateShiftOptions($input: UpdateOneShiftOptionInput!) {
+    updateOneShiftOption(input: $input) {
+      id
+    }
+  }
+`;
+export type UpdateShiftOptionsMutationFn = Apollo.MutationFunction<
+  UpdateShiftOptionsMutation,
+  UpdateShiftOptionsMutationVariables
+>;
+
+/**
+ * __useUpdateShiftOptionsMutation__
+ *
+ * To run a mutation, you first call `useUpdateShiftOptionsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateShiftOptionsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateShiftOptionsMutation, { data, loading, error }] = useUpdateShiftOptionsMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateShiftOptionsMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateShiftOptionsMutation,
+    UpdateShiftOptionsMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateShiftOptionsMutation,
+    UpdateShiftOptionsMutationVariables
+  >(UpdateShiftOptionsDocument, options);
+}
+export type UpdateShiftOptionsMutationHookResult = ReturnType<
+  typeof useUpdateShiftOptionsMutation
+>;
+export type UpdateShiftOptionsMutationResult =
+  Apollo.MutationResult<UpdateShiftOptionsMutation>;
+export type UpdateShiftOptionsMutationOptions = Apollo.BaseMutationOptions<
+  UpdateShiftOptionsMutation,
+  UpdateShiftOptionsMutationVariables
+>;
+export const DeleteShiftOptionsDocument = gql`
+  mutation deleteShiftOptions($input: DeleteOneShiftOptionInput!) {
+    deleteOneShiftOption(input: $input) {
+      id
+    }
+  }
+`;
+export type DeleteShiftOptionsMutationFn = Apollo.MutationFunction<
+  DeleteShiftOptionsMutation,
+  DeleteShiftOptionsMutationVariables
+>;
+
+/**
+ * __useDeleteShiftOptionsMutation__
+ *
+ * To run a mutation, you first call `useDeleteShiftOptionsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteShiftOptionsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteShiftOptionsMutation, { data, loading, error }] = useDeleteShiftOptionsMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useDeleteShiftOptionsMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteShiftOptionsMutation,
+    DeleteShiftOptionsMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    DeleteShiftOptionsMutation,
+    DeleteShiftOptionsMutationVariables
+  >(DeleteShiftOptionsDocument, options);
+}
+export type DeleteShiftOptionsMutationHookResult = ReturnType<
+  typeof useDeleteShiftOptionsMutation
+>;
+export type DeleteShiftOptionsMutationResult =
+  Apollo.MutationResult<DeleteShiftOptionsMutation>;
+export type DeleteShiftOptionsMutationOptions = Apollo.BaseMutationOptions<
+  DeleteShiftOptionsMutation,
+  DeleteShiftOptionsMutationVariables
 >;
 export const GetShiftsDocument = gql`
   query getShifts(

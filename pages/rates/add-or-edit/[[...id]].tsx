@@ -2,7 +2,16 @@ import { useHeader } from "@components/HeaderProvider";
 import AccountSettingsTabLayout from "@components/settings/AccountSettingsTabLayout";
 import * as Gql from "@graphql";
 import { isValidPhoneNumber } from "libphonenumber-js";
-import { Button, Col, Form, Input, message, Row, Select } from "antd";
+import {
+  Button,
+  Col,
+  Form,
+  Input,
+  InputNumber,
+  message,
+  Row,
+  Select,
+} from "antd";
 import { useForm } from "antd/lib/form/Form";
 import { useEffect } from "react";
 import { AvatarUploadInput, PhoneNumberInput } from "@forms";
@@ -49,23 +58,27 @@ const CustomerEdit = () => {
     if (id) getAdmin({ variables: { id: _.toString(id) } });
   }, [router]);
 
-  const [updateAdmin, { loading: isSubmitting }] = Gql.useUpdateUserMutation({
-    onCompleted: () => {
-      message.success("User successfully saved!");
-    },
-    onError: (e) => {
-      message.error(getErrorMessage(e));
-    },
-  });
+  const [updateShiftOptions, { loading: isSubmitting }] =
+    Gql.useUpdateShiftOptionsMutation({
+      onCompleted: () => {
+        message.success("User successfully saved!");
+        router.back();
+      },
+      onError: (e) => {
+        message.error(getErrorMessage(e));
+      },
+    });
 
-  const [addAdmin, { loading: addAdminLoading }] = Gql.useCreateUserMutation({
-    onCompleted: () => {
-      message.success("User successfully added!");
-    },
-    onError: (e) => {
-      message.error(getErrorMessage(e));
-    },
-  });
+  const [addShiftOptions, { loading: addAdminLoading }] =
+    Gql.useCreateShiftOptionMutation({
+      onCompleted: () => {
+        message.success("User successfully added!");
+        router.back();
+      },
+      onError: (e) => {
+        message.error(getErrorMessage(e));
+      },
+    });
 
   // console.log(error);
 
@@ -73,14 +86,11 @@ const CustomerEdit = () => {
     let input = { ...values };
 
     if (id) {
-      updateAdmin({
+      updateShiftOptions({
         variables: { input: { id: _.toString(id), update: input } },
       });
-      router.back();
     } else {
-      addAdmin({ variables: { input: { user: input } } });
-      router.back();
-      // form.resetFields()
+      addShiftOptions({ variables: { input: { shiftOption: input } } });
     }
   };
 
@@ -103,36 +113,17 @@ const CustomerEdit = () => {
                 <Input />
               </Form.Item>
 
-              <Form.Item
-                label="E-mail"
-                name="email"
-                rules={[{ required: true }]}
-              >
-                <Input type="email" />
+              <Form.Item label="Rate" name="rate">
+                <InputNumber />
               </Form.Item>
 
-              {!id && (
-                <Form.Item
-                  label="Password"
-                  name="password"
-                  rules={[{ required: true }]}
-                >
-                  <Input.Password />
-                </Form.Item>
-              )}
-
-              {/* <Form.Item label="Status" name="isActive">
-                <Select
-                  options={[
-                    { label: "Active", value: true },
-                    { label: "Inactive", value: false },
-                  ]}
-                />
-              </Form.Item> */}
+              <Form.Item label="OT Rate" name="otRate">
+                <InputNumber />
+              </Form.Item>
 
               <Button
                 loading={loading}
-                htmlType="submit"
+                onClick={() => form.submit()}
                 type="primary"
                 className="w-[112px]"
               >

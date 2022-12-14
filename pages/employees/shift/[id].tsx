@@ -20,8 +20,9 @@ const Shift = () => {
   const { data, loading, refetch, error } = Gql.useGetShiftsQuery({
     notifyOnNetworkStatusChange: true,
     fetchPolicy: "network-only",
+    skip: !id,
     variables: {
-      filter:{}
+      filter: { employees: { id: { eq: _.toString(id) } } },
     },
   });
 
