@@ -33,7 +33,7 @@ const CustomerEdit = () => {
         onClose={() => router.back()}
         items={[
           {
-            label: "Admin",
+            label: "Rates",
             onClick: () => router.back(),
           },
           {
@@ -61,7 +61,7 @@ const CustomerEdit = () => {
   const [updateShiftOptions, { loading: isSubmitting }] =
     Gql.useUpdateShiftOptionsMutation({
       onCompleted: () => {
-        message.success("User successfully saved!");
+        message.success("Rate successfully saved!");
         router.back();
       },
       onError: (e) => {
@@ -72,7 +72,7 @@ const CustomerEdit = () => {
   const [addShiftOptions, { loading: addAdminLoading }] =
     Gql.useCreateShiftOptionMutation({
       onCompleted: () => {
-        message.success("User successfully added!");
+        message.success("Rate successfully added!");
         router.back();
       },
       onError: (e) => {
@@ -113,11 +113,11 @@ const CustomerEdit = () => {
                 <Input />
               </Form.Item>
 
-              <Form.Item label="Rate" name="rate">
+              <Form.Item label="Rate" name="rate" rules={[{ required: true }]}>
                 <InputNumber />
               </Form.Item>
 
-              <Form.Item label="OT Rate" name="otRate">
+              <Form.Item label="OT Rate" name="otRate" rules={[{ required: true }]}>
                 <InputNumber />
               </Form.Item>
 

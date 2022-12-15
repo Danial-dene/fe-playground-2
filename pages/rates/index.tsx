@@ -22,25 +22,26 @@ const Customers = () => {
     refetch,
     error,
   } = Gql.useGetShiftsOptionsQuery({
-    // notifyOnNetworkStatusChange: true,
+    notifyOnNetworkStatusChange: true,
     fetchPolicy: "network-only",
     variables: {
-      paging: {
-        limit: 10,
-        offset: 0,
-      },
+      // paging: {
+      //   limit: 10,
+      //   offset: 0,
+      // },
     },
   });
 
   useEffect(() => {
     refetch();
   }, [data !== undefined]);
+  console.log("error", error);
 
   const [deleteShiftOptions, { loading: deleting }] =
     Gql.useDeleteShiftOptionsMutation({
       onCompleted: () => {
         refetch();
-        message.success("Admin successfully deleted!");
+        message.success("Rates successfully deleted!");
       },
       onError: (e) => {
         message.error(getErrorMessage(e));
@@ -57,11 +58,6 @@ const Customers = () => {
         or: [{ name: { like: `%${query.name}%` } }],
       });
     }
-    if (query.email) {
-      res.and.push({
-        or: [{ email: { like: `%${query.email}%` } }],
-      });
-    }
 
     return res;
   };
@@ -69,7 +65,7 @@ const Customers = () => {
   const totalCount = data?.shiftOptions?.totalCount || 0;
 
   useEffect(() => {
-    setTitle("Admins");
+    setTitle("Rates");
   }, []);
 
   const columns = [
@@ -140,7 +136,7 @@ const Customers = () => {
     <>
       <div className="p-9">
         <CommonTableView
-          tableTitle={`Admins (${totalCount})`}
+          tableTitle={`Rates (${totalCount})`}
           actions={
             <Link href="/rates/add-or-edit">
               <Button type="primary" className="w-[100px]">
