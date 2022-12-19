@@ -27,7 +27,7 @@ const CustomerEdit = () => {
   const [form] = useForm();
   const router = useRouter();
 
-  const { id } = router.query;
+  const { id: employeeId } = router.query;
 
   useEffect(() => {
     setTitle(
@@ -39,7 +39,7 @@ const CustomerEdit = () => {
             onClick: () => router.back(),
           },
           {
-            label: id ? "Edit" : "Add",
+            label: employeeId ? "Edit" : "Add",
           },
         ]}
       />
@@ -57,11 +57,11 @@ const CustomerEdit = () => {
     });
 
   useEffect(() => {
-    if (id) getEmployee({ variables: { id: _.toString(id) } });
+    if (employeeId) getEmployee({ variables: { id: _.toString(employeeId) } });
   }, [router]);
 
   const [updateEmployee, { loading: isSubmitting }] =
-    Gql.useUpdateEmployeeMutation({
+    Gql.useUpdateShiftMutation({
       onCompleted: () => {
         message.success("Employee successfully saved!");
         router.back();
@@ -72,9 +72,9 @@ const CustomerEdit = () => {
     });
 
   const [addEmployee, { loading: addAdminLoading }] =
-    Gql.useCreateEmployeeMutation({
+    Gql.useCreateShiftMutation({
       onCompleted: () => {
-        message.success("Employee successfully added!");
+        message.success("Shift successfully added!");
         router.back();
       },
       onError: (e) => {
@@ -86,14 +86,22 @@ const CustomerEdit = () => {
 
   const onFinish = (values: any) => {
     let input = { ...values };
+    const rateId = _.get(values, "rateId");
+    input = _.omit(input, ["rateId"]);
 
-    if (id) {
-      updateEmployee({
-        variables: { input: { id: _.toString(id), update: input } },
-      });
-    } else {
-      addEmployee({ variables: { input: { employee: input } } });
-    }
+    console.log("rateId", rateId);
+
+    addEmployee({
+      variables: {
+        input: {
+          shift: {
+            ...input,
+            shiftOptionId: Number(rateId),
+            employeeId: Number(employeeId),
+          },
+        },
+      },
+    });
   };
 
   const loading = adminLoading || isSubmitting || addAdminLoading;
@@ -118,7 +126,7 @@ const CustomerEdit = () => {
                 <InputNumber />
               </Form.Item>
 
-              <Form.Item label="Rate" name="rate">
+              <Form.Item label="Rate" name="rateId">
                 <SelectSearchInput
                   GqlDocument={Gql.GetShiftsOptionsDocument}
                   toDisplay={"name"}

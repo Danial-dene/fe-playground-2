@@ -30,17 +30,6 @@ export type AddEmployeesToShiftInput = {
   relationIds: Array<Scalars["String"]>;
 };
 
-export type CreateDay = {
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  createdBy?: InputMaybe<Scalars["Float"]>;
-  date?: InputMaybe<Scalars["DateTime"]>;
-  deletedAt?: InputMaybe<Scalars["DateTime"]>;
-  deletedBy?: InputMaybe<Scalars["Float"]>;
-  id?: InputMaybe<Scalars["String"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
-  updatedBy?: InputMaybe<Scalars["Float"]>;
-};
-
 export type CreateEmployee = {
   accountNo?: InputMaybe<Scalars["Float"]>;
   backPayment?: InputMaybe<Scalars["Float"]>;
@@ -62,11 +51,6 @@ export type CreateEmployee = {
   updatedBy?: InputMaybe<Scalars["Float"]>;
 };
 
-export type CreateManyDaysInput = {
-  /** Array of records to create */
-  days: Array<CreateDay>;
-};
-
 export type CreateManyEmployeesInput = {
   /** Array of records to create */
   employees: Array<CreateEmployee>;
@@ -79,17 +63,12 @@ export type CreateManyShiftOptionsInput = {
 
 export type CreateManyShiftsInput = {
   /** Array of records to create */
-  shifts: Array<CreateShift>;
+  shifts: Array<CreateShiftInputDto>;
 };
 
 export type CreateManyUsersInput = {
   /** Array of records to create */
   users: Array<CreateUser>;
-};
-
-export type CreateOneDayInput = {
-  /** The record to create */
-  day: CreateDay;
 };
 
 export type CreateOneEmployeeInput = {
@@ -99,7 +78,7 @@ export type CreateOneEmployeeInput = {
 
 export type CreateOneShiftInput = {
   /** The record to create */
-  shift: CreateShift;
+  shift: CreateShiftInputDto;
 };
 
 export type CreateOneShiftOptionInput = {
@@ -112,15 +91,13 @@ export type CreateOneUserInput = {
   user: CreateUser;
 };
 
-export type CreateShift = {
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  createdBy?: InputMaybe<Scalars["Float"]>;
-  date?: InputMaybe<Scalars["DateTime"]>;
-  deletedAt?: InputMaybe<Scalars["DateTime"]>;
-  deletedBy?: InputMaybe<Scalars["Float"]>;
-  id?: InputMaybe<Scalars["String"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
-  updatedBy?: InputMaybe<Scalars["Float"]>;
+export type CreateShiftInputDto = {
+  allowance: Scalars["Float"];
+  date: Scalars["DateTime"];
+  employeeId: Scalars["Float"];
+  hours: Scalars["Float"];
+  shiftOptionId: Scalars["Float"];
+  total?: InputMaybe<Scalars["Float"]>;
 };
 
 export type CreateShiftOption = {
@@ -163,163 +140,6 @@ export type DateFieldComparisonBetween = {
   upper: Scalars["DateTime"];
 };
 
-export type Day = {
-  __typename?: "Day";
-  createdAt?: Maybe<Scalars["DateTime"]>;
-  createdBy?: Maybe<Scalars["Float"]>;
-  date: Scalars["DateTime"];
-  deletedAt?: Maybe<Scalars["DateTime"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  id: Scalars["String"];
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type DayAggregateGroupBy = {
-  __typename?: "DayAggregateGroupBy";
-  createdAt?: Maybe<Scalars["DateTime"]>;
-  createdBy?: Maybe<Scalars["Float"]>;
-  date?: Maybe<Scalars["DateTime"]>;
-  deletedAt?: Maybe<Scalars["DateTime"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  id?: Maybe<Scalars["String"]>;
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type DayAvgAggregate = {
-  __typename?: "DayAvgAggregate";
-  createdBy?: Maybe<Scalars["Float"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type DayConnection = {
-  __typename?: "DayConnection";
-  /** Array of nodes. */
-  nodes: Array<Day>;
-  /** Paging information */
-  pageInfo: OffsetPageInfo;
-  /** Fetch total count of records */
-  totalCount: Scalars["Int"];
-};
-
-export type DayCountAggregate = {
-  __typename?: "DayCountAggregate";
-  createdAt?: Maybe<Scalars["Int"]>;
-  createdBy?: Maybe<Scalars["Int"]>;
-  date?: Maybe<Scalars["Int"]>;
-  deletedAt?: Maybe<Scalars["Int"]>;
-  deletedBy?: Maybe<Scalars["Int"]>;
-  id?: Maybe<Scalars["Int"]>;
-  updatedAt?: Maybe<Scalars["Int"]>;
-  updatedBy?: Maybe<Scalars["Int"]>;
-};
-
-export type DayDeleteFilter = {
-  and?: InputMaybe<Array<DayDeleteFilter>>;
-  createdAt?: InputMaybe<DateFieldComparison>;
-  createdBy?: InputMaybe<NumberFieldComparison>;
-  date?: InputMaybe<DateFieldComparison>;
-  deletedAt?: InputMaybe<DateFieldComparison>;
-  deletedBy?: InputMaybe<NumberFieldComparison>;
-  id?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<DayDeleteFilter>>;
-  updatedAt?: InputMaybe<DateFieldComparison>;
-  updatedBy?: InputMaybe<NumberFieldComparison>;
-};
-
-export type DayDeleteResponse = {
-  __typename?: "DayDeleteResponse";
-  createdAt?: Maybe<Scalars["DateTime"]>;
-  createdBy?: Maybe<Scalars["Float"]>;
-  date?: Maybe<Scalars["DateTime"]>;
-  deletedAt?: Maybe<Scalars["DateTime"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  id?: Maybe<Scalars["String"]>;
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type DayFilter = {
-  and?: InputMaybe<Array<DayFilter>>;
-  createdAt?: InputMaybe<DateFieldComparison>;
-  createdBy?: InputMaybe<NumberFieldComparison>;
-  date?: InputMaybe<DateFieldComparison>;
-  deletedAt?: InputMaybe<DateFieldComparison>;
-  deletedBy?: InputMaybe<NumberFieldComparison>;
-  id?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<DayFilter>>;
-  updatedAt?: InputMaybe<DateFieldComparison>;
-  updatedBy?: InputMaybe<NumberFieldComparison>;
-};
-
-export type DayMaxAggregate = {
-  __typename?: "DayMaxAggregate";
-  createdAt?: Maybe<Scalars["DateTime"]>;
-  createdBy?: Maybe<Scalars["Float"]>;
-  date?: Maybe<Scalars["DateTime"]>;
-  deletedAt?: Maybe<Scalars["DateTime"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  id?: Maybe<Scalars["String"]>;
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type DayMinAggregate = {
-  __typename?: "DayMinAggregate";
-  createdAt?: Maybe<Scalars["DateTime"]>;
-  createdBy?: Maybe<Scalars["Float"]>;
-  date?: Maybe<Scalars["DateTime"]>;
-  deletedAt?: Maybe<Scalars["DateTime"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  id?: Maybe<Scalars["String"]>;
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type DaySort = {
-  direction: SortDirection;
-  field: DaySortFields;
-  nulls?: InputMaybe<SortNulls>;
-};
-
-export enum DaySortFields {
-  CreatedAt = "createdAt",
-  CreatedBy = "createdBy",
-  Date = "date",
-  DeletedAt = "deletedAt",
-  DeletedBy = "deletedBy",
-  Id = "id",
-  UpdatedAt = "updatedAt",
-  UpdatedBy = "updatedBy",
-}
-
-export type DaySumAggregate = {
-  __typename?: "DaySumAggregate";
-  createdBy?: Maybe<Scalars["Float"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type DayUpdateFilter = {
-  and?: InputMaybe<Array<DayUpdateFilter>>;
-  createdAt?: InputMaybe<DateFieldComparison>;
-  createdBy?: InputMaybe<NumberFieldComparison>;
-  date?: InputMaybe<DateFieldComparison>;
-  deletedAt?: InputMaybe<DateFieldComparison>;
-  deletedBy?: InputMaybe<NumberFieldComparison>;
-  id?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<DayUpdateFilter>>;
-  updatedAt?: InputMaybe<DateFieldComparison>;
-  updatedBy?: InputMaybe<NumberFieldComparison>;
-};
-
-export type DeleteManyDaysInput = {
-  /** Filter to find records to delete */
-  filter: DayDeleteFilter;
-};
-
 export type DeleteManyEmployeesInput = {
   /** Filter to find records to delete */
   filter: EmployeeDeleteFilter;
@@ -344,11 +164,6 @@ export type DeleteManyShiftsInput = {
 export type DeleteManyUsersInput = {
   /** Filter to find records to delete */
   filter: UserDeleteFilter;
-};
-
-export type DeleteOneDayInput = {
-  /** The id of the record to delete. */
-  id: Scalars["String"];
 };
 
 export type DeleteOneEmployeeInput = {
@@ -640,34 +455,30 @@ export type EmployeeUpdateFilter = {
 export type Mutation = {
   __typename?: "Mutation";
   addEmployeesToShift: Shift;
-  createManyDays: Array<Day>;
   createManyEmployees: Array<Employee>;
   createManyShiftOptions: Array<ShiftOption>;
   createManyShifts: Array<Shift>;
   createManyUsers: Array<User>;
-  createOneDay: Day;
   createOneEmployee: Employee;
   createOneShift: Shift;
   createOneShiftOption: ShiftOption;
   createOneUser: User;
-  deleteManyDays: DeleteManyResponse;
   deleteManyEmployees: DeleteManyResponse;
   deleteManyShiftOptions: DeleteManyResponse;
   deleteManyShifts: DeleteManyResponse;
   deleteManyUsers: DeleteManyResponse;
-  deleteOneDay: DayDeleteResponse;
   deleteOneEmployee: EmployeeDeleteResponse;
   deleteOneShift: ShiftDeleteResponse;
   deleteOneShiftOption: ShiftOptionDeleteResponse;
   deleteOneUser: UserDeleteResponse;
   removeEmployeesFromShift: Shift;
+  removeShiftOptionsFromShift: Shift;
   setEmployeesOnShift: Shift;
-  updateManyDays: UpdateManyResponse;
+  setShiftOptionsOnShift: Shift;
   updateManyEmployees: UpdateManyResponse;
   updateManyShiftOptions: UpdateManyResponse;
   updateManyShifts: UpdateManyResponse;
   updateManyUsers: UpdateManyResponse;
-  updateOneDay: Day;
   updateOneEmployee: Employee;
   updateOneShift: Shift;
   updateOneShiftOption: ShiftOption;
@@ -676,10 +487,6 @@ export type Mutation = {
 
 export type MutationAddEmployeesToShiftArgs = {
   input: AddEmployeesToShiftInput;
-};
-
-export type MutationCreateManyDaysArgs = {
-  input: CreateManyDaysInput;
 };
 
 export type MutationCreateManyEmployeesArgs = {
@@ -698,10 +505,6 @@ export type MutationCreateManyUsersArgs = {
   input: CreateManyUsersInput;
 };
 
-export type MutationCreateOneDayArgs = {
-  input: CreateOneDayInput;
-};
-
 export type MutationCreateOneEmployeeArgs = {
   input: CreateOneEmployeeInput;
 };
@@ -718,10 +521,6 @@ export type MutationCreateOneUserArgs = {
   input: CreateOneUserInput;
 };
 
-export type MutationDeleteManyDaysArgs = {
-  input: DeleteManyDaysInput;
-};
-
 export type MutationDeleteManyEmployeesArgs = {
   input: DeleteManyEmployeesInput;
 };
@@ -736,10 +535,6 @@ export type MutationDeleteManyShiftsArgs = {
 
 export type MutationDeleteManyUsersArgs = {
   input: DeleteManyUsersInput;
-};
-
-export type MutationDeleteOneDayArgs = {
-  input: DeleteOneDayInput;
 };
 
 export type MutationDeleteOneEmployeeArgs = {
@@ -762,12 +557,16 @@ export type MutationRemoveEmployeesFromShiftArgs = {
   input: RemoveEmployeesFromShiftInput;
 };
 
+export type MutationRemoveShiftOptionsFromShiftArgs = {
+  input: RemoveShiftOptionsFromShiftInput;
+};
+
 export type MutationSetEmployeesOnShiftArgs = {
   input: SetEmployeesOnShiftInput;
 };
 
-export type MutationUpdateManyDaysArgs = {
-  input: UpdateManyDaysInput;
+export type MutationSetShiftOptionsOnShiftArgs = {
+  input: SetShiftOptionsOnShiftInput;
 };
 
 export type MutationUpdateManyEmployeesArgs = {
@@ -784,10 +583,6 @@ export type MutationUpdateManyShiftsArgs = {
 
 export type MutationUpdateManyUsersArgs = {
   input: UpdateManyUsersInput;
-};
-
-export type MutationUpdateOneDayArgs = {
-  input: UpdateOneDayInput;
 };
 
 export type MutationUpdateOneEmployeeArgs = {
@@ -843,8 +638,6 @@ export type OffsetPaging = {
 
 export type Query = {
   __typename?: "Query";
-  day?: Maybe<Day>;
-  days: DayConnection;
   employee?: Maybe<Employee>;
   employees: EmployeeConnection;
   shift?: Maybe<Shift>;
@@ -853,16 +646,6 @@ export type Query = {
   shifts: ShiftConnection;
   user?: Maybe<User>;
   users: UserConnection;
-};
-
-export type QueryDayArgs = {
-  id: Scalars["String"];
-};
-
-export type QueryDaysArgs = {
-  filter?: InputMaybe<DayFilter>;
-  paging?: InputMaybe<OffsetPaging>;
-  sorting?: InputMaybe<Array<DaySort>>;
 };
 
 export type QueryEmployeeArgs = {
@@ -912,6 +695,13 @@ export type RemoveEmployeesFromShiftInput = {
   relationIds: Array<Scalars["String"]>;
 };
 
+export type RemoveShiftOptionsFromShiftInput = {
+  /** The id of the record. */
+  id: Scalars["String"];
+  /** The id of relation. */
+  relationId: Scalars["String"];
+};
+
 export type SetEmployeesOnShiftInput = {
   /** The id of the record. */
   id: Scalars["String"];
@@ -919,15 +709,27 @@ export type SetEmployeesOnShiftInput = {
   relationIds: Array<Scalars["String"]>;
 };
 
+export type SetShiftOptionsOnShiftInput = {
+  /** The id of the record. */
+  id: Scalars["String"];
+  /** The id of relation. */
+  relationId: Scalars["String"];
+};
+
 export type Shift = {
   __typename?: "Shift";
+  allowance: Scalars["Float"];
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   date: Scalars["DateTime"];
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
   employees?: Maybe<ShiftEmployeesConnection>;
+  hours: Scalars["Float"];
   id: Scalars["String"];
+  shiftOptionId: Scalars["Float"];
+  shiftOptions?: Maybe<ShiftOption>;
+  total: Scalars["Float"];
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -940,20 +742,28 @@ export type ShiftEmployeesArgs = {
 
 export type ShiftAggregateGroupBy = {
   __typename?: "ShiftAggregateGroupBy";
+  allowance?: Maybe<Scalars["Float"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   date?: Maybe<Scalars["DateTime"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
+  hours?: Maybe<Scalars["Float"]>;
   id?: Maybe<Scalars["String"]>;
+  shiftOptionId?: Maybe<Scalars["Float"]>;
+  total?: Maybe<Scalars["Float"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
 export type ShiftAvgAggregate = {
   __typename?: "ShiftAvgAggregate";
+  allowance?: Maybe<Scalars["Float"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
+  hours?: Maybe<Scalars["Float"]>;
+  shiftOptionId?: Maybe<Scalars["Float"]>;
+  total?: Maybe<Scalars["Float"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
@@ -969,37 +779,49 @@ export type ShiftConnection = {
 
 export type ShiftCountAggregate = {
   __typename?: "ShiftCountAggregate";
+  allowance?: Maybe<Scalars["Int"]>;
   createdAt?: Maybe<Scalars["Int"]>;
   createdBy?: Maybe<Scalars["Int"]>;
   date?: Maybe<Scalars["Int"]>;
   deletedAt?: Maybe<Scalars["Int"]>;
   deletedBy?: Maybe<Scalars["Int"]>;
+  hours?: Maybe<Scalars["Int"]>;
   id?: Maybe<Scalars["Int"]>;
+  shiftOptionId?: Maybe<Scalars["Int"]>;
+  total?: Maybe<Scalars["Int"]>;
   updatedAt?: Maybe<Scalars["Int"]>;
   updatedBy?: Maybe<Scalars["Int"]>;
 };
 
 export type ShiftDeleteFilter = {
+  allowance?: InputMaybe<NumberFieldComparison>;
   and?: InputMaybe<Array<ShiftDeleteFilter>>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
   date?: InputMaybe<DateFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   deletedBy?: InputMaybe<NumberFieldComparison>;
+  hours?: InputMaybe<NumberFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<ShiftDeleteFilter>>;
+  shiftOptionId?: InputMaybe<NumberFieldComparison>;
+  total?: InputMaybe<NumberFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
 export type ShiftDeleteResponse = {
   __typename?: "ShiftDeleteResponse";
+  allowance?: Maybe<Scalars["Float"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   date?: Maybe<Scalars["DateTime"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
+  hours?: Maybe<Scalars["Float"]>;
   id?: Maybe<Scalars["String"]>;
+  shiftOptionId?: Maybe<Scalars["Float"]>;
+  total?: Maybe<Scalars["Float"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -1015,6 +837,7 @@ export type ShiftEmployeesConnection = {
 };
 
 export type ShiftFilter = {
+  allowance?: InputMaybe<NumberFieldComparison>;
   and?: InputMaybe<Array<ShiftFilter>>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
@@ -1022,8 +845,12 @@ export type ShiftFilter = {
   deletedAt?: InputMaybe<DateFieldComparison>;
   deletedBy?: InputMaybe<NumberFieldComparison>;
   employees?: InputMaybe<ShiftFilterEmployeeFilter>;
+  hours?: InputMaybe<NumberFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<ShiftFilter>>;
+  shiftOptionId?: InputMaybe<NumberFieldComparison>;
+  shiftOptions?: InputMaybe<ShiftFilterShiftOptionFilter>;
+  total?: InputMaybe<NumberFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -1051,26 +878,49 @@ export type ShiftFilterEmployeeFilter = {
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
+export type ShiftFilterShiftOptionFilter = {
+  and?: InputMaybe<Array<ShiftFilterShiftOptionFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  name?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<ShiftFilterShiftOptionFilter>>;
+  otRate?: InputMaybe<NumberFieldComparison>;
+  rate?: InputMaybe<NumberFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
 export type ShiftMaxAggregate = {
   __typename?: "ShiftMaxAggregate";
+  allowance?: Maybe<Scalars["Float"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   date?: Maybe<Scalars["DateTime"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
+  hours?: Maybe<Scalars["Float"]>;
   id?: Maybe<Scalars["String"]>;
+  shiftOptionId?: Maybe<Scalars["Float"]>;
+  total?: Maybe<Scalars["Float"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
 export type ShiftMinAggregate = {
   __typename?: "ShiftMinAggregate";
+  allowance?: Maybe<Scalars["Float"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   date?: Maybe<Scalars["DateTime"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
+  hours?: Maybe<Scalars["Float"]>;
   id?: Maybe<Scalars["String"]>;
+  shiftOptionId?: Maybe<Scalars["Float"]>;
+  total?: Maybe<Scalars["Float"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -1258,32 +1108,44 @@ export type ShiftSort = {
 };
 
 export enum ShiftSortFields {
+  Allowance = "allowance",
   CreatedAt = "createdAt",
   CreatedBy = "createdBy",
   Date = "date",
   DeletedAt = "deletedAt",
   DeletedBy = "deletedBy",
+  Hours = "hours",
   Id = "id",
+  ShiftOptionId = "shiftOptionId",
+  Total = "total",
   UpdatedAt = "updatedAt",
   UpdatedBy = "updatedBy",
 }
 
 export type ShiftSumAggregate = {
   __typename?: "ShiftSumAggregate";
+  allowance?: Maybe<Scalars["Float"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
+  hours?: Maybe<Scalars["Float"]>;
+  shiftOptionId?: Maybe<Scalars["Float"]>;
+  total?: Maybe<Scalars["Float"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
 export type ShiftUpdateFilter = {
+  allowance?: InputMaybe<NumberFieldComparison>;
   and?: InputMaybe<Array<ShiftUpdateFilter>>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
   date?: InputMaybe<DateFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   deletedBy?: InputMaybe<NumberFieldComparison>;
+  hours?: InputMaybe<NumberFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<ShiftUpdateFilter>>;
+  shiftOptionId?: InputMaybe<NumberFieldComparison>;
+  total?: InputMaybe<NumberFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -1317,17 +1179,6 @@ export type StringFieldComparison = {
   notLike?: InputMaybe<Scalars["String"]>;
 };
 
-export type UpdateDay = {
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  createdBy?: InputMaybe<Scalars["Float"]>;
-  date?: InputMaybe<Scalars["DateTime"]>;
-  deletedAt?: InputMaybe<Scalars["DateTime"]>;
-  deletedBy?: InputMaybe<Scalars["Float"]>;
-  id?: InputMaybe<Scalars["String"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
-  updatedBy?: InputMaybe<Scalars["Float"]>;
-};
-
 export type UpdateEmployee = {
   accountNo?: InputMaybe<Scalars["Float"]>;
   backPayment?: InputMaybe<Scalars["Float"]>;
@@ -1347,13 +1198,6 @@ export type UpdateEmployee = {
   name?: InputMaybe<Scalars["String"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedBy?: InputMaybe<Scalars["Float"]>;
-};
-
-export type UpdateManyDaysInput = {
-  /** Filter used to find fields to update */
-  filter: DayUpdateFilter;
-  /** The update to apply to all records found using the filter */
-  update: UpdateDay;
 };
 
 export type UpdateManyEmployeesInput = {
@@ -1390,13 +1234,6 @@ export type UpdateManyUsersInput = {
   update: UpdateUser;
 };
 
-export type UpdateOneDayInput = {
-  /** The id of the record to update */
-  id: Scalars["String"];
-  /** The update to apply. */
-  update: UpdateDay;
-};
-
 export type UpdateOneEmployeeInput = {
   /** The id of the record to update */
   id: Scalars["String"];
@@ -1426,12 +1263,16 @@ export type UpdateOneUserInput = {
 };
 
 export type UpdateShift = {
+  allowance?: InputMaybe<Scalars["Float"]>;
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   createdBy?: InputMaybe<Scalars["Float"]>;
   date?: InputMaybe<Scalars["DateTime"]>;
   deletedAt?: InputMaybe<Scalars["DateTime"]>;
   deletedBy?: InputMaybe<Scalars["Float"]>;
+  hours?: InputMaybe<Scalars["Float"]>;
   id?: InputMaybe<Scalars["String"]>;
+  shiftOptionId?: InputMaybe<Scalars["Float"]>;
+  total?: InputMaybe<Scalars["Float"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedBy?: InputMaybe<Scalars["Float"]>;
 };
@@ -1733,6 +1574,33 @@ export type ShiftFieldsFragment = {
   __typename?: "Shift";
   id: string;
   date: any;
+  hours: number;
+  allowance: number;
+  total: number;
+  shiftOptions?: {
+    __typename?: "ShiftOption";
+    id: string;
+    name: string;
+    rate: number;
+    otRate: number;
+  } | null;
+  employees?: {
+    __typename?: "ShiftEmployeesConnection";
+    nodes: Array<{
+      __typename?: "Employee";
+      name: string;
+      icNo: string;
+      employeeNo: string;
+      employeeEpf?: number | null;
+      employerEpf?: number | null;
+      employeeSocso?: number | null;
+      employerSocso?: number | null;
+      backPayment?: number | null;
+      loan?: number | null;
+      accountNo?: number | null;
+      bankType?: string | null;
+    }>;
+  } | null;
 };
 
 export type GetShiftsQueryVariables = Exact<{
@@ -1746,7 +1614,38 @@ export type GetShiftsQuery = {
   shifts: {
     __typename?: "ShiftConnection";
     totalCount: number;
-    nodes: Array<{ __typename?: "Shift"; id: string; date: any }>;
+    nodes: Array<{
+      __typename?: "Shift";
+      id: string;
+      date: any;
+      hours: number;
+      allowance: number;
+      total: number;
+      shiftOptions?: {
+        __typename?: "ShiftOption";
+        id: string;
+        name: string;
+        rate: number;
+        otRate: number;
+      } | null;
+      employees?: {
+        __typename?: "ShiftEmployeesConnection";
+        nodes: Array<{
+          __typename?: "Employee";
+          name: string;
+          icNo: string;
+          employeeNo: string;
+          employeeEpf?: number | null;
+          employerEpf?: number | null;
+          employeeSocso?: number | null;
+          employerSocso?: number | null;
+          backPayment?: number | null;
+          loan?: number | null;
+          accountNo?: number | null;
+          bankType?: string | null;
+        }>;
+      } | null;
+    }>;
   };
 };
 
@@ -1756,7 +1655,38 @@ export type GetOneShiftQueryVariables = Exact<{
 
 export type GetOneShiftQuery = {
   __typename?: "Query";
-  shift?: { __typename?: "Shift"; id: string; date: any } | null;
+  shift?: {
+    __typename?: "Shift";
+    id: string;
+    date: any;
+    hours: number;
+    allowance: number;
+    total: number;
+    shiftOptions?: {
+      __typename?: "ShiftOption";
+      id: string;
+      name: string;
+      rate: number;
+      otRate: number;
+    } | null;
+    employees?: {
+      __typename?: "ShiftEmployeesConnection";
+      nodes: Array<{
+        __typename?: "Employee";
+        name: string;
+        icNo: string;
+        employeeNo: string;
+        employeeEpf?: number | null;
+        employerEpf?: number | null;
+        employeeSocso?: number | null;
+        employerSocso?: number | null;
+        backPayment?: number | null;
+        loan?: number | null;
+        accountNo?: number | null;
+        bankType?: string | null;
+      }>;
+    } | null;
+  } | null;
 };
 
 export type CreateShiftMutationVariables = Exact<{
@@ -1883,6 +1813,30 @@ export const ShiftFieldsFragmentDoc = gql`
   fragment ShiftFields on Shift {
     id
     date
+    hours
+    allowance
+    total
+    shiftOptions {
+      id
+      name
+      rate
+      otRate
+    }
+    employees {
+      nodes {
+        name
+        icNo
+        employeeNo
+        employeeEpf
+        employerEpf
+        employeeSocso
+        employerSocso
+        backPayment
+        loan
+        accountNo
+        bankType
+      }
+    }
   }
 `;
 export const UsersFieldsFragmentDoc = gql`

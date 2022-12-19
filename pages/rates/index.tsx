@@ -9,6 +9,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { deleteModal } from "@components/popup";
 import { getErrorMessage } from "@utils";
+import moment from "moment";
 
 //NOTE: Customer is list of company
 const Customers = () => {
@@ -85,6 +86,12 @@ const Customers = () => {
       dataIndex: "otRate",
       sorter: true,
       render: (otRate: number) => `RM ${otRate.toFixed(2)} per hour`,
+    },
+    {
+      title: "Last update",
+      dataIndex: "updatedAt",
+      sorter: true,
+      render: (updatedAt: string) => moment(updatedAt).format("LLLL"),
     },
     {
       title: "",

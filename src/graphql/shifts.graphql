@@ -1,6 +1,30 @@
 fragment ShiftFields on Shift {
   id
   date
+  hours
+  allowance
+  total
+  shiftOptions {
+    id
+    name
+    rate
+    otRate
+  }
+  employees {
+    nodes {
+      name
+      icNo
+      employeeNo
+      employeeEpf
+      employerEpf
+      employeeSocso
+      employerSocso
+      backPayment
+      loan
+      accountNo
+      bankType
+    }
+  }
 }
 
 query getShifts(

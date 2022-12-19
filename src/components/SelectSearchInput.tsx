@@ -86,7 +86,7 @@ const SelectSearchInput: FC<Props> = (props) => {
           };
         });
       } else {
-        getValue = _.get(res, `data.${rowsKey}[0].${toDisplay}`);
+        getValue = _.get(res, `data.${rowsKey}[0].${valueToGet}`);
       }
       // console.log("res", res);
       setValue(getValue);

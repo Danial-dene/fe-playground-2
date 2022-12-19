@@ -11,6 +11,7 @@ import Link from "next/link";
 import apolloClient from "@lib/apollo";
 import { getErrorMessage } from "@utils";
 import { deleteModal } from "@components/popup";
+import moment from "moment";
 
 const Shift = () => {
   const router = useRouter();
@@ -25,6 +26,7 @@ const Shift = () => {
       filter: { employees: { id: { eq: _.toString(id) } } },
     },
   });
+  console.log("data", data);
 
   const parseFilter = () => {
     const query = router.query;
@@ -39,7 +41,7 @@ const Shift = () => {
     return res;
   };
 
-  const totalCount = data?.employees?.totalCount || 0;
+  const totalCount = data?.shifts?.totalCount || 0;
 
   useEffect(() => {
     setTitle("Shifts");
@@ -59,19 +61,47 @@ const Shift = () => {
 
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
+      title: "Date",
+      dataIndex: "date",
+      sorter: true,
+      render: (date: Date) => moment(date).format("DD-MM-YYYY"),
+    },
+    {
+      title: "Hours",
+      dataIndex: "hours",
       sorter: true,
     },
     {
-      title: "Employee No.",
-      dataIndex: "employeeNo",
+      title: "Rate (RM)",
+      dataIndex: "shiftOptions",
       sorter: true,
+      render: (shiftOptions: any) => {
+        return <p>{` ${shiftOptions?.rate.toFixed(2)} per hour`}</p>;
+      },
     },
     {
-      title: "IC No.",
-      dataIndex: "icNo",
+      title: "OT Rate (RM)",
+      dataIndex: "shiftOptions",
       sorter: true,
+      render: (shiftOptions: any) => {
+        return <p>{` ${shiftOptions?.otRate?.toFixed(2)} per hour`}</p>;
+      },
+    },
+    {
+      title: "Allowance (RM)",
+      dataIndex: "allowance",
+      sorter: true,
+      render: (allowance: any) => {
+        return <p>{` ${allowance?.toFixed(2)} `}</p>;
+      },
+    },
+    {
+      title: "Total (RM)",
+      dataIndex: "total",
+      sorter: true,
+      render: (total: any) => {
+        return <p>{` ${total?.toFixed(2)} `}</p>;
+      },
     },
     {
       title: "",
@@ -124,12 +154,14 @@ const Shift = () => {
     <>
       <div className="p-9">
         <CommonTableView
-          tableTitle={`Employees (${totalCount})`}
+          tableTitle={`Shifts (${totalCount})`}
           actions={
             <div>
               <Button
                 type="primary"
-                onClick={() => router.push("/employees/shift/add-or-edit")}
+                onClick={() =>
+                  router.push(`/employees/shift/add-or-edit/${id}`)
+                }
               >
                 Add
               </Button>
@@ -151,7 +183,7 @@ const Shift = () => {
           columns={columns}
           loading={loading}
           refetch={refetch}
-          dataSource={data?.employees?.nodes}
+          dataSource={data?.shifts?.nodes}
           totalCount={totalCount}
           gqlFilters={parseFilter()}
           onRow={onRow}
