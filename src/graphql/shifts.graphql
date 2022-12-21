@@ -4,26 +4,12 @@ fragment ShiftFields on Shift {
   hours
   allowance
   total
+  shiftOptionId
   shiftOptions {
     id
     name
     rate
     otRate
-  }
-  employees {
-    nodes {
-      name
-      icNo
-      employeeNo
-      employeeEpf
-      employerEpf
-      employeeSocso
-      employerSocso
-      backPayment
-      loan
-      accountNo
-      bankType
-    }
   }
 }
 

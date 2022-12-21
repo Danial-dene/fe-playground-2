@@ -23,13 +23,6 @@ export type Scalars = {
   DateTime: any;
 };
 
-export type AddEmployeesToShiftInput = {
-  /** The id of the record. */
-  id: Scalars["String"];
-  /** The ids of the relations. */
-  relationIds: Array<Scalars["String"]>;
-};
-
 export type CreateEmployee = {
   accountNo?: InputMaybe<Scalars["Float"]>;
   backPayment?: InputMaybe<Scalars["Float"]>;
@@ -454,7 +447,6 @@ export type EmployeeUpdateFilter = {
 
 export type Mutation = {
   __typename?: "Mutation";
-  addEmployeesToShift: Shift;
   createManyEmployees: Array<Employee>;
   createManyShiftOptions: Array<ShiftOption>;
   createManyShifts: Array<Shift>;
@@ -471,9 +463,9 @@ export type Mutation = {
   deleteOneShift: ShiftDeleteResponse;
   deleteOneShiftOption: ShiftOptionDeleteResponse;
   deleteOneUser: UserDeleteResponse;
-  removeEmployeesFromShift: Shift;
+  removeEmployeeFromShift: Shift;
   removeShiftOptionsFromShift: Shift;
-  setEmployeesOnShift: Shift;
+  setEmployeeOnShift: Shift;
   setShiftOptionsOnShift: Shift;
   updateManyEmployees: UpdateManyResponse;
   updateManyShiftOptions: UpdateManyResponse;
@@ -483,10 +475,6 @@ export type Mutation = {
   updateOneShift: Shift;
   updateOneShiftOption: ShiftOption;
   updateOneUser: User;
-};
-
-export type MutationAddEmployeesToShiftArgs = {
-  input: AddEmployeesToShiftInput;
 };
 
 export type MutationCreateManyEmployeesArgs = {
@@ -553,16 +541,16 @@ export type MutationDeleteOneUserArgs = {
   input: DeleteOneUserInput;
 };
 
-export type MutationRemoveEmployeesFromShiftArgs = {
-  input: RemoveEmployeesFromShiftInput;
+export type MutationRemoveEmployeeFromShiftArgs = {
+  input: RemoveEmployeeFromShiftInput;
 };
 
 export type MutationRemoveShiftOptionsFromShiftArgs = {
   input: RemoveShiftOptionsFromShiftInput;
 };
 
-export type MutationSetEmployeesOnShiftArgs = {
-  input: SetEmployeesOnShiftInput;
+export type MutationSetEmployeeOnShiftArgs = {
+  input: SetEmployeeOnShiftInput;
 };
 
 export type MutationSetShiftOptionsOnShiftArgs = {
@@ -688,11 +676,11 @@ export type QueryUsersArgs = {
   sorting?: InputMaybe<Array<UserSort>>;
 };
 
-export type RemoveEmployeesFromShiftInput = {
+export type RemoveEmployeeFromShiftInput = {
   /** The id of the record. */
   id: Scalars["String"];
-  /** The ids of the relations. */
-  relationIds: Array<Scalars["String"]>;
+  /** The id of relation. */
+  relationId: Scalars["String"];
 };
 
 export type RemoveShiftOptionsFromShiftInput = {
@@ -702,11 +690,11 @@ export type RemoveShiftOptionsFromShiftInput = {
   relationId: Scalars["String"];
 };
 
-export type SetEmployeesOnShiftInput = {
+export type SetEmployeeOnShiftInput = {
   /** The id of the record. */
   id: Scalars["String"];
-  /** The ids of the relations. */
-  relationIds: Array<Scalars["String"]>;
+  /** The id of relation. */
+  relationId: Scalars["String"];
 };
 
 export type SetShiftOptionsOnShiftInput = {
@@ -724,7 +712,7 @@ export type Shift = {
   date: Scalars["DateTime"];
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
-  employees?: Maybe<ShiftEmployeesConnection>;
+  employee?: Maybe<Employee>;
   hours: Scalars["Float"];
   id: Scalars["String"];
   shiftOptionId: Scalars["Float"];
@@ -732,12 +720,6 @@ export type Shift = {
   total: Scalars["Float"];
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type ShiftEmployeesArgs = {
-  filter?: InputMaybe<EmployeeFilter>;
-  paging?: InputMaybe<OffsetPaging>;
-  sorting?: InputMaybe<Array<EmployeeSort>>;
 };
 
 export type ShiftAggregateGroupBy = {
@@ -826,16 +808,6 @@ export type ShiftDeleteResponse = {
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type ShiftEmployeesConnection = {
-  __typename?: "ShiftEmployeesConnection";
-  /** Array of nodes. */
-  nodes: Array<Employee>;
-  /** Paging information */
-  pageInfo: OffsetPageInfo;
-  /** Fetch total count of records */
-  totalCount: Scalars["Int"];
-};
-
 export type ShiftFilter = {
   allowance?: InputMaybe<NumberFieldComparison>;
   and?: InputMaybe<Array<ShiftFilter>>;
@@ -844,7 +816,7 @@ export type ShiftFilter = {
   date?: InputMaybe<DateFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   deletedBy?: InputMaybe<NumberFieldComparison>;
-  employees?: InputMaybe<ShiftFilterEmployeeFilter>;
+  employee?: InputMaybe<ShiftFilterEmployeeFilter>;
   hours?: InputMaybe<NumberFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<ShiftFilter>>;
@@ -1577,29 +1549,13 @@ export type ShiftFieldsFragment = {
   hours: number;
   allowance: number;
   total: number;
+  shiftOptionId: number;
   shiftOptions?: {
     __typename?: "ShiftOption";
     id: string;
     name: string;
     rate: number;
     otRate: number;
-  } | null;
-  employees?: {
-    __typename?: "ShiftEmployeesConnection";
-    nodes: Array<{
-      __typename?: "Employee";
-      name: string;
-      icNo: string;
-      employeeNo: string;
-      employeeEpf?: number | null;
-      employerEpf?: number | null;
-      employeeSocso?: number | null;
-      employerSocso?: number | null;
-      backPayment?: number | null;
-      loan?: number | null;
-      accountNo?: number | null;
-      bankType?: string | null;
-    }>;
   } | null;
 };
 
@@ -1621,29 +1577,13 @@ export type GetShiftsQuery = {
       hours: number;
       allowance: number;
       total: number;
+      shiftOptionId: number;
       shiftOptions?: {
         __typename?: "ShiftOption";
         id: string;
         name: string;
         rate: number;
         otRate: number;
-      } | null;
-      employees?: {
-        __typename?: "ShiftEmployeesConnection";
-        nodes: Array<{
-          __typename?: "Employee";
-          name: string;
-          icNo: string;
-          employeeNo: string;
-          employeeEpf?: number | null;
-          employerEpf?: number | null;
-          employeeSocso?: number | null;
-          employerSocso?: number | null;
-          backPayment?: number | null;
-          loan?: number | null;
-          accountNo?: number | null;
-          bankType?: string | null;
-        }>;
       } | null;
     }>;
   };
@@ -1662,29 +1602,13 @@ export type GetOneShiftQuery = {
     hours: number;
     allowance: number;
     total: number;
+    shiftOptionId: number;
     shiftOptions?: {
       __typename?: "ShiftOption";
       id: string;
       name: string;
       rate: number;
       otRate: number;
-    } | null;
-    employees?: {
-      __typename?: "ShiftEmployeesConnection";
-      nodes: Array<{
-        __typename?: "Employee";
-        name: string;
-        icNo: string;
-        employeeNo: string;
-        employeeEpf?: number | null;
-        employerEpf?: number | null;
-        employeeSocso?: number | null;
-        employerSocso?: number | null;
-        backPayment?: number | null;
-        loan?: number | null;
-        accountNo?: number | null;
-        bankType?: string | null;
-      }>;
     } | null;
   } | null;
 };
@@ -1816,26 +1740,12 @@ export const ShiftFieldsFragmentDoc = gql`
     hours
     allowance
     total
+    shiftOptionId
     shiftOptions {
       id
       name
       rate
       otRate
-    }
-    employees {
-      nodes {
-        name
-        icNo
-        employeeNo
-        employeeEpf
-        employerEpf
-        employeeSocso
-        employerSocso
-        backPayment
-        loan
-        accountNo
-        bankType
-      }
     }
   }
 `;

@@ -43,17 +43,15 @@ const SelectSearchInput: FC<Props> = (props) => {
   const [value, setValue] = useState<any>(mode === "multiple" ? [] : "");
 
   useEffect(() => {
-    if (!_.isEmpty(props.value)) {
+    if (props.value) {
       fetchOneData(props.value);
     }
     if (props.onClear) onClear();
   }, [props.value]);
-  console.log("value", value);
 
   //find the data if this component receive a data
   const fetchOneData = async (val: any) => {
     //when got value/selected it will get the value and set it
-    console.log("hello");
 
     const arrayOfValue = mode
       ? _.map(val, (obj: any) => {
@@ -86,9 +84,9 @@ const SelectSearchInput: FC<Props> = (props) => {
           };
         });
       } else {
-        getValue = _.get(res, `data.${rowsKey}[0].${valueToGet}`);
+        getValue = _.get(res, `data.${rowsKey}[0].${toDisplay}`);
       }
-      // console.log("res", res);
+      console.log("getValue", getValue);
       setValue(getValue);
     } catch (e) {
       message.error(getErrorMessage(e));

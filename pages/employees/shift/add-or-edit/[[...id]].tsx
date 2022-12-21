@@ -1,33 +1,21 @@
 import { useHeader } from "@components/HeaderProvider";
-import AccountSettingsTabLayout from "@components/settings/AccountSettingsTabLayout";
 import * as Gql from "@graphql";
-import { isValidPhoneNumber } from "libphonenumber-js";
-import {
-  Button,
-  Col,
-  DatePicker,
-  Form,
-  Input,
-  InputNumber,
-  message,
-  Row,
-  Select,
-} from "antd";
+import { Button, Col, DatePicker, Form, InputNumber, message, Row } from "antd";
 import { useForm } from "antd/lib/form/Form";
 import { useEffect } from "react";
-import { AvatarUploadInput, PhoneNumberInput } from "@forms";
 import { Breadcrumb, Card } from "@commons";
 import _ from "lodash";
 import { getErrorMessage } from "@utils";
 import { useRouter } from "next/router";
 import { SelectSearchInput } from "@components/SelectSearchInput";
+import moment from "moment";
 
 const CustomerEdit = () => {
   const { setTitle } = useHeader();
   const [form] = useForm();
   const router = useRouter();
 
-  const { id: employeeId } = router.query;
+  const { id: shiftId, employeeId } = router.query;
 
   useEffect(() => {
     setTitle(
@@ -35,21 +23,28 @@ const CustomerEdit = () => {
         onClose={() => router.back()}
         items={[
           {
-            label: "Admin",
+            label: "Shift",
             onClick: () => router.back(),
           },
           {
-            label: employeeId ? "Edit" : "Add",
+            label: shiftId ? "Edit" : "Add",
           },
         ]}
       />
     );
   }, []);
 
-  const [getEmployee, { data, loading: adminLoading }] =
-    Gql.useGetOneEmployeeLazyQuery({
+  const [getShift, { data, loading: shiftLoading }] =
+    Gql.useGetOneShiftLazyQuery({
       onCompleted: (obj) => {
-        form.setFieldsValue(obj.employee);
+        console.log("obj", obj);
+        const date = moment(obj?.shift?.date);
+        const shiftOptionId = _.toString(obj?.shift?.shiftOptionId);
+        form.setFieldsValue({
+          ..._.omit(obj?.shift, ["date"], ["shiftOptionId"]),
+          date,
+          shiftOptionId,
+        });
       },
       onError: (e) => {
         message.error(getErrorMessage(e));
@@ -57,54 +52,63 @@ const CustomerEdit = () => {
     });
 
   useEffect(() => {
-    if (employeeId) getEmployee({ variables: { id: _.toString(employeeId) } });
+    if (shiftId) getShift({ variables: { id: _.toString(shiftId) } });
   }, [router]);
 
-  const [updateEmployee, { loading: isSubmitting }] =
-    Gql.useUpdateShiftMutation({
-      onCompleted: () => {
-        message.success("Employee successfully saved!");
-        router.back();
-      },
-      onError: (e) => {
-        message.error(getErrorMessage(e));
-      },
-    });
+  const [updateShift, { loading: isSubmitting }] = Gql.useUpdateShiftMutation({
+    onCompleted: () => {
+      message.success("Employee successfully saved!");
+      router.back();
+    },
+    onError: (e) => {
+      message.error(getErrorMessage(e));
+    },
+  });
 
-  const [addEmployee, { loading: addAdminLoading }] =
-    Gql.useCreateShiftMutation({
-      onCompleted: () => {
-        message.success("Shift successfully added!");
-        router.back();
-      },
-      onError: (e) => {
-        message.error(getErrorMessage(e));
-      },
-    });
+  const [addShift, { loading: addAdminLoading }] = Gql.useCreateShiftMutation({
+    onCompleted: () => {
+      message.success("Shift successfully added!");
+      router.back();
+    },
+    onError: (e) => {
+      message.error(getErrorMessage(e));
+    },
+  });
 
   // console.log(error);
 
   const onFinish = (values: any) => {
     let input = { ...values };
-    const rateId = _.get(values, "rateId");
-    input = _.omit(input, ["rateId"]);
+    const shiftOptionId = _.get(values, "shiftOptionId");
+    input = _.omit(input, ["shiftOptionId"]);
 
-    console.log("rateId", rateId);
-
-    addEmployee({
-      variables: {
-        input: {
-          shift: {
-            ...input,
-            shiftOptionId: Number(rateId),
-            employeeId: Number(employeeId),
+    if (shiftId) {
+      updateShift({
+        variables: {
+          input: {
+            id: _.toString(shiftId),
+            update: {
+              ...input,
+            },
           },
         },
-      },
-    });
+      });
+    } else {
+      addShift({
+        variables: {
+          input: {
+            shift: {
+              ...input,
+              shiftOptionId: Number(shiftOptionId),
+              employeeId: Number(employeeId),
+            },
+          },
+        },
+      });
+    }
   };
 
-  const loading = adminLoading || isSubmitting || addAdminLoading;
+  const loading = shiftLoading || isSubmitting || addAdminLoading;
 
   return (
     <div className="pt-5 px-5">
@@ -126,7 +130,7 @@ const CustomerEdit = () => {
                 <InputNumber />
               </Form.Item>
 
-              <Form.Item label="Rate" name="rateId">
+              <Form.Item label="Rate" name="shiftOptionId">
                 <SelectSearchInput
                   GqlDocument={Gql.GetShiftsOptionsDocument}
                   toDisplay={"name"}

@@ -121,21 +121,18 @@ const Customers = () => {
       onClick: () => router.push(`/employees/add-or-edit/${employee?.id}`),
     };
   };
-
+  // "/employees/add-or-edit"
   return (
     <>
       <div className="p-9">
         <CommonTableView
           tableTitle={`Employees (${totalCount})`}
           actions={
-            <div>
-              <Button
-                type="primary"
-                onClick={() => router.push("/employees/add-or-edit")}
-              >
-                Add
+            <Link href={"/employees/add-or-edit"}>
+              <Button type="primary" className="w-[100px]">
+                Add new
               </Button>
-            </div>
+            </Link>
           }
           filterItems={[
             {

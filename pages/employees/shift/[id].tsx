@@ -18,15 +18,18 @@ const Shift = () => {
   const { id } = router.query;
   const { setTitle } = useHeader();
 
-  const { data, loading, refetch, error } = Gql.useGetShiftsQuery({
+  const {
+    data,
+    loading: shiftLoading,
+    refetch,
+    error,
+  } = Gql.useGetShiftsQuery({
     notifyOnNetworkStatusChange: true,
     fetchPolicy: "network-only",
     skip: !id,
-    variables: {
-      filter: { employees: { id: { eq: _.toString(id) } } },
-    },
   });
-  console.log("data", data);
+  // console.log("data", data);
+  // console.log("error", error);
 
   const parseFilter = () => {
     const query = router.query;
@@ -38,6 +41,10 @@ const Shift = () => {
       });
     }
 
+    res.and.push({
+      or: [{ employee: { id: { eq: _.toString(id) } } }],
+    });
+
     return res;
   };
 
@@ -47,17 +54,15 @@ const Shift = () => {
     setTitle("Shifts");
   }, []);
 
-  const [deleteEmployee, { loading: deleting }] = Gql.useDeleteEmployeeMutation(
-    {
-      onCompleted: () => {
-        refetch();
-        message.success("Employee successfully deleted!");
-      },
-      onError: (e) => {
-        message.error(getErrorMessage(e));
-      },
-    }
-  );
+  const [deleteShift, { loading: deleting }] = Gql.useDeleteShiftMutation({
+    onCompleted: () => {
+      refetch();
+      message.success("Shift successfully deleted!");
+    },
+    onError: (e) => {
+      message.error(getErrorMessage(e));
+    },
+  });
 
   const columns = [
     {
@@ -115,9 +120,9 @@ const Shift = () => {
                 key: "0",
                 onClick: () =>
                   deleteModal({
-                    name: data?.name,
+                    name: "shift",
                     onOk: () =>
-                      deleteEmployee({
+                      deleteShift({
                         variables: {
                           input: { id: data?.id },
                         },
@@ -144,11 +149,17 @@ const Shift = () => {
     },
   ];
 
-  const onRow = (employee: any) => {
+  const onRow = (shift: any) => {
     return {
-      onClick: () => router.push(`/employees/add-or-edit/${employee?.id}`),
+      onClick: () =>
+        router.push({
+          pathname: `/employees/shift/add-or-edit/${shift?.id}`,
+          query: { employeeId: id },
+        }),
     };
   };
+
+  const loading = deleting || shiftLoading;
 
   return (
     <>
@@ -156,16 +167,11 @@ const Shift = () => {
         <CommonTableView
           tableTitle={`Shifts (${totalCount})`}
           actions={
-            <div>
-              <Button
-                type="primary"
-                onClick={() =>
-                  router.push(`/employees/shift/add-or-edit/${id}`)
-                }
-              >
-                Add
+            <Link href={`/employees/shift/add-or-edit`}>
+              <Button type="primary" className="w-[100px]">
+                Add new
               </Button>
-            </div>
+            </Link>
           }
           filterItems={[
             {
