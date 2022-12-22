@@ -81,6 +81,7 @@ const CustomerEdit = () => {
     let input = { ...values };
     const shiftOptionId = _.get(values, "shiftOptionId");
     input = _.omit(input, ["shiftOptionId"]);
+console.log("input",input);
 
     if (shiftId) {
       updateShift({

@@ -167,7 +167,12 @@ const Shift = () => {
         <CommonTableView
           tableTitle={`Shifts (${totalCount})`}
           actions={
-            <Link href={`/employees/shift/add-or-edit`}>
+            <Link
+              href={{
+                pathname: `/employees/shift/add-or-edit`,
+                query: { employeeId: id },
+              }}
+            >
               <Button type="primary" className="w-[100px]">
                 Add new
               </Button>
