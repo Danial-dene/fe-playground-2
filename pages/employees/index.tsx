@@ -1,14 +1,12 @@
-import { useEffect, useState } from "react";
-import { Button, Dropdown, Menu, Form, Input, Avatar, message } from "antd";
+import { useEffect } from "react";
+import { Button, Dropdown, Menu, Form, Input, message } from "antd";
 import { useRouter } from "next/router";
-import _, { divide } from "lodash";
+import _ from "lodash";
 import { Icon, CommonTableView } from "@commons";
 import * as Gql from "@graphql";
-import { UserOutlined } from "@ant-design/icons";
 import { useHeader } from "@components/HeaderProvider";
 import { SearchOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import apolloClient from "@lib/apollo";
 import { getErrorMessage } from "@utils";
 import { deleteModal } from "@components/popup";
 

@@ -11,6 +11,9 @@ fragment ShiftFields on Shift {
     rate
     otRate
   }
+  employee {
+    name
+  }
 }
 
 query getShifts(

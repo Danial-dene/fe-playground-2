@@ -1557,6 +1557,7 @@ export type ShiftFieldsFragment = {
     rate: number;
     otRate: number;
   } | null;
+  employee?: { __typename?: "Employee"; name: string } | null;
 };
 
 export type GetShiftsQueryVariables = Exact<{
@@ -1585,6 +1586,7 @@ export type GetShiftsQuery = {
         rate: number;
         otRate: number;
       } | null;
+      employee?: { __typename?: "Employee"; name: string } | null;
     }>;
   };
 };
@@ -1610,6 +1612,7 @@ export type GetOneShiftQuery = {
       rate: number;
       otRate: number;
     } | null;
+    employee?: { __typename?: "Employee"; name: string } | null;
   } | null;
 };
 
@@ -1746,6 +1749,9 @@ export const ShiftFieldsFragmentDoc = gql`
       name
       rate
       otRate
+    }
+    employee {
+      name
     }
   }
 `;

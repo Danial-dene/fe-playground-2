@@ -167,22 +167,34 @@ const Shift = () => {
         <CommonTableView
           tableTitle={`Shifts (${totalCount})`}
           actions={
-            <Link
-              href={{
-                pathname: `/employees/shift/add-or-edit`,
-                query: { employeeId: id },
-              }}
-            >
-              <Button type="primary" className="w-[100px]">
-                Add new
-              </Button>
-            </Link>
+            <div className="flex gap-2">
+              <Link
+                href={{
+                  pathname: `/employees/shift/add-or-edit`,
+                  query: { employeeId: id },
+                }}
+              >
+                <Button type="primary" className="">
+                  Add new
+                </Button>
+              </Link>
+
+              <Link
+                href={{
+                  pathname: `/employees/calculate-salary/${id}`,
+                }}
+              >
+                <Button type="primary" className="">
+                  Calculate Salary
+                </Button>
+              </Link>
+            </div>
           }
           filterItems={[
             {
               title: "Name",
               render: (
-                <div className="flex">
+                <div className="">
                   <Form.Item name="name" className="mb-0">
                     <Input prefix={<SearchOutlined />} placeholder="Name" />
                   </Form.Item>
