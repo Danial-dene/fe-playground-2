@@ -33,7 +33,7 @@ const CustomerEdit = () => {
         onClose={() => router.back()}
         items={[
           {
-            label: "Admin",
+            label: "Employee",
             onClick: () => router.back(),
           },
           {

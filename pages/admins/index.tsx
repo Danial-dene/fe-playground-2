@@ -65,6 +65,7 @@ const Customers = () => {
         or: [{ name: { like: `%${query.name}%` } }],
       });
     }
+
     if (query.email) {
       res.and.push({
         or: [{ email: { like: `%${query.email}%` } }],
@@ -163,14 +164,6 @@ const Customers = () => {
               render: (
                 <Form.Item name="email" className="mb-0">
                   <Input prefix={<SearchOutlined />} placeholder="E-mail" />
-                </Form.Item>
-              ),
-            },
-            {
-              title: "Type",
-              render: (
-                <Form.Item name="type" className="mb-0">
-                  <Input prefix={<SearchOutlined />} placeholder="Type" />
                 </Form.Item>
               ),
             },

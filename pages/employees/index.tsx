@@ -36,6 +36,20 @@ const Customers = () => {
       });
     }
 
+    if (query.employeeNo) {
+      res.and.push({
+        or: [{ employeeNo: { like: `%${query.employeeNo}%` } }],
+      });
+    }
+
+    if (query.icNo) {
+      res.and.push({
+        or: [{ icNo: { like: `%${query.icNo}%` } }],
+      });
+    }
+
+    console.log("res", res);
+
     return res;
   };
 
@@ -136,9 +150,32 @@ const Customers = () => {
             {
               title: "Name",
               render: (
-                <div className="flex">
+                <div className="">
                   <Form.Item name="name" className="mb-0">
                     <Input prefix={<SearchOutlined />} placeholder="Name" />
+                  </Form.Item>
+                </div>
+              ),
+            },
+            {
+              title: "Employee No.",
+              render: (
+                <div className="">
+                  <Form.Item name="employeeNo" className="mb-0">
+                    <Input
+                      prefix={<SearchOutlined />}
+                      placeholder="Employee No."
+                    />
+                  </Form.Item>
+                </div>
+              ),
+            },
+            {
+              title: "IC No.",
+              render: (
+                <div className="">
+                  <Form.Item name="icNo" className="mb-0">
+                    <Input prefix={<SearchOutlined />} placeholder="IC No." />
                   </Form.Item>
                 </div>
               ),

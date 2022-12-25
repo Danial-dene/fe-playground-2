@@ -33,7 +33,7 @@ const CustomerEdit = () => {
         onClose={() => router.back()}
         items={[
           {
-            label: "Rates",
+            label: "Rate",
             onClick: () => router.back(),
           },
           {
@@ -45,9 +45,9 @@ const CustomerEdit = () => {
   }, []);
 
   const [getAdmin, { data, loading: adminLoading }] =
-    Gql.useGetOneUserLazyQuery({
+    Gql.useGetOneShiftOptionLazyQuery({
       onCompleted: (obj) => {
-        form.setFieldsValue(obj.user);
+        form.setFieldsValue(obj.shiftOption);
       },
       onError: (e) => {
         message.error(getErrorMessage(e));
@@ -106,7 +106,6 @@ const CustomerEdit = () => {
               layout="vertical"
               form={form}
               onFinish={onFinish}
-              initialValues={data?.user ? data?.user : {}}
               requiredMark={false}
             >
               <Form.Item label="Name" name="name" rules={[{ required: true }]}>
@@ -117,7 +116,11 @@ const CustomerEdit = () => {
                 <InputNumber />
               </Form.Item>
 
-              <Form.Item label="OT Rate" name="otRate" rules={[{ required: true }]}>
+              <Form.Item
+                label="OT Rate"
+                name="otRate"
+                rules={[{ required: true }]}
+              >
                 <InputNumber />
               </Form.Item>
 

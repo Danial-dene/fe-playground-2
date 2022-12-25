@@ -1,5 +1,14 @@
 import { useEffect, useState } from "react";
-import { Button, Dropdown, Menu, Form, Input, message, Tag } from "antd";
+import {
+  Button,
+  Dropdown,
+  Menu,
+  Form,
+  Input,
+  message,
+  Tag,
+  InputNumber,
+} from "antd";
 import { useRouter } from "next/router";
 import _, { divide } from "lodash";
 import { Icon, CommonTableView } from "@commons";
@@ -57,6 +66,18 @@ const Customers = () => {
     if (query.name) {
       res.and.push({
         or: [{ name: { like: `%${query.name}%` } }],
+      });
+    }
+
+    if (query.rate) {
+      res.and.push({
+        or: [{ rate: { eq: Number(query.rate) } }],
+      });
+    }
+
+    if (query.otRate) {
+      res.and.push({
+        or: [{ otRate: { eq: Number(query.otRate) } }],
       });
     }
 
@@ -161,18 +182,21 @@ const Customers = () => {
               ),
             },
             {
-              title: "E-mail",
+              title: "Rate",
               render: (
-                <Form.Item name="email" className="mb-0">
-                  <Input prefix={<SearchOutlined />} placeholder="E-mail" />
+                <Form.Item name="rate" className="mb-0">
+                  <InputNumber
+                    prefix={<SearchOutlined />}
+                    placeholder="otRate"
+                  />
                 </Form.Item>
               ),
             },
             {
-              title: "Type",
+              title: "OT Rate",
               render: (
-                <Form.Item name="type" className="mb-0">
-                  <Input prefix={<SearchOutlined />} placeholder="Type" />
+                <Form.Item name="otRate" className="mb-0">
+                  <InputNumber prefix={<SearchOutlined />} placeholder="Rate" />
                 </Form.Item>
               ),
             },
