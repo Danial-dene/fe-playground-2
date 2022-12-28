@@ -143,7 +143,8 @@ export class UserAuthService {
    */
   static signOut(options: IRequestOptions = {}): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + "/api/auth/admin/logout";
+      let url = basePath + "/api/auth/logout";
+      console.log("hello");
 
       const configs: IRequestConfig = getConfigs(
         "get",

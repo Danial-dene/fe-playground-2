@@ -1,7 +1,7 @@
 import { Col, Divider, Layout, Menu, Row } from "antd";
 
 import _ from "lodash";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -10,7 +10,9 @@ import {
   PieChartOutlined,
   UserOutlined,
   TeamOutlined,
-  MoneyCollectOutlined 
+  MoneyCollectOutlined,
+  PoweroffOutlined,
+  SettingOutlined,
 } from "@ant-design/icons";
 import Head from "next/head";
 import { APP_NAME } from "@constants";
@@ -70,20 +72,22 @@ const items: MenuItemProps[] = [
     label: "Settings",
     collapsible: true,
     items: [
-      // {
-      //   label: "Account Settings",
-      //   key: "account-settings",
-      //   to: "/account-settings",
-      //   icon: SettingOutlined,
-      // },
-      // {
-      //   label: "Log out",
-      //   key: "logout",
-      //   icon: PoweroffOutlined,
-      //   onClick: () => {
-      //     signOut();
-      //   },
-      // },
+      {
+        label: "Account Settings",
+        key: "account-settings",
+        to: "/account-settings",
+        icon: SettingOutlined,
+      },
+      {
+        label: "Log out",
+        key: "logout",
+        icon: PoweroffOutlined,
+        onClick: () => {
+          console.log("hello");
+
+          signOut();
+        },
+      },
     ],
   },
 ];
