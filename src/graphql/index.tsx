@@ -107,10 +107,16 @@ export type CreateShiftOption = {
 };
 
 export type CreateUser = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
   email?: InputMaybe<Scalars["String"]>;
   id?: InputMaybe<Scalars["String"]>;
   name?: InputMaybe<Scalars["String"]>;
   password?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
 };
 
 export type DateFieldComparison = {
@@ -184,7 +190,7 @@ export type Employee = {
   accountNo?: Maybe<Scalars["Float"]>;
   backPayment?: Maybe<Scalars["Float"]>;
   bankType?: Maybe<Scalars["String"]>;
-  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdAt: Scalars["DateTime"];
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
@@ -707,7 +713,7 @@ export type SetShiftOptionsOnShiftInput = {
 export type Shift = {
   __typename?: "Shift";
   allowance: Scalars["Float"];
-  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdAt: Scalars["DateTime"];
   createdBy?: Maybe<Scalars["Float"]>;
   date: Scalars["DateTime"];
   deletedAt?: Maybe<Scalars["DateTime"]>;
@@ -899,7 +905,7 @@ export type ShiftMinAggregate = {
 
 export type ShiftOption = {
   __typename?: "ShiftOption";
-  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdAt: Scalars["DateTime"];
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
@@ -1263,26 +1269,51 @@ export type UpdateShiftOption = {
 };
 
 export type UpdateUser = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
   email?: InputMaybe<Scalars["String"]>;
   id?: InputMaybe<Scalars["String"]>;
   name?: InputMaybe<Scalars["String"]>;
   password?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
 };
 
 export type User = {
   __typename?: "User";
+  createdAt: Scalars["DateTime"];
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
   email: Scalars["String"];
   id: Scalars["String"];
   name: Scalars["String"];
   password: Scalars["String"];
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
 };
 
 export type UserAggregateGroupBy = {
   __typename?: "UserAggregateGroupBy";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
   email?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type UserAvgAggregate = {
+  __typename?: "UserAvgAggregate";
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
 };
 
 export type UserConnection = {
@@ -1297,52 +1328,88 @@ export type UserConnection = {
 
 export type UserCountAggregate = {
   __typename?: "UserCountAggregate";
+  createdAt?: Maybe<Scalars["Int"]>;
+  createdBy?: Maybe<Scalars["Int"]>;
+  deletedAt?: Maybe<Scalars["Int"]>;
+  deletedBy?: Maybe<Scalars["Int"]>;
   email?: Maybe<Scalars["Int"]>;
   id?: Maybe<Scalars["Int"]>;
   name?: Maybe<Scalars["Int"]>;
   password?: Maybe<Scalars["Int"]>;
+  updatedAt?: Maybe<Scalars["Int"]>;
+  updatedBy?: Maybe<Scalars["Int"]>;
 };
 
 export type UserDeleteFilter = {
   and?: InputMaybe<Array<UserDeleteFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
   email?: InputMaybe<StringFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<UserDeleteFilter>>;
   password?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
 export type UserDeleteResponse = {
   __typename?: "UserDeleteResponse";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
   email?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
 };
 
 export type UserFilter = {
   and?: InputMaybe<Array<UserFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
   email?: InputMaybe<StringFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<UserFilter>>;
   password?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
 export type UserMaxAggregate = {
   __typename?: "UserMaxAggregate";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
   email?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
 };
 
 export type UserMinAggregate = {
   __typename?: "UserMinAggregate";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
   email?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
 };
 
 export type UserSort = {
@@ -1352,24 +1419,43 @@ export type UserSort = {
 };
 
 export enum UserSortFields {
+  CreatedAt = "createdAt",
+  CreatedBy = "createdBy",
+  DeletedAt = "deletedAt",
+  DeletedBy = "deletedBy",
   Email = "email",
   Id = "id",
   Name = "name",
   Password = "password",
+  UpdatedAt = "updatedAt",
+  UpdatedBy = "updatedBy",
 }
+
+export type UserSumAggregate = {
+  __typename?: "UserSumAggregate";
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
 
 export type UserUpdateFilter = {
   and?: InputMaybe<Array<UserUpdateFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
   email?: InputMaybe<StringFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<UserUpdateFilter>>;
   password?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
 export type EmployeeFieldsFragment = {
   __typename?: "Employee";
-  createdAt?: any | null;
+  createdAt: any;
   id: string;
   name: string;
   icNo: string;
@@ -1397,7 +1483,7 @@ export type GetEmployeesQuery = {
     totalCount: number;
     nodes: Array<{
       __typename?: "Employee";
-      createdAt?: any | null;
+      createdAt: any;
       id: string;
       name: string;
       icNo: string;
@@ -1422,7 +1508,7 @@ export type GetOneEmployeeQuery = {
   __typename?: "Query";
   employee?: {
     __typename?: "Employee";
-    createdAt?: any | null;
+    createdAt: any;
     id: string;
     name: string;
     icNo: string;

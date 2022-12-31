@@ -26,7 +26,7 @@ export default NextAuth({
 
           const res = await axios({
             method: "post",
-            url: `${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`,
+            url: `${process.env.NEXT_PUBLIC_API_URL}/auth/user/sign-in`,
             headers: {
               "Content-Type": "application/json",
             },
@@ -112,7 +112,7 @@ const refreshAccessToken = async (tokenObject: JWT) => {
   try {
     // Get a new set of tokens with a refreshToken
     const tokenResponse = await apiCaller.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/auth/admin/revoke-authentication`,
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/user/revoke-authentication`,
       {
         refreshToken: tokenObject.refreshToken,
       }

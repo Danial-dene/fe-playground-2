@@ -31,7 +31,8 @@ const Customers = () => {
       },
     },
   });
-
+  console.log("data", data);
+  console.log("error", error);
   useEffect(() => {
     refetch();
   }, [data !== undefined]);
