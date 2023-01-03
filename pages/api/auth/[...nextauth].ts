@@ -4,6 +4,7 @@ import _ from "lodash";
 import NextAuth, { User } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { useRouter } from "next/router";
 
 export default NextAuth({
   providers: [
@@ -43,12 +44,13 @@ export default NextAuth({
             return null;
           }
         } catch (e: any) {
-          console.log("e", e);
+          // console.log("e", e);
           throw new Error("Something wrong with authentication");
         }
       },
     }),
   ],
+
   callbacks: {
     //if true
     async signIn({ user }) {

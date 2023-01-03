@@ -82,11 +82,10 @@ const items: MenuItemProps[] = [
         label: "Log out",
         key: "logout",
         icon: PoweroffOutlined,
-        onClick: () => {
-          console.log("hello");
-
-          signOut();
-        },
+        onClick: () =>
+          signOut({
+            callbackUrl: "/",
+          }),
       },
     ],
   },
