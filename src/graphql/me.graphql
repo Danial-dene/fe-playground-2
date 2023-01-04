@@ -1,0 +1,11 @@
+fragment MeFields on User {
+  id
+  name
+  email
+}
+
+query getMe {
+  getMe {
+    ...MeFields
+  }
+}

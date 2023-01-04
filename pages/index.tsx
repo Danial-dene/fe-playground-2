@@ -3,6 +3,14 @@ import _ from "lodash";
 import * as Gql from "@graphql";
 
 const Dashboard = () => {
+  const { data, loading, refetch, error } = Gql.useGetMeQuery({
+    // notifyOnNetworkStatusChange: true,
+    fetchPolicy: "network-only",
+  });
+
+  console.log("data", data);
+  console.log("error", error);
+  
   return (
     <>
       <div className="p-9 grid grid-cols-3 absolute overflow-auto h-fit gap-4 w-full">

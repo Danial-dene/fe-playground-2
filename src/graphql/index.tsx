@@ -634,6 +634,7 @@ export type Query = {
   __typename?: "Query";
   employee?: Maybe<Employee>;
   employees: EmployeeConnection;
+  getMe: User;
   shift?: Maybe<Shift>;
   shiftOption?: Maybe<ShiftOption>;
   shiftOptions: ShiftOptionConnection;
@@ -1554,6 +1555,20 @@ export type DeleteEmployeeMutation = {
   };
 };
 
+export type MeFieldsFragment = {
+  __typename?: "User";
+  id: string;
+  name: string;
+  email: string;
+};
+
+export type GetMeQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetMeQuery = {
+  __typename?: "Query";
+  getMe: { __typename?: "User"; id: string; name: string; email: string };
+};
+
 export type ShiftOptionFieldsFragment = {
   __typename?: "ShiftOption";
   id: string;
@@ -1812,6 +1827,13 @@ export const EmployeeFieldsFragmentDoc = gql`
     loan
     accountNo
     bankType
+  }
+`;
+export const MeFieldsFragmentDoc = gql`
+  fragment MeFields on User {
+    id
+    name
+    email
   }
 `;
 export const ShiftOptionFieldsFragmentDoc = gql`
@@ -2124,6 +2146,54 @@ export type DeleteEmployeeMutationResult =
 export type DeleteEmployeeMutationOptions = Apollo.BaseMutationOptions<
   DeleteEmployeeMutation,
   DeleteEmployeeMutationVariables
+>;
+export const GetMeDocument = gql`
+  query getMe {
+    getMe {
+      ...MeFields
+    }
+  }
+  ${MeFieldsFragmentDoc}
+`;
+
+/**
+ * __useGetMeQuery__
+ *
+ * To run a query within a React component, call `useGetMeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetMeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetMeQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetMeQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetMeQuery, GetMeQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetMeQuery, GetMeQueryVariables>(
+    GetMeDocument,
+    options
+  );
+}
+export function useGetMeLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetMeQuery, GetMeQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetMeQuery, GetMeQueryVariables>(
+    GetMeDocument,
+    options
+  );
+}
+export type GetMeQueryHookResult = ReturnType<typeof useGetMeQuery>;
+export type GetMeLazyQueryHookResult = ReturnType<typeof useGetMeLazyQuery>;
+export type GetMeQueryResult = Apollo.QueryResult<
+  GetMeQuery,
+  GetMeQueryVariables
 >;
 export const GetShiftsOptionsDocument = gql`
   query getShiftsOptions(
