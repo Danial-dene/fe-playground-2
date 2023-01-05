@@ -24,7 +24,6 @@ const Customers = () => {
       // },
     },
   });
-  console.log("error", error, data);
 
   const parseFilter = () => {
     const query = router.query;
@@ -47,8 +46,6 @@ const Customers = () => {
         or: [{ icNo: { like: `%${query.icNo}%` } }],
       });
     }
-
-    console.log("res", res);
 
     return res;
   };

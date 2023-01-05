@@ -22,25 +22,25 @@ const Profile = () => {
   const { data, loading } = Gql.useGetMeQuery({
     onCompleted: (d) => {
       console.log(d);
-      form.setFieldsValue(d.getAdminMe);
+      form.setFieldsValue(d.getMe);
     },
   });
 
-  const [updateUser, { loading: isSubmitting }] = Gql.useUpdateMeMutation({
-    onCompleted: () => {
-      message.success("Profile successfully saved!");
-    },
-    onError: (e) => {
-      message.error(getErrorMessage(e));
-    },
-  });
+  // const [updateUser, { loading: isSubmitting }] = Gql.useUpdateMeMutation({
+  //   onCompleted: () => {
+  //     message.success("Profile successfully saved!");
+  //   },
+  //   onError: (e) => {
+  //     message.error(getErrorMessage(e));
+  //   },
+  // });
 
-  const onFinish = (values: Gql.UpdateAdminInputDto) => {
+  const onFinish = (values: any) => {
     let input = { ...values };
 
-    updateUser({
-      variables: { input },
-    });
+    // updateUser({
+    //   variables: { input },
+    // });
   };
 
   return (
@@ -53,7 +53,7 @@ const Profile = () => {
               layout="vertical"
               form={form}
               onFinish={onFinish}
-              initialValues={data?.getAdminMe}
+              initialValues={data?.getMe}
               requiredMark={false}
             >
               <Form.Item label="Full Name" name="name">
@@ -77,7 +77,7 @@ const Profile = () => {
                 htmlType="submit"
                 type="primary"
                 className="w-[112px]"
-                loading={isSubmitting}
+                // loading={isSubmitting}
               >
                 Save
               </Button>
