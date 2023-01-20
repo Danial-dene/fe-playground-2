@@ -35,10 +35,7 @@ const Customers = () => {
     notifyOnNetworkStatusChange: true,
     fetchPolicy: "network-only",
     variables: {
-      // paging: {
-      //   limit: 10,
-      //   offset: 0,
-      // },
+      filter: { isDeleteButSave: { is: false } },
     },
   });
 
@@ -48,7 +45,7 @@ const Customers = () => {
   console.log("error", error);
 
   const [deleteShiftOptions, { loading: deleting }] =
-    Gql.useDeleteShiftOptionsMutation({
+    Gql.useUpdateShiftOptionsMutation({
       onCompleted: () => {
         refetch();
         message.success("Rates successfully deleted!");
@@ -132,7 +129,10 @@ const Customers = () => {
                     onOk: () =>
                       deleteShiftOptions({
                         variables: {
-                          input: { id: data?.id },
+                          input: {
+                            id: data?.id,
+                            update: { isDeleteButSave: true },
+                          },
                         },
                       }),
                   }),
@@ -164,6 +164,7 @@ const Customers = () => {
     <>
       <div className="p-9">
         <CommonTableView
+          initialFilter={{ isDeleteButSave: { is: false } }}
           tableTitle={`Rates (${totalCount})`}
           actions={
             <Link href="/rates/add-or-edit">

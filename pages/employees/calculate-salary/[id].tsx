@@ -60,7 +60,8 @@ const CalculateSalary = () => {
 
   const firstDate = _.first(record);
   const lastDate = _.last(record);
-  console.log("firstDate", firstDate);
+
+  console.log("record", record);
 
   useEffect(() => {
     setTitle("Employees");
@@ -69,8 +70,10 @@ const CalculateSalary = () => {
   const onFinish = (val: any) => {
     const { date } = val;
     const res = {};
-    const convertStartDate = moment(date[0], "DD-MM-YYYY");
-    const convertEndDate = moment(date[1], "DD-MM-YYYY");
+    const convertStartDate = moment(date[0], "DD-MM-YYYY").startOf("day");
+    const convertEndDate = moment(date[1], "DD-MM-YYYY").endOf("day");
+
+    console.log("convertStartDate", convertStartDate);
 
     const isoStartDate = convertStartDate.toISOString();
     const isoEndDate = convertEndDate.toISOString();

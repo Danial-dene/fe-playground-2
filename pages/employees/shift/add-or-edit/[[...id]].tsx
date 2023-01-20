@@ -137,6 +137,7 @@ const CustomerEdit = () => {
                   toDisplay={"name"}
                   valueToGet={"id"}
                   rowsKey={"shiftOptions.nodes"}
+                  filter={{ isDeleteButSave: { is: false } }}
                 />
               </Form.Item>
 

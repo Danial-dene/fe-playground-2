@@ -47,6 +47,10 @@ const Customers = () => {
       });
     }
 
+    res.and.push({
+      or: [{ id: { eq: query.id } }],
+    });
+
     return res;
   };
 
@@ -135,6 +139,7 @@ const Customers = () => {
     <>
       <div className="p-9">
         <CommonTableView
+          initialFilter={{ id: { eq: router?.query?.id } }}
           tableTitle={`Employees (${totalCount})`}
           actions={
             <Link href={"/employees/add-or-edit"}>

@@ -78,7 +78,7 @@ const Customers = () => {
   const totalCount = data?.users?.totalCount || 0;
 
   useEffect(() => {
-    setTitle("Admins");
+    setTitle("Users");
   }, []);
 
   const columns = [
@@ -142,7 +142,7 @@ const Customers = () => {
     <>
       <div className="p-9">
         <CommonTableView
-          tableTitle={`Admins (${totalCount})`}
+          tableTitle={`Users (${totalCount})`}
           actions={
             <Link href="/admins/add-or-edit">
               <Button type="primary" className="w-[100px]">

@@ -23,6 +23,11 @@ export type Scalars = {
   DateTime: any;
 };
 
+export type BooleanFieldComparison = {
+  is?: InputMaybe<Scalars["Boolean"]>;
+  isNot?: InputMaybe<Scalars["Boolean"]>;
+};
+
 export type CreateEmployee = {
   accountNo?: InputMaybe<Scalars["Float"]>;
   backPayment?: InputMaybe<Scalars["Float"]>;
@@ -99,6 +104,7 @@ export type CreateShiftOption = {
   deletedAt?: InputMaybe<Scalars["DateTime"]>;
   deletedBy?: InputMaybe<Scalars["Float"]>;
   id?: InputMaybe<Scalars["String"]>;
+  isDeleteButSave?: InputMaybe<Scalars["Boolean"]>;
   name?: InputMaybe<Scalars["String"]>;
   otRate?: InputMaybe<Scalars["Float"]>;
   rate?: InputMaybe<Scalars["Float"]>;
@@ -107,6 +113,7 @@ export type CreateShiftOption = {
 };
 
 export type CreateUser = {
+  active?: InputMaybe<Scalars["Boolean"]>;
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   createdBy?: InputMaybe<Scalars["Float"]>;
   deletedAt?: InputMaybe<Scalars["DateTime"]>;
@@ -451,6 +458,12 @@ export type EmployeeUpdateFilter = {
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
+export type MeUpdate = {
+  active?: InputMaybe<Scalars["Boolean"]>;
+  email?: InputMaybe<Scalars["String"]>;
+  name?: InputMaybe<Scalars["String"]>;
+};
+
 export type Mutation = {
   __typename?: "Mutation";
   createManyEmployees: Array<Employee>;
@@ -477,6 +490,7 @@ export type Mutation = {
   updateManyShiftOptions: UpdateManyResponse;
   updateManyShifts: UpdateManyResponse;
   updateManyUsers: UpdateManyResponse;
+  updateMe: User;
   updateOneEmployee: Employee;
   updateOneShift: Shift;
   updateOneShiftOption: ShiftOption;
@@ -577,6 +591,10 @@ export type MutationUpdateManyShiftsArgs = {
 
 export type MutationUpdateManyUsersArgs = {
   input: UpdateManyUsersInput;
+};
+
+export type MutationUpdateMeArgs = {
+  input: MeUpdate;
 };
 
 export type MutationUpdateOneEmployeeArgs = {
@@ -864,6 +882,7 @@ export type ShiftFilterShiftOptionFilter = {
   deletedAt?: InputMaybe<DateFieldComparison>;
   deletedBy?: InputMaybe<NumberFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
+  isDeleteButSave?: InputMaybe<BooleanFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<ShiftFilterShiftOptionFilter>>;
   otRate?: InputMaybe<NumberFieldComparison>;
@@ -911,6 +930,7 @@ export type ShiftOption = {
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
   id: Scalars["String"];
+  isDeleteButSave: Scalars["Boolean"];
   name: Scalars["String"];
   otRate: Scalars["Float"];
   rate: Scalars["Float"];
@@ -925,6 +945,7 @@ export type ShiftOptionAggregateGroupBy = {
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
   id?: Maybe<Scalars["String"]>;
+  isDeleteButSave?: Maybe<Scalars["Boolean"]>;
   name?: Maybe<Scalars["String"]>;
   otRate?: Maybe<Scalars["Float"]>;
   rate?: Maybe<Scalars["Float"]>;
@@ -958,6 +979,7 @@ export type ShiftOptionCountAggregate = {
   deletedAt?: Maybe<Scalars["Int"]>;
   deletedBy?: Maybe<Scalars["Int"]>;
   id?: Maybe<Scalars["Int"]>;
+  isDeleteButSave?: Maybe<Scalars["Int"]>;
   name?: Maybe<Scalars["Int"]>;
   otRate?: Maybe<Scalars["Int"]>;
   rate?: Maybe<Scalars["Int"]>;
@@ -972,6 +994,7 @@ export type ShiftOptionDeleteFilter = {
   deletedAt?: InputMaybe<DateFieldComparison>;
   deletedBy?: InputMaybe<NumberFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
+  isDeleteButSave?: InputMaybe<BooleanFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<ShiftOptionDeleteFilter>>;
   otRate?: InputMaybe<NumberFieldComparison>;
@@ -987,6 +1010,7 @@ export type ShiftOptionDeleteResponse = {
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
   id?: Maybe<Scalars["String"]>;
+  isDeleteButSave?: Maybe<Scalars["Boolean"]>;
   name?: Maybe<Scalars["String"]>;
   otRate?: Maybe<Scalars["Float"]>;
   rate?: Maybe<Scalars["Float"]>;
@@ -1001,6 +1025,7 @@ export type ShiftOptionFilter = {
   deletedAt?: InputMaybe<DateFieldComparison>;
   deletedBy?: InputMaybe<NumberFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
+  isDeleteButSave?: InputMaybe<BooleanFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<ShiftOptionFilter>>;
   otRate?: InputMaybe<NumberFieldComparison>;
@@ -1049,6 +1074,7 @@ export enum ShiftOptionSortFields {
   DeletedAt = "deletedAt",
   DeletedBy = "deletedBy",
   Id = "id",
+  IsDeleteButSave = "isDeleteButSave",
   Name = "name",
   OtRate = "otRate",
   Rate = "rate",
@@ -1072,6 +1098,7 @@ export type ShiftOptionUpdateFilter = {
   deletedAt?: InputMaybe<DateFieldComparison>;
   deletedBy?: InputMaybe<NumberFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
+  isDeleteButSave?: InputMaybe<BooleanFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<ShiftOptionUpdateFilter>>;
   otRate?: InputMaybe<NumberFieldComparison>;
@@ -1262,6 +1289,7 @@ export type UpdateShiftOption = {
   deletedAt?: InputMaybe<Scalars["DateTime"]>;
   deletedBy?: InputMaybe<Scalars["Float"]>;
   id?: InputMaybe<Scalars["String"]>;
+  isDeleteButSave?: InputMaybe<Scalars["Boolean"]>;
   name?: InputMaybe<Scalars["String"]>;
   otRate?: InputMaybe<Scalars["Float"]>;
   rate?: InputMaybe<Scalars["Float"]>;
@@ -1270,6 +1298,7 @@ export type UpdateShiftOption = {
 };
 
 export type UpdateUser = {
+  active?: InputMaybe<Scalars["Boolean"]>;
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   createdBy?: InputMaybe<Scalars["Float"]>;
   deletedAt?: InputMaybe<Scalars["DateTime"]>;
@@ -1284,6 +1313,7 @@ export type UpdateUser = {
 
 export type User = {
   __typename?: "User";
+  active: Scalars["Boolean"];
   createdAt: Scalars["DateTime"];
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
@@ -1298,6 +1328,7 @@ export type User = {
 
 export type UserAggregateGroupBy = {
   __typename?: "UserAggregateGroupBy";
+  active?: Maybe<Scalars["Boolean"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
@@ -1329,6 +1360,7 @@ export type UserConnection = {
 
 export type UserCountAggregate = {
   __typename?: "UserCountAggregate";
+  active?: Maybe<Scalars["Int"]>;
   createdAt?: Maybe<Scalars["Int"]>;
   createdBy?: Maybe<Scalars["Int"]>;
   deletedAt?: Maybe<Scalars["Int"]>;
@@ -1342,6 +1374,7 @@ export type UserCountAggregate = {
 };
 
 export type UserDeleteFilter = {
+  active?: InputMaybe<BooleanFieldComparison>;
   and?: InputMaybe<Array<UserDeleteFilter>>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
@@ -1358,6 +1391,7 @@ export type UserDeleteFilter = {
 
 export type UserDeleteResponse = {
   __typename?: "UserDeleteResponse";
+  active?: Maybe<Scalars["Boolean"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
@@ -1371,6 +1405,7 @@ export type UserDeleteResponse = {
 };
 
 export type UserFilter = {
+  active?: InputMaybe<BooleanFieldComparison>;
   and?: InputMaybe<Array<UserFilter>>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
@@ -1420,6 +1455,7 @@ export type UserSort = {
 };
 
 export enum UserSortFields {
+  Active = "active",
   CreatedAt = "createdAt",
   CreatedBy = "createdBy",
   DeletedAt = "deletedAt",
@@ -1440,6 +1476,7 @@ export type UserSumAggregate = {
 };
 
 export type UserUpdateFilter = {
+  active?: InputMaybe<BooleanFieldComparison>;
   and?: InputMaybe<Array<UserUpdateFilter>>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
