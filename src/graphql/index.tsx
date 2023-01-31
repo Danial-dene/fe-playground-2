@@ -1606,6 +1606,15 @@ export type GetMeQuery = {
   getMe: { __typename?: "User"; id: string; name: string; email: string };
 };
 
+export type UpdateMeMutationVariables = Exact<{
+  input: MeUpdate;
+}>;
+
+export type UpdateMeMutation = {
+  __typename?: "Mutation";
+  updateMe: { __typename?: "User"; createdAt: any };
+};
+
 export type ShiftOptionFieldsFragment = {
   __typename?: "ShiftOption";
   id: string;
@@ -2231,6 +2240,53 @@ export type GetMeLazyQueryHookResult = ReturnType<typeof useGetMeLazyQuery>;
 export type GetMeQueryResult = Apollo.QueryResult<
   GetMeQuery,
   GetMeQueryVariables
+>;
+export const UpdateMeDocument = gql`
+  mutation updateMe($input: MeUpdate!) {
+    updateMe(input: $input) {
+      createdAt
+    }
+  }
+`;
+export type UpdateMeMutationFn = Apollo.MutationFunction<
+  UpdateMeMutation,
+  UpdateMeMutationVariables
+>;
+
+/**
+ * __useUpdateMeMutation__
+ *
+ * To run a mutation, you first call `useUpdateMeMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateMeMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateMeMutation, { data, loading, error }] = useUpdateMeMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateMeMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateMeMutation,
+    UpdateMeMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<UpdateMeMutation, UpdateMeMutationVariables>(
+    UpdateMeDocument,
+    options
+  );
+}
+export type UpdateMeMutationHookResult = ReturnType<typeof useUpdateMeMutation>;
+export type UpdateMeMutationResult = Apollo.MutationResult<UpdateMeMutation>;
+export type UpdateMeMutationOptions = Apollo.BaseMutationOptions<
+  UpdateMeMutation,
+  UpdateMeMutationVariables
 >;
 export const GetShiftsOptionsDocument = gql`
   query getShiftsOptions(

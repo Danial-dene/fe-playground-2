@@ -9,3 +9,9 @@ query getMe {
     ...MeFields
   }
 }
+
+mutation updateMe($input: MeUpdate!) {
+  updateMe(input: $input) {
+    createdAt
+  }
+}

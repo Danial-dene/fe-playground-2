@@ -250,7 +250,7 @@ export class UserAuthService {
     options: IRequestOptions = {}
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + "/api/auth/admin/change-password";
+      let url = basePath + "/auth/user/change-password";
 
       const configs: IRequestConfig = getConfigs(
         "post",

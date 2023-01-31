@@ -26,21 +26,22 @@ const Profile = () => {
     },
   });
 
-  // const [updateUser, { loading: isSubmitting }] = Gql.useUpdateMeMutation({
-  //   onCompleted: () => {
-  //     message.success("Profile successfully saved!");
-  //   },
-  //   onError: (e) => {
-  //     message.error(getErrorMessage(e));
-  //   },
-  // });
+  const [updateUser, { loading: isSubmitting }] = Gql.useUpdateMeMutation({
+    onCompleted: () => {
+      message.success("Profile successfully saved!");
+    },
+    onError: (e) => {
+      message.error(getErrorMessage(e));
+    },
+  });
 
   const onFinish = (values: any) => {
     let input = { ...values };
+    console.log("input", input);
 
-    // updateUser({
-    //   variables: { input },
-    // });
+    updateUser({
+      variables: { input },
+    });
   };
 
   return (
@@ -64,7 +65,7 @@ const Profile = () => {
                 <Input />
               </Form.Item>
 
-              <Form.Item label="Status" name="isActive">
+              <Form.Item label="Status" name="active">
                 <Select
                   options={[
                     { label: "Active", value: true },
@@ -74,7 +75,8 @@ const Profile = () => {
               </Form.Item>
 
               <Button
-                htmlType="submit"
+                // htmlType="submit"
+                onClick={() => form.submit()}
                 type="primary"
                 className="w-[112px]"
                 // loading={isSubmitting}
