@@ -14,7 +14,6 @@ import { getErrorMessage } from "@utils";
 const Customers = () => {
   const router = useRouter();
   const { setTitle } = useHeader();
-  const [val, setVal] = useState();
 
   const {
     data,
@@ -22,7 +21,7 @@ const Customers = () => {
     refetch,
     error,
   } = Gql.useGetUsersQuery({
-    // notifyOnNetworkStatusChange: true,
+    notifyOnNetworkStatusChange: true,
     fetchPolicy: "network-only",
     variables: {
       paging: {
@@ -33,8 +32,10 @@ const Customers = () => {
   });
 
   useEffect(() => {
-    refetch();
-  }, [data !== undefined]);
+    if (!data) {
+      refetch();
+    }
+  }, [data]);
 
   const [deleteAdmin, { loading: deleting }] = Gql.useDeleteUserMutation({
     onCompleted: () => {
