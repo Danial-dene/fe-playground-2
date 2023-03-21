@@ -6,3 +6,4 @@ export type CountryType = {
   currency: string;
   flagClass: string;
 };
+

@@ -10,6 +10,9 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
           />
+          <script
+            src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&libraries=places`}
+          />
         </Head>
         <body>
           <Main />

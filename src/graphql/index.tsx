@@ -45,6 +45,21 @@ export type CreateEmployee = {
   id?: InputMaybe<Scalars["String"]>;
   loan?: InputMaybe<Scalars["Float"]>;
   name?: InputMaybe<Scalars["String"]>;
+  phoneNo?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
+};
+
+export type CreateLocation = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
+  id?: InputMaybe<Scalars["ID"]>;
+  lang?: InputMaybe<Scalars["Float"]>;
+  lat?: InputMaybe<Scalars["Float"]>;
+  location?: InputMaybe<Scalars["String"]>;
+  range?: InputMaybe<Scalars["Float"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedBy?: InputMaybe<Scalars["Float"]>;
 };
@@ -52,6 +67,11 @@ export type CreateEmployee = {
 export type CreateManyEmployeesInput = {
   /** Array of records to create */
   employees: Array<CreateEmployee>;
+};
+
+export type CreateManyLocationsInput = {
+  /** Array of records to create */
+  locations: Array<CreateLocation>;
 };
 
 export type CreateManyShiftOptionsInput = {
@@ -74,6 +94,11 @@ export type CreateOneEmployeeInput = {
   employee: CreateEmployee;
 };
 
+export type CreateOneLocationInput = {
+  /** The record to create */
+  location: CreateLocation;
+};
+
 export type CreateOneShiftInput = {
   /** The record to create */
   shift: CreateShiftInputDto;
@@ -90,10 +115,14 @@ export type CreateOneUserInput = {
 };
 
 export type CreateShiftInputDto = {
-  allowance: Scalars["Float"];
+  allowance?: InputMaybe<Scalars["Float"]>;
+  breakPunchIn?: InputMaybe<Scalars["DateTime"]>;
+  breakPunchOut?: InputMaybe<Scalars["DateTime"]>;
+  clockIn: Scalars["DateTime"];
+  clockOut?: InputMaybe<Scalars["DateTime"]>;
   date: Scalars["DateTime"];
   employeeId: Scalars["Float"];
-  hours: Scalars["Float"];
+  hours?: InputMaybe<Scalars["Float"]>;
   shiftOptionId: Scalars["Float"];
   total?: InputMaybe<Scalars["Float"]>;
 };
@@ -108,6 +137,7 @@ export type CreateShiftOption = {
   name?: InputMaybe<Scalars["String"]>;
   otRate?: InputMaybe<Scalars["Float"]>;
   rate?: InputMaybe<Scalars["Float"]>;
+  type?: InputMaybe<Scalars["String"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedBy?: InputMaybe<Scalars["Float"]>;
 };
@@ -122,6 +152,7 @@ export type CreateUser = {
   id?: InputMaybe<Scalars["String"]>;
   name?: InputMaybe<Scalars["String"]>;
   password?: InputMaybe<Scalars["String"]>;
+  phoneNo?: InputMaybe<Scalars["String"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedBy?: InputMaybe<Scalars["Float"]>;
 };
@@ -151,6 +182,11 @@ export type DeleteManyEmployeesInput = {
   filter: EmployeeDeleteFilter;
 };
 
+export type DeleteManyLocationsInput = {
+  /** Filter to find records to delete */
+  filter: LocationDeleteFilter;
+};
+
 export type DeleteManyResponse = {
   __typename?: "DeleteManyResponse";
   /** The number of records deleted. */
@@ -175,6 +211,11 @@ export type DeleteManyUsersInput = {
 export type DeleteOneEmployeeInput = {
   /** The id of the record to delete. */
   id: Scalars["String"];
+};
+
+export type DeleteOneLocationInput = {
+  /** The id of the record to delete. */
+  id: Scalars["ID"];
 };
 
 export type DeleteOneShiftInput = {
@@ -210,6 +251,7 @@ export type Employee = {
   id: Scalars["String"];
   loan?: Maybe<Scalars["Float"]>;
   name: Scalars["String"];
+  phoneNo?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -232,6 +274,7 @@ export type EmployeeAggregateGroupBy = {
   id?: Maybe<Scalars["String"]>;
   loan?: Maybe<Scalars["Float"]>;
   name?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -278,6 +321,7 @@ export type EmployeeCountAggregate = {
   id?: Maybe<Scalars["Int"]>;
   loan?: Maybe<Scalars["Int"]>;
   name?: Maybe<Scalars["Int"]>;
+  phoneNo?: Maybe<Scalars["Int"]>;
   updatedAt?: Maybe<Scalars["Int"]>;
   updatedBy?: Maybe<Scalars["Int"]>;
 };
@@ -301,6 +345,7 @@ export type EmployeeDeleteFilter = {
   loan?: InputMaybe<NumberFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<EmployeeDeleteFilter>>;
+  phoneNo?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -323,6 +368,7 @@ export type EmployeeDeleteResponse = {
   id?: Maybe<Scalars["String"]>;
   loan?: Maybe<Scalars["Float"]>;
   name?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -346,6 +392,7 @@ export type EmployeeFilter = {
   loan?: InputMaybe<NumberFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<EmployeeFilter>>;
+  phoneNo?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -368,6 +415,7 @@ export type EmployeeMaxAggregate = {
   id?: Maybe<Scalars["String"]>;
   loan?: Maybe<Scalars["Float"]>;
   name?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -390,6 +438,7 @@ export type EmployeeMinAggregate = {
   id?: Maybe<Scalars["String"]>;
   loan?: Maybe<Scalars["Float"]>;
   name?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -417,6 +466,7 @@ export enum EmployeeSortFields {
   Id = "id",
   Loan = "loan",
   Name = "name",
+  PhoneNo = "phoneNo",
   UpdatedAt = "updatedAt",
   UpdatedBy = "updatedBy",
 }
@@ -454,6 +504,214 @@ export type EmployeeUpdateFilter = {
   loan?: InputMaybe<NumberFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<EmployeeUpdateFilter>>;
+  phoneNo?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type IdFilterComparison = {
+  eq?: InputMaybe<Scalars["ID"]>;
+  gt?: InputMaybe<Scalars["ID"]>;
+  gte?: InputMaybe<Scalars["ID"]>;
+  iLike?: InputMaybe<Scalars["ID"]>;
+  in?: InputMaybe<Array<Scalars["ID"]>>;
+  is?: InputMaybe<Scalars["Boolean"]>;
+  isNot?: InputMaybe<Scalars["Boolean"]>;
+  like?: InputMaybe<Scalars["ID"]>;
+  lt?: InputMaybe<Scalars["ID"]>;
+  lte?: InputMaybe<Scalars["ID"]>;
+  neq?: InputMaybe<Scalars["ID"]>;
+  notILike?: InputMaybe<Scalars["ID"]>;
+  notIn?: InputMaybe<Array<Scalars["ID"]>>;
+  notLike?: InputMaybe<Scalars["ID"]>;
+};
+
+export type Location = {
+  __typename?: "Location";
+  createdAt: Scalars["DateTime"];
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id: Scalars["ID"];
+  lang: Scalars["Float"];
+  lat: Scalars["Float"];
+  location: Scalars["String"];
+  range: Scalars["Float"];
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type LocationAggregateGroupBy = {
+  __typename?: "LocationAggregateGroupBy";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["ID"]>;
+  lang?: Maybe<Scalars["Float"]>;
+  lat?: Maybe<Scalars["Float"]>;
+  location?: Maybe<Scalars["String"]>;
+  range?: Maybe<Scalars["Float"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type LocationAvgAggregate = {
+  __typename?: "LocationAvgAggregate";
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["Float"]>;
+  lang?: Maybe<Scalars["Float"]>;
+  lat?: Maybe<Scalars["Float"]>;
+  range?: Maybe<Scalars["Float"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type LocationConnection = {
+  __typename?: "LocationConnection";
+  /** Array of nodes. */
+  nodes: Array<Location>;
+  /** Paging information */
+  pageInfo: OffsetPageInfo;
+  /** Fetch total count of records */
+  totalCount: Scalars["Int"];
+};
+
+export type LocationCountAggregate = {
+  __typename?: "LocationCountAggregate";
+  createdAt?: Maybe<Scalars["Int"]>;
+  createdBy?: Maybe<Scalars["Int"]>;
+  deletedAt?: Maybe<Scalars["Int"]>;
+  deletedBy?: Maybe<Scalars["Int"]>;
+  id?: Maybe<Scalars["Int"]>;
+  lang?: Maybe<Scalars["Int"]>;
+  lat?: Maybe<Scalars["Int"]>;
+  location?: Maybe<Scalars["Int"]>;
+  range?: Maybe<Scalars["Int"]>;
+  updatedAt?: Maybe<Scalars["Int"]>;
+  updatedBy?: Maybe<Scalars["Int"]>;
+};
+
+export type LocationDeleteFilter = {
+  and?: InputMaybe<Array<LocationDeleteFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<IdFilterComparison>;
+  lang?: InputMaybe<NumberFieldComparison>;
+  lat?: InputMaybe<NumberFieldComparison>;
+  location?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<LocationDeleteFilter>>;
+  range?: InputMaybe<NumberFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type LocationDeleteResponse = {
+  __typename?: "LocationDeleteResponse";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["ID"]>;
+  lang?: Maybe<Scalars["Float"]>;
+  lat?: Maybe<Scalars["Float"]>;
+  location?: Maybe<Scalars["String"]>;
+  range?: Maybe<Scalars["Float"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type LocationFilter = {
+  and?: InputMaybe<Array<LocationFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<IdFilterComparison>;
+  lang?: InputMaybe<NumberFieldComparison>;
+  lat?: InputMaybe<NumberFieldComparison>;
+  location?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<LocationFilter>>;
+  range?: InputMaybe<NumberFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type LocationMaxAggregate = {
+  __typename?: "LocationMaxAggregate";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["ID"]>;
+  lang?: Maybe<Scalars["Float"]>;
+  lat?: Maybe<Scalars["Float"]>;
+  location?: Maybe<Scalars["String"]>;
+  range?: Maybe<Scalars["Float"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type LocationMinAggregate = {
+  __typename?: "LocationMinAggregate";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["ID"]>;
+  lang?: Maybe<Scalars["Float"]>;
+  lat?: Maybe<Scalars["Float"]>;
+  location?: Maybe<Scalars["String"]>;
+  range?: Maybe<Scalars["Float"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type LocationSort = {
+  direction: SortDirection;
+  field: LocationSortFields;
+  nulls?: InputMaybe<SortNulls>;
+};
+
+export enum LocationSortFields {
+  CreatedAt = "createdAt",
+  CreatedBy = "createdBy",
+  DeletedAt = "deletedAt",
+  DeletedBy = "deletedBy",
+  Id = "id",
+  Lang = "lang",
+  Lat = "lat",
+  Location = "location",
+  Range = "range",
+  UpdatedAt = "updatedAt",
+  UpdatedBy = "updatedBy",
+}
+
+export type LocationSumAggregate = {
+  __typename?: "LocationSumAggregate";
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["Float"]>;
+  lang?: Maybe<Scalars["Float"]>;
+  lat?: Maybe<Scalars["Float"]>;
+  range?: Maybe<Scalars["Float"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type LocationUpdateFilter = {
+  and?: InputMaybe<Array<LocationUpdateFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<IdFilterComparison>;
+  lang?: InputMaybe<NumberFieldComparison>;
+  lat?: InputMaybe<NumberFieldComparison>;
+  location?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<LocationUpdateFilter>>;
+  range?: InputMaybe<NumberFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -462,23 +720,28 @@ export type MeUpdate = {
   active?: InputMaybe<Scalars["Boolean"]>;
   email?: InputMaybe<Scalars["String"]>;
   name?: InputMaybe<Scalars["String"]>;
+  phoneNo?: InputMaybe<Scalars["String"]>;
 };
 
 export type Mutation = {
   __typename?: "Mutation";
   createManyEmployees: Array<Employee>;
+  createManyLocations: Array<Location>;
   createManyShiftOptions: Array<ShiftOption>;
   createManyShifts: Array<Shift>;
   createManyUsers: Array<User>;
   createOneEmployee: Employee;
+  createOneLocation: Location;
   createOneShift: Shift;
   createOneShiftOption: ShiftOption;
   createOneUser: User;
   deleteManyEmployees: DeleteManyResponse;
+  deleteManyLocations: DeleteManyResponse;
   deleteManyShiftOptions: DeleteManyResponse;
   deleteManyShifts: DeleteManyResponse;
   deleteManyUsers: DeleteManyResponse;
   deleteOneEmployee: EmployeeDeleteResponse;
+  deleteOneLocation: LocationDeleteResponse;
   deleteOneShift: ShiftDeleteResponse;
   deleteOneShiftOption: ShiftOptionDeleteResponse;
   deleteOneUser: UserDeleteResponse;
@@ -487,11 +750,13 @@ export type Mutation = {
   setEmployeeOnShift: Shift;
   setShiftOptionsOnShift: Shift;
   updateManyEmployees: UpdateManyResponse;
+  updateManyLocations: UpdateManyResponse;
   updateManyShiftOptions: UpdateManyResponse;
   updateManyShifts: UpdateManyResponse;
   updateManyUsers: UpdateManyResponse;
   updateMe: User;
   updateOneEmployee: Employee;
+  updateOneLocation: Location;
   updateOneShift: Shift;
   updateOneShiftOption: ShiftOption;
   updateOneUser: User;
@@ -499,6 +764,10 @@ export type Mutation = {
 
 export type MutationCreateManyEmployeesArgs = {
   input: CreateManyEmployeesInput;
+};
+
+export type MutationCreateManyLocationsArgs = {
+  input: CreateManyLocationsInput;
 };
 
 export type MutationCreateManyShiftOptionsArgs = {
@@ -517,6 +786,10 @@ export type MutationCreateOneEmployeeArgs = {
   input: CreateOneEmployeeInput;
 };
 
+export type MutationCreateOneLocationArgs = {
+  input: CreateOneLocationInput;
+};
+
 export type MutationCreateOneShiftArgs = {
   input: CreateOneShiftInput;
 };
@@ -533,6 +806,10 @@ export type MutationDeleteManyEmployeesArgs = {
   input: DeleteManyEmployeesInput;
 };
 
+export type MutationDeleteManyLocationsArgs = {
+  input: DeleteManyLocationsInput;
+};
+
 export type MutationDeleteManyShiftOptionsArgs = {
   input: DeleteManyShiftOptionsInput;
 };
@@ -547,6 +824,10 @@ export type MutationDeleteManyUsersArgs = {
 
 export type MutationDeleteOneEmployeeArgs = {
   input: DeleteOneEmployeeInput;
+};
+
+export type MutationDeleteOneLocationArgs = {
+  input: DeleteOneLocationInput;
 };
 
 export type MutationDeleteOneShiftArgs = {
@@ -581,6 +862,10 @@ export type MutationUpdateManyEmployeesArgs = {
   input: UpdateManyEmployeesInput;
 };
 
+export type MutationUpdateManyLocationsArgs = {
+  input: UpdateManyLocationsInput;
+};
+
 export type MutationUpdateManyShiftOptionsArgs = {
   input: UpdateManyShiftOptionsInput;
 };
@@ -599,6 +884,10 @@ export type MutationUpdateMeArgs = {
 
 export type MutationUpdateOneEmployeeArgs = {
   input: UpdateOneEmployeeInput;
+};
+
+export type MutationUpdateOneLocationArgs = {
+  input: UpdateOneLocationInput;
 };
 
 export type MutationUpdateOneShiftArgs = {
@@ -652,7 +941,10 @@ export type Query = {
   __typename?: "Query";
   employee?: Maybe<Employee>;
   employees: EmployeeConnection;
+  getEmployeeMe: Employee;
   getMe: User;
+  location?: Maybe<Location>;
+  locations: LocationConnection;
   shift?: Maybe<Shift>;
   shiftOption?: Maybe<ShiftOption>;
   shiftOptions: ShiftOptionConnection;
@@ -669,6 +961,16 @@ export type QueryEmployeesArgs = {
   filter?: InputMaybe<EmployeeFilter>;
   paging?: InputMaybe<OffsetPaging>;
   sorting?: InputMaybe<Array<EmployeeSort>>;
+};
+
+export type QueryLocationArgs = {
+  id: Scalars["ID"];
+};
+
+export type QueryLocationsArgs = {
+  filter?: InputMaybe<LocationFilter>;
+  paging?: InputMaybe<OffsetPaging>;
+  sorting?: InputMaybe<Array<LocationSort>>;
 };
 
 export type QueryShiftArgs = {
@@ -731,14 +1033,18 @@ export type SetShiftOptionsOnShiftInput = {
 
 export type Shift = {
   __typename?: "Shift";
-  allowance: Scalars["Float"];
+  allowance?: Maybe<Scalars["Float"]>;
+  breakPunchIn?: Maybe<Scalars["DateTime"]>;
+  breakPunchOut?: Maybe<Scalars["DateTime"]>;
+  clockIn?: Maybe<Scalars["DateTime"]>;
+  clockOut?: Maybe<Scalars["DateTime"]>;
   createdAt: Scalars["DateTime"];
   createdBy?: Maybe<Scalars["Float"]>;
-  date: Scalars["DateTime"];
+  date?: Maybe<Scalars["DateTime"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
   employee?: Maybe<Employee>;
-  hours: Scalars["Float"];
+  hours?: Maybe<Scalars["Float"]>;
   id: Scalars["String"];
   shiftOptionId: Scalars["Float"];
   shiftOptions?: Maybe<ShiftOption>;
@@ -750,6 +1056,10 @@ export type Shift = {
 export type ShiftAggregateGroupBy = {
   __typename?: "ShiftAggregateGroupBy";
   allowance?: Maybe<Scalars["Float"]>;
+  breakPunchIn?: Maybe<Scalars["DateTime"]>;
+  breakPunchOut?: Maybe<Scalars["DateTime"]>;
+  clockIn?: Maybe<Scalars["DateTime"]>;
+  clockOut?: Maybe<Scalars["DateTime"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   date?: Maybe<Scalars["DateTime"]>;
@@ -787,6 +1097,10 @@ export type ShiftConnection = {
 export type ShiftCountAggregate = {
   __typename?: "ShiftCountAggregate";
   allowance?: Maybe<Scalars["Int"]>;
+  breakPunchIn?: Maybe<Scalars["Int"]>;
+  breakPunchOut?: Maybe<Scalars["Int"]>;
+  clockIn?: Maybe<Scalars["Int"]>;
+  clockOut?: Maybe<Scalars["Int"]>;
   createdAt?: Maybe<Scalars["Int"]>;
   createdBy?: Maybe<Scalars["Int"]>;
   date?: Maybe<Scalars["Int"]>;
@@ -803,6 +1117,10 @@ export type ShiftCountAggregate = {
 export type ShiftDeleteFilter = {
   allowance?: InputMaybe<NumberFieldComparison>;
   and?: InputMaybe<Array<ShiftDeleteFilter>>;
+  breakPunchIn?: InputMaybe<DateFieldComparison>;
+  breakPunchOut?: InputMaybe<DateFieldComparison>;
+  clockIn?: InputMaybe<DateFieldComparison>;
+  clockOut?: InputMaybe<DateFieldComparison>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
   date?: InputMaybe<DateFieldComparison>;
@@ -820,6 +1138,10 @@ export type ShiftDeleteFilter = {
 export type ShiftDeleteResponse = {
   __typename?: "ShiftDeleteResponse";
   allowance?: Maybe<Scalars["Float"]>;
+  breakPunchIn?: Maybe<Scalars["DateTime"]>;
+  breakPunchOut?: Maybe<Scalars["DateTime"]>;
+  clockIn?: Maybe<Scalars["DateTime"]>;
+  clockOut?: Maybe<Scalars["DateTime"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   date?: Maybe<Scalars["DateTime"]>;
@@ -836,6 +1158,10 @@ export type ShiftDeleteResponse = {
 export type ShiftFilter = {
   allowance?: InputMaybe<NumberFieldComparison>;
   and?: InputMaybe<Array<ShiftFilter>>;
+  breakPunchIn?: InputMaybe<DateFieldComparison>;
+  breakPunchOut?: InputMaybe<DateFieldComparison>;
+  clockIn?: InputMaybe<DateFieldComparison>;
+  clockOut?: InputMaybe<DateFieldComparison>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
   date?: InputMaybe<DateFieldComparison>;
@@ -871,6 +1197,7 @@ export type ShiftFilterEmployeeFilter = {
   loan?: InputMaybe<NumberFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<ShiftFilterEmployeeFilter>>;
+  phoneNo?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -887,6 +1214,7 @@ export type ShiftFilterShiftOptionFilter = {
   or?: InputMaybe<Array<ShiftFilterShiftOptionFilter>>;
   otRate?: InputMaybe<NumberFieldComparison>;
   rate?: InputMaybe<NumberFieldComparison>;
+  type?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -894,6 +1222,10 @@ export type ShiftFilterShiftOptionFilter = {
 export type ShiftMaxAggregate = {
   __typename?: "ShiftMaxAggregate";
   allowance?: Maybe<Scalars["Float"]>;
+  breakPunchIn?: Maybe<Scalars["DateTime"]>;
+  breakPunchOut?: Maybe<Scalars["DateTime"]>;
+  clockIn?: Maybe<Scalars["DateTime"]>;
+  clockOut?: Maybe<Scalars["DateTime"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   date?: Maybe<Scalars["DateTime"]>;
@@ -910,6 +1242,10 @@ export type ShiftMaxAggregate = {
 export type ShiftMinAggregate = {
   __typename?: "ShiftMinAggregate";
   allowance?: Maybe<Scalars["Float"]>;
+  breakPunchIn?: Maybe<Scalars["DateTime"]>;
+  breakPunchOut?: Maybe<Scalars["DateTime"]>;
+  clockIn?: Maybe<Scalars["DateTime"]>;
+  clockOut?: Maybe<Scalars["DateTime"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   date?: Maybe<Scalars["DateTime"]>;
@@ -931,9 +1267,10 @@ export type ShiftOption = {
   deletedBy?: Maybe<Scalars["Float"]>;
   id: Scalars["String"];
   isDeleteButSave: Scalars["Boolean"];
-  name: Scalars["String"];
-  otRate: Scalars["Float"];
-  rate: Scalars["Float"];
+  name?: Maybe<Scalars["String"]>;
+  otRate?: Maybe<Scalars["Float"]>;
+  rate?: Maybe<Scalars["Float"]>;
+  type?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -949,6 +1286,7 @@ export type ShiftOptionAggregateGroupBy = {
   name?: Maybe<Scalars["String"]>;
   otRate?: Maybe<Scalars["Float"]>;
   rate?: Maybe<Scalars["Float"]>;
+  type?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -983,6 +1321,7 @@ export type ShiftOptionCountAggregate = {
   name?: Maybe<Scalars["Int"]>;
   otRate?: Maybe<Scalars["Int"]>;
   rate?: Maybe<Scalars["Int"]>;
+  type?: Maybe<Scalars["Int"]>;
   updatedAt?: Maybe<Scalars["Int"]>;
   updatedBy?: Maybe<Scalars["Int"]>;
 };
@@ -999,6 +1338,7 @@ export type ShiftOptionDeleteFilter = {
   or?: InputMaybe<Array<ShiftOptionDeleteFilter>>;
   otRate?: InputMaybe<NumberFieldComparison>;
   rate?: InputMaybe<NumberFieldComparison>;
+  type?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -1014,6 +1354,7 @@ export type ShiftOptionDeleteResponse = {
   name?: Maybe<Scalars["String"]>;
   otRate?: Maybe<Scalars["Float"]>;
   rate?: Maybe<Scalars["Float"]>;
+  type?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -1030,6 +1371,7 @@ export type ShiftOptionFilter = {
   or?: InputMaybe<Array<ShiftOptionFilter>>;
   otRate?: InputMaybe<NumberFieldComparison>;
   rate?: InputMaybe<NumberFieldComparison>;
+  type?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -1044,6 +1386,7 @@ export type ShiftOptionMaxAggregate = {
   name?: Maybe<Scalars["String"]>;
   otRate?: Maybe<Scalars["Float"]>;
   rate?: Maybe<Scalars["Float"]>;
+  type?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -1058,6 +1401,7 @@ export type ShiftOptionMinAggregate = {
   name?: Maybe<Scalars["String"]>;
   otRate?: Maybe<Scalars["Float"]>;
   rate?: Maybe<Scalars["Float"]>;
+  type?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -1078,6 +1422,7 @@ export enum ShiftOptionSortFields {
   Name = "name",
   OtRate = "otRate",
   Rate = "rate",
+  Type = "type",
   UpdatedAt = "updatedAt",
   UpdatedBy = "updatedBy",
 }
@@ -1103,6 +1448,7 @@ export type ShiftOptionUpdateFilter = {
   or?: InputMaybe<Array<ShiftOptionUpdateFilter>>;
   otRate?: InputMaybe<NumberFieldComparison>;
   rate?: InputMaybe<NumberFieldComparison>;
+  type?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -1115,6 +1461,10 @@ export type ShiftSort = {
 
 export enum ShiftSortFields {
   Allowance = "allowance",
+  BreakPunchIn = "breakPunchIn",
+  BreakPunchOut = "breakPunchOut",
+  ClockIn = "clockIn",
+  ClockOut = "clockOut",
   CreatedAt = "createdAt",
   CreatedBy = "createdBy",
   Date = "date",
@@ -1142,6 +1492,10 @@ export type ShiftSumAggregate = {
 export type ShiftUpdateFilter = {
   allowance?: InputMaybe<NumberFieldComparison>;
   and?: InputMaybe<Array<ShiftUpdateFilter>>;
+  breakPunchIn?: InputMaybe<DateFieldComparison>;
+  breakPunchOut?: InputMaybe<DateFieldComparison>;
+  clockIn?: InputMaybe<DateFieldComparison>;
+  clockOut?: InputMaybe<DateFieldComparison>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
   date?: InputMaybe<DateFieldComparison>;
@@ -1202,6 +1556,21 @@ export type UpdateEmployee = {
   id?: InputMaybe<Scalars["String"]>;
   loan?: InputMaybe<Scalars["Float"]>;
   name?: InputMaybe<Scalars["String"]>;
+  phoneNo?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
+};
+
+export type UpdateLocation = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
+  id?: InputMaybe<Scalars["ID"]>;
+  lang?: InputMaybe<Scalars["Float"]>;
+  lat?: InputMaybe<Scalars["Float"]>;
+  location?: InputMaybe<Scalars["String"]>;
+  range?: InputMaybe<Scalars["Float"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedBy?: InputMaybe<Scalars["Float"]>;
 };
@@ -1211,6 +1580,13 @@ export type UpdateManyEmployeesInput = {
   filter: EmployeeUpdateFilter;
   /** The update to apply to all records found using the filter */
   update: UpdateEmployee;
+};
+
+export type UpdateManyLocationsInput = {
+  /** Filter used to find fields to update */
+  filter: LocationUpdateFilter;
+  /** The update to apply to all records found using the filter */
+  update: UpdateLocation;
 };
 
 export type UpdateManyResponse = {
@@ -1247,6 +1623,13 @@ export type UpdateOneEmployeeInput = {
   update: UpdateEmployee;
 };
 
+export type UpdateOneLocationInput = {
+  /** The id of the record to update */
+  id: Scalars["ID"];
+  /** The update to apply. */
+  update: UpdateLocation;
+};
+
 export type UpdateOneShiftInput = {
   /** The id of the record to update */
   id: Scalars["String"];
@@ -1270,6 +1653,10 @@ export type UpdateOneUserInput = {
 
 export type UpdateShift = {
   allowance?: InputMaybe<Scalars["Float"]>;
+  breakPunchIn?: InputMaybe<Scalars["DateTime"]>;
+  breakPunchOut?: InputMaybe<Scalars["DateTime"]>;
+  clockIn?: InputMaybe<Scalars["DateTime"]>;
+  clockOut?: InputMaybe<Scalars["DateTime"]>;
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   createdBy?: InputMaybe<Scalars["Float"]>;
   date?: InputMaybe<Scalars["DateTime"]>;
@@ -1293,6 +1680,7 @@ export type UpdateShiftOption = {
   name?: InputMaybe<Scalars["String"]>;
   otRate?: InputMaybe<Scalars["Float"]>;
   rate?: InputMaybe<Scalars["Float"]>;
+  type?: InputMaybe<Scalars["String"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedBy?: InputMaybe<Scalars["Float"]>;
 };
@@ -1307,21 +1695,23 @@ export type UpdateUser = {
   id?: InputMaybe<Scalars["String"]>;
   name?: InputMaybe<Scalars["String"]>;
   password?: InputMaybe<Scalars["String"]>;
+  phoneNo?: InputMaybe<Scalars["String"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedBy?: InputMaybe<Scalars["Float"]>;
 };
 
 export type User = {
   __typename?: "User";
-  active: Scalars["Boolean"];
+  active?: Maybe<Scalars["Boolean"]>;
   createdAt: Scalars["DateTime"];
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
-  email: Scalars["String"];
+  email?: Maybe<Scalars["String"]>;
   id: Scalars["String"];
-  name: Scalars["String"];
+  name?: Maybe<Scalars["String"]>;
   password: Scalars["String"];
+  phoneNo?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -1337,6 +1727,7 @@ export type UserAggregateGroupBy = {
   id?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -1369,6 +1760,7 @@ export type UserCountAggregate = {
   id?: Maybe<Scalars["Int"]>;
   name?: Maybe<Scalars["Int"]>;
   password?: Maybe<Scalars["Int"]>;
+  phoneNo?: Maybe<Scalars["Int"]>;
   updatedAt?: Maybe<Scalars["Int"]>;
   updatedBy?: Maybe<Scalars["Int"]>;
 };
@@ -1385,6 +1777,7 @@ export type UserDeleteFilter = {
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<UserDeleteFilter>>;
   password?: InputMaybe<StringFieldComparison>;
+  phoneNo?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -1400,6 +1793,7 @@ export type UserDeleteResponse = {
   id?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -1416,6 +1810,7 @@ export type UserFilter = {
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<UserFilter>>;
   password?: InputMaybe<StringFieldComparison>;
+  phoneNo?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -1430,6 +1825,7 @@ export type UserMaxAggregate = {
   id?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -1444,6 +1840,7 @@ export type UserMinAggregate = {
   id?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -1464,6 +1861,7 @@ export enum UserSortFields {
   Id = "id",
   Name = "name",
   Password = "password",
+  PhoneNo = "phoneNo",
   UpdatedAt = "updatedAt",
   UpdatedBy = "updatedBy",
 }
@@ -1487,6 +1885,7 @@ export type UserUpdateFilter = {
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<UserUpdateFilter>>;
   password?: InputMaybe<StringFieldComparison>;
+  phoneNo?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -1592,18 +1991,79 @@ export type DeleteEmployeeMutation = {
   };
 };
 
+export type LocationFieldsFragment = {
+  __typename?: "Location";
+  id: string;
+  location: string;
+  lang: number;
+  lat: number;
+  range: number;
+};
+
+export type GetLocationsQueryVariables = Exact<{
+  paging?: InputMaybe<OffsetPaging>;
+  filter?: InputMaybe<LocationFilter>;
+  sorting?: InputMaybe<Array<LocationSort> | LocationSort>;
+}>;
+
+export type GetLocationsQuery = {
+  __typename?: "Query";
+  locations: {
+    __typename?: "LocationConnection";
+    totalCount: number;
+    nodes: Array<{
+      __typename?: "Location";
+      id: string;
+      location: string;
+      lang: number;
+      lat: number;
+      range: number;
+    }>;
+  };
+};
+
+export type GetOneLocationQueryVariables = Exact<{
+  id: Scalars["ID"];
+}>;
+
+export type GetOneLocationQuery = {
+  __typename?: "Query";
+  location?: {
+    __typename?: "Location";
+    id: string;
+    location: string;
+    lang: number;
+    lat: number;
+    range: number;
+  } | null;
+};
+
+export type UpdateLocationMutationVariables = Exact<{
+  input: UpdateOneLocationInput;
+}>;
+
+export type UpdateLocationMutation = {
+  __typename?: "Mutation";
+  updateOneLocation: { __typename?: "Location"; id: string };
+};
+
 export type MeFieldsFragment = {
   __typename?: "User";
   id: string;
-  name: string;
-  email: string;
+  name?: string | null;
+  email?: string | null;
 };
 
 export type GetMeQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetMeQuery = {
   __typename?: "Query";
-  getMe: { __typename?: "User"; id: string; name: string; email: string };
+  getMe: {
+    __typename?: "User";
+    id: string;
+    name?: string | null;
+    email?: string | null;
+  };
 };
 
 export type UpdateMeMutationVariables = Exact<{
@@ -1618,9 +2078,9 @@ export type UpdateMeMutation = {
 export type ShiftOptionFieldsFragment = {
   __typename?: "ShiftOption";
   id: string;
-  name: string;
-  rate: number;
-  otRate: number;
+  name?: string | null;
+  rate?: number | null;
+  otRate?: number | null;
 };
 
 export type GetShiftsOptionsQueryVariables = Exact<{
@@ -1637,9 +2097,9 @@ export type GetShiftsOptionsQuery = {
     nodes: Array<{
       __typename?: "ShiftOption";
       id: string;
-      name: string;
-      rate: number;
-      otRate: number;
+      name?: string | null;
+      rate?: number | null;
+      otRate?: number | null;
     }>;
   };
 };
@@ -1653,9 +2113,9 @@ export type GetOneShiftOptionQuery = {
   shiftOption?: {
     __typename?: "ShiftOption";
     id: string;
-    name: string;
-    rate: number;
-    otRate: number;
+    name?: string | null;
+    rate?: number | null;
+    otRate?: number | null;
   } | null;
 };
 
@@ -1692,17 +2152,17 @@ export type DeleteShiftOptionsMutation = {
 export type ShiftFieldsFragment = {
   __typename?: "Shift";
   id: string;
-  date: any;
-  hours: number;
-  allowance: number;
+  date?: any | null;
+  hours?: number | null;
+  allowance?: number | null;
   total: number;
   shiftOptionId: number;
   shiftOptions?: {
     __typename?: "ShiftOption";
     id: string;
-    name: string;
-    rate: number;
-    otRate: number;
+    name?: string | null;
+    rate?: number | null;
+    otRate?: number | null;
   } | null;
   employee?: { __typename?: "Employee"; name: string } | null;
 };
@@ -1721,17 +2181,17 @@ export type GetShiftsQuery = {
     nodes: Array<{
       __typename?: "Shift";
       id: string;
-      date: any;
-      hours: number;
-      allowance: number;
+      date?: any | null;
+      hours?: number | null;
+      allowance?: number | null;
       total: number;
       shiftOptionId: number;
       shiftOptions?: {
         __typename?: "ShiftOption";
         id: string;
-        name: string;
-        rate: number;
-        otRate: number;
+        name?: string | null;
+        rate?: number | null;
+        otRate?: number | null;
       } | null;
       employee?: { __typename?: "Employee"; name: string } | null;
     }>;
@@ -1747,17 +2207,17 @@ export type GetOneShiftQuery = {
   shift?: {
     __typename?: "Shift";
     id: string;
-    date: any;
-    hours: number;
-    allowance: number;
+    date?: any | null;
+    hours?: number | null;
+    allowance?: number | null;
     total: number;
     shiftOptionId: number;
     shiftOptions?: {
       __typename?: "ShiftOption";
       id: string;
-      name: string;
-      rate: number;
-      otRate: number;
+      name?: string | null;
+      rate?: number | null;
+      otRate?: number | null;
     } | null;
     employee?: { __typename?: "Employee"; name: string } | null;
   } | null;
@@ -1793,8 +2253,8 @@ export type DeleteShiftMutation = {
 export type UsersFieldsFragment = {
   __typename?: "User";
   id: string;
-  name: string;
-  email: string;
+  name?: string | null;
+  email?: string | null;
 };
 
 export type GetUsersQueryVariables = Exact<{
@@ -1811,8 +2271,8 @@ export type GetUsersQuery = {
     nodes: Array<{
       __typename?: "User";
       id: string;
-      name: string;
-      email: string;
+      name?: string | null;
+      email?: string | null;
     }>;
   };
 };
@@ -1826,8 +2286,8 @@ export type GetOneUserQuery = {
   user?: {
     __typename?: "User";
     id: string;
-    name: string;
-    email: string;
+    name?: string | null;
+    email?: string | null;
   } | null;
 };
 
@@ -1873,6 +2333,15 @@ export const EmployeeFieldsFragmentDoc = gql`
     loan
     accountNo
     bankType
+  }
+`;
+export const LocationFieldsFragmentDoc = gql`
+  fragment LocationFields on Location {
+    id
+    location
+    lang
+    lat
+    range
   }
 `;
 export const MeFieldsFragmentDoc = gql`
@@ -2192,6 +2661,183 @@ export type DeleteEmployeeMutationResult =
 export type DeleteEmployeeMutationOptions = Apollo.BaseMutationOptions<
   DeleteEmployeeMutation,
   DeleteEmployeeMutationVariables
+>;
+export const GetLocationsDocument = gql`
+  query getLocations(
+    $paging: OffsetPaging
+    $filter: LocationFilter
+    $sorting: [LocationSort!]
+  ) {
+    locations(paging: $paging, filter: $filter, sorting: $sorting) {
+      totalCount
+      nodes {
+        ...LocationFields
+      }
+    }
+  }
+  ${LocationFieldsFragmentDoc}
+`;
+
+/**
+ * __useGetLocationsQuery__
+ *
+ * To run a query within a React component, call `useGetLocationsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLocationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLocationsQuery({
+ *   variables: {
+ *      paging: // value for 'paging'
+ *      filter: // value for 'filter'
+ *      sorting: // value for 'sorting'
+ *   },
+ * });
+ */
+export function useGetLocationsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetLocationsQuery,
+    GetLocationsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetLocationsQuery, GetLocationsQueryVariables>(
+    GetLocationsDocument,
+    options
+  );
+}
+export function useGetLocationsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetLocationsQuery,
+    GetLocationsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetLocationsQuery, GetLocationsQueryVariables>(
+    GetLocationsDocument,
+    options
+  );
+}
+export type GetLocationsQueryHookResult = ReturnType<
+  typeof useGetLocationsQuery
+>;
+export type GetLocationsLazyQueryHookResult = ReturnType<
+  typeof useGetLocationsLazyQuery
+>;
+export type GetLocationsQueryResult = Apollo.QueryResult<
+  GetLocationsQuery,
+  GetLocationsQueryVariables
+>;
+export const GetOneLocationDocument = gql`
+  query getOneLocation($id: ID!) {
+    location(id: $id) {
+      ...LocationFields
+    }
+  }
+  ${LocationFieldsFragmentDoc}
+`;
+
+/**
+ * __useGetOneLocationQuery__
+ *
+ * To run a query within a React component, call `useGetOneLocationQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetOneLocationQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetOneLocationQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetOneLocationQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetOneLocationQuery,
+    GetOneLocationQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetOneLocationQuery, GetOneLocationQueryVariables>(
+    GetOneLocationDocument,
+    options
+  );
+}
+export function useGetOneLocationLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetOneLocationQuery,
+    GetOneLocationQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetOneLocationQuery, GetOneLocationQueryVariables>(
+    GetOneLocationDocument,
+    options
+  );
+}
+export type GetOneLocationQueryHookResult = ReturnType<
+  typeof useGetOneLocationQuery
+>;
+export type GetOneLocationLazyQueryHookResult = ReturnType<
+  typeof useGetOneLocationLazyQuery
+>;
+export type GetOneLocationQueryResult = Apollo.QueryResult<
+  GetOneLocationQuery,
+  GetOneLocationQueryVariables
+>;
+export const UpdateLocationDocument = gql`
+  mutation updateLocation($input: UpdateOneLocationInput!) {
+    updateOneLocation(input: $input) {
+      id
+    }
+  }
+`;
+export type UpdateLocationMutationFn = Apollo.MutationFunction<
+  UpdateLocationMutation,
+  UpdateLocationMutationVariables
+>;
+
+/**
+ * __useUpdateLocationMutation__
+ *
+ * To run a mutation, you first call `useUpdateLocationMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateLocationMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateLocationMutation, { data, loading, error }] = useUpdateLocationMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateLocationMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateLocationMutation,
+    UpdateLocationMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateLocationMutation,
+    UpdateLocationMutationVariables
+  >(UpdateLocationDocument, options);
+}
+export type UpdateLocationMutationHookResult = ReturnType<
+  typeof useUpdateLocationMutation
+>;
+export type UpdateLocationMutationResult =
+  Apollo.MutationResult<UpdateLocationMutation>;
+export type UpdateLocationMutationOptions = Apollo.BaseMutationOptions<
+  UpdateLocationMutation,
+  UpdateLocationMutationVariables
 >;
 export const GetMeDocument = gql`
   query getMe {

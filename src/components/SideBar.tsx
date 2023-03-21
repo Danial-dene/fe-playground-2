@@ -13,6 +13,7 @@ import {
   MoneyCollectOutlined,
   PoweroffOutlined,
   SettingOutlined,
+  AimOutlined 
 } from "@ant-design/icons";
 import Head from "next/head";
 import { APP_NAME } from "@constants";
@@ -66,6 +67,12 @@ const items: MenuItemProps[] = [
         to: "/rates",
         icon: MoneyCollectOutlined,
       },
+      {
+        label: "Locations",
+        key: "locations",
+        to: "/locations",
+        icon: AimOutlined,
+      }
     ],
   },
   {

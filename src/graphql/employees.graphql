@@ -44,6 +44,7 @@ mutation updateEmployee($input: UpdateOneEmployeeInput!) {
     id
   }
 }
+
 mutation deleteEmployee($input: DeleteOneEmployeeInput!) {
   deleteOneEmployee(input: $input) {
     id
