@@ -37,12 +37,20 @@ const CustomerEdit = () => {
   const [getShift, { data, loading: shiftLoading }] =
     Gql.useGetOneShiftLazyQuery({
       onCompleted: (obj) => {
-        console.log("obj", obj);
+        // console.log("obj", obj);
         const date = moment(obj?.shift?.date);
+        const clockIn = moment(obj?.shift?.clockIn);
+        const breakPunchIn = moment(obj?.shift?.breakPunchIn);
+        const breakPunchOut = moment(obj?.shift?.breakPunchOut);
+        const clockOut = moment(obj?.shift?.clockOut);
         const shiftOptionId = _.toString(obj?.shift?.shiftOptionId);
         form.setFieldsValue({
-          ..._.omit(obj?.shift, ["date"], ["shiftOptionId"]),
+          ..._.omit(obj?.shift, ["date"], ["shiftOptionId"], ["clockIn"]),
           date,
+          clockIn,
+          breakPunchIn,
+          breakPunchOut,
+          clockOut,
           shiftOptionId,
         });
       },
@@ -125,6 +133,22 @@ const CustomerEdit = () => {
             >
               <Form.Item label="Date" name="date" rules={[{ required: true }]}>
                 <DatePicker />
+              </Form.Item>
+
+              <Form.Item label="Clock In" name="clockIn">
+                <DatePicker format="YYYY-MM-DD HH:mm:ss" />
+              </Form.Item>
+
+              <Form.Item label="Start Break Time" name="breakPunchIn">
+                <DatePicker format="YYYY-MM-DD HH:mm:ss" />
+              </Form.Item>
+
+              <Form.Item label="End Break Time" name="breakPunchOut">
+                <DatePicker format="YYYY-MM-DD HH:mm:ss" />
+              </Form.Item>
+
+              <Form.Item label="Clock Out" name="clockOut">
+                <DatePicker format="YYYY-MM-DD HH:mm:ss" />
               </Form.Item>
 
               <Form.Item label="Hours" name="hours">

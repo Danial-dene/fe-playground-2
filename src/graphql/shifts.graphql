@@ -2,6 +2,10 @@ fragment ShiftFields on Shift {
   id
   date
   hours
+  breakPunchIn
+  breakPunchOut
+  clockIn
+  clockOut
   allowance
   total
   shiftOptionId

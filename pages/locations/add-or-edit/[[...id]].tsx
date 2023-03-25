@@ -33,19 +33,16 @@ const CustomerEdit = () => {
     );
   }, []);
 
-  const [getLocation, { data, loading: locationLoading }] =
-    Gql.useGetOneLocationLazyQuery({
-      onCompleted: (obj) => {
-        form.setFieldsValue(obj.location);
-      },
-      onError: (e) => {
-        message.error(getErrorMessage(e));
-      },
-    });
-
-  useEffect(() => {
-    if (id) getLocation({ variables: { id: _.toString(id) } });
-  }, [router]);
+  const { data, loading: locationLoading } = Gql.useGetOneLocationQuery({
+    variables: { id: "1" },
+    skip: !id,
+    onCompleted: (obj) => {
+      form.setFieldsValue(obj.location);
+    },
+    onError: (e) => {
+      message.error(getErrorMessage(e));
+    },
+  });
 
   const [updateLocation, { loading: isSubmitting }] =
     Gql.useUpdateLocationMutation({
@@ -60,10 +57,7 @@ const CustomerEdit = () => {
 
   const onFinish = (values: any) => {
     const {
-      location: {
-        details: { coordinates },
-        suggestion: { description },
-      },
+      location: { details, suggestion },
       range,
     } = values;
 
@@ -74,9 +68,9 @@ const CustomerEdit = () => {
             id: _.toString(id),
             update: {
               range,
-              location: description,
-              lat: coordinates.lat,
-              lang: coordinates.lng,
+              location: suggestion?.description,
+              lat: details?.coordinates?.lat,
+              lang: details?.coordinates?.lng,
             },
           },
         },
@@ -103,7 +97,7 @@ const CustomerEdit = () => {
                 name="location"
                 rules={[{ required: true }]}
               >
-                <GoogleGetPlace address={data?.location} />
+                <GoogleGetPlace address={data?.location?.location} />
               </Form.Item>
 
               <Form.Item

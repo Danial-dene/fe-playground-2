@@ -58,7 +58,7 @@ const Locations = () => {
     {
       title: "Range to scan",
       dataIndex: "range",
-      render: (range: string) => `${range}meter`,
+      render: (range: string) => `${range} meter`,
     },
   ];
 

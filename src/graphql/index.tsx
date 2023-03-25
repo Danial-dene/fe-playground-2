@@ -45,6 +45,7 @@ export type CreateEmployee = {
   id?: InputMaybe<Scalars["String"]>;
   loan?: InputMaybe<Scalars["Float"]>;
   name?: InputMaybe<Scalars["String"]>;
+  password?: InputMaybe<Scalars["String"]>;
   phoneNo?: InputMaybe<Scalars["String"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedBy?: InputMaybe<Scalars["Float"]>;
@@ -251,6 +252,7 @@ export type Employee = {
   id: Scalars["String"];
   loan?: Maybe<Scalars["Float"]>;
   name: Scalars["String"];
+  password?: Maybe<Scalars["String"]>;
   phoneNo?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
@@ -274,6 +276,7 @@ export type EmployeeAggregateGroupBy = {
   id?: Maybe<Scalars["String"]>;
   loan?: Maybe<Scalars["Float"]>;
   name?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["String"]>;
   phoneNo?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
@@ -321,6 +324,7 @@ export type EmployeeCountAggregate = {
   id?: Maybe<Scalars["Int"]>;
   loan?: Maybe<Scalars["Int"]>;
   name?: Maybe<Scalars["Int"]>;
+  password?: Maybe<Scalars["Int"]>;
   phoneNo?: Maybe<Scalars["Int"]>;
   updatedAt?: Maybe<Scalars["Int"]>;
   updatedBy?: Maybe<Scalars["Int"]>;
@@ -345,6 +349,7 @@ export type EmployeeDeleteFilter = {
   loan?: InputMaybe<NumberFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<EmployeeDeleteFilter>>;
+  password?: InputMaybe<StringFieldComparison>;
   phoneNo?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
@@ -368,6 +373,7 @@ export type EmployeeDeleteResponse = {
   id?: Maybe<Scalars["String"]>;
   loan?: Maybe<Scalars["Float"]>;
   name?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["String"]>;
   phoneNo?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
@@ -392,6 +398,7 @@ export type EmployeeFilter = {
   loan?: InputMaybe<NumberFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<EmployeeFilter>>;
+  password?: InputMaybe<StringFieldComparison>;
   phoneNo?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
@@ -415,6 +422,7 @@ export type EmployeeMaxAggregate = {
   id?: Maybe<Scalars["String"]>;
   loan?: Maybe<Scalars["Float"]>;
   name?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["String"]>;
   phoneNo?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
@@ -438,6 +446,7 @@ export type EmployeeMinAggregate = {
   id?: Maybe<Scalars["String"]>;
   loan?: Maybe<Scalars["Float"]>;
   name?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["String"]>;
   phoneNo?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
@@ -466,6 +475,7 @@ export enum EmployeeSortFields {
   Id = "id",
   Loan = "loan",
   Name = "name",
+  Password = "password",
   PhoneNo = "phoneNo",
   UpdatedAt = "updatedAt",
   UpdatedBy = "updatedBy",
@@ -504,6 +514,7 @@ export type EmployeeUpdateFilter = {
   loan?: InputMaybe<NumberFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<EmployeeUpdateFilter>>;
+  password?: InputMaybe<StringFieldComparison>;
   phoneNo?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
@@ -533,9 +544,9 @@ export type Location = {
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
   id: Scalars["ID"];
-  lang: Scalars["Float"];
-  lat: Scalars["Float"];
-  location: Scalars["String"];
+  lang?: Maybe<Scalars["Float"]>;
+  lat?: Maybe<Scalars["Float"]>;
+  location?: Maybe<Scalars["String"]>;
   range: Scalars["Float"];
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
@@ -1197,6 +1208,7 @@ export type ShiftFilterEmployeeFilter = {
   loan?: InputMaybe<NumberFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<ShiftFilterEmployeeFilter>>;
+  password?: InputMaybe<StringFieldComparison>;
   phoneNo?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
@@ -1556,6 +1568,7 @@ export type UpdateEmployee = {
   id?: InputMaybe<Scalars["String"]>;
   loan?: InputMaybe<Scalars["Float"]>;
   name?: InputMaybe<Scalars["String"]>;
+  password?: InputMaybe<Scalars["String"]>;
   phoneNo?: InputMaybe<Scalars["String"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedBy?: InputMaybe<Scalars["Float"]>;
@@ -1994,9 +2007,9 @@ export type DeleteEmployeeMutation = {
 export type LocationFieldsFragment = {
   __typename?: "Location";
   id: string;
-  location: string;
-  lang: number;
-  lat: number;
+  location?: string | null;
+  lang?: number | null;
+  lat?: number | null;
   range: number;
 };
 
@@ -2014,9 +2027,9 @@ export type GetLocationsQuery = {
     nodes: Array<{
       __typename?: "Location";
       id: string;
-      location: string;
-      lang: number;
-      lat: number;
+      location?: string | null;
+      lang?: number | null;
+      lat?: number | null;
       range: number;
     }>;
   };
@@ -2031,9 +2044,9 @@ export type GetOneLocationQuery = {
   location?: {
     __typename?: "Location";
     id: string;
-    location: string;
-    lang: number;
-    lat: number;
+    location?: string | null;
+    lang?: number | null;
+    lat?: number | null;
     range: number;
   } | null;
 };
@@ -2154,6 +2167,10 @@ export type ShiftFieldsFragment = {
   id: string;
   date?: any | null;
   hours?: number | null;
+  breakPunchIn?: any | null;
+  breakPunchOut?: any | null;
+  clockIn?: any | null;
+  clockOut?: any | null;
   allowance?: number | null;
   total: number;
   shiftOptionId: number;
@@ -2183,6 +2200,10 @@ export type GetShiftsQuery = {
       id: string;
       date?: any | null;
       hours?: number | null;
+      breakPunchIn?: any | null;
+      breakPunchOut?: any | null;
+      clockIn?: any | null;
+      clockOut?: any | null;
       allowance?: number | null;
       total: number;
       shiftOptionId: number;
@@ -2209,6 +2230,10 @@ export type GetOneShiftQuery = {
     id: string;
     date?: any | null;
     hours?: number | null;
+    breakPunchIn?: any | null;
+    breakPunchOut?: any | null;
+    clockIn?: any | null;
+    clockOut?: any | null;
     allowance?: number | null;
     total: number;
     shiftOptionId: number;
@@ -2364,6 +2389,10 @@ export const ShiftFieldsFragmentDoc = gql`
     id
     date
     hours
+    breakPunchIn
+    breakPunchOut
+    clockIn
+    clockOut
     allowance
     total
     shiftOptionId

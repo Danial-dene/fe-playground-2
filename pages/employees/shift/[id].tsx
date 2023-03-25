@@ -132,14 +132,15 @@ const Shift = () => {
               {
                 label: "View shift",
                 key: "1",
-                onClick: () => router.push(`/employees/shifts/${data.id}`),
+                onClick: () =>
+                  router.push(`/employees/shift/add-or-edit/${data.id}`),
               },
             ]}
           />
         );
 
         return (
-          <div onClick={(e) => e.stopPropagation()}>
+          <div className="flex justify-center" onClick={(e) => e.stopPropagation()}>
             <Dropdown overlay={menu} trigger={["click"]}>
               <Icon name="dots" />
             </Dropdown>

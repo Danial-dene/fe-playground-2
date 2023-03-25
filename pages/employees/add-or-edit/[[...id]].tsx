@@ -83,7 +83,7 @@ const CustomerEdit = () => {
   // console.log(error);
 
   const onFinish = (values: any) => {
-    let input = { ...values };
+    let input = { ...values, type: "Employee" };
 
     if (id) {
       updateEmployee({
@@ -126,6 +126,22 @@ const CustomerEdit = () => {
                 rules={[{ required: true }]}
               >
                 <Input />
+              </Form.Item>
+
+              <Form.Item
+                label="Phone No."
+                name="phoneNo"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+
+              <Form.Item
+                label="Password"
+                name="password"
+                rules={[{ required: true }]}
+              >
+                <Input.Password />
               </Form.Item>
 
               <Form.Item label="Loan" name="loan" rules={[{ required: true }]}>
