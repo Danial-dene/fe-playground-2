@@ -121,6 +121,8 @@ const CalculateSalary = () => {
         </Form>
         {_.map(data?.shifts?.nodes, (obj, index) => {
           console.log("obj", obj);
+          const rate = obj?.shiftOptions?.rate;
+          const otRate = obj?.shiftOptions?.rate;
 
           return (
             <Card className="my-4">
@@ -138,11 +140,11 @@ const CalculateSalary = () => {
                 </Descriptions.Item>
 
                 <Descriptions.Item label="Rate per hour">
-                  {obj?.shiftOptions?.rate.toFixed(2)}
+                  {rate && rate.toFixed(2)}
                 </Descriptions.Item>
 
                 <Descriptions.Item label="Rate ot per hour">
-                  {obj?.shiftOptions?.otRate.toFixed(2)}
+                  {otRate && otRate.toFixed(2)}
                 </Descriptions.Item>
 
                 <Descriptions.Item label="Total per day">

@@ -12,7 +12,7 @@ interface GooglePlaceProps {
 
   placeId?: string;
   suggestion?: google.maps.places.AutocompletePrediction;
-  address?: string;
+  address?: any;
 
   allowClear?: boolean;
   bordered?: boolean;

@@ -79,6 +79,7 @@ const CustomerEdit = () => {
   };
 
   const loading = locationLoading || isSubmitting;
+  const location = data?.location?.location;
 
   return (
     <div className="pt-5 px-5">
@@ -97,7 +98,7 @@ const CustomerEdit = () => {
                 name="location"
                 rules={[{ required: true }]}
               >
-                <GoogleGetPlace address={data?.location?.location} />
+                <GoogleGetPlace address={location && location} />
               </Form.Item>
 
               <Form.Item
