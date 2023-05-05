@@ -80,7 +80,7 @@ const CustomerEdit = () => {
       },
     });
 
-  // console.log(error);
+  
 
   const onFinish = (values: any) => {
     let input = { ...values, type: "Employee" };

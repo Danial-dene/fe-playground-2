@@ -37,14 +37,14 @@ export default NextAuth({
             },
           });
 
-          // console.log("res.data.accessToken", res.data.accesssToken);
+          
           if (res.data.accessToken) {
             return res.data;
           } else {
             return null;
           }
         } catch (e: any) {
-          // console.log("e", e);
+          
           throw new Error("Something wrong with authentication");
         }
       },
@@ -92,7 +92,7 @@ export default NextAuth({
     session: async ({ session, token }) => {
       // Here we pass accessToken to the client to be used in authentication with your API
       session.accessToken = token.accessToken;
-      console.log("token", token);
+      
 
       apiCaller.defaults.headers.common = {
         Authorization: `Bearer ${token.accessToken}`,

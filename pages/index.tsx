@@ -15,8 +15,7 @@ const Dashboard = () => {
     fetchPolicy: "network-only",
   });
 
-  console.log("data", data);
-  console.log("error", error);
+  
 
   return (
     <>

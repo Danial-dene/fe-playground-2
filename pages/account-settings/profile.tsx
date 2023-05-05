@@ -37,7 +37,7 @@ const Profile = () => {
 
   const onFinish = (values: any) => {
     let input = { ...values };
-    console.log("input", input);
+    
 
     updateUser({
       variables: { input },
