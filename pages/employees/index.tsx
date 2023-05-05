@@ -134,7 +134,7 @@ const Customers = () => {
       onClick: () => router.push(`/employees/add-or-edit/${employee?.id}`),
     };
   };
-  // "/employees/add-or-edit"
+  
   return (
     <>
       <div className="p-9">
