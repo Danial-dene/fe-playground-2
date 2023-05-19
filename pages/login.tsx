@@ -22,6 +22,8 @@ const Login: React.FC = () => {
     router.push("/");
   }
 
+  console.log("status", status);
+
   const onFinishFailed = (errorInfo: any) => {};
 
   const onFinish = async (values: FormValues) => {
@@ -35,7 +37,7 @@ const Login: React.FC = () => {
         password: values.password,
         callbackUrl: "/",
       });
-      console.log("error", error, status, ok, url);
+      console.log("error", error, status, url);
       if (error) message.error("Invalid email or password");
     } catch (e) {
       throw e;

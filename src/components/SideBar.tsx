@@ -13,7 +13,7 @@ import {
   MoneyCollectOutlined,
   PoweroffOutlined,
   SettingOutlined,
-  AimOutlined 
+  AimOutlined,
 } from "@ant-design/icons";
 import Head from "next/head";
 import { APP_NAME } from "@constants";
@@ -72,7 +72,7 @@ const items: MenuItemProps[] = [
         key: "locations",
         to: "/locations",
         icon: AimOutlined,
-      }
+      },
     ],
   },
   {
@@ -89,10 +89,10 @@ const items: MenuItemProps[] = [
         label: "Log out",
         key: "logout",
         icon: PoweroffOutlined,
-        onClick: () =>
-          signOut({
-            callbackUrl: "/",
-          }),
+        onClick: () => {
+          signOut();
+          
+        },
       },
     ],
   },
