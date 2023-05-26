@@ -14,6 +14,7 @@ import {
   PoweroffOutlined,
   SettingOutlined,
   AimOutlined,
+  InfoCircleOutlined,
 } from "@ant-design/icons";
 import Head from "next/head";
 import { APP_NAME } from "@constants";
@@ -91,7 +92,6 @@ const items: MenuItemProps[] = [
         icon: PoweroffOutlined,
         onClick: () => {
           signOut();
-          
         },
       },
     ],

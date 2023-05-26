@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Button, Dropdown, Menu, Form, Input, message } from "antd";
+import { Button, Dropdown, Menu, Form, Input, message, Tag } from "antd";
 import { useRouter } from "next/router";
 import _ from "lodash";
 import { Icon, CommonTableView } from "@commons";
@@ -9,20 +9,23 @@ import { SearchOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { getErrorMessage } from "@utils";
 import { deleteModal } from "@components/popup";
+import TagComp from "@components/Tag";
+import modalConfirm from "@components/ModalConfirm";
+import { useUpdateEmployeeMutation } from "@graphql";
 
 const Customers = () => {
   const router = useRouter();
   const { setTitle } = useHeader();
 
-  const { data, loading, refetch, error } = Gql.useGetEmployeesQuery({
+  const {
+    data,
+    loading: fetching,
+    refetch,
+    error,
+  } = Gql.useGetEmployeesQuery({
     notifyOnNetworkStatusChange: true,
     fetchPolicy: "network-only",
-    variables: {
-      // paging: {
-      //   limit: 10,
-      //   offset: 0,
-      // },
-    },
+    variables: {},
   });
 
   const parseFilter = () => {
@@ -72,6 +75,19 @@ const Customers = () => {
     }
   );
 
+  // activate an employee mutation
+  const [activateEmployee, { loading: activating }] = useUpdateEmployeeMutation(
+    {
+      onCompleted: () => {
+        refetch();
+        message.success("Employee successfully updated!");
+      },
+      onError: (e) => {
+        message.error(getErrorMessage(e));
+      },
+    }
+  );
+
   const columns = [
     {
       title: "Name",
@@ -89,9 +105,23 @@ const Customers = () => {
       sorter: true,
     },
     {
+      title: "Status",
+      dataIndex: "isAccepted",
+      align: "center",
+      render: (isAccepted: boolean) => {
+        const status = isAccepted ? "Approved" : "Pending";
+
+        return <TagComp status={status} />;
+      },
+    },
+    {
       title: "",
       key: "action",
+      align: "center",
       render: (data: any) => {
+        const { isAccepted } = data;
+        const btnTxt = isAccepted ? "deactivate" : "activate";
+
         const menu = (
           <Menu
             items={[
@@ -120,7 +150,33 @@ const Customers = () => {
 
         return (
           <div onClick={(e) => e.stopPropagation()}>
-            <Dropdown overlay={menu} trigger={["click"]}>
+            <Button
+              size="small"
+              type="link"
+              onClick={() =>
+                modalConfirm({
+                  name: "Employee",
+                  type: btnTxt,
+                  onOk: () =>
+                    activateEmployee({
+                      variables: {
+                        input: {
+                          id: data.id,
+                          update: { isAccepted: !isAccepted },
+                        },
+                      },
+                    }),
+                })
+              }
+              danger={isAccepted}
+            >
+              {_.startCase(btnTxt)}
+            </Button>
+            <Dropdown
+              overlay={menu}
+              trigger={["click"]}
+              className="cursor-pointer ml-4"
+            >
               <Icon name="dots" />
             </Dropdown>
           </div>
@@ -134,7 +190,9 @@ const Customers = () => {
       onClick: () => router.push(`/employees/add-or-edit/${employee?.id}`),
     };
   };
-  
+
+  const loading = deleting || fetching || activating;
+
   return (
     <>
       <div className="p-9">

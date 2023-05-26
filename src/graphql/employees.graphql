@@ -12,6 +12,7 @@ fragment EmployeeFields on Employee {
   loan
   accountNo
   bankType
+  isAccepted
 }
 
 query getEmployees(

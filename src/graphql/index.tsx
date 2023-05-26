@@ -43,10 +43,12 @@ export type CreateEmployee = {
   employerSocso?: InputMaybe<Scalars["Float"]>;
   icNo?: InputMaybe<Scalars["String"]>;
   id?: InputMaybe<Scalars["String"]>;
+  isAccepted?: InputMaybe<Scalars["Boolean"]>;
   loan?: InputMaybe<Scalars["Float"]>;
   name?: InputMaybe<Scalars["String"]>;
   password?: InputMaybe<Scalars["String"]>;
   phoneNo?: InputMaybe<Scalars["String"]>;
+  type?: InputMaybe<Scalars["String"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedBy?: InputMaybe<Scalars["Float"]>;
 };
@@ -250,10 +252,12 @@ export type Employee = {
   employerSocso?: Maybe<Scalars["Float"]>;
   icNo: Scalars["String"];
   id: Scalars["String"];
+  isAccepted?: Maybe<Scalars["Boolean"]>;
   loan?: Maybe<Scalars["Float"]>;
   name: Scalars["String"];
   password?: Maybe<Scalars["String"]>;
   phoneNo?: Maybe<Scalars["String"]>;
+  type?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -274,10 +278,12 @@ export type EmployeeAggregateGroupBy = {
   employerSocso?: Maybe<Scalars["Float"]>;
   icNo?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["String"]>;
+  isAccepted?: Maybe<Scalars["Boolean"]>;
   loan?: Maybe<Scalars["Float"]>;
   name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
   phoneNo?: Maybe<Scalars["String"]>;
+  type?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -322,10 +328,12 @@ export type EmployeeCountAggregate = {
   employerSocso?: Maybe<Scalars["Int"]>;
   icNo?: Maybe<Scalars["Int"]>;
   id?: Maybe<Scalars["Int"]>;
+  isAccepted?: Maybe<Scalars["Int"]>;
   loan?: Maybe<Scalars["Int"]>;
   name?: Maybe<Scalars["Int"]>;
   password?: Maybe<Scalars["Int"]>;
   phoneNo?: Maybe<Scalars["Int"]>;
+  type?: Maybe<Scalars["Int"]>;
   updatedAt?: Maybe<Scalars["Int"]>;
   updatedBy?: Maybe<Scalars["Int"]>;
 };
@@ -346,11 +354,13 @@ export type EmployeeDeleteFilter = {
   employerSocso?: InputMaybe<NumberFieldComparison>;
   icNo?: InputMaybe<StringFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
+  isAccepted?: InputMaybe<BooleanFieldComparison>;
   loan?: InputMaybe<NumberFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<EmployeeDeleteFilter>>;
   password?: InputMaybe<StringFieldComparison>;
   phoneNo?: InputMaybe<StringFieldComparison>;
+  type?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -371,10 +381,12 @@ export type EmployeeDeleteResponse = {
   employerSocso?: Maybe<Scalars["Float"]>;
   icNo?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["String"]>;
+  isAccepted?: Maybe<Scalars["Boolean"]>;
   loan?: Maybe<Scalars["Float"]>;
   name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
   phoneNo?: Maybe<Scalars["String"]>;
+  type?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -395,11 +407,13 @@ export type EmployeeFilter = {
   employerSocso?: InputMaybe<NumberFieldComparison>;
   icNo?: InputMaybe<StringFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
+  isAccepted?: InputMaybe<BooleanFieldComparison>;
   loan?: InputMaybe<NumberFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<EmployeeFilter>>;
   password?: InputMaybe<StringFieldComparison>;
   phoneNo?: InputMaybe<StringFieldComparison>;
+  type?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -424,6 +438,7 @@ export type EmployeeMaxAggregate = {
   name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
   phoneNo?: Maybe<Scalars["String"]>;
+  type?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -448,6 +463,7 @@ export type EmployeeMinAggregate = {
   name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
   phoneNo?: Maybe<Scalars["String"]>;
+  type?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -473,10 +489,12 @@ export enum EmployeeSortFields {
   EmployerSocso = "employerSocso",
   IcNo = "icNo",
   Id = "id",
+  IsAccepted = "isAccepted",
   Loan = "loan",
   Name = "name",
   Password = "password",
   PhoneNo = "phoneNo",
+  Type = "type",
   UpdatedAt = "updatedAt",
   UpdatedBy = "updatedBy",
 }
@@ -511,11 +529,13 @@ export type EmployeeUpdateFilter = {
   employerSocso?: InputMaybe<NumberFieldComparison>;
   icNo?: InputMaybe<StringFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
+  isAccepted?: InputMaybe<BooleanFieldComparison>;
   loan?: InputMaybe<NumberFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<EmployeeUpdateFilter>>;
   password?: InputMaybe<StringFieldComparison>;
   phoneNo?: InputMaybe<StringFieldComparison>;
+  type?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -1205,11 +1225,13 @@ export type ShiftFilterEmployeeFilter = {
   employerSocso?: InputMaybe<NumberFieldComparison>;
   icNo?: InputMaybe<StringFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
+  isAccepted?: InputMaybe<BooleanFieldComparison>;
   loan?: InputMaybe<NumberFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<ShiftFilterEmployeeFilter>>;
   password?: InputMaybe<StringFieldComparison>;
   phoneNo?: InputMaybe<StringFieldComparison>;
+  type?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -1566,10 +1588,12 @@ export type UpdateEmployee = {
   employerSocso?: InputMaybe<Scalars["Float"]>;
   icNo?: InputMaybe<Scalars["String"]>;
   id?: InputMaybe<Scalars["String"]>;
+  isAccepted?: InputMaybe<Scalars["Boolean"]>;
   loan?: InputMaybe<Scalars["Float"]>;
   name?: InputMaybe<Scalars["String"]>;
   password?: InputMaybe<Scalars["String"]>;
   phoneNo?: InputMaybe<Scalars["String"]>;
+  type?: InputMaybe<Scalars["String"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedBy?: InputMaybe<Scalars["Float"]>;
 };
@@ -1918,6 +1942,7 @@ export type EmployeeFieldsFragment = {
   loan?: number | null;
   accountNo?: number | null;
   bankType?: string | null;
+  isAccepted?: boolean | null;
 };
 
 export type GetEmployeesQueryVariables = Exact<{
@@ -1946,6 +1971,7 @@ export type GetEmployeesQuery = {
       loan?: number | null;
       accountNo?: number | null;
       bankType?: string | null;
+      isAccepted?: boolean | null;
     }>;
   };
 };
@@ -1971,6 +1997,7 @@ export type GetOneEmployeeQuery = {
     loan?: number | null;
     accountNo?: number | null;
     bankType?: string | null;
+    isAccepted?: boolean | null;
   } | null;
 };
 
@@ -2358,6 +2385,7 @@ export const EmployeeFieldsFragmentDoc = gql`
     loan
     accountNo
     bankType
+    isAccepted
   }
 `;
 export const LocationFieldsFragmentDoc = gql`
