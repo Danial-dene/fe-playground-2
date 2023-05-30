@@ -5,7 +5,7 @@
 /** Generate by swagger-axios-codegen */
 /* eslint-disable */
 // @ts-nocheck
-import axiosStatic, { AxiosInstance, AxiosRequestConfig } from "axios";
+import axiosStatic, { AxiosInstance, AxiosRequestConfig } from 'axios';
 
 export interface IRequestOptions extends AxiosRequestConfig {}
 
@@ -26,40 +26,31 @@ export interface ServiceOptions {
 export const serviceOptions: ServiceOptions = {};
 
 // Instance selector
-export function axios(
-  configs: IRequestConfig,
-  resolve: (p: any) => void,
-  reject: (p: any) => void
-): Promise<any> {
+export function axios(configs: IRequestConfig, resolve: (p: any) => void, reject: (p: any) => void): Promise<any> {
   if (serviceOptions.axios) {
     return serviceOptions.axios
       .request(configs)
-      .then((res) => {
+      .then(res => {
         resolve(res.data);
       })
-      .catch((err) => {
+      .catch(err => {
         reject(err);
       });
   } else {
-    throw new Error("please inject yourself instance like axios  ");
+    throw new Error('please inject yourself instance like axios  ');
   }
 }
 
-export function getConfigs(
-  method: string,
-  contentType: string,
-  url: string,
-  options: any
-): IRequestConfig {
+export function getConfigs(method: string, contentType: string, url: string, options: any): IRequestConfig {
   const configs: IRequestConfig = { ...options, method, url };
   configs.headers = {
     ...options.headers,
-    "Content-Type": contentType,
+    'Content-Type': contentType
   };
   return configs;
 }
 
-export const basePath = "";
+export const basePath = '';
 
 export interface IList<T> extends Array<T> {}
 export interface List<T> extends Array<T> {}
@@ -86,31 +77,24 @@ export class PagedResultDto<T = any> implements IPagedResult<T> {
   items?: T[];
 }
 
-console.log("basePath", basePath);
-
 // customer definition
 // empty
 
 export class UserAuthService {
   /**
-   * Sign In
+   *
    */
   static signIn(
     params: {
       /** requestBody */
-      body?: SignInInput;
+      body?: AdminLoginInputDto;
     } = {} as any,
     options: IRequestOptions = {}
-  ): Promise<AuthTokenResDTO> {
+  ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + "/api/auth/login";
-      console.log("url", url);
-      const configs: IRequestConfig = getConfigs(
-        "post",
-        "application/json",
-        url,
-        options
-      );
+      let url = basePath + '/auth/user/sign-in';
+
+      const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
       let data = params.body;
 
@@ -120,90 +104,19 @@ export class UserAuthService {
     });
   }
   /**
-   * Sign In
-   */
-  static checkSession(options: IRequestOptions = {}): Promise<any> {
-    return new Promise((resolve, reject) => {
-      let url = basePath + "/api/admin/admin/check-session";
-
-      const configs: IRequestConfig = getConfigs(
-        "get",
-        "application/json",
-        url,
-        options
-      );
-
-      /** 适配ios13，get请求不允许带body */
-
-      axios(configs, resolve, reject);
-    });
-  }
-  /**
-   * Sign Out
-   */
-  static signOut(options: IRequestOptions = {}): Promise<any> {
-    return new Promise((resolve, reject) => {
-      let url = basePath + "/api/auth/logout";
-      console.log("hello");
-
-      const configs: IRequestConfig = getConfigs(
-        "get",
-        "application/json",
-        url,
-        options
-      );
-
-      /** 适配ios13，get请求不允许带body */
-
-      axios(configs, resolve, reject);
-    });
-  }
-  /**
-   * Refresh Token
-   */
-  static revokeAuthentication(
-    params: {
-      /** requestBody */
-      body?: RevokeTokenInput;
-    } = {} as any,
-    options: IRequestOptions = {}
-  ): Promise<AuthTokenResDTO> {
-    return new Promise((resolve, reject) => {
-      let url = basePath + "/api/auth/admin/revoke-authentication";
-
-      const configs: IRequestConfig = getConfigs(
-        "post",
-        "application/json",
-        url,
-        options
-      );
-
-      let data = params.body;
-
-      configs.data = data;
-
-      axios(configs, resolve, reject);
-    });
-  }
-  /**
-   * Reset Password
+   *
    */
   static forgetPassword(
     params: {
       /** requestBody */
-      body?: ForgetPasswordInput;
+      body?: AdminForgotPasswordInputDto;
     } = {} as any,
     options: IRequestOptions = {}
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + "/api/auth/admin/forget-password";
+      let url = basePath + '/auth/user/forget-password';
 
-      const configs: IRequestConfig = getConfigs(
-        "post",
-        "application/json",
-        url,
-        options
-      );
+      const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
       let data = params.body;
 
@@ -213,24 +126,19 @@ export class UserAuthService {
     });
   }
   /**
-   * Reset Password
+   *
    */
   static resetPassword(
     params: {
       /** requestBody */
-      body?: ResetPasswordInput;
+      body?: AdminResetPasswordInputDto;
     } = {} as any,
     options: IRequestOptions = {}
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + "/api/auth/admin/reset-password";
+      let url = basePath + '/auth/user/reset-password';
 
-      const configs: IRequestConfig = getConfigs(
-        "post",
-        "application/json",
-        url,
-        options
-      );
+      const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
       let data = params.body;
 
@@ -240,24 +148,19 @@ export class UserAuthService {
     });
   }
   /**
-   * Change Password
+   *
    */
   static changePassword(
     params: {
       /** requestBody */
-      body?: ChangePasswordInput;
+      body?: AdminChangePasswordInputDto;
     } = {} as any,
     options: IRequestOptions = {}
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + "/auth/user/change-password";
+      let url = basePath + '/auth/user/change-password';
 
-      const configs: IRequestConfig = getConfigs(
-        "post",
-        "application/json",
-        url,
-        options
-      );
+      const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
       let data = params.body;
 
@@ -267,18 +170,98 @@ export class UserAuthService {
     });
   }
   /**
-   * Change Password
+   *
    */
-  static deactivateUser(options: IRequestOptions = {}): Promise<any> {
+  static logout(options: IRequestOptions = {}): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + "/api/auth/admin/deactivate-user";
+      let url = basePath + '/auth/user/logout';
 
-      const configs: IRequestConfig = getConfigs(
-        "post",
-        "application/json",
-        url,
-        options
-      );
+      const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
+
+      let data = null;
+
+      configs.data = data;
+
+      axios(configs, resolve, reject);
+    });
+  }
+  /**
+   *
+   */
+  static revokeAuthentication(
+    params: {
+      /** requestBody */
+      body?: AdminRevokeTokenInputDto;
+    } = {} as any,
+    options: IRequestOptions = {}
+  ): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let url = basePath + '/auth/user/revoke-authentication';
+
+      const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
+
+      let data = params.body;
+
+      configs.data = data;
+
+      axios(configs, resolve, reject);
+    });
+  }
+}
+
+export class EmployeeService {
+  /**
+   *
+   */
+  static logIn(
+    params: {
+      /** requestBody */
+      body?: EmployeeLoginInputDto;
+    } = {} as any,
+    options: IRequestOptions = {}
+  ): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let url = basePath + '/auth/employee/log-in';
+
+      const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
+
+      let data = params.body;
+
+      configs.data = data;
+
+      axios(configs, resolve, reject);
+    });
+  }
+  /**
+   *
+   */
+  static changePassword(
+    params: {
+      /** requestBody */
+      body?: EmployeeChangePasswordInputDto;
+    } = {} as any,
+    options: IRequestOptions = {}
+  ): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let url = basePath + '/auth/employee/change-password';
+
+      const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
+
+      let data = params.body;
+
+      configs.data = data;
+
+      axios(configs, resolve, reject);
+    });
+  }
+  /**
+   *
+   */
+  static logout(options: IRequestOptions = {}): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let url = basePath + '/auth/employee/logout';
+
+      const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
       let data = null;
 
@@ -289,7 +272,7 @@ export class UserAuthService {
   }
 }
 
-export interface SignInInput {
+export interface AdminLoginInputDto {
   /**  */
   email: string;
 
@@ -297,36 +280,41 @@ export interface SignInInput {
   password: string;
 }
 
-export interface AuthTokenResDTO {
-  /**  */
-  accessToken: string;
-
-  /**  */
-  refreshToken: string;
-
-  /**  */
-  accessTokenExpiry: number;
-}
-
-export interface RevokeTokenInput {
-  /**  */
-  refreshToken: string;
-}
-
-export interface ForgetPasswordInput {
+export interface AdminForgotPasswordInputDto {
   /**  */
   email: string;
 }
 
-export interface ResetPasswordInput {
+export interface AdminResetPasswordInputDto {
   /**  */
-  token: string;
+  resetToken: string;
 
   /**  */
   newPassword: string;
 }
 
-export interface ChangePasswordInput {
+export interface AdminChangePasswordInputDto {
+  /**  */
+  oldPassword: string;
+
+  /**  */
+  newPassword: string;
+}
+
+export interface AdminRevokeTokenInputDto {
+  /**  */
+  refreshToken: string;
+}
+
+export interface EmployeeLoginInputDto {
+  /**  */
+  phone: string;
+
+  /**  */
+  password: string;
+}
+
+export interface EmployeeChangePasswordInputDto {
   /**  */
   oldPassword: string;
 

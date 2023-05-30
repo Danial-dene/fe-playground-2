@@ -22,13 +22,11 @@ const Login: React.FC = () => {
     router.push("/");
   }
 
-  console.log("status", status);
-
   const onFinishFailed = (errorInfo: any) => {};
 
   const onFinish = async (values: FormValues) => {
     setSubmitting(true);
-    console.log("values", values);
+
     try {
       //@ts-ignore
       const { error, status, ok, url } = await signIn("credentials", {
@@ -37,7 +35,7 @@ const Login: React.FC = () => {
         password: values.password,
         callbackUrl: "/",
       });
-      console.log("error", error, status, url);
+
       if (error) message.error("Invalid email or password");
     } catch (e) {
       throw e;
@@ -90,9 +88,9 @@ const Login: React.FC = () => {
                   <Input.Password />
                 </Form.Item>
 
-                {/* <Link href="/forgot-password">
+                <Link href="/forgot-password">
                   <a className="text-sm">Forgot password?</a>
-                </Link> */}
+                </Link>
                 <Button
                   htmlType="submit"
                   type="primary"

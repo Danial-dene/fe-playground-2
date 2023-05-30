@@ -46,7 +46,7 @@ const ForgotPassword: React.FC = () => {
                 <>
                   <div className="text-center py-5">
                     <div className="aspect-[1] relative self-center w-[80px] inline-block">
-                      <Image src="/assets/logo.png" layout="fill" />
+                      {/* <Image src="/assets/logo.png" layout="fill" /> */}
                     </div>
                   </div>
                   <h1 className="mb-5 text-center text-h1">
@@ -92,7 +92,7 @@ const ForgotPassword: React.FC = () => {
                 <>
                   <div className="text-center py-5">
                     <div className="aspect-[1.7] relative self-center w-[80px] inline-block">
-                      <Image src="/assets/logo.png" layout="fill" />
+                      {/* <Image src="/assets/logo.png" layout="fill" /> */}
                     </div>
                   </div>
                   <h1 className="mb-5 text-center text-h1">Check your email</h1>
