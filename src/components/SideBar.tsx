@@ -3,7 +3,7 @@ import { Col, Divider, Layout, Menu, Row } from "antd";
 import _ from "lodash";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import router, { useRouter } from "next/router";
 import React, { useState } from "react";
 import { Icon } from "@commons";
 import {
@@ -92,6 +92,7 @@ const items: MenuItemProps[] = [
         icon: PoweroffOutlined,
         onClick: () => {
           signOut();
+          router.push('/')
         },
       },
     ],

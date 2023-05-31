@@ -13,14 +13,14 @@ const ResetPassword: React.FC = () => {
   const [success, setSuccess] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
 
-  const token = router.query.token as string;
+  const resetToken = router.query.token as string;
 
   const onFinish = async (values: FormData) => {
     try {
       setSubmitting(true);
       const newPassword = values.newPassword;
       const res = await UserAuthService.resetPassword({
-        body: { newPassword, token },
+        body: { newPassword, resetToken },
       });
       setSuccess(true);
     } catch (e) {
@@ -30,7 +30,7 @@ const ResetPassword: React.FC = () => {
     }
   };
 
-  if (!token) {
+  if (!resetToken) {
     return (
       <div className="h-full">
         <Row justify="center" align="middle" className="h-full">
