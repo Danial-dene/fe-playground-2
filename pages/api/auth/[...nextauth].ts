@@ -4,7 +4,6 @@ import _ from "lodash";
 import NextAuth, { User } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { useRouter } from "next/router";
 
 export default NextAuth({
   providers: [
@@ -51,6 +50,10 @@ export default NextAuth({
   ],
 
   callbacks: {
+    async signOut({ callbackUrl }) {
+      return Promise.resolve();
+    },
+
     //if true
     async signIn({ user }) {
       let token: any = null;
