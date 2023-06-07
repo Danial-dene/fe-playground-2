@@ -72,8 +72,6 @@ const CustomerEdit = () => {
   const onFinish = (values: any) => {
     let input = { ...values };
 
-    console.log("values", values);
-
     if (id) {
       updateAdmin({
         variables: { input: { id: _.toString(id), update: input } },
