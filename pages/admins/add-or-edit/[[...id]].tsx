@@ -5,7 +5,7 @@ import { isValidPhoneNumber } from "libphonenumber-js";
 import { Button, Col, Form, Input, message, Row, Select } from "antd";
 import { useForm } from "antd/lib/form/Form";
 import { useEffect } from "react";
-import { AvatarUploadInput, PhoneNumberInput } from "@forms";
+import { AvatarUploadInput, ImageUploadInput, PhoneNumberInput } from "@forms";
 import { Breadcrumb, Card } from "@commons";
 import _ from "lodash";
 import { getErrorMessage } from "@utils";
@@ -72,6 +72,8 @@ const CustomerEdit = () => {
   const onFinish = (values: any) => {
     let input = { ...values };
 
+    console.log("values", values);
+
     if (id) {
       updateAdmin({
         variables: { input: { id: _.toString(id), update: input } },
@@ -99,6 +101,14 @@ const CustomerEdit = () => {
               initialValues={data?.user ? data?.user : {}}
               requiredMark={false}
             >
+              <Form.Item
+                label="Thumbnail"
+                name="thumbnailUrl"
+                rules={[{ required: true }]}
+              >
+                <ImageUploadInput />
+              </Form.Item>
+
               <Form.Item label="Name" name="name" rules={[{ required: true }]}>
                 <Input />
               </Form.Item>
