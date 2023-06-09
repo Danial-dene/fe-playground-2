@@ -52,6 +52,7 @@ const CustomerEdit = () => {
   const [updateAdmin, { loading: isSubmitting }] = Gql.useUpdateUserMutation({
     onCompleted: () => {
       message.success("User successfully saved!");
+      router.back();
     },
     onError: (e) => {
       message.error(getErrorMessage(e));
@@ -72,11 +73,12 @@ const CustomerEdit = () => {
   const onFinish = (values: any) => {
     let input = { ...values };
 
+    console.log("input", input);
+
     if (id) {
       updateAdmin({
         variables: { input: { id: _.toString(id), update: input } },
       });
-      router.back();
     } else {
       addAdmin({ variables: { input: { user: input } } });
       router.back();
