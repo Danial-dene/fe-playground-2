@@ -71,16 +71,14 @@ const CustomerEdit = () => {
   // console.log(error);
 
   const onFinish = (values: any) => {
-    let input = { ...values };
-
-    console.log("input", input);
+    console.log("values", values);
 
     if (id) {
       updateAdmin({
-        variables: { input: { id: _.toString(id), update: input } },
+        variables: { input: { id: _.toString(id), update: values } },
       });
     } else {
-      addAdmin({ variables: { input: { user: input } } });
+      addAdmin({ variables: { input: { user: values } } });
       router.back();
       // form.resetFields()
     }
@@ -131,14 +129,18 @@ const CustomerEdit = () => {
                 </Form.Item>
               )}
 
-              {/* <Form.Item label="Status" name="isActive">
+              <Form.Item label="Status" name="active">
                 <Select
                   options={[
                     { label: "Active", value: true },
                     { label: "Inactive", value: false },
                   ]}
                 />
-              </Form.Item> */}
+              </Form.Item>
+
+              <Form.Item label="Phone No." name="phoneNo">
+                <Input />
+              </Form.Item>
 
               <Button
                 loading={loading}

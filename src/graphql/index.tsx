@@ -21,6 +21,8 @@ export type Scalars = {
   Float: number;
   /** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
   DateTime: any;
+  /** The `Upload` scalar type represents a file upload. */
+  Upload: File | Blob;
 };
 
 export type BooleanFieldComparison = {
@@ -156,6 +158,7 @@ export type CreateUser = {
   name?: InputMaybe<Scalars["String"]>;
   password?: InputMaybe<Scalars["String"]>;
   phoneNo?: InputMaybe<Scalars["String"]>;
+  thumbnailUrl?: InputMaybe<Scalars["String"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedBy?: InputMaybe<Scalars["Float"]>;
 };
@@ -1650,7 +1653,7 @@ export type UpdateManyUsersInput = {
   /** Filter used to find fields to update */
   filter: UserUpdateFilter;
   /** The update to apply to all records found using the filter */
-  update: UpdateUser;
+  update: UpdateUserInput;
 };
 
 export type UpdateOneEmployeeInput = {
@@ -1685,7 +1688,7 @@ export type UpdateOneUserInput = {
   /** The id of the record to update */
   id: Scalars["String"];
   /** The update to apply. */
-  update: UpdateUser;
+  update: UpdateUserInput;
 };
 
 export type UpdateShift = {
@@ -1722,19 +1725,13 @@ export type UpdateShiftOption = {
   updatedBy?: InputMaybe<Scalars["Float"]>;
 };
 
-export type UpdateUser = {
-  active?: InputMaybe<Scalars["Boolean"]>;
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  createdBy?: InputMaybe<Scalars["Float"]>;
-  deletedAt?: InputMaybe<Scalars["DateTime"]>;
-  deletedBy?: InputMaybe<Scalars["Float"]>;
-  email?: InputMaybe<Scalars["String"]>;
-  id?: InputMaybe<Scalars["String"]>;
-  name?: InputMaybe<Scalars["String"]>;
-  password?: InputMaybe<Scalars["String"]>;
-  phoneNo?: InputMaybe<Scalars["String"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
-  updatedBy?: InputMaybe<Scalars["Float"]>;
+export type UpdateUserInput = {
+  active: Scalars["Boolean"];
+  email: Scalars["String"];
+  name: Scalars["String"];
+  password: Scalars["String"];
+  phoneNo: Scalars["String"];
+  thumbnailUrl: Scalars["Upload"];
 };
 
 export type User = {
@@ -1749,6 +1746,7 @@ export type User = {
   name?: Maybe<Scalars["String"]>;
   password: Scalars["String"];
   phoneNo?: Maybe<Scalars["String"]>;
+  thumbnailUrl: Scalars["String"];
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -1765,6 +1763,7 @@ export type UserAggregateGroupBy = {
   name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
   phoneNo?: Maybe<Scalars["String"]>;
+  thumbnailUrl?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -1798,6 +1797,7 @@ export type UserCountAggregate = {
   name?: Maybe<Scalars["Int"]>;
   password?: Maybe<Scalars["Int"]>;
   phoneNo?: Maybe<Scalars["Int"]>;
+  thumbnailUrl?: Maybe<Scalars["Int"]>;
   updatedAt?: Maybe<Scalars["Int"]>;
   updatedBy?: Maybe<Scalars["Int"]>;
 };
@@ -1815,6 +1815,7 @@ export type UserDeleteFilter = {
   or?: InputMaybe<Array<UserDeleteFilter>>;
   password?: InputMaybe<StringFieldComparison>;
   phoneNo?: InputMaybe<StringFieldComparison>;
+  thumbnailUrl?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -1831,6 +1832,7 @@ export type UserDeleteResponse = {
   name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
   phoneNo?: Maybe<Scalars["String"]>;
+  thumbnailUrl?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -1848,6 +1850,7 @@ export type UserFilter = {
   or?: InputMaybe<Array<UserFilter>>;
   password?: InputMaybe<StringFieldComparison>;
   phoneNo?: InputMaybe<StringFieldComparison>;
+  thumbnailUrl?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -1863,6 +1866,7 @@ export type UserMaxAggregate = {
   name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
   phoneNo?: Maybe<Scalars["String"]>;
+  thumbnailUrl?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -1878,6 +1882,7 @@ export type UserMinAggregate = {
   name?: Maybe<Scalars["String"]>;
   password?: Maybe<Scalars["String"]>;
   phoneNo?: Maybe<Scalars["String"]>;
+  thumbnailUrl?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
@@ -1899,6 +1904,7 @@ export enum UserSortFields {
   Name = "name",
   Password = "password",
   PhoneNo = "phoneNo",
+  ThumbnailUrl = "thumbnailUrl",
   UpdatedAt = "updatedAt",
   UpdatedBy = "updatedBy",
 }
@@ -1923,6 +1929,7 @@ export type UserUpdateFilter = {
   or?: InputMaybe<Array<UserUpdateFilter>>;
   password?: InputMaybe<StringFieldComparison>;
   phoneNo?: InputMaybe<StringFieldComparison>;
+  thumbnailUrl?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -2307,6 +2314,9 @@ export type UsersFieldsFragment = {
   id: string;
   name?: string | null;
   email?: string | null;
+  thumbnailUrl: string;
+  active?: boolean | null;
+  phoneNo?: string | null;
 };
 
 export type GetUsersQueryVariables = Exact<{
@@ -2325,6 +2335,9 @@ export type GetUsersQuery = {
       id: string;
       name?: string | null;
       email?: string | null;
+      thumbnailUrl: string;
+      active?: boolean | null;
+      phoneNo?: string | null;
     }>;
   };
 };
@@ -2340,6 +2353,9 @@ export type GetOneUserQuery = {
     id: string;
     name?: string | null;
     email?: string | null;
+    thumbnailUrl: string;
+    active?: boolean | null;
+    phoneNo?: string | null;
   } | null;
 };
 
@@ -2440,6 +2456,9 @@ export const UsersFieldsFragmentDoc = gql`
     id
     name
     email
+    thumbnailUrl
+    active
+    phoneNo
   }
 `;
 export const GetEmployeesDocument = gql`

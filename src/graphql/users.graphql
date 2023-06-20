@@ -2,6 +2,9 @@ fragment UsersFields on User {
   id
   name
   email
+  thumbnailUrl
+  active
+  phoneNo
 }
 
 query getUsers(
