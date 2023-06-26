@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react";
-import { Button, Dropdown, Menu, Form, Input, message, Tag } from "antd";
+import { CommonTableView, Icon } from "@commons";
+import { Button, Dropdown, Form, Input, Menu } from "antd";
 import { useRouter } from "next/router";
-import _, { divide } from "lodash";
-import { Icon, CommonTableView } from "@commons";
-import * as Gql from "@graphql";
-import { useHeader } from "@components/HeaderProvider";
-import { SearchOutlined } from "@ant-design/icons";
-import Link from "next/link";
-import { deleteModal } from "@components/popup";
-import { getErrorMessage } from "@utils";
+import { useEffect } from "react";
 
-//NOTE: Customer is list of company
-const Customers = () => {
+import { SearchOutlined } from "@ant-design/icons";
+import { useHeader } from "@components/HeaderProvider";
+import { deleteModal } from "@components/popup";
+import { useDeleteAdminMutation, useGetAdminsQuery } from "@graphql";
+import { onError, onSuccess } from "@utils";
+import Link from "next/link";
+
+const Admins = () => {
   const router = useRouter();
   const { setTitle } = useHeader();
 
@@ -19,42 +18,26 @@ const Customers = () => {
     data,
     loading: adminLoading,
     refetch,
-    error,
-  } = Gql.useGetUsersQuery({
-    notifyOnNetworkStatusChange: true,
-    fetchPolicy: "network-only",
-    variables: {
-      paging: {
-        limit: 10,
-        offset: 0,
-      },
-    },
+  } = useGetAdminsQuery({
+    // notifyOnNetworkStatusChange: true,
+    fetchPolicy: "cache-first",
+    onError: onError,
   });
 
   useEffect(() => {
-    if (!data) {
-      refetch();
-    }
-  }, [data]);
+    refetch();
+  }, [router, data]);
 
-  const [deleteAdmin, { loading: deleting }] = Gql.useDeleteUserMutation({
-    onCompleted: () => {
-      refetch();
-      message.success("Admin successfully deleted!");
-    },
-    onError: (e) => {
-      message.error(getErrorMessage(e));
-    },
-  });
-
-  const [updateAdmin, { loading: isSubmitting }] = Gql.useUpdateUserMutation({
-    onCompleted: () => {
-      refetch();
-      message.success("Admin successfully saved!");
-    },
-    onError: (e) => {
-      message.error(getErrorMessage(e));
-    },
+  const [deleteAdmin, { loading: deleting }] = useDeleteAdminMutation({
+    onCompleted: () =>
+      onSuccess({
+        type: "delete",
+        title: "Admin",
+        router,
+        goBack: false,
+        refetch,
+      }),
+    onError: onError,
   });
 
   const parseFilter = () => {
@@ -76,7 +59,7 @@ const Customers = () => {
     return res;
   };
 
-  const totalCount = data?.users?.totalCount || 0;
+  const totalCount = data?.admins?.totalCount || 0;
 
   useEffect(() => {
     setTitle("Users");
@@ -122,7 +105,7 @@ const Customers = () => {
         );
 
         return (
-          <div onClick={(e) => e.stopPropagation()}>
+          <div onClick={(e) => e.stopPropagation()} className="cursor-pointer">
             <Dropdown overlay={menu} trigger={["click"]}>
               <Icon name="dots" />
             </Dropdown>
@@ -138,7 +121,7 @@ const Customers = () => {
     };
   };
 
-  const loading = deleting || adminLoading || isSubmitting;
+  const loading = deleting || adminLoading;
   return (
     <>
       <div className="p-9">
@@ -173,7 +156,7 @@ const Customers = () => {
           columns={columns}
           loading={loading}
           refetch={refetch}
-          dataSource={data?.users?.nodes || []}
+          dataSource={data?.admins?.nodes || []}
           totalCount={totalCount}
           gqlFilters={parseFilter()}
           onRow={onRow}
@@ -183,6 +166,6 @@ const Customers = () => {
   );
 };
 
-Customers.auth = true;
+Admins.auth = true;
 
-export default Customers;
+export default Admins;

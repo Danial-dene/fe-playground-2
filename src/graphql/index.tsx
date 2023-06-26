@@ -27,6 +27,7 @@ export type Scalars = {
 
 export type Admin = {
   __typename?: "Admin";
+  active?: Maybe<Scalars["Boolean"]>;
   createdAt: Scalars["DateTime"];
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
@@ -36,13 +37,14 @@ export type Admin = {
   name?: Maybe<Scalars["String"]>;
   password: Scalars["String"];
   phoneNo?: Maybe<Scalars["String"]>;
-  thumbnail: Scalars["String"];
+  thumbnail?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
 export type AdminAggregateGroupBy = {
   __typename?: "AdminAggregateGroupBy";
+  active?: Maybe<Scalars["Boolean"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
@@ -76,6 +78,7 @@ export type AdminConnection = {
 
 export type AdminCountAggregate = {
   __typename?: "AdminCountAggregate";
+  active?: Maybe<Scalars["Int"]>;
   createdAt?: Maybe<Scalars["Int"]>;
   createdBy?: Maybe<Scalars["Int"]>;
   deletedAt?: Maybe<Scalars["Int"]>;
@@ -91,6 +94,7 @@ export type AdminCountAggregate = {
 };
 
 export type AdminDeleteFilter = {
+  active?: InputMaybe<BooleanFieldComparison>;
   and?: InputMaybe<Array<AdminDeleteFilter>>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
@@ -109,6 +113,7 @@ export type AdminDeleteFilter = {
 
 export type AdminDeleteResponse = {
   __typename?: "AdminDeleteResponse";
+  active?: Maybe<Scalars["Boolean"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
@@ -124,6 +129,7 @@ export type AdminDeleteResponse = {
 };
 
 export type AdminFilter = {
+  active?: InputMaybe<BooleanFieldComparison>;
   and?: InputMaybe<Array<AdminFilter>>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
@@ -179,6 +185,7 @@ export type AdminSort = {
 };
 
 export enum AdminSortFields {
+  Active = "active",
   CreatedAt = "createdAt",
   CreatedBy = "createdBy",
   DeletedAt = "deletedAt",
@@ -201,6 +208,7 @@ export type AdminSumAggregate = {
 };
 
 export type AdminUpdateFilter = {
+  active?: InputMaybe<BooleanFieldComparison>;
   and?: InputMaybe<Array<AdminUpdateFilter>>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
@@ -409,6 +417,7 @@ export type Counter_TypeDeleteResponse = {
 };
 
 export type CreateAdmin = {
+  active?: InputMaybe<Scalars["Boolean"]>;
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   createdBy?: InputMaybe<Scalars["Float"]>;
   deletedAt?: InputMaybe<Scalars["DateTime"]>;
@@ -2186,7 +2195,7 @@ export type UpdateAdminInput = {
   name: Scalars["String"];
   password?: InputMaybe<Scalars["String"]>;
   phoneNo: Scalars["String"];
-  thumbnail: Scalars["Upload"];
+  thumbnail?: InputMaybe<Scalars["Upload"]>;
 };
 
 export type UpdateCounter = {
@@ -2701,7 +2710,8 @@ export type AdminsFieldsFragment = {
   id: string;
   name?: string | null;
   email?: string | null;
-  thumbnail: string;
+  thumbnail?: string | null;
+  active?: boolean | null;
   phoneNo?: string | null;
 };
 
@@ -2721,7 +2731,8 @@ export type GetAdminsQuery = {
       id: string;
       name?: string | null;
       email?: string | null;
-      thumbnail: string;
+      thumbnail?: string | null;
+      active?: boolean | null;
       phoneNo?: string | null;
     }>;
   };
@@ -2738,7 +2749,8 @@ export type GetAdminQuery = {
     id: string;
     name?: string | null;
     email?: string | null;
-    thumbnail: string;
+    thumbnail?: string | null;
+    active?: boolean | null;
     phoneNo?: string | null;
   } | null;
 };
@@ -2762,12 +2774,12 @@ export type UpdateAdminMutation = {
 };
 
 export type DeleteAdminMutationVariables = Exact<{
-  input: UpdateOneAdminInput;
+  input: DeleteOneAdminInput;
 }>;
 
 export type DeleteAdminMutation = {
   __typename?: "Mutation";
-  updateOneAdmin: { __typename?: "Admin"; id: string };
+  deleteOneAdmin: { __typename?: "AdminDeleteResponse"; id?: string | null };
 };
 
 export type MeFieldsFragment = {
@@ -2804,6 +2816,7 @@ export const AdminsFieldsFragmentDoc = gql`
     name
     email
     thumbnail
+    active
     phoneNo
   }
 `;
@@ -3032,8 +3045,8 @@ export type UpdateAdminMutationOptions = Apollo.BaseMutationOptions<
   UpdateAdminMutationVariables
 >;
 export const DeleteAdminDocument = gql`
-  mutation deleteAdmin($input: UpdateOneAdminInput!) {
-    updateOneAdmin(input: $input) {
+  mutation deleteAdmin($input: DeleteOneAdminInput!) {
+    deleteOneAdmin(input: $input) {
       id
     }
   }
