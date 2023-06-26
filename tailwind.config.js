@@ -13,8 +13,7 @@ module.exports = {
       // "2xl": "24px",
       h1: "28px",
       h2: "24px",
-      h3: "20px",
-    },
+      h3: "20px", },
     screens: {
       "2xl": { min: "1581px" },
       xl: { min: "1200px", max: "1580px" },
@@ -28,7 +27,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: "#FA7800",
+        primary: "#691311",
         gray:"#F4F4F4",
         gray40: '#E8E8E8',
         gray50: '#DBD7C8',
@@ -39,7 +38,7 @@ module.exports = {
         danger: '#FF2020',
         solid: '#F9F9F9',
         green: '#5BBA5F',
-        sideBarColor: "#001A32",
+        sideBarColor: "#691311",
         
       },
     },
