@@ -25,12 +25,579 @@ export type Scalars = {
   Upload: File | Blob;
 };
 
+export type Admin = {
+  __typename?: "Admin";
+  createdAt: Scalars["DateTime"];
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  email?: Maybe<Scalars["String"]>;
+  id: Scalars["String"];
+  name?: Maybe<Scalars["String"]>;
+  password: Scalars["String"];
+  phoneNo?: Maybe<Scalars["String"]>;
+  thumbnail: Scalars["String"];
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type AdminAggregateGroupBy = {
+  __typename?: "AdminAggregateGroupBy";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  email?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
+  thumbnail?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type AdminAvgAggregate = {
+  __typename?: "AdminAvgAggregate";
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type AdminConnection = {
+  __typename?: "AdminConnection";
+  /** Array of nodes. */
+  nodes: Array<Admin>;
+  /** Paging information */
+  pageInfo: OffsetPageInfo;
+  /** Fetch total count of records */
+  totalCount: Scalars["Int"];
+};
+
+export type AdminCountAggregate = {
+  __typename?: "AdminCountAggregate";
+  createdAt?: Maybe<Scalars["Int"]>;
+  createdBy?: Maybe<Scalars["Int"]>;
+  deletedAt?: Maybe<Scalars["Int"]>;
+  deletedBy?: Maybe<Scalars["Int"]>;
+  email?: Maybe<Scalars["Int"]>;
+  id?: Maybe<Scalars["Int"]>;
+  name?: Maybe<Scalars["Int"]>;
+  password?: Maybe<Scalars["Int"]>;
+  phoneNo?: Maybe<Scalars["Int"]>;
+  thumbnail?: Maybe<Scalars["Int"]>;
+  updatedAt?: Maybe<Scalars["Int"]>;
+  updatedBy?: Maybe<Scalars["Int"]>;
+};
+
+export type AdminDeleteFilter = {
+  and?: InputMaybe<Array<AdminDeleteFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  email?: InputMaybe<StringFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  name?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<AdminDeleteFilter>>;
+  password?: InputMaybe<StringFieldComparison>;
+  phoneNo?: InputMaybe<StringFieldComparison>;
+  thumbnail?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type AdminDeleteResponse = {
+  __typename?: "AdminDeleteResponse";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  email?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
+  thumbnail?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type AdminFilter = {
+  and?: InputMaybe<Array<AdminFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  email?: InputMaybe<StringFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  name?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<AdminFilter>>;
+  password?: InputMaybe<StringFieldComparison>;
+  phoneNo?: InputMaybe<StringFieldComparison>;
+  thumbnail?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type AdminMaxAggregate = {
+  __typename?: "AdminMaxAggregate";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  email?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
+  thumbnail?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type AdminMinAggregate = {
+  __typename?: "AdminMinAggregate";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  email?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
+  thumbnail?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type AdminSort = {
+  direction: SortDirection;
+  field: AdminSortFields;
+  nulls?: InputMaybe<SortNulls>;
+};
+
+export enum AdminSortFields {
+  CreatedAt = "createdAt",
+  CreatedBy = "createdBy",
+  DeletedAt = "deletedAt",
+  DeletedBy = "deletedBy",
+  Email = "email",
+  Id = "id",
+  Name = "name",
+  Password = "password",
+  PhoneNo = "phoneNo",
+  Thumbnail = "thumbnail",
+  UpdatedAt = "updatedAt",
+  UpdatedBy = "updatedBy",
+}
+
+export type AdminSumAggregate = {
+  __typename?: "AdminSumAggregate";
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type AdminUpdateFilter = {
+  and?: InputMaybe<Array<AdminUpdateFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  email?: InputMaybe<StringFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  name?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<AdminUpdateFilter>>;
+  password?: InputMaybe<StringFieldComparison>;
+  phoneNo?: InputMaybe<StringFieldComparison>;
+  thumbnail?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
 export type BooleanFieldComparison = {
   is?: InputMaybe<Scalars["Boolean"]>;
   isNot?: InputMaybe<Scalars["Boolean"]>;
 };
 
-export type CreateEmployee = {
+export type Counter = {
+  __typename?: "Counter";
+  createdAt: Scalars["DateTime"];
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id: Scalars["String"];
+  number?: Maybe<Scalars["Float"]>;
+  type?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type CounterAggregateGroupBy = {
+  __typename?: "CounterAggregateGroupBy";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["String"]>;
+  number?: Maybe<Scalars["Float"]>;
+  type?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type CounterAvgAggregate = {
+  __typename?: "CounterAvgAggregate";
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  number?: Maybe<Scalars["Float"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type CounterConnection = {
+  __typename?: "CounterConnection";
+  /** Array of nodes. */
+  nodes: Array<Counter>;
+  /** Paging information */
+  pageInfo: OffsetPageInfo;
+  /** Fetch total count of records */
+  totalCount: Scalars["Int"];
+};
+
+export type CounterCountAggregate = {
+  __typename?: "CounterCountAggregate";
+  createdAt?: Maybe<Scalars["Int"]>;
+  createdBy?: Maybe<Scalars["Int"]>;
+  deletedAt?: Maybe<Scalars["Int"]>;
+  deletedBy?: Maybe<Scalars["Int"]>;
+  id?: Maybe<Scalars["Int"]>;
+  number?: Maybe<Scalars["Int"]>;
+  type?: Maybe<Scalars["Int"]>;
+  updatedAt?: Maybe<Scalars["Int"]>;
+  updatedBy?: Maybe<Scalars["Int"]>;
+};
+
+export type CounterDeleteFilter = {
+  and?: InputMaybe<Array<CounterDeleteFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  number?: InputMaybe<NumberFieldComparison>;
+  or?: InputMaybe<Array<CounterDeleteFilter>>;
+  type?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type CounterDeleteResponse = {
+  __typename?: "CounterDeleteResponse";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["String"]>;
+  number?: Maybe<Scalars["Float"]>;
+  type?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type CounterFilter = {
+  and?: InputMaybe<Array<CounterFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  number?: InputMaybe<NumberFieldComparison>;
+  or?: InputMaybe<Array<CounterFilter>>;
+  type?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type CounterMaxAggregate = {
+  __typename?: "CounterMaxAggregate";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["String"]>;
+  number?: Maybe<Scalars["Float"]>;
+  type?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type CounterMinAggregate = {
+  __typename?: "CounterMinAggregate";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["String"]>;
+  number?: Maybe<Scalars["Float"]>;
+  type?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type CounterSort = {
+  direction: SortDirection;
+  field: CounterSortFields;
+  nulls?: InputMaybe<SortNulls>;
+};
+
+export enum CounterSortFields {
+  CreatedAt = "createdAt",
+  CreatedBy = "createdBy",
+  DeletedAt = "deletedAt",
+  DeletedBy = "deletedBy",
+  Id = "id",
+  Number = "number",
+  Type = "type",
+  UpdatedAt = "updatedAt",
+  UpdatedBy = "updatedBy",
+}
+
+export type CounterSumAggregate = {
+  __typename?: "CounterSumAggregate";
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  number?: Maybe<Scalars["Float"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type CounterUpdateFilter = {
+  and?: InputMaybe<Array<CounterUpdateFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  number?: InputMaybe<NumberFieldComparison>;
+  or?: InputMaybe<Array<CounterUpdateFilter>>;
+  type?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type Counter_TypeConnection = {
+  __typename?: "Counter_typeConnection";
+  /** Array of nodes. */
+  nodes: Array<Counter_Type>;
+  /** Paging information */
+  pageInfo: OffsetPageInfo;
+  /** Fetch total count of records */
+  totalCount: Scalars["Int"];
+};
+
+export type Counter_TypeDeleteResponse = {
+  __typename?: "Counter_typeDeleteResponse";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type CreateAdmin = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
+  email?: InputMaybe<Scalars["String"]>;
+  id?: InputMaybe<Scalars["String"]>;
+  name?: InputMaybe<Scalars["String"]>;
+  password?: InputMaybe<Scalars["String"]>;
+  phoneNo?: InputMaybe<Scalars["String"]>;
+  thumbnail?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
+};
+
+export type CreateCounter = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
+  id?: InputMaybe<Scalars["String"]>;
+  number?: InputMaybe<Scalars["Float"]>;
+  type?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
+};
+
+export type CreateCounter_Type = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
+  id?: InputMaybe<Scalars["String"]>;
+  name?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
+};
+
+export type CreateCustomer = {
+  active?: InputMaybe<Scalars["Boolean"]>;
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
+  email?: InputMaybe<Scalars["String"]>;
+  id?: InputMaybe<Scalars["String"]>;
+  name?: InputMaybe<Scalars["String"]>;
+  password?: InputMaybe<Scalars["String"]>;
+  phoneNo?: InputMaybe<Scalars["String"]>;
+  thumbnail?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
+};
+
+export type CreateCustomerNotification = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
+  id?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
+};
+
+export type CreateDepartment = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
+  id?: InputMaybe<Scalars["String"]>;
+  name?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
+};
+
+export type CreateManyAdminsInput = {
+  /** Array of records to create */
+  admins: Array<CreateAdmin>;
+};
+
+export type CreateManyCounter_TypesInput = {
+  /** Array of records to create */
+  counter_types: Array<CreateCounter_Type>;
+};
+
+export type CreateManyCountersInput = {
+  /** Array of records to create */
+  counters: Array<CreateCounter>;
+};
+
+export type CreateManyCustomerNotificationsInput = {
+  /** Array of records to create */
+  customerNotifications: Array<CreateCustomerNotification>;
+};
+
+export type CreateManyCustomersInput = {
+  /** Array of records to create */
+  customers: Array<CreateCustomer>;
+};
+
+export type CreateManyDepartmentsInput = {
+  /** Array of records to create */
+  departments: Array<CreateDepartment>;
+};
+
+export type CreateManyNotificationsInput = {
+  /** Array of records to create */
+  notifications: Array<CreateNotification>;
+};
+
+export type CreateManyQueuesInput = {
+  /** Array of records to create */
+  queues: Array<CreateQueue>;
+};
+
+export type CreateManyStaffInput = {
+  /** Array of records to create */
+  staff: Array<CreateStaff>;
+};
+
+export type CreateNotification = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
+  id?: InputMaybe<Scalars["String"]>;
+  message?: InputMaybe<Scalars["String"]>;
+  title?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
+};
+
+export type CreateOneAdminInput = {
+  /** The record to create */
+  admin: CreateAdmin;
+};
+
+export type CreateOneCounterInput = {
+  /** The record to create */
+  counter: CreateCounter;
+};
+
+export type CreateOneCounter_TypeInput = {
+  /** The record to create */
+  counter_type: CreateCounter_Type;
+};
+
+export type CreateOneCustomerInput = {
+  /** The record to create */
+  customer: CreateCustomer;
+};
+
+export type CreateOneCustomerNotificationInput = {
+  /** The record to create */
+  customerNotification: CreateCustomerNotification;
+};
+
+export type CreateOneDepartmentInput = {
+  /** The record to create */
+  department: CreateDepartment;
+};
+
+export type CreateOneNotificationInput = {
+  /** The record to create */
+  notification: CreateNotification;
+};
+
+export type CreateOneQueueInput = {
+  /** The record to create */
+  queue: CreateQueue;
+};
+
+export type CreateOneStaffInput = {
+  /** The record to create */
+  staff: CreateStaff;
+};
+
+export type CreateQueue = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  currentNumber?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
+  id?: InputMaybe<Scalars["String"]>;
+  number?: InputMaybe<Scalars["Float"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
+};
+
+export type CreateStaff = {
   accountNo?: InputMaybe<Scalars["Float"]>;
   backPayment?: InputMaybe<Scalars["Float"]>;
   bankType?: InputMaybe<Scalars["String"]>;
@@ -55,112 +622,346 @@ export type CreateEmployee = {
   updatedBy?: InputMaybe<Scalars["Float"]>;
 };
 
-export type CreateLocation = {
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  createdBy?: InputMaybe<Scalars["Float"]>;
-  deletedAt?: InputMaybe<Scalars["DateTime"]>;
-  deletedBy?: InputMaybe<Scalars["Float"]>;
-  id?: InputMaybe<Scalars["ID"]>;
-  lang?: InputMaybe<Scalars["Float"]>;
-  lat?: InputMaybe<Scalars["Float"]>;
-  location?: InputMaybe<Scalars["String"]>;
-  range?: InputMaybe<Scalars["Float"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
-  updatedBy?: InputMaybe<Scalars["Float"]>;
+export type Customer = {
+  __typename?: "Customer";
+  active?: Maybe<Scalars["Boolean"]>;
+  createdAt: Scalars["DateTime"];
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  email?: Maybe<Scalars["String"]>;
+  id: Scalars["String"];
+  name?: Maybe<Scalars["String"]>;
+  password: Scalars["String"];
+  phoneNo?: Maybe<Scalars["String"]>;
+  thumbnail: Scalars["String"];
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type CreateManyEmployeesInput = {
-  /** Array of records to create */
-  employees: Array<CreateEmployee>;
+export type CustomerAggregateGroupBy = {
+  __typename?: "CustomerAggregateGroupBy";
+  active?: Maybe<Scalars["Boolean"]>;
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  email?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
+  thumbnail?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type CreateManyLocationsInput = {
-  /** Array of records to create */
-  locations: Array<CreateLocation>;
+export type CustomerAvgAggregate = {
+  __typename?: "CustomerAvgAggregate";
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type CreateManyShiftOptionsInput = {
-  /** Array of records to create */
-  shiftOptions: Array<CreateShiftOption>;
+export type CustomerConnection = {
+  __typename?: "CustomerConnection";
+  /** Array of nodes. */
+  nodes: Array<Customer>;
+  /** Paging information */
+  pageInfo: OffsetPageInfo;
+  /** Fetch total count of records */
+  totalCount: Scalars["Int"];
 };
 
-export type CreateManyShiftsInput = {
-  /** Array of records to create */
-  shifts: Array<CreateShiftInputDto>;
+export type CustomerCountAggregate = {
+  __typename?: "CustomerCountAggregate";
+  active?: Maybe<Scalars["Int"]>;
+  createdAt?: Maybe<Scalars["Int"]>;
+  createdBy?: Maybe<Scalars["Int"]>;
+  deletedAt?: Maybe<Scalars["Int"]>;
+  deletedBy?: Maybe<Scalars["Int"]>;
+  email?: Maybe<Scalars["Int"]>;
+  id?: Maybe<Scalars["Int"]>;
+  name?: Maybe<Scalars["Int"]>;
+  password?: Maybe<Scalars["Int"]>;
+  phoneNo?: Maybe<Scalars["Int"]>;
+  thumbnail?: Maybe<Scalars["Int"]>;
+  updatedAt?: Maybe<Scalars["Int"]>;
+  updatedBy?: Maybe<Scalars["Int"]>;
 };
 
-export type CreateManyUsersInput = {
-  /** Array of records to create */
-  users: Array<CreateUser>;
+export type CustomerDeleteFilter = {
+  active?: InputMaybe<BooleanFieldComparison>;
+  and?: InputMaybe<Array<CustomerDeleteFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  email?: InputMaybe<StringFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  name?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<CustomerDeleteFilter>>;
+  password?: InputMaybe<StringFieldComparison>;
+  phoneNo?: InputMaybe<StringFieldComparison>;
+  thumbnail?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
-export type CreateOneEmployeeInput = {
-  /** The record to create */
-  employee: CreateEmployee;
+export type CustomerDeleteResponse = {
+  __typename?: "CustomerDeleteResponse";
+  active?: Maybe<Scalars["Boolean"]>;
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  email?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
+  thumbnail?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type CreateOneLocationInput = {
-  /** The record to create */
-  location: CreateLocation;
+export type CustomerFilter = {
+  active?: InputMaybe<BooleanFieldComparison>;
+  and?: InputMaybe<Array<CustomerFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  email?: InputMaybe<StringFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  name?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<CustomerFilter>>;
+  password?: InputMaybe<StringFieldComparison>;
+  phoneNo?: InputMaybe<StringFieldComparison>;
+  thumbnail?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
-export type CreateOneShiftInput = {
-  /** The record to create */
-  shift: CreateShiftInputDto;
+export type CustomerMaxAggregate = {
+  __typename?: "CustomerMaxAggregate";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  email?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
+  thumbnail?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type CreateOneShiftOptionInput = {
-  /** The record to create */
-  shiftOption: CreateShiftOption;
+export type CustomerMinAggregate = {
+  __typename?: "CustomerMinAggregate";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  email?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
+  thumbnail?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type CreateOneUserInput = {
-  /** The record to create */
-  user: CreateUser;
+export type CustomerNotification = {
+  __typename?: "CustomerNotification";
+  createdAt: Scalars["DateTime"];
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id: Scalars["String"];
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type CreateShiftInputDto = {
-  allowance?: InputMaybe<Scalars["Float"]>;
-  breakPunchIn?: InputMaybe<Scalars["DateTime"]>;
-  breakPunchOut?: InputMaybe<Scalars["DateTime"]>;
-  clockIn: Scalars["DateTime"];
-  clockOut?: InputMaybe<Scalars["DateTime"]>;
-  date: Scalars["DateTime"];
-  employeeId: Scalars["Float"];
-  hours?: InputMaybe<Scalars["Float"]>;
-  shiftOptionId: Scalars["Float"];
-  total?: InputMaybe<Scalars["Float"]>;
+export type CustomerNotificationAggregateGroupBy = {
+  __typename?: "CustomerNotificationAggregateGroupBy";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type CreateShiftOption = {
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  createdBy?: InputMaybe<Scalars["Float"]>;
-  deletedAt?: InputMaybe<Scalars["DateTime"]>;
-  deletedBy?: InputMaybe<Scalars["Float"]>;
-  id?: InputMaybe<Scalars["String"]>;
-  isDeleteButSave?: InputMaybe<Scalars["Boolean"]>;
-  name?: InputMaybe<Scalars["String"]>;
-  otRate?: InputMaybe<Scalars["Float"]>;
-  rate?: InputMaybe<Scalars["Float"]>;
-  type?: InputMaybe<Scalars["String"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
-  updatedBy?: InputMaybe<Scalars["Float"]>;
+export type CustomerNotificationAvgAggregate = {
+  __typename?: "CustomerNotificationAvgAggregate";
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type CreateUser = {
-  active?: InputMaybe<Scalars["Boolean"]>;
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  createdBy?: InputMaybe<Scalars["Float"]>;
-  deletedAt?: InputMaybe<Scalars["DateTime"]>;
-  deletedBy?: InputMaybe<Scalars["Float"]>;
-  email?: InputMaybe<Scalars["String"]>;
-  id?: InputMaybe<Scalars["String"]>;
-  name?: InputMaybe<Scalars["String"]>;
-  password?: InputMaybe<Scalars["String"]>;
-  phoneNo?: InputMaybe<Scalars["String"]>;
-  thumbnailUrl?: InputMaybe<Scalars["String"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
-  updatedBy?: InputMaybe<Scalars["Float"]>;
+export type CustomerNotificationConnection = {
+  __typename?: "CustomerNotificationConnection";
+  /** Array of nodes. */
+  nodes: Array<CustomerNotification>;
+  /** Paging information */
+  pageInfo: OffsetPageInfo;
+  /** Fetch total count of records */
+  totalCount: Scalars["Int"];
+};
+
+export type CustomerNotificationCountAggregate = {
+  __typename?: "CustomerNotificationCountAggregate";
+  createdAt?: Maybe<Scalars["Int"]>;
+  createdBy?: Maybe<Scalars["Int"]>;
+  deletedAt?: Maybe<Scalars["Int"]>;
+  deletedBy?: Maybe<Scalars["Int"]>;
+  id?: Maybe<Scalars["Int"]>;
+  updatedAt?: Maybe<Scalars["Int"]>;
+  updatedBy?: Maybe<Scalars["Int"]>;
+};
+
+export type CustomerNotificationDeleteFilter = {
+  and?: InputMaybe<Array<CustomerNotificationDeleteFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<CustomerNotificationDeleteFilter>>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type CustomerNotificationDeleteResponse = {
+  __typename?: "CustomerNotificationDeleteResponse";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type CustomerNotificationFilter = {
+  and?: InputMaybe<Array<CustomerNotificationFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<CustomerNotificationFilter>>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type CustomerNotificationMaxAggregate = {
+  __typename?: "CustomerNotificationMaxAggregate";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type CustomerNotificationMinAggregate = {
+  __typename?: "CustomerNotificationMinAggregate";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type CustomerNotificationSort = {
+  direction: SortDirection;
+  field: CustomerNotificationSortFields;
+  nulls?: InputMaybe<SortNulls>;
+};
+
+export enum CustomerNotificationSortFields {
+  CreatedAt = "createdAt",
+  CreatedBy = "createdBy",
+  DeletedAt = "deletedAt",
+  DeletedBy = "deletedBy",
+  Id = "id",
+  UpdatedAt = "updatedAt",
+  UpdatedBy = "updatedBy",
+}
+
+export type CustomerNotificationSumAggregate = {
+  __typename?: "CustomerNotificationSumAggregate";
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type CustomerNotificationUpdateFilter = {
+  and?: InputMaybe<Array<CustomerNotificationUpdateFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<CustomerNotificationUpdateFilter>>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type CustomerSort = {
+  direction: SortDirection;
+  field: CustomerSortFields;
+  nulls?: InputMaybe<SortNulls>;
+};
+
+export enum CustomerSortFields {
+  Active = "active",
+  CreatedAt = "createdAt",
+  CreatedBy = "createdBy",
+  DeletedAt = "deletedAt",
+  DeletedBy = "deletedBy",
+  Email = "email",
+  Id = "id",
+  Name = "name",
+  Password = "password",
+  PhoneNo = "phoneNo",
+  Thumbnail = "thumbnail",
+  UpdatedAt = "updatedAt",
+  UpdatedBy = "updatedBy",
+}
+
+export type CustomerSumAggregate = {
+  __typename?: "CustomerSumAggregate";
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type CustomerUpdateFilter = {
+  active?: InputMaybe<BooleanFieldComparison>;
+  and?: InputMaybe<Array<CustomerUpdateFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  email?: InputMaybe<StringFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  name?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<CustomerUpdateFilter>>;
+  password?: InputMaybe<StringFieldComparison>;
+  phoneNo?: InputMaybe<StringFieldComparison>;
+  thumbnail?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
 export type DateFieldComparison = {
@@ -183,14 +984,44 @@ export type DateFieldComparisonBetween = {
   upper: Scalars["DateTime"];
 };
 
-export type DeleteManyEmployeesInput = {
+export type DeleteManyAdminsInput = {
   /** Filter to find records to delete */
-  filter: EmployeeDeleteFilter;
+  filter: AdminDeleteFilter;
 };
 
-export type DeleteManyLocationsInput = {
+export type DeleteManyCounter_TypesInput = {
   /** Filter to find records to delete */
-  filter: LocationDeleteFilter;
+  filter: Counter_TypeDeleteFilter;
+};
+
+export type DeleteManyCountersInput = {
+  /** Filter to find records to delete */
+  filter: CounterDeleteFilter;
+};
+
+export type DeleteManyCustomerNotificationsInput = {
+  /** Filter to find records to delete */
+  filter: CustomerNotificationDeleteFilter;
+};
+
+export type DeleteManyCustomersInput = {
+  /** Filter to find records to delete */
+  filter: CustomerDeleteFilter;
+};
+
+export type DeleteManyDepartmentsInput = {
+  /** Filter to find records to delete */
+  filter: DepartmentDeleteFilter;
+};
+
+export type DeleteManyNotificationsInput = {
+  /** Filter to find records to delete */
+  filter: NotificationDeleteFilter;
+};
+
+export type DeleteManyQueuesInput = {
+  /** Filter to find records to delete */
+  filter: QueueDeleteFilter;
 };
 
 export type DeleteManyResponse = {
@@ -199,553 +1030,204 @@ export type DeleteManyResponse = {
   deletedCount: Scalars["Int"];
 };
 
-export type DeleteManyShiftOptionsInput = {
+export type DeleteManyStaffInput = {
   /** Filter to find records to delete */
-  filter: ShiftOptionDeleteFilter;
+  filter: StaffDeleteFilter;
 };
 
-export type DeleteManyShiftsInput = {
-  /** Filter to find records to delete */
-  filter: ShiftDeleteFilter;
-};
-
-export type DeleteManyUsersInput = {
-  /** Filter to find records to delete */
-  filter: UserDeleteFilter;
-};
-
-export type DeleteOneEmployeeInput = {
+export type DeleteOneAdminInput = {
   /** The id of the record to delete. */
   id: Scalars["String"];
 };
 
-export type DeleteOneLocationInput = {
-  /** The id of the record to delete. */
-  id: Scalars["ID"];
-};
-
-export type DeleteOneShiftInput = {
+export type DeleteOneCounterInput = {
   /** The id of the record to delete. */
   id: Scalars["String"];
 };
 
-export type DeleteOneShiftOptionInput = {
+export type DeleteOneCounter_TypeInput = {
   /** The id of the record to delete. */
   id: Scalars["String"];
 };
 
-export type DeleteOneUserInput = {
+export type DeleteOneCustomerInput = {
   /** The id of the record to delete. */
   id: Scalars["String"];
 };
 
-export type Employee = {
-  __typename?: "Employee";
-  accountNo?: Maybe<Scalars["Float"]>;
-  backPayment?: Maybe<Scalars["Float"]>;
-  bankType?: Maybe<Scalars["String"]>;
+export type DeleteOneCustomerNotificationInput = {
+  /** The id of the record to delete. */
+  id: Scalars["String"];
+};
+
+export type DeleteOneDepartmentInput = {
+  /** The id of the record to delete. */
+  id: Scalars["String"];
+};
+
+export type DeleteOneNotificationInput = {
+  /** The id of the record to delete. */
+  id: Scalars["String"];
+};
+
+export type DeleteOneQueueInput = {
+  /** The id of the record to delete. */
+  id: Scalars["String"];
+};
+
+export type DeleteOneStaffInput = {
+  /** The id of the record to delete. */
+  id: Scalars["String"];
+};
+
+export type Department = {
+  __typename?: "Department";
   createdAt: Scalars["DateTime"];
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
-  employeeEpf?: Maybe<Scalars["Float"]>;
-  employeeNo: Scalars["String"];
-  employeeSocso?: Maybe<Scalars["Float"]>;
-  employerEpf?: Maybe<Scalars["Float"]>;
-  employerSocso?: Maybe<Scalars["Float"]>;
-  icNo: Scalars["String"];
   id: Scalars["String"];
-  isAccepted?: Maybe<Scalars["Boolean"]>;
-  loan?: Maybe<Scalars["Float"]>;
-  name: Scalars["String"];
-  password?: Maybe<Scalars["String"]>;
-  phoneNo?: Maybe<Scalars["String"]>;
-  type?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type EmployeeAggregateGroupBy = {
-  __typename?: "EmployeeAggregateGroupBy";
-  accountNo?: Maybe<Scalars["Float"]>;
-  backPayment?: Maybe<Scalars["Float"]>;
-  bankType?: Maybe<Scalars["String"]>;
+export type DepartmentAggregateGroupBy = {
+  __typename?: "DepartmentAggregateGroupBy";
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
-  employeeEpf?: Maybe<Scalars["Float"]>;
-  employeeNo?: Maybe<Scalars["String"]>;
-  employeeSocso?: Maybe<Scalars["Float"]>;
-  employerEpf?: Maybe<Scalars["Float"]>;
-  employerSocso?: Maybe<Scalars["Float"]>;
-  icNo?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["String"]>;
-  isAccepted?: Maybe<Scalars["Boolean"]>;
-  loan?: Maybe<Scalars["Float"]>;
   name?: Maybe<Scalars["String"]>;
-  password?: Maybe<Scalars["String"]>;
-  phoneNo?: Maybe<Scalars["String"]>;
-  type?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type EmployeeAvgAggregate = {
-  __typename?: "EmployeeAvgAggregate";
-  accountNo?: Maybe<Scalars["Float"]>;
-  backPayment?: Maybe<Scalars["Float"]>;
+export type DepartmentAvgAggregate = {
+  __typename?: "DepartmentAvgAggregate";
   createdBy?: Maybe<Scalars["Float"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
-  employeeEpf?: Maybe<Scalars["Float"]>;
-  employeeSocso?: Maybe<Scalars["Float"]>;
-  employerEpf?: Maybe<Scalars["Float"]>;
-  employerSocso?: Maybe<Scalars["Float"]>;
-  loan?: Maybe<Scalars["Float"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type EmployeeConnection = {
-  __typename?: "EmployeeConnection";
+export type DepartmentConnection = {
+  __typename?: "DepartmentConnection";
   /** Array of nodes. */
-  nodes: Array<Employee>;
+  nodes: Array<Department>;
   /** Paging information */
   pageInfo: OffsetPageInfo;
   /** Fetch total count of records */
   totalCount: Scalars["Int"];
 };
 
-export type EmployeeCountAggregate = {
-  __typename?: "EmployeeCountAggregate";
-  accountNo?: Maybe<Scalars["Int"]>;
-  backPayment?: Maybe<Scalars["Int"]>;
-  bankType?: Maybe<Scalars["Int"]>;
+export type DepartmentCountAggregate = {
+  __typename?: "DepartmentCountAggregate";
   createdAt?: Maybe<Scalars["Int"]>;
   createdBy?: Maybe<Scalars["Int"]>;
   deletedAt?: Maybe<Scalars["Int"]>;
   deletedBy?: Maybe<Scalars["Int"]>;
-  employeeEpf?: Maybe<Scalars["Int"]>;
-  employeeNo?: Maybe<Scalars["Int"]>;
-  employeeSocso?: Maybe<Scalars["Int"]>;
-  employerEpf?: Maybe<Scalars["Int"]>;
-  employerSocso?: Maybe<Scalars["Int"]>;
-  icNo?: Maybe<Scalars["Int"]>;
   id?: Maybe<Scalars["Int"]>;
-  isAccepted?: Maybe<Scalars["Int"]>;
-  loan?: Maybe<Scalars["Int"]>;
   name?: Maybe<Scalars["Int"]>;
-  password?: Maybe<Scalars["Int"]>;
-  phoneNo?: Maybe<Scalars["Int"]>;
-  type?: Maybe<Scalars["Int"]>;
   updatedAt?: Maybe<Scalars["Int"]>;
   updatedBy?: Maybe<Scalars["Int"]>;
 };
 
-export type EmployeeDeleteFilter = {
-  accountNo?: InputMaybe<NumberFieldComparison>;
-  and?: InputMaybe<Array<EmployeeDeleteFilter>>;
-  backPayment?: InputMaybe<NumberFieldComparison>;
-  bankType?: InputMaybe<StringFieldComparison>;
+export type DepartmentDeleteFilter = {
+  and?: InputMaybe<Array<DepartmentDeleteFilter>>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   deletedBy?: InputMaybe<NumberFieldComparison>;
-  employeeEpf?: InputMaybe<NumberFieldComparison>;
-  employeeNo?: InputMaybe<StringFieldComparison>;
-  employeeSocso?: InputMaybe<NumberFieldComparison>;
-  employerEpf?: InputMaybe<NumberFieldComparison>;
-  employerSocso?: InputMaybe<NumberFieldComparison>;
-  icNo?: InputMaybe<StringFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
-  isAccepted?: InputMaybe<BooleanFieldComparison>;
-  loan?: InputMaybe<NumberFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<EmployeeDeleteFilter>>;
-  password?: InputMaybe<StringFieldComparison>;
-  phoneNo?: InputMaybe<StringFieldComparison>;
-  type?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<DepartmentDeleteFilter>>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
-export type EmployeeDeleteResponse = {
-  __typename?: "EmployeeDeleteResponse";
-  accountNo?: Maybe<Scalars["Float"]>;
-  backPayment?: Maybe<Scalars["Float"]>;
-  bankType?: Maybe<Scalars["String"]>;
+export type DepartmentDeleteResponse = {
+  __typename?: "DepartmentDeleteResponse";
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
-  employeeEpf?: Maybe<Scalars["Float"]>;
-  employeeNo?: Maybe<Scalars["String"]>;
-  employeeSocso?: Maybe<Scalars["Float"]>;
-  employerEpf?: Maybe<Scalars["Float"]>;
-  employerSocso?: Maybe<Scalars["Float"]>;
-  icNo?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["String"]>;
-  isAccepted?: Maybe<Scalars["Boolean"]>;
-  loan?: Maybe<Scalars["Float"]>;
   name?: Maybe<Scalars["String"]>;
-  password?: Maybe<Scalars["String"]>;
-  phoneNo?: Maybe<Scalars["String"]>;
-  type?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type EmployeeFilter = {
-  accountNo?: InputMaybe<NumberFieldComparison>;
-  and?: InputMaybe<Array<EmployeeFilter>>;
-  backPayment?: InputMaybe<NumberFieldComparison>;
-  bankType?: InputMaybe<StringFieldComparison>;
+export type DepartmentFilter = {
+  and?: InputMaybe<Array<DepartmentFilter>>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   deletedBy?: InputMaybe<NumberFieldComparison>;
-  employeeEpf?: InputMaybe<NumberFieldComparison>;
-  employeeNo?: InputMaybe<StringFieldComparison>;
-  employeeSocso?: InputMaybe<NumberFieldComparison>;
-  employerEpf?: InputMaybe<NumberFieldComparison>;
-  employerSocso?: InputMaybe<NumberFieldComparison>;
-  icNo?: InputMaybe<StringFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
-  isAccepted?: InputMaybe<BooleanFieldComparison>;
-  loan?: InputMaybe<NumberFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<EmployeeFilter>>;
-  password?: InputMaybe<StringFieldComparison>;
-  phoneNo?: InputMaybe<StringFieldComparison>;
-  type?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<DepartmentFilter>>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
-export type EmployeeMaxAggregate = {
-  __typename?: "EmployeeMaxAggregate";
-  accountNo?: Maybe<Scalars["Float"]>;
-  backPayment?: Maybe<Scalars["Float"]>;
-  bankType?: Maybe<Scalars["String"]>;
+export type DepartmentMaxAggregate = {
+  __typename?: "DepartmentMaxAggregate";
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
-  employeeEpf?: Maybe<Scalars["Float"]>;
-  employeeNo?: Maybe<Scalars["String"]>;
-  employeeSocso?: Maybe<Scalars["Float"]>;
-  employerEpf?: Maybe<Scalars["Float"]>;
-  employerSocso?: Maybe<Scalars["Float"]>;
-  icNo?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["String"]>;
-  loan?: Maybe<Scalars["Float"]>;
   name?: Maybe<Scalars["String"]>;
-  password?: Maybe<Scalars["String"]>;
-  phoneNo?: Maybe<Scalars["String"]>;
-  type?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type EmployeeMinAggregate = {
-  __typename?: "EmployeeMinAggregate";
-  accountNo?: Maybe<Scalars["Float"]>;
-  backPayment?: Maybe<Scalars["Float"]>;
-  bankType?: Maybe<Scalars["String"]>;
+export type DepartmentMinAggregate = {
+  __typename?: "DepartmentMinAggregate";
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
-  employeeEpf?: Maybe<Scalars["Float"]>;
-  employeeNo?: Maybe<Scalars["String"]>;
-  employeeSocso?: Maybe<Scalars["Float"]>;
-  employerEpf?: Maybe<Scalars["Float"]>;
-  employerSocso?: Maybe<Scalars["Float"]>;
-  icNo?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["String"]>;
-  loan?: Maybe<Scalars["Float"]>;
   name?: Maybe<Scalars["String"]>;
-  password?: Maybe<Scalars["String"]>;
-  phoneNo?: Maybe<Scalars["String"]>;
-  type?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type EmployeeSort = {
+export type DepartmentSort = {
   direction: SortDirection;
-  field: EmployeeSortFields;
+  field: DepartmentSortFields;
   nulls?: InputMaybe<SortNulls>;
 };
 
-export enum EmployeeSortFields {
-  AccountNo = "accountNo",
-  BackPayment = "backPayment",
-  BankType = "bankType",
+export enum DepartmentSortFields {
   CreatedAt = "createdAt",
   CreatedBy = "createdBy",
   DeletedAt = "deletedAt",
   DeletedBy = "deletedBy",
-  EmployeeEpf = "employeeEpf",
-  EmployeeNo = "employeeNo",
-  EmployeeSocso = "employeeSocso",
-  EmployerEpf = "employerEpf",
-  EmployerSocso = "employerSocso",
-  IcNo = "icNo",
   Id = "id",
-  IsAccepted = "isAccepted",
-  Loan = "loan",
   Name = "name",
-  Password = "password",
-  PhoneNo = "phoneNo",
-  Type = "type",
   UpdatedAt = "updatedAt",
   UpdatedBy = "updatedBy",
 }
 
-export type EmployeeSumAggregate = {
-  __typename?: "EmployeeSumAggregate";
-  accountNo?: Maybe<Scalars["Float"]>;
-  backPayment?: Maybe<Scalars["Float"]>;
+export type DepartmentSumAggregate = {
+  __typename?: "DepartmentSumAggregate";
   createdBy?: Maybe<Scalars["Float"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
-  employeeEpf?: Maybe<Scalars["Float"]>;
-  employeeSocso?: Maybe<Scalars["Float"]>;
-  employerEpf?: Maybe<Scalars["Float"]>;
-  employerSocso?: Maybe<Scalars["Float"]>;
-  loan?: Maybe<Scalars["Float"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type EmployeeUpdateFilter = {
-  accountNo?: InputMaybe<NumberFieldComparison>;
-  and?: InputMaybe<Array<EmployeeUpdateFilter>>;
-  backPayment?: InputMaybe<NumberFieldComparison>;
-  bankType?: InputMaybe<StringFieldComparison>;
+export type DepartmentUpdateFilter = {
+  and?: InputMaybe<Array<DepartmentUpdateFilter>>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   deletedBy?: InputMaybe<NumberFieldComparison>;
-  employeeEpf?: InputMaybe<NumberFieldComparison>;
-  employeeNo?: InputMaybe<StringFieldComparison>;
-  employeeSocso?: InputMaybe<NumberFieldComparison>;
-  employerEpf?: InputMaybe<NumberFieldComparison>;
-  employerSocso?: InputMaybe<NumberFieldComparison>;
-  icNo?: InputMaybe<StringFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
-  isAccepted?: InputMaybe<BooleanFieldComparison>;
-  loan?: InputMaybe<NumberFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<EmployeeUpdateFilter>>;
-  password?: InputMaybe<StringFieldComparison>;
-  phoneNo?: InputMaybe<StringFieldComparison>;
-  type?: InputMaybe<StringFieldComparison>;
-  updatedAt?: InputMaybe<DateFieldComparison>;
-  updatedBy?: InputMaybe<NumberFieldComparison>;
-};
-
-export type IdFilterComparison = {
-  eq?: InputMaybe<Scalars["ID"]>;
-  gt?: InputMaybe<Scalars["ID"]>;
-  gte?: InputMaybe<Scalars["ID"]>;
-  iLike?: InputMaybe<Scalars["ID"]>;
-  in?: InputMaybe<Array<Scalars["ID"]>>;
-  is?: InputMaybe<Scalars["Boolean"]>;
-  isNot?: InputMaybe<Scalars["Boolean"]>;
-  like?: InputMaybe<Scalars["ID"]>;
-  lt?: InputMaybe<Scalars["ID"]>;
-  lte?: InputMaybe<Scalars["ID"]>;
-  neq?: InputMaybe<Scalars["ID"]>;
-  notILike?: InputMaybe<Scalars["ID"]>;
-  notIn?: InputMaybe<Array<Scalars["ID"]>>;
-  notLike?: InputMaybe<Scalars["ID"]>;
-};
-
-export type Location = {
-  __typename?: "Location";
-  createdAt: Scalars["DateTime"];
-  createdBy?: Maybe<Scalars["Float"]>;
-  deletedAt?: Maybe<Scalars["DateTime"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  id: Scalars["ID"];
-  lang?: Maybe<Scalars["Float"]>;
-  lat?: Maybe<Scalars["Float"]>;
-  location?: Maybe<Scalars["String"]>;
-  range: Scalars["Float"];
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type LocationAggregateGroupBy = {
-  __typename?: "LocationAggregateGroupBy";
-  createdAt?: Maybe<Scalars["DateTime"]>;
-  createdBy?: Maybe<Scalars["Float"]>;
-  deletedAt?: Maybe<Scalars["DateTime"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  id?: Maybe<Scalars["ID"]>;
-  lang?: Maybe<Scalars["Float"]>;
-  lat?: Maybe<Scalars["Float"]>;
-  location?: Maybe<Scalars["String"]>;
-  range?: Maybe<Scalars["Float"]>;
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type LocationAvgAggregate = {
-  __typename?: "LocationAvgAggregate";
-  createdBy?: Maybe<Scalars["Float"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  id?: Maybe<Scalars["Float"]>;
-  lang?: Maybe<Scalars["Float"]>;
-  lat?: Maybe<Scalars["Float"]>;
-  range?: Maybe<Scalars["Float"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type LocationConnection = {
-  __typename?: "LocationConnection";
-  /** Array of nodes. */
-  nodes: Array<Location>;
-  /** Paging information */
-  pageInfo: OffsetPageInfo;
-  /** Fetch total count of records */
-  totalCount: Scalars["Int"];
-};
-
-export type LocationCountAggregate = {
-  __typename?: "LocationCountAggregate";
-  createdAt?: Maybe<Scalars["Int"]>;
-  createdBy?: Maybe<Scalars["Int"]>;
-  deletedAt?: Maybe<Scalars["Int"]>;
-  deletedBy?: Maybe<Scalars["Int"]>;
-  id?: Maybe<Scalars["Int"]>;
-  lang?: Maybe<Scalars["Int"]>;
-  lat?: Maybe<Scalars["Int"]>;
-  location?: Maybe<Scalars["Int"]>;
-  range?: Maybe<Scalars["Int"]>;
-  updatedAt?: Maybe<Scalars["Int"]>;
-  updatedBy?: Maybe<Scalars["Int"]>;
-};
-
-export type LocationDeleteFilter = {
-  and?: InputMaybe<Array<LocationDeleteFilter>>;
-  createdAt?: InputMaybe<DateFieldComparison>;
-  createdBy?: InputMaybe<NumberFieldComparison>;
-  deletedAt?: InputMaybe<DateFieldComparison>;
-  deletedBy?: InputMaybe<NumberFieldComparison>;
-  id?: InputMaybe<IdFilterComparison>;
-  lang?: InputMaybe<NumberFieldComparison>;
-  lat?: InputMaybe<NumberFieldComparison>;
-  location?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<LocationDeleteFilter>>;
-  range?: InputMaybe<NumberFieldComparison>;
-  updatedAt?: InputMaybe<DateFieldComparison>;
-  updatedBy?: InputMaybe<NumberFieldComparison>;
-};
-
-export type LocationDeleteResponse = {
-  __typename?: "LocationDeleteResponse";
-  createdAt?: Maybe<Scalars["DateTime"]>;
-  createdBy?: Maybe<Scalars["Float"]>;
-  deletedAt?: Maybe<Scalars["DateTime"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  id?: Maybe<Scalars["ID"]>;
-  lang?: Maybe<Scalars["Float"]>;
-  lat?: Maybe<Scalars["Float"]>;
-  location?: Maybe<Scalars["String"]>;
-  range?: Maybe<Scalars["Float"]>;
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type LocationFilter = {
-  and?: InputMaybe<Array<LocationFilter>>;
-  createdAt?: InputMaybe<DateFieldComparison>;
-  createdBy?: InputMaybe<NumberFieldComparison>;
-  deletedAt?: InputMaybe<DateFieldComparison>;
-  deletedBy?: InputMaybe<NumberFieldComparison>;
-  id?: InputMaybe<IdFilterComparison>;
-  lang?: InputMaybe<NumberFieldComparison>;
-  lat?: InputMaybe<NumberFieldComparison>;
-  location?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<LocationFilter>>;
-  range?: InputMaybe<NumberFieldComparison>;
-  updatedAt?: InputMaybe<DateFieldComparison>;
-  updatedBy?: InputMaybe<NumberFieldComparison>;
-};
-
-export type LocationMaxAggregate = {
-  __typename?: "LocationMaxAggregate";
-  createdAt?: Maybe<Scalars["DateTime"]>;
-  createdBy?: Maybe<Scalars["Float"]>;
-  deletedAt?: Maybe<Scalars["DateTime"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  id?: Maybe<Scalars["ID"]>;
-  lang?: Maybe<Scalars["Float"]>;
-  lat?: Maybe<Scalars["Float"]>;
-  location?: Maybe<Scalars["String"]>;
-  range?: Maybe<Scalars["Float"]>;
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type LocationMinAggregate = {
-  __typename?: "LocationMinAggregate";
-  createdAt?: Maybe<Scalars["DateTime"]>;
-  createdBy?: Maybe<Scalars["Float"]>;
-  deletedAt?: Maybe<Scalars["DateTime"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  id?: Maybe<Scalars["ID"]>;
-  lang?: Maybe<Scalars["Float"]>;
-  lat?: Maybe<Scalars["Float"]>;
-  location?: Maybe<Scalars["String"]>;
-  range?: Maybe<Scalars["Float"]>;
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type LocationSort = {
-  direction: SortDirection;
-  field: LocationSortFields;
-  nulls?: InputMaybe<SortNulls>;
-};
-
-export enum LocationSortFields {
-  CreatedAt = "createdAt",
-  CreatedBy = "createdBy",
-  DeletedAt = "deletedAt",
-  DeletedBy = "deletedBy",
-  Id = "id",
-  Lang = "lang",
-  Lat = "lat",
-  Location = "location",
-  Range = "range",
-  UpdatedAt = "updatedAt",
-  UpdatedBy = "updatedBy",
-}
-
-export type LocationSumAggregate = {
-  __typename?: "LocationSumAggregate";
-  createdBy?: Maybe<Scalars["Float"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  id?: Maybe<Scalars["Float"]>;
-  lang?: Maybe<Scalars["Float"]>;
-  lat?: Maybe<Scalars["Float"]>;
-  range?: Maybe<Scalars["Float"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type LocationUpdateFilter = {
-  and?: InputMaybe<Array<LocationUpdateFilter>>;
-  createdAt?: InputMaybe<DateFieldComparison>;
-  createdBy?: InputMaybe<NumberFieldComparison>;
-  deletedAt?: InputMaybe<DateFieldComparison>;
-  deletedBy?: InputMaybe<NumberFieldComparison>;
-  id?: InputMaybe<IdFilterComparison>;
-  lang?: InputMaybe<NumberFieldComparison>;
-  lat?: InputMaybe<NumberFieldComparison>;
-  location?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<LocationUpdateFilter>>;
-  range?: InputMaybe<NumberFieldComparison>;
+  or?: InputMaybe<Array<DepartmentUpdateFilter>>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
@@ -759,181 +1241,443 @@ export type MeUpdate = {
 
 export type Mutation = {
   __typename?: "Mutation";
-  createManyEmployees: Array<Employee>;
-  createManyLocations: Array<Location>;
-  createManyShiftOptions: Array<ShiftOption>;
-  createManyShifts: Array<Shift>;
-  createManyUsers: Array<User>;
-  createOneEmployee: Employee;
-  createOneLocation: Location;
-  createOneShift: Shift;
-  createOneShiftOption: ShiftOption;
-  createOneUser: User;
-  deleteManyEmployees: DeleteManyResponse;
-  deleteManyLocations: DeleteManyResponse;
-  deleteManyShiftOptions: DeleteManyResponse;
-  deleteManyShifts: DeleteManyResponse;
-  deleteManyUsers: DeleteManyResponse;
-  deleteOneEmployee: EmployeeDeleteResponse;
-  deleteOneLocation: LocationDeleteResponse;
-  deleteOneShift: ShiftDeleteResponse;
-  deleteOneShiftOption: ShiftOptionDeleteResponse;
-  deleteOneUser: UserDeleteResponse;
-  removeEmployeeFromShift: Shift;
-  removeShiftOptionsFromShift: Shift;
-  setEmployeeOnShift: Shift;
-  setShiftOptionsOnShift: Shift;
-  updateManyEmployees: UpdateManyResponse;
-  updateManyLocations: UpdateManyResponse;
-  updateManyShiftOptions: UpdateManyResponse;
-  updateManyShifts: UpdateManyResponse;
-  updateManyUsers: UpdateManyResponse;
-  updateMe: User;
-  updateOneEmployee: Employee;
-  updateOneLocation: Location;
-  updateOneShift: Shift;
-  updateOneShiftOption: ShiftOption;
-  updateOneUser: User;
+  createManyAdmins: Array<Admin>;
+  createManyCounter_types: Array<Counter_Type>;
+  createManyCounters: Array<Counter>;
+  createManyCustomerNotifications: Array<CustomerNotification>;
+  createManyCustomers: Array<Customer>;
+  createManyDepartments: Array<Department>;
+  createManyNotifications: Array<Notification>;
+  createManyQueues: Array<Queue>;
+  createManyStaff: Array<Staff>;
+  createOneAdmin: Admin;
+  createOneCounter: Counter;
+  createOneCounter_type: Counter_Type;
+  createOneCustomer: Customer;
+  createOneCustomerNotification: CustomerNotification;
+  createOneDepartment: Department;
+  createOneNotification: Notification;
+  createOneQueue: Queue;
+  createOneStaff: Staff;
+  deleteManyAdmins: DeleteManyResponse;
+  deleteManyCounter_types: DeleteManyResponse;
+  deleteManyCounters: DeleteManyResponse;
+  deleteManyCustomerNotifications: DeleteManyResponse;
+  deleteManyCustomers: DeleteManyResponse;
+  deleteManyDepartments: DeleteManyResponse;
+  deleteManyNotifications: DeleteManyResponse;
+  deleteManyQueues: DeleteManyResponse;
+  deleteManyStaff: DeleteManyResponse;
+  deleteOneAdmin: AdminDeleteResponse;
+  deleteOneCounter: CounterDeleteResponse;
+  deleteOneCounter_type: Counter_TypeDeleteResponse;
+  deleteOneCustomer: CustomerDeleteResponse;
+  deleteOneCustomerNotification: CustomerNotificationDeleteResponse;
+  deleteOneDepartment: DepartmentDeleteResponse;
+  deleteOneNotification: NotificationDeleteResponse;
+  deleteOneQueue: QueueDeleteResponse;
+  deleteOneStaff: StaffDeleteResponse;
+  updateManyAdmins: UpdateManyResponse;
+  updateManyCounter_types: UpdateManyResponse;
+  updateManyCounters: UpdateManyResponse;
+  updateManyCustomerNotifications: UpdateManyResponse;
+  updateManyCustomers: UpdateManyResponse;
+  updateManyDepartments: UpdateManyResponse;
+  updateManyNotifications: UpdateManyResponse;
+  updateManyQueues: UpdateManyResponse;
+  updateManyStaff: UpdateManyResponse;
+  updateMe: Admin;
+  updateOneAdmin: Admin;
+  updateOneCounter: Counter;
+  updateOneCounter_type: Counter_Type;
+  updateOneCustomer: Customer;
+  updateOneCustomerNotification: CustomerNotification;
+  updateOneDepartment: Department;
+  updateOneNotification: Notification;
+  updateOneQueue: Queue;
+  updateOneStaff: Staff;
 };
 
-export type MutationCreateManyEmployeesArgs = {
-  input: CreateManyEmployeesInput;
+export type MutationCreateManyAdminsArgs = {
+  input: CreateManyAdminsInput;
 };
 
-export type MutationCreateManyLocationsArgs = {
-  input: CreateManyLocationsInput;
+export type MutationCreateManyCounter_TypesArgs = {
+  input: CreateManyCounter_TypesInput;
 };
 
-export type MutationCreateManyShiftOptionsArgs = {
-  input: CreateManyShiftOptionsInput;
+export type MutationCreateManyCountersArgs = {
+  input: CreateManyCountersInput;
 };
 
-export type MutationCreateManyShiftsArgs = {
-  input: CreateManyShiftsInput;
+export type MutationCreateManyCustomerNotificationsArgs = {
+  input: CreateManyCustomerNotificationsInput;
 };
 
-export type MutationCreateManyUsersArgs = {
-  input: CreateManyUsersInput;
+export type MutationCreateManyCustomersArgs = {
+  input: CreateManyCustomersInput;
 };
 
-export type MutationCreateOneEmployeeArgs = {
-  input: CreateOneEmployeeInput;
+export type MutationCreateManyDepartmentsArgs = {
+  input: CreateManyDepartmentsInput;
 };
 
-export type MutationCreateOneLocationArgs = {
-  input: CreateOneLocationInput;
+export type MutationCreateManyNotificationsArgs = {
+  input: CreateManyNotificationsInput;
 };
 
-export type MutationCreateOneShiftArgs = {
-  input: CreateOneShiftInput;
+export type MutationCreateManyQueuesArgs = {
+  input: CreateManyQueuesInput;
 };
 
-export type MutationCreateOneShiftOptionArgs = {
-  input: CreateOneShiftOptionInput;
+export type MutationCreateManyStaffArgs = {
+  input: CreateManyStaffInput;
 };
 
-export type MutationCreateOneUserArgs = {
-  input: CreateOneUserInput;
+export type MutationCreateOneAdminArgs = {
+  input: CreateOneAdminInput;
 };
 
-export type MutationDeleteManyEmployeesArgs = {
-  input: DeleteManyEmployeesInput;
+export type MutationCreateOneCounterArgs = {
+  input: CreateOneCounterInput;
 };
 
-export type MutationDeleteManyLocationsArgs = {
-  input: DeleteManyLocationsInput;
+export type MutationCreateOneCounter_TypeArgs = {
+  input: CreateOneCounter_TypeInput;
 };
 
-export type MutationDeleteManyShiftOptionsArgs = {
-  input: DeleteManyShiftOptionsInput;
+export type MutationCreateOneCustomerArgs = {
+  input: CreateOneCustomerInput;
 };
 
-export type MutationDeleteManyShiftsArgs = {
-  input: DeleteManyShiftsInput;
+export type MutationCreateOneCustomerNotificationArgs = {
+  input: CreateOneCustomerNotificationInput;
 };
 
-export type MutationDeleteManyUsersArgs = {
-  input: DeleteManyUsersInput;
+export type MutationCreateOneDepartmentArgs = {
+  input: CreateOneDepartmentInput;
 };
 
-export type MutationDeleteOneEmployeeArgs = {
-  input: DeleteOneEmployeeInput;
+export type MutationCreateOneNotificationArgs = {
+  input: CreateOneNotificationInput;
 };
 
-export type MutationDeleteOneLocationArgs = {
-  input: DeleteOneLocationInput;
+export type MutationCreateOneQueueArgs = {
+  input: CreateOneQueueInput;
 };
 
-export type MutationDeleteOneShiftArgs = {
-  input: DeleteOneShiftInput;
+export type MutationCreateOneStaffArgs = {
+  input: CreateOneStaffInput;
 };
 
-export type MutationDeleteOneShiftOptionArgs = {
-  input: DeleteOneShiftOptionInput;
+export type MutationDeleteManyAdminsArgs = {
+  input: DeleteManyAdminsInput;
 };
 
-export type MutationDeleteOneUserArgs = {
-  input: DeleteOneUserInput;
+export type MutationDeleteManyCounter_TypesArgs = {
+  input: DeleteManyCounter_TypesInput;
 };
 
-export type MutationRemoveEmployeeFromShiftArgs = {
-  input: RemoveEmployeeFromShiftInput;
+export type MutationDeleteManyCountersArgs = {
+  input: DeleteManyCountersInput;
 };
 
-export type MutationRemoveShiftOptionsFromShiftArgs = {
-  input: RemoveShiftOptionsFromShiftInput;
+export type MutationDeleteManyCustomerNotificationsArgs = {
+  input: DeleteManyCustomerNotificationsInput;
 };
 
-export type MutationSetEmployeeOnShiftArgs = {
-  input: SetEmployeeOnShiftInput;
+export type MutationDeleteManyCustomersArgs = {
+  input: DeleteManyCustomersInput;
 };
 
-export type MutationSetShiftOptionsOnShiftArgs = {
-  input: SetShiftOptionsOnShiftInput;
+export type MutationDeleteManyDepartmentsArgs = {
+  input: DeleteManyDepartmentsInput;
 };
 
-export type MutationUpdateManyEmployeesArgs = {
-  input: UpdateManyEmployeesInput;
+export type MutationDeleteManyNotificationsArgs = {
+  input: DeleteManyNotificationsInput;
 };
 
-export type MutationUpdateManyLocationsArgs = {
-  input: UpdateManyLocationsInput;
+export type MutationDeleteManyQueuesArgs = {
+  input: DeleteManyQueuesInput;
 };
 
-export type MutationUpdateManyShiftOptionsArgs = {
-  input: UpdateManyShiftOptionsInput;
+export type MutationDeleteManyStaffArgs = {
+  input: DeleteManyStaffInput;
 };
 
-export type MutationUpdateManyShiftsArgs = {
-  input: UpdateManyShiftsInput;
+export type MutationDeleteOneAdminArgs = {
+  input: DeleteOneAdminInput;
 };
 
-export type MutationUpdateManyUsersArgs = {
-  input: UpdateManyUsersInput;
+export type MutationDeleteOneCounterArgs = {
+  input: DeleteOneCounterInput;
+};
+
+export type MutationDeleteOneCounter_TypeArgs = {
+  input: DeleteOneCounter_TypeInput;
+};
+
+export type MutationDeleteOneCustomerArgs = {
+  input: DeleteOneCustomerInput;
+};
+
+export type MutationDeleteOneCustomerNotificationArgs = {
+  input: DeleteOneCustomerNotificationInput;
+};
+
+export type MutationDeleteOneDepartmentArgs = {
+  input: DeleteOneDepartmentInput;
+};
+
+export type MutationDeleteOneNotificationArgs = {
+  input: DeleteOneNotificationInput;
+};
+
+export type MutationDeleteOneQueueArgs = {
+  input: DeleteOneQueueInput;
+};
+
+export type MutationDeleteOneStaffArgs = {
+  input: DeleteOneStaffInput;
+};
+
+export type MutationUpdateManyAdminsArgs = {
+  input: UpdateManyAdminsInput;
+};
+
+export type MutationUpdateManyCounter_TypesArgs = {
+  input: UpdateManyCounter_TypesInput;
+};
+
+export type MutationUpdateManyCountersArgs = {
+  input: UpdateManyCountersInput;
+};
+
+export type MutationUpdateManyCustomerNotificationsArgs = {
+  input: UpdateManyCustomerNotificationsInput;
+};
+
+export type MutationUpdateManyCustomersArgs = {
+  input: UpdateManyCustomersInput;
+};
+
+export type MutationUpdateManyDepartmentsArgs = {
+  input: UpdateManyDepartmentsInput;
+};
+
+export type MutationUpdateManyNotificationsArgs = {
+  input: UpdateManyNotificationsInput;
+};
+
+export type MutationUpdateManyQueuesArgs = {
+  input: UpdateManyQueuesInput;
+};
+
+export type MutationUpdateManyStaffArgs = {
+  input: UpdateManyStaffInput;
 };
 
 export type MutationUpdateMeArgs = {
   input: MeUpdate;
 };
 
-export type MutationUpdateOneEmployeeArgs = {
-  input: UpdateOneEmployeeInput;
+export type MutationUpdateOneAdminArgs = {
+  input: UpdateOneAdminInput;
 };
 
-export type MutationUpdateOneLocationArgs = {
-  input: UpdateOneLocationInput;
+export type MutationUpdateOneCounterArgs = {
+  input: UpdateOneCounterInput;
 };
 
-export type MutationUpdateOneShiftArgs = {
-  input: UpdateOneShiftInput;
+export type MutationUpdateOneCounter_TypeArgs = {
+  input: UpdateOneCounter_TypeInput;
 };
 
-export type MutationUpdateOneShiftOptionArgs = {
-  input: UpdateOneShiftOptionInput;
+export type MutationUpdateOneCustomerArgs = {
+  input: UpdateOneCustomerInput;
 };
 
-export type MutationUpdateOneUserArgs = {
-  input: UpdateOneUserInput;
+export type MutationUpdateOneCustomerNotificationArgs = {
+  input: UpdateOneCustomerNotificationInput;
+};
+
+export type MutationUpdateOneDepartmentArgs = {
+  input: UpdateOneDepartmentInput;
+};
+
+export type MutationUpdateOneNotificationArgs = {
+  input: UpdateOneNotificationInput;
+};
+
+export type MutationUpdateOneQueueArgs = {
+  input: UpdateOneQueueInput;
+};
+
+export type MutationUpdateOneStaffArgs = {
+  input: UpdateOneStaffInput;
+};
+
+export type Notification = {
+  __typename?: "Notification";
+  createdAt: Scalars["DateTime"];
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id: Scalars["String"];
+  message?: Maybe<Scalars["String"]>;
+  title?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type NotificationAggregateGroupBy = {
+  __typename?: "NotificationAggregateGroupBy";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["String"]>;
+  message?: Maybe<Scalars["String"]>;
+  title?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type NotificationAvgAggregate = {
+  __typename?: "NotificationAvgAggregate";
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type NotificationConnection = {
+  __typename?: "NotificationConnection";
+  /** Array of nodes. */
+  nodes: Array<Notification>;
+  /** Paging information */
+  pageInfo: OffsetPageInfo;
+  /** Fetch total count of records */
+  totalCount: Scalars["Int"];
+};
+
+export type NotificationCountAggregate = {
+  __typename?: "NotificationCountAggregate";
+  createdAt?: Maybe<Scalars["Int"]>;
+  createdBy?: Maybe<Scalars["Int"]>;
+  deletedAt?: Maybe<Scalars["Int"]>;
+  deletedBy?: Maybe<Scalars["Int"]>;
+  id?: Maybe<Scalars["Int"]>;
+  message?: Maybe<Scalars["Int"]>;
+  title?: Maybe<Scalars["Int"]>;
+  updatedAt?: Maybe<Scalars["Int"]>;
+  updatedBy?: Maybe<Scalars["Int"]>;
+};
+
+export type NotificationDeleteFilter = {
+  and?: InputMaybe<Array<NotificationDeleteFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  message?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<NotificationDeleteFilter>>;
+  title?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type NotificationDeleteResponse = {
+  __typename?: "NotificationDeleteResponse";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["String"]>;
+  message?: Maybe<Scalars["String"]>;
+  title?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type NotificationFilter = {
+  and?: InputMaybe<Array<NotificationFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  message?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<NotificationFilter>>;
+  title?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type NotificationMaxAggregate = {
+  __typename?: "NotificationMaxAggregate";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["String"]>;
+  message?: Maybe<Scalars["String"]>;
+  title?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type NotificationMinAggregate = {
+  __typename?: "NotificationMinAggregate";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["String"]>;
+  message?: Maybe<Scalars["String"]>;
+  title?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type NotificationSort = {
+  direction: SortDirection;
+  field: NotificationSortFields;
+  nulls?: InputMaybe<SortNulls>;
+};
+
+export enum NotificationSortFields {
+  CreatedAt = "createdAt",
+  CreatedBy = "createdBy",
+  DeletedAt = "deletedAt",
+  DeletedBy = "deletedBy",
+  Id = "id",
+  Message = "message",
+  Title = "title",
+  UpdatedAt = "updatedAt",
+  UpdatedBy = "updatedBy",
+}
+
+export type NotificationSumAggregate = {
+  __typename?: "NotificationSumAggregate";
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type NotificationUpdateFilter = {
+  and?: InputMaybe<Array<NotificationUpdateFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  message?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<NotificationUpdateFilter>>;
+  title?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
 export type NumberFieldComparison = {
@@ -973,248 +1717,253 @@ export type OffsetPaging = {
 
 export type Query = {
   __typename?: "Query";
-  employee?: Maybe<Employee>;
-  employees: EmployeeConnection;
-  getEmployeeMe: Employee;
-  getMe: User;
-  location?: Maybe<Location>;
-  locations: LocationConnection;
-  shift?: Maybe<Shift>;
-  shiftOption?: Maybe<ShiftOption>;
-  shiftOptions: ShiftOptionConnection;
-  shifts: ShiftConnection;
-  user?: Maybe<User>;
-  users: UserConnection;
+  admin?: Maybe<Admin>;
+  admins: AdminConnection;
+  counter?: Maybe<Counter>;
+  counter_type?: Maybe<Counter_Type>;
+  counter_types: Counter_TypeConnection;
+  counters: CounterConnection;
+  customer?: Maybe<Customer>;
+  customerNotification?: Maybe<CustomerNotification>;
+  customerNotifications: CustomerNotificationConnection;
+  customers: CustomerConnection;
+  department?: Maybe<Department>;
+  departments: DepartmentConnection;
+  getEmployeeMe: Staff;
+  getMe: Admin;
+  notification?: Maybe<Notification>;
+  notifications: NotificationConnection;
+  queue?: Maybe<Queue>;
+  queues: QueueConnection;
+  staff: StaffConnection;
 };
 
-export type QueryEmployeeArgs = {
+export type QueryAdminArgs = {
   id: Scalars["String"];
 };
 
-export type QueryEmployeesArgs = {
-  filter?: InputMaybe<EmployeeFilter>;
+export type QueryAdminsArgs = {
+  filter?: InputMaybe<AdminFilter>;
   paging?: InputMaybe<OffsetPaging>;
-  sorting?: InputMaybe<Array<EmployeeSort>>;
+  sorting?: InputMaybe<Array<AdminSort>>;
 };
 
-export type QueryLocationArgs = {
-  id: Scalars["ID"];
+export type QueryCounterArgs = {
+  id: Scalars["String"];
 };
 
-export type QueryLocationsArgs = {
-  filter?: InputMaybe<LocationFilter>;
+export type QueryCounter_TypeArgs = {
+  id: Scalars["String"];
+};
+
+export type QueryCounter_TypesArgs = {
+  filter?: InputMaybe<Counter_TypeFilter>;
   paging?: InputMaybe<OffsetPaging>;
-  sorting?: InputMaybe<Array<LocationSort>>;
+  sorting?: InputMaybe<Array<Counter_TypeSort>>;
 };
 
-export type QueryShiftArgs = {
-  id: Scalars["String"];
-};
-
-export type QueryShiftOptionArgs = {
-  id: Scalars["String"];
-};
-
-export type QueryShiftOptionsArgs = {
-  filter?: InputMaybe<ShiftOptionFilter>;
+export type QueryCountersArgs = {
+  filter?: InputMaybe<CounterFilter>;
   paging?: InputMaybe<OffsetPaging>;
-  sorting?: InputMaybe<Array<ShiftOptionSort>>;
+  sorting?: InputMaybe<Array<CounterSort>>;
 };
 
-export type QueryShiftsArgs = {
-  filter?: InputMaybe<ShiftFilter>;
+export type QueryCustomerArgs = {
+  id: Scalars["String"];
+};
+
+export type QueryCustomerNotificationArgs = {
+  id: Scalars["String"];
+};
+
+export type QueryCustomerNotificationsArgs = {
+  filter?: InputMaybe<CustomerNotificationFilter>;
   paging?: InputMaybe<OffsetPaging>;
-  sorting?: InputMaybe<Array<ShiftSort>>;
+  sorting?: InputMaybe<Array<CustomerNotificationSort>>;
 };
 
-export type QueryUserArgs = {
-  id: Scalars["String"];
-};
-
-export type QueryUsersArgs = {
-  filter?: InputMaybe<UserFilter>;
+export type QueryCustomersArgs = {
+  filter?: InputMaybe<CustomerFilter>;
   paging?: InputMaybe<OffsetPaging>;
-  sorting?: InputMaybe<Array<UserSort>>;
+  sorting?: InputMaybe<Array<CustomerSort>>;
 };
 
-export type RemoveEmployeeFromShiftInput = {
-  /** The id of the record. */
+export type QueryDepartmentArgs = {
   id: Scalars["String"];
-  /** The id of relation. */
-  relationId: Scalars["String"];
 };
 
-export type RemoveShiftOptionsFromShiftInput = {
-  /** The id of the record. */
+export type QueryDepartmentsArgs = {
+  filter?: InputMaybe<DepartmentFilter>;
+  paging?: InputMaybe<OffsetPaging>;
+  sorting?: InputMaybe<Array<DepartmentSort>>;
+};
+
+export type QueryNotificationArgs = {
   id: Scalars["String"];
-  /** The id of relation. */
-  relationId: Scalars["String"];
 };
 
-export type SetEmployeeOnShiftInput = {
-  /** The id of the record. */
+export type QueryNotificationsArgs = {
+  filter?: InputMaybe<NotificationFilter>;
+  paging?: InputMaybe<OffsetPaging>;
+  sorting?: InputMaybe<Array<NotificationSort>>;
+};
+
+export type QueryQueueArgs = {
   id: Scalars["String"];
-  /** The id of relation. */
-  relationId: Scalars["String"];
 };
 
-export type SetShiftOptionsOnShiftInput = {
-  /** The id of the record. */
-  id: Scalars["String"];
-  /** The id of relation. */
-  relationId: Scalars["String"];
+export type QueryQueuesArgs = {
+  filter?: InputMaybe<QueueFilter>;
+  paging?: InputMaybe<OffsetPaging>;
+  sorting?: InputMaybe<Array<QueueSort>>;
 };
 
-export type Shift = {
-  __typename?: "Shift";
-  allowance?: Maybe<Scalars["Float"]>;
-  breakPunchIn?: Maybe<Scalars["DateTime"]>;
-  breakPunchOut?: Maybe<Scalars["DateTime"]>;
-  clockIn?: Maybe<Scalars["DateTime"]>;
-  clockOut?: Maybe<Scalars["DateTime"]>;
-  createdAt: Scalars["DateTime"];
-  createdBy?: Maybe<Scalars["Float"]>;
-  date?: Maybe<Scalars["DateTime"]>;
-  deletedAt?: Maybe<Scalars["DateTime"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  employee?: Maybe<Employee>;
-  hours?: Maybe<Scalars["Float"]>;
-  id: Scalars["String"];
-  shiftOptionId: Scalars["Float"];
-  shiftOptions?: Maybe<ShiftOption>;
-  total: Scalars["Float"];
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
+export type QueryStaffArgs = {
+  filter?: InputMaybe<StaffFilter>;
+  paging?: InputMaybe<OffsetPaging>;
+  sorting?: InputMaybe<Array<StaffSort>>;
 };
 
-export type ShiftAggregateGroupBy = {
-  __typename?: "ShiftAggregateGroupBy";
-  allowance?: Maybe<Scalars["Float"]>;
-  breakPunchIn?: Maybe<Scalars["DateTime"]>;
-  breakPunchOut?: Maybe<Scalars["DateTime"]>;
-  clockIn?: Maybe<Scalars["DateTime"]>;
-  clockOut?: Maybe<Scalars["DateTime"]>;
-  createdAt?: Maybe<Scalars["DateTime"]>;
-  createdBy?: Maybe<Scalars["Float"]>;
-  date?: Maybe<Scalars["DateTime"]>;
-  deletedAt?: Maybe<Scalars["DateTime"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  hours?: Maybe<Scalars["Float"]>;
-  id?: Maybe<Scalars["String"]>;
-  shiftOptionId?: Maybe<Scalars["Float"]>;
-  total?: Maybe<Scalars["Float"]>;
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type ShiftAvgAggregate = {
-  __typename?: "ShiftAvgAggregate";
-  allowance?: Maybe<Scalars["Float"]>;
-  createdBy?: Maybe<Scalars["Float"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  hours?: Maybe<Scalars["Float"]>;
-  shiftOptionId?: Maybe<Scalars["Float"]>;
-  total?: Maybe<Scalars["Float"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type ShiftConnection = {
-  __typename?: "ShiftConnection";
+export type QueueConnection = {
+  __typename?: "QueueConnection";
   /** Array of nodes. */
-  nodes: Array<Shift>;
+  nodes: Array<Queue>;
   /** Paging information */
   pageInfo: OffsetPageInfo;
   /** Fetch total count of records */
   totalCount: Scalars["Int"];
 };
 
-export type ShiftCountAggregate = {
-  __typename?: "ShiftCountAggregate";
-  allowance?: Maybe<Scalars["Int"]>;
-  breakPunchIn?: Maybe<Scalars["Int"]>;
-  breakPunchOut?: Maybe<Scalars["Int"]>;
-  clockIn?: Maybe<Scalars["Int"]>;
-  clockOut?: Maybe<Scalars["Int"]>;
-  createdAt?: Maybe<Scalars["Int"]>;
-  createdBy?: Maybe<Scalars["Int"]>;
-  date?: Maybe<Scalars["Int"]>;
-  deletedAt?: Maybe<Scalars["Int"]>;
-  deletedBy?: Maybe<Scalars["Int"]>;
-  hours?: Maybe<Scalars["Int"]>;
-  id?: Maybe<Scalars["Int"]>;
-  shiftOptionId?: Maybe<Scalars["Int"]>;
-  total?: Maybe<Scalars["Int"]>;
-  updatedAt?: Maybe<Scalars["Int"]>;
-  updatedBy?: Maybe<Scalars["Int"]>;
-};
-
-export type ShiftDeleteFilter = {
-  allowance?: InputMaybe<NumberFieldComparison>;
-  and?: InputMaybe<Array<ShiftDeleteFilter>>;
-  breakPunchIn?: InputMaybe<DateFieldComparison>;
-  breakPunchOut?: InputMaybe<DateFieldComparison>;
-  clockIn?: InputMaybe<DateFieldComparison>;
-  clockOut?: InputMaybe<DateFieldComparison>;
-  createdAt?: InputMaybe<DateFieldComparison>;
-  createdBy?: InputMaybe<NumberFieldComparison>;
-  date?: InputMaybe<DateFieldComparison>;
-  deletedAt?: InputMaybe<DateFieldComparison>;
-  deletedBy?: InputMaybe<NumberFieldComparison>;
-  hours?: InputMaybe<NumberFieldComparison>;
-  id?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<ShiftDeleteFilter>>;
-  shiftOptionId?: InputMaybe<NumberFieldComparison>;
-  total?: InputMaybe<NumberFieldComparison>;
-  updatedAt?: InputMaybe<DateFieldComparison>;
-  updatedBy?: InputMaybe<NumberFieldComparison>;
-};
-
-export type ShiftDeleteResponse = {
-  __typename?: "ShiftDeleteResponse";
-  allowance?: Maybe<Scalars["Float"]>;
-  breakPunchIn?: Maybe<Scalars["DateTime"]>;
-  breakPunchOut?: Maybe<Scalars["DateTime"]>;
-  clockIn?: Maybe<Scalars["DateTime"]>;
-  clockOut?: Maybe<Scalars["DateTime"]>;
+export type QueueDeleteResponse = {
+  __typename?: "QueueDeleteResponse";
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
-  date?: Maybe<Scalars["DateTime"]>;
+  currentNumber?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
-  hours?: Maybe<Scalars["Float"]>;
   id?: Maybe<Scalars["String"]>;
-  shiftOptionId?: Maybe<Scalars["Float"]>;
-  total?: Maybe<Scalars["Float"]>;
+  number?: Maybe<Scalars["Float"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type ShiftFilter = {
-  allowance?: InputMaybe<NumberFieldComparison>;
-  and?: InputMaybe<Array<ShiftFilter>>;
-  breakPunchIn?: InputMaybe<DateFieldComparison>;
-  breakPunchOut?: InputMaybe<DateFieldComparison>;
-  clockIn?: InputMaybe<DateFieldComparison>;
-  clockOut?: InputMaybe<DateFieldComparison>;
-  createdAt?: InputMaybe<DateFieldComparison>;
-  createdBy?: InputMaybe<NumberFieldComparison>;
-  date?: InputMaybe<DateFieldComparison>;
-  deletedAt?: InputMaybe<DateFieldComparison>;
-  deletedBy?: InputMaybe<NumberFieldComparison>;
-  employee?: InputMaybe<ShiftFilterEmployeeFilter>;
-  hours?: InputMaybe<NumberFieldComparison>;
-  id?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<ShiftFilter>>;
-  shiftOptionId?: InputMaybe<NumberFieldComparison>;
-  shiftOptions?: InputMaybe<ShiftFilterShiftOptionFilter>;
-  total?: InputMaybe<NumberFieldComparison>;
-  updatedAt?: InputMaybe<DateFieldComparison>;
-  updatedBy?: InputMaybe<NumberFieldComparison>;
+/** Sort Directions */
+export enum SortDirection {
+  Asc = "ASC",
+  Desc = "DESC",
+}
+
+/** Sort Nulls Options */
+export enum SortNulls {
+  NullsFirst = "NULLS_FIRST",
+  NullsLast = "NULLS_LAST",
+}
+
+export type Staff = {
+  __typename?: "Staff";
+  accountNo?: Maybe<Scalars["Float"]>;
+  backPayment?: Maybe<Scalars["Float"]>;
+  bankType?: Maybe<Scalars["String"]>;
+  createdAt: Scalars["DateTime"];
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  employeeEpf?: Maybe<Scalars["Float"]>;
+  employeeNo: Scalars["String"];
+  employeeSocso?: Maybe<Scalars["Float"]>;
+  employerEpf?: Maybe<Scalars["Float"]>;
+  employerSocso?: Maybe<Scalars["Float"]>;
+  icNo: Scalars["String"];
+  id: Scalars["String"];
+  isAccepted?: Maybe<Scalars["Boolean"]>;
+  loan?: Maybe<Scalars["Float"]>;
+  name: Scalars["String"];
+  password?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
+  type?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type ShiftFilterEmployeeFilter = {
+export type StaffAggregateGroupBy = {
+  __typename?: "StaffAggregateGroupBy";
+  accountNo?: Maybe<Scalars["Float"]>;
+  backPayment?: Maybe<Scalars["Float"]>;
+  bankType?: Maybe<Scalars["String"]>;
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  employeeEpf?: Maybe<Scalars["Float"]>;
+  employeeNo?: Maybe<Scalars["String"]>;
+  employeeSocso?: Maybe<Scalars["Float"]>;
+  employerEpf?: Maybe<Scalars["Float"]>;
+  employerSocso?: Maybe<Scalars["Float"]>;
+  icNo?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["String"]>;
+  isAccepted?: Maybe<Scalars["Boolean"]>;
+  loan?: Maybe<Scalars["Float"]>;
+  name?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
+  type?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type StaffAvgAggregate = {
+  __typename?: "StaffAvgAggregate";
+  accountNo?: Maybe<Scalars["Float"]>;
+  backPayment?: Maybe<Scalars["Float"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  employeeEpf?: Maybe<Scalars["Float"]>;
+  employeeSocso?: Maybe<Scalars["Float"]>;
+  employerEpf?: Maybe<Scalars["Float"]>;
+  employerSocso?: Maybe<Scalars["Float"]>;
+  loan?: Maybe<Scalars["Float"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type StaffConnection = {
+  __typename?: "StaffConnection";
+  /** Array of nodes. */
+  nodes: Array<Staff>;
+  /** Paging information */
+  pageInfo: OffsetPageInfo;
+  /** Fetch total count of records */
+  totalCount: Scalars["Int"];
+};
+
+export type StaffCountAggregate = {
+  __typename?: "StaffCountAggregate";
+  accountNo?: Maybe<Scalars["Int"]>;
+  backPayment?: Maybe<Scalars["Int"]>;
+  bankType?: Maybe<Scalars["Int"]>;
+  createdAt?: Maybe<Scalars["Int"]>;
+  createdBy?: Maybe<Scalars["Int"]>;
+  deletedAt?: Maybe<Scalars["Int"]>;
+  deletedBy?: Maybe<Scalars["Int"]>;
+  employeeEpf?: Maybe<Scalars["Int"]>;
+  employeeNo?: Maybe<Scalars["Int"]>;
+  employeeSocso?: Maybe<Scalars["Int"]>;
+  employerEpf?: Maybe<Scalars["Int"]>;
+  employerSocso?: Maybe<Scalars["Int"]>;
+  icNo?: Maybe<Scalars["Int"]>;
+  id?: Maybe<Scalars["Int"]>;
+  isAccepted?: Maybe<Scalars["Int"]>;
+  loan?: Maybe<Scalars["Int"]>;
+  name?: Maybe<Scalars["Int"]>;
+  password?: Maybe<Scalars["Int"]>;
+  phoneNo?: Maybe<Scalars["Int"]>;
+  type?: Maybe<Scalars["Int"]>;
+  updatedAt?: Maybe<Scalars["Int"]>;
+  updatedBy?: Maybe<Scalars["Int"]>;
+};
+
+export type StaffDeleteFilter = {
   accountNo?: InputMaybe<NumberFieldComparison>;
-  and?: InputMaybe<Array<ShiftFilterEmployeeFilter>>;
+  and?: InputMaybe<Array<StaffDeleteFilter>>;
   backPayment?: InputMaybe<NumberFieldComparison>;
   bankType?: InputMaybe<StringFieldComparison>;
   createdAt?: InputMaybe<DateFieldComparison>;
@@ -1231,7 +1980,7 @@ export type ShiftFilterEmployeeFilter = {
   isAccepted?: InputMaybe<BooleanFieldComparison>;
   loan?: InputMaybe<NumberFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<ShiftFilterEmployeeFilter>>;
+  or?: InputMaybe<Array<StaffDeleteFilter>>;
   password?: InputMaybe<StringFieldComparison>;
   phoneNo?: InputMaybe<StringFieldComparison>;
   type?: InputMaybe<StringFieldComparison>;
@@ -1239,325 +1988,180 @@ export type ShiftFilterEmployeeFilter = {
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
-export type ShiftFilterShiftOptionFilter = {
-  and?: InputMaybe<Array<ShiftFilterShiftOptionFilter>>;
+export type StaffDeleteResponse = {
+  __typename?: "StaffDeleteResponse";
+  accountNo?: Maybe<Scalars["Float"]>;
+  backPayment?: Maybe<Scalars["Float"]>;
+  bankType?: Maybe<Scalars["String"]>;
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  employeeEpf?: Maybe<Scalars["Float"]>;
+  employeeNo?: Maybe<Scalars["String"]>;
+  employeeSocso?: Maybe<Scalars["Float"]>;
+  employerEpf?: Maybe<Scalars["Float"]>;
+  employerSocso?: Maybe<Scalars["Float"]>;
+  icNo?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["String"]>;
+  isAccepted?: Maybe<Scalars["Boolean"]>;
+  loan?: Maybe<Scalars["Float"]>;
+  name?: Maybe<Scalars["String"]>;
+  password?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
+  type?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type StaffFilter = {
+  accountNo?: InputMaybe<NumberFieldComparison>;
+  and?: InputMaybe<Array<StaffFilter>>;
+  backPayment?: InputMaybe<NumberFieldComparison>;
+  bankType?: InputMaybe<StringFieldComparison>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   deletedBy?: InputMaybe<NumberFieldComparison>;
+  employeeEpf?: InputMaybe<NumberFieldComparison>;
+  employeeNo?: InputMaybe<StringFieldComparison>;
+  employeeSocso?: InputMaybe<NumberFieldComparison>;
+  employerEpf?: InputMaybe<NumberFieldComparison>;
+  employerSocso?: InputMaybe<NumberFieldComparison>;
+  icNo?: InputMaybe<StringFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
-  isDeleteButSave?: InputMaybe<BooleanFieldComparison>;
+  isAccepted?: InputMaybe<BooleanFieldComparison>;
+  loan?: InputMaybe<NumberFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<ShiftFilterShiftOptionFilter>>;
-  otRate?: InputMaybe<NumberFieldComparison>;
-  rate?: InputMaybe<NumberFieldComparison>;
+  or?: InputMaybe<Array<StaffFilter>>;
+  password?: InputMaybe<StringFieldComparison>;
+  phoneNo?: InputMaybe<StringFieldComparison>;
   type?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
-export type ShiftMaxAggregate = {
-  __typename?: "ShiftMaxAggregate";
-  allowance?: Maybe<Scalars["Float"]>;
-  breakPunchIn?: Maybe<Scalars["DateTime"]>;
-  breakPunchOut?: Maybe<Scalars["DateTime"]>;
-  clockIn?: Maybe<Scalars["DateTime"]>;
-  clockOut?: Maybe<Scalars["DateTime"]>;
+export type StaffMaxAggregate = {
+  __typename?: "StaffMaxAggregate";
+  accountNo?: Maybe<Scalars["Float"]>;
+  backPayment?: Maybe<Scalars["Float"]>;
+  bankType?: Maybe<Scalars["String"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
-  date?: Maybe<Scalars["DateTime"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
-  hours?: Maybe<Scalars["Float"]>;
+  employeeEpf?: Maybe<Scalars["Float"]>;
+  employeeNo?: Maybe<Scalars["String"]>;
+  employeeSocso?: Maybe<Scalars["Float"]>;
+  employerEpf?: Maybe<Scalars["Float"]>;
+  employerSocso?: Maybe<Scalars["Float"]>;
+  icNo?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["String"]>;
-  shiftOptionId?: Maybe<Scalars["Float"]>;
-  total?: Maybe<Scalars["Float"]>;
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type ShiftMinAggregate = {
-  __typename?: "ShiftMinAggregate";
-  allowance?: Maybe<Scalars["Float"]>;
-  breakPunchIn?: Maybe<Scalars["DateTime"]>;
-  breakPunchOut?: Maybe<Scalars["DateTime"]>;
-  clockIn?: Maybe<Scalars["DateTime"]>;
-  clockOut?: Maybe<Scalars["DateTime"]>;
-  createdAt?: Maybe<Scalars["DateTime"]>;
-  createdBy?: Maybe<Scalars["Float"]>;
-  date?: Maybe<Scalars["DateTime"]>;
-  deletedAt?: Maybe<Scalars["DateTime"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  hours?: Maybe<Scalars["Float"]>;
-  id?: Maybe<Scalars["String"]>;
-  shiftOptionId?: Maybe<Scalars["Float"]>;
-  total?: Maybe<Scalars["Float"]>;
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type ShiftOption = {
-  __typename?: "ShiftOption";
-  createdAt: Scalars["DateTime"];
-  createdBy?: Maybe<Scalars["Float"]>;
-  deletedAt?: Maybe<Scalars["DateTime"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  id: Scalars["String"];
-  isDeleteButSave: Scalars["Boolean"];
+  loan?: Maybe<Scalars["Float"]>;
   name?: Maybe<Scalars["String"]>;
-  otRate?: Maybe<Scalars["Float"]>;
-  rate?: Maybe<Scalars["Float"]>;
+  password?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
   type?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type ShiftOptionAggregateGroupBy = {
-  __typename?: "ShiftOptionAggregateGroupBy";
+export type StaffMinAggregate = {
+  __typename?: "StaffMinAggregate";
+  accountNo?: Maybe<Scalars["Float"]>;
+  backPayment?: Maybe<Scalars["Float"]>;
+  bankType?: Maybe<Scalars["String"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
+  employeeEpf?: Maybe<Scalars["Float"]>;
+  employeeNo?: Maybe<Scalars["String"]>;
+  employeeSocso?: Maybe<Scalars["Float"]>;
+  employerEpf?: Maybe<Scalars["Float"]>;
+  employerSocso?: Maybe<Scalars["Float"]>;
+  icNo?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["String"]>;
-  isDeleteButSave?: Maybe<Scalars["Boolean"]>;
+  loan?: Maybe<Scalars["Float"]>;
   name?: Maybe<Scalars["String"]>;
-  otRate?: Maybe<Scalars["Float"]>;
-  rate?: Maybe<Scalars["Float"]>;
+  password?: Maybe<Scalars["String"]>;
+  phoneNo?: Maybe<Scalars["String"]>;
   type?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type ShiftOptionAvgAggregate = {
-  __typename?: "ShiftOptionAvgAggregate";
-  createdBy?: Maybe<Scalars["Float"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  otRate?: Maybe<Scalars["Float"]>;
-  rate?: Maybe<Scalars["Float"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type ShiftOptionConnection = {
-  __typename?: "ShiftOptionConnection";
-  /** Array of nodes. */
-  nodes: Array<ShiftOption>;
-  /** Paging information */
-  pageInfo: OffsetPageInfo;
-  /** Fetch total count of records */
-  totalCount: Scalars["Int"];
-};
-
-export type ShiftOptionCountAggregate = {
-  __typename?: "ShiftOptionCountAggregate";
-  createdAt?: Maybe<Scalars["Int"]>;
-  createdBy?: Maybe<Scalars["Int"]>;
-  deletedAt?: Maybe<Scalars["Int"]>;
-  deletedBy?: Maybe<Scalars["Int"]>;
-  id?: Maybe<Scalars["Int"]>;
-  isDeleteButSave?: Maybe<Scalars["Int"]>;
-  name?: Maybe<Scalars["Int"]>;
-  otRate?: Maybe<Scalars["Int"]>;
-  rate?: Maybe<Scalars["Int"]>;
-  type?: Maybe<Scalars["Int"]>;
-  updatedAt?: Maybe<Scalars["Int"]>;
-  updatedBy?: Maybe<Scalars["Int"]>;
-};
-
-export type ShiftOptionDeleteFilter = {
-  and?: InputMaybe<Array<ShiftOptionDeleteFilter>>;
-  createdAt?: InputMaybe<DateFieldComparison>;
-  createdBy?: InputMaybe<NumberFieldComparison>;
-  deletedAt?: InputMaybe<DateFieldComparison>;
-  deletedBy?: InputMaybe<NumberFieldComparison>;
-  id?: InputMaybe<StringFieldComparison>;
-  isDeleteButSave?: InputMaybe<BooleanFieldComparison>;
-  name?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<ShiftOptionDeleteFilter>>;
-  otRate?: InputMaybe<NumberFieldComparison>;
-  rate?: InputMaybe<NumberFieldComparison>;
-  type?: InputMaybe<StringFieldComparison>;
-  updatedAt?: InputMaybe<DateFieldComparison>;
-  updatedBy?: InputMaybe<NumberFieldComparison>;
-};
-
-export type ShiftOptionDeleteResponse = {
-  __typename?: "ShiftOptionDeleteResponse";
-  createdAt?: Maybe<Scalars["DateTime"]>;
-  createdBy?: Maybe<Scalars["Float"]>;
-  deletedAt?: Maybe<Scalars["DateTime"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  id?: Maybe<Scalars["String"]>;
-  isDeleteButSave?: Maybe<Scalars["Boolean"]>;
-  name?: Maybe<Scalars["String"]>;
-  otRate?: Maybe<Scalars["Float"]>;
-  rate?: Maybe<Scalars["Float"]>;
-  type?: Maybe<Scalars["String"]>;
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type ShiftOptionFilter = {
-  and?: InputMaybe<Array<ShiftOptionFilter>>;
-  createdAt?: InputMaybe<DateFieldComparison>;
-  createdBy?: InputMaybe<NumberFieldComparison>;
-  deletedAt?: InputMaybe<DateFieldComparison>;
-  deletedBy?: InputMaybe<NumberFieldComparison>;
-  id?: InputMaybe<StringFieldComparison>;
-  isDeleteButSave?: InputMaybe<BooleanFieldComparison>;
-  name?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<ShiftOptionFilter>>;
-  otRate?: InputMaybe<NumberFieldComparison>;
-  rate?: InputMaybe<NumberFieldComparison>;
-  type?: InputMaybe<StringFieldComparison>;
-  updatedAt?: InputMaybe<DateFieldComparison>;
-  updatedBy?: InputMaybe<NumberFieldComparison>;
-};
-
-export type ShiftOptionMaxAggregate = {
-  __typename?: "ShiftOptionMaxAggregate";
-  createdAt?: Maybe<Scalars["DateTime"]>;
-  createdBy?: Maybe<Scalars["Float"]>;
-  deletedAt?: Maybe<Scalars["DateTime"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  id?: Maybe<Scalars["String"]>;
-  name?: Maybe<Scalars["String"]>;
-  otRate?: Maybe<Scalars["Float"]>;
-  rate?: Maybe<Scalars["Float"]>;
-  type?: Maybe<Scalars["String"]>;
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type ShiftOptionMinAggregate = {
-  __typename?: "ShiftOptionMinAggregate";
-  createdAt?: Maybe<Scalars["DateTime"]>;
-  createdBy?: Maybe<Scalars["Float"]>;
-  deletedAt?: Maybe<Scalars["DateTime"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  id?: Maybe<Scalars["String"]>;
-  name?: Maybe<Scalars["String"]>;
-  otRate?: Maybe<Scalars["Float"]>;
-  rate?: Maybe<Scalars["Float"]>;
-  type?: Maybe<Scalars["String"]>;
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type ShiftOptionSort = {
+export type StaffSort = {
   direction: SortDirection;
-  field: ShiftOptionSortFields;
+  field: StaffSortFields;
   nulls?: InputMaybe<SortNulls>;
 };
 
-export enum ShiftOptionSortFields {
+export enum StaffSortFields {
+  AccountNo = "accountNo",
+  BackPayment = "backPayment",
+  BankType = "bankType",
   CreatedAt = "createdAt",
   CreatedBy = "createdBy",
   DeletedAt = "deletedAt",
   DeletedBy = "deletedBy",
+  EmployeeEpf = "employeeEpf",
+  EmployeeNo = "employeeNo",
+  EmployeeSocso = "employeeSocso",
+  EmployerEpf = "employerEpf",
+  EmployerSocso = "employerSocso",
+  IcNo = "icNo",
   Id = "id",
-  IsDeleteButSave = "isDeleteButSave",
+  IsAccepted = "isAccepted",
+  Loan = "loan",
   Name = "name",
-  OtRate = "otRate",
-  Rate = "rate",
+  Password = "password",
+  PhoneNo = "phoneNo",
   Type = "type",
   UpdatedAt = "updatedAt",
   UpdatedBy = "updatedBy",
 }
 
-export type ShiftOptionSumAggregate = {
-  __typename?: "ShiftOptionSumAggregate";
+export type StaffSumAggregate = {
+  __typename?: "StaffSumAggregate";
+  accountNo?: Maybe<Scalars["Float"]>;
+  backPayment?: Maybe<Scalars["Float"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
-  otRate?: Maybe<Scalars["Float"]>;
-  rate?: Maybe<Scalars["Float"]>;
+  employeeEpf?: Maybe<Scalars["Float"]>;
+  employeeSocso?: Maybe<Scalars["Float"]>;
+  employerEpf?: Maybe<Scalars["Float"]>;
+  employerSocso?: Maybe<Scalars["Float"]>;
+  loan?: Maybe<Scalars["Float"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type ShiftOptionUpdateFilter = {
-  and?: InputMaybe<Array<ShiftOptionUpdateFilter>>;
+export type StaffUpdateFilter = {
+  accountNo?: InputMaybe<NumberFieldComparison>;
+  and?: InputMaybe<Array<StaffUpdateFilter>>;
+  backPayment?: InputMaybe<NumberFieldComparison>;
+  bankType?: InputMaybe<StringFieldComparison>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   deletedBy?: InputMaybe<NumberFieldComparison>;
+  employeeEpf?: InputMaybe<NumberFieldComparison>;
+  employeeNo?: InputMaybe<StringFieldComparison>;
+  employeeSocso?: InputMaybe<NumberFieldComparison>;
+  employerEpf?: InputMaybe<NumberFieldComparison>;
+  employerSocso?: InputMaybe<NumberFieldComparison>;
+  icNo?: InputMaybe<StringFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
-  isDeleteButSave?: InputMaybe<BooleanFieldComparison>;
+  isAccepted?: InputMaybe<BooleanFieldComparison>;
+  loan?: InputMaybe<NumberFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<ShiftOptionUpdateFilter>>;
-  otRate?: InputMaybe<NumberFieldComparison>;
-  rate?: InputMaybe<NumberFieldComparison>;
+  or?: InputMaybe<Array<StaffUpdateFilter>>;
+  password?: InputMaybe<StringFieldComparison>;
+  phoneNo?: InputMaybe<StringFieldComparison>;
   type?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
-
-export type ShiftSort = {
-  direction: SortDirection;
-  field: ShiftSortFields;
-  nulls?: InputMaybe<SortNulls>;
-};
-
-export enum ShiftSortFields {
-  Allowance = "allowance",
-  BreakPunchIn = "breakPunchIn",
-  BreakPunchOut = "breakPunchOut",
-  ClockIn = "clockIn",
-  ClockOut = "clockOut",
-  CreatedAt = "createdAt",
-  CreatedBy = "createdBy",
-  Date = "date",
-  DeletedAt = "deletedAt",
-  DeletedBy = "deletedBy",
-  Hours = "hours",
-  Id = "id",
-  ShiftOptionId = "shiftOptionId",
-  Total = "total",
-  UpdatedAt = "updatedAt",
-  UpdatedBy = "updatedBy",
-}
-
-export type ShiftSumAggregate = {
-  __typename?: "ShiftSumAggregate";
-  allowance?: Maybe<Scalars["Float"]>;
-  createdBy?: Maybe<Scalars["Float"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  hours?: Maybe<Scalars["Float"]>;
-  shiftOptionId?: Maybe<Scalars["Float"]>;
-  total?: Maybe<Scalars["Float"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type ShiftUpdateFilter = {
-  allowance?: InputMaybe<NumberFieldComparison>;
-  and?: InputMaybe<Array<ShiftUpdateFilter>>;
-  breakPunchIn?: InputMaybe<DateFieldComparison>;
-  breakPunchOut?: InputMaybe<DateFieldComparison>;
-  clockIn?: InputMaybe<DateFieldComparison>;
-  clockOut?: InputMaybe<DateFieldComparison>;
-  createdAt?: InputMaybe<DateFieldComparison>;
-  createdBy?: InputMaybe<NumberFieldComparison>;
-  date?: InputMaybe<DateFieldComparison>;
-  deletedAt?: InputMaybe<DateFieldComparison>;
-  deletedBy?: InputMaybe<NumberFieldComparison>;
-  hours?: InputMaybe<NumberFieldComparison>;
-  id?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<ShiftUpdateFilter>>;
-  shiftOptionId?: InputMaybe<NumberFieldComparison>;
-  total?: InputMaybe<NumberFieldComparison>;
-  updatedAt?: InputMaybe<DateFieldComparison>;
-  updatedBy?: InputMaybe<NumberFieldComparison>;
-};
-
-/** Sort Directions */
-export enum SortDirection {
-  Asc = "ASC",
-  Desc = "DESC",
-}
-
-/** Sort Nulls Options */
-export enum SortNulls {
-  NullsFirst = "NULLS_FIRST",
-  NullsLast = "NULLS_LAST",
-}
 
 export type StringFieldComparison = {
   eq?: InputMaybe<Scalars["String"]>;
@@ -1576,7 +2180,225 @@ export type StringFieldComparison = {
   notLike?: InputMaybe<Scalars["String"]>;
 };
 
-export type UpdateEmployee = {
+export type UpdateAdminInput = {
+  active: Scalars["Boolean"];
+  email: Scalars["String"];
+  name: Scalars["String"];
+  password?: InputMaybe<Scalars["String"]>;
+  phoneNo: Scalars["String"];
+  thumbnail: Scalars["Upload"];
+};
+
+export type UpdateCounter = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
+  id?: InputMaybe<Scalars["String"]>;
+  number?: InputMaybe<Scalars["Float"]>;
+  type?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
+};
+
+export type UpdateCounter_Type = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
+  id?: InputMaybe<Scalars["String"]>;
+  name?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
+};
+
+export type UpdateCustomerInput = {
+  active: Scalars["Boolean"];
+  email: Scalars["String"];
+  name: Scalars["String"];
+  password?: InputMaybe<Scalars["String"]>;
+  phoneNo: Scalars["String"];
+  thumbnail: Scalars["Upload"];
+};
+
+export type UpdateCustomerNotification = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
+  id?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
+};
+
+export type UpdateDepartment = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
+  id?: InputMaybe<Scalars["String"]>;
+  name?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
+};
+
+export type UpdateManyAdminsInput = {
+  /** Filter used to find fields to update */
+  filter: AdminUpdateFilter;
+  /** The update to apply to all records found using the filter */
+  update: UpdateAdminInput;
+};
+
+export type UpdateManyCounter_TypesInput = {
+  /** Filter used to find fields to update */
+  filter: Counter_TypeUpdateFilter;
+  /** The update to apply to all records found using the filter */
+  update: UpdateCounter_Type;
+};
+
+export type UpdateManyCountersInput = {
+  /** Filter used to find fields to update */
+  filter: CounterUpdateFilter;
+  /** The update to apply to all records found using the filter */
+  update: UpdateCounter;
+};
+
+export type UpdateManyCustomerNotificationsInput = {
+  /** Filter used to find fields to update */
+  filter: CustomerNotificationUpdateFilter;
+  /** The update to apply to all records found using the filter */
+  update: UpdateCustomerNotification;
+};
+
+export type UpdateManyCustomersInput = {
+  /** Filter used to find fields to update */
+  filter: CustomerUpdateFilter;
+  /** The update to apply to all records found using the filter */
+  update: UpdateCustomerInput;
+};
+
+export type UpdateManyDepartmentsInput = {
+  /** Filter used to find fields to update */
+  filter: DepartmentUpdateFilter;
+  /** The update to apply to all records found using the filter */
+  update: UpdateDepartment;
+};
+
+export type UpdateManyNotificationsInput = {
+  /** Filter used to find fields to update */
+  filter: NotificationUpdateFilter;
+  /** The update to apply to all records found using the filter */
+  update: UpdateNotification;
+};
+
+export type UpdateManyQueuesInput = {
+  /** Filter used to find fields to update */
+  filter: QueueUpdateFilter;
+  /** The update to apply to all records found using the filter */
+  update: UpdateQueue;
+};
+
+export type UpdateManyResponse = {
+  __typename?: "UpdateManyResponse";
+  /** The number of records updated. */
+  updatedCount: Scalars["Int"];
+};
+
+export type UpdateManyStaffInput = {
+  /** Filter used to find fields to update */
+  filter: StaffUpdateFilter;
+  /** The update to apply to all records found using the filter */
+  update: UpdateStaff;
+};
+
+export type UpdateNotification = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
+  id?: InputMaybe<Scalars["String"]>;
+  message?: InputMaybe<Scalars["String"]>;
+  title?: InputMaybe<Scalars["String"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
+};
+
+export type UpdateOneAdminInput = {
+  /** The id of the record to update */
+  id: Scalars["String"];
+  /** The update to apply. */
+  update: UpdateAdminInput;
+};
+
+export type UpdateOneCounterInput = {
+  /** The id of the record to update */
+  id: Scalars["String"];
+  /** The update to apply. */
+  update: UpdateCounter;
+};
+
+export type UpdateOneCounter_TypeInput = {
+  /** The id of the record to update */
+  id: Scalars["String"];
+  /** The update to apply. */
+  update: UpdateCounter_Type;
+};
+
+export type UpdateOneCustomerInput = {
+  /** The id of the record to update */
+  id: Scalars["String"];
+  /** The update to apply. */
+  update: UpdateCustomerInput;
+};
+
+export type UpdateOneCustomerNotificationInput = {
+  /** The id of the record to update */
+  id: Scalars["String"];
+  /** The update to apply. */
+  update: UpdateCustomerNotification;
+};
+
+export type UpdateOneDepartmentInput = {
+  /** The id of the record to update */
+  id: Scalars["String"];
+  /** The update to apply. */
+  update: UpdateDepartment;
+};
+
+export type UpdateOneNotificationInput = {
+  /** The id of the record to update */
+  id: Scalars["String"];
+  /** The update to apply. */
+  update: UpdateNotification;
+};
+
+export type UpdateOneQueueInput = {
+  /** The id of the record to update */
+  id: Scalars["String"];
+  /** The update to apply. */
+  update: UpdateQueue;
+};
+
+export type UpdateOneStaffInput = {
+  /** The id of the record to update */
+  id: Scalars["String"];
+  /** The update to apply. */
+  update: UpdateStaff;
+};
+
+export type UpdateQueue = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  createdBy?: InputMaybe<Scalars["Float"]>;
+  currentNumber?: InputMaybe<Scalars["Float"]>;
+  deletedAt?: InputMaybe<Scalars["DateTime"]>;
+  deletedBy?: InputMaybe<Scalars["Float"]>;
+  id?: InputMaybe<Scalars["String"]>;
+  number?: InputMaybe<Scalars["Float"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  updatedBy?: InputMaybe<Scalars["Float"]>;
+};
+
+export type UpdateStaff = {
   accountNo?: InputMaybe<Scalars["Float"]>;
   backPayment?: InputMaybe<Scalars["Float"]>;
   bankType?: InputMaybe<Scalars["String"]>;
@@ -1601,501 +2423,355 @@ export type UpdateEmployee = {
   updatedBy?: InputMaybe<Scalars["Float"]>;
 };
 
-export type UpdateLocation = {
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  createdBy?: InputMaybe<Scalars["Float"]>;
-  deletedAt?: InputMaybe<Scalars["DateTime"]>;
-  deletedBy?: InputMaybe<Scalars["Float"]>;
-  id?: InputMaybe<Scalars["ID"]>;
-  lang?: InputMaybe<Scalars["Float"]>;
-  lat?: InputMaybe<Scalars["Float"]>;
-  location?: InputMaybe<Scalars["String"]>;
-  range?: InputMaybe<Scalars["Float"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
-  updatedBy?: InputMaybe<Scalars["Float"]>;
-};
-
-export type UpdateManyEmployeesInput = {
-  /** Filter used to find fields to update */
-  filter: EmployeeUpdateFilter;
-  /** The update to apply to all records found using the filter */
-  update: UpdateEmployee;
-};
-
-export type UpdateManyLocationsInput = {
-  /** Filter used to find fields to update */
-  filter: LocationUpdateFilter;
-  /** The update to apply to all records found using the filter */
-  update: UpdateLocation;
-};
-
-export type UpdateManyResponse = {
-  __typename?: "UpdateManyResponse";
-  /** The number of records updated. */
-  updatedCount: Scalars["Int"];
-};
-
-export type UpdateManyShiftOptionsInput = {
-  /** Filter used to find fields to update */
-  filter: ShiftOptionUpdateFilter;
-  /** The update to apply to all records found using the filter */
-  update: UpdateShiftOption;
-};
-
-export type UpdateManyShiftsInput = {
-  /** Filter used to find fields to update */
-  filter: ShiftUpdateFilter;
-  /** The update to apply to all records found using the filter */
-  update: UpdateShift;
-};
-
-export type UpdateManyUsersInput = {
-  /** Filter used to find fields to update */
-  filter: UserUpdateFilter;
-  /** The update to apply to all records found using the filter */
-  update: UpdateUserInput;
-};
-
-export type UpdateOneEmployeeInput = {
-  /** The id of the record to update */
-  id: Scalars["String"];
-  /** The update to apply. */
-  update: UpdateEmployee;
-};
-
-export type UpdateOneLocationInput = {
-  /** The id of the record to update */
-  id: Scalars["ID"];
-  /** The update to apply. */
-  update: UpdateLocation;
-};
-
-export type UpdateOneShiftInput = {
-  /** The id of the record to update */
-  id: Scalars["String"];
-  /** The update to apply. */
-  update: UpdateShift;
-};
-
-export type UpdateOneShiftOptionInput = {
-  /** The id of the record to update */
-  id: Scalars["String"];
-  /** The update to apply. */
-  update: UpdateShiftOption;
-};
-
-export type UpdateOneUserInput = {
-  /** The id of the record to update */
-  id: Scalars["String"];
-  /** The update to apply. */
-  update: UpdateUserInput;
-};
-
-export type UpdateShift = {
-  allowance?: InputMaybe<Scalars["Float"]>;
-  breakPunchIn?: InputMaybe<Scalars["DateTime"]>;
-  breakPunchOut?: InputMaybe<Scalars["DateTime"]>;
-  clockIn?: InputMaybe<Scalars["DateTime"]>;
-  clockOut?: InputMaybe<Scalars["DateTime"]>;
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  createdBy?: InputMaybe<Scalars["Float"]>;
-  date?: InputMaybe<Scalars["DateTime"]>;
-  deletedAt?: InputMaybe<Scalars["DateTime"]>;
-  deletedBy?: InputMaybe<Scalars["Float"]>;
-  hours?: InputMaybe<Scalars["Float"]>;
-  id?: InputMaybe<Scalars["String"]>;
-  shiftOptionId?: InputMaybe<Scalars["Float"]>;
-  total?: InputMaybe<Scalars["Float"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
-  updatedBy?: InputMaybe<Scalars["Float"]>;
-};
-
-export type UpdateShiftOption = {
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  createdBy?: InputMaybe<Scalars["Float"]>;
-  deletedAt?: InputMaybe<Scalars["DateTime"]>;
-  deletedBy?: InputMaybe<Scalars["Float"]>;
-  id?: InputMaybe<Scalars["String"]>;
-  isDeleteButSave?: InputMaybe<Scalars["Boolean"]>;
-  name?: InputMaybe<Scalars["String"]>;
-  otRate?: InputMaybe<Scalars["Float"]>;
-  rate?: InputMaybe<Scalars["Float"]>;
-  type?: InputMaybe<Scalars["String"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
-  updatedBy?: InputMaybe<Scalars["Float"]>;
-};
-
-export type UpdateUserInput = {
-  active: Scalars["Boolean"];
-  email: Scalars["String"];
-  name: Scalars["String"];
-  password: Scalars["String"];
-  phoneNo: Scalars["String"];
-  thumbnailUrl: Scalars["Upload"];
-};
-
-export type User = {
-  __typename?: "User";
-  active?: Maybe<Scalars["Boolean"]>;
+export type Counter_Type = {
+  __typename?: "counter_type";
   createdAt: Scalars["DateTime"];
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
-  email?: Maybe<Scalars["String"]>;
   id: Scalars["String"];
   name?: Maybe<Scalars["String"]>;
-  password: Scalars["String"];
-  phoneNo?: Maybe<Scalars["String"]>;
-  thumbnailUrl: Scalars["String"];
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type UserAggregateGroupBy = {
-  __typename?: "UserAggregateGroupBy";
-  active?: Maybe<Scalars["Boolean"]>;
+export type Counter_TypeAggregateGroupBy = {
+  __typename?: "counter_typeAggregateGroupBy";
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
-  email?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
-  password?: Maybe<Scalars["String"]>;
-  phoneNo?: Maybe<Scalars["String"]>;
-  thumbnailUrl?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type UserAvgAggregate = {
-  __typename?: "UserAvgAggregate";
+export type Counter_TypeAvgAggregate = {
+  __typename?: "counter_typeAvgAggregate";
   createdBy?: Maybe<Scalars["Float"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type UserConnection = {
-  __typename?: "UserConnection";
-  /** Array of nodes. */
-  nodes: Array<User>;
-  /** Paging information */
-  pageInfo: OffsetPageInfo;
-  /** Fetch total count of records */
-  totalCount: Scalars["Int"];
-};
-
-export type UserCountAggregate = {
-  __typename?: "UserCountAggregate";
-  active?: Maybe<Scalars["Int"]>;
+export type Counter_TypeCountAggregate = {
+  __typename?: "counter_typeCountAggregate";
   createdAt?: Maybe<Scalars["Int"]>;
   createdBy?: Maybe<Scalars["Int"]>;
   deletedAt?: Maybe<Scalars["Int"]>;
   deletedBy?: Maybe<Scalars["Int"]>;
-  email?: Maybe<Scalars["Int"]>;
   id?: Maybe<Scalars["Int"]>;
   name?: Maybe<Scalars["Int"]>;
-  password?: Maybe<Scalars["Int"]>;
-  phoneNo?: Maybe<Scalars["Int"]>;
-  thumbnailUrl?: Maybe<Scalars["Int"]>;
   updatedAt?: Maybe<Scalars["Int"]>;
   updatedBy?: Maybe<Scalars["Int"]>;
 };
 
-export type UserDeleteFilter = {
-  active?: InputMaybe<BooleanFieldComparison>;
-  and?: InputMaybe<Array<UserDeleteFilter>>;
+export type Counter_TypeDeleteFilter = {
+  and?: InputMaybe<Array<Counter_TypeDeleteFilter>>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   deletedBy?: InputMaybe<NumberFieldComparison>;
-  email?: InputMaybe<StringFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<UserDeleteFilter>>;
-  password?: InputMaybe<StringFieldComparison>;
-  phoneNo?: InputMaybe<StringFieldComparison>;
-  thumbnailUrl?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<Counter_TypeDeleteFilter>>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
-export type UserDeleteResponse = {
-  __typename?: "UserDeleteResponse";
-  active?: Maybe<Scalars["Boolean"]>;
-  createdAt?: Maybe<Scalars["DateTime"]>;
-  createdBy?: Maybe<Scalars["Float"]>;
-  deletedAt?: Maybe<Scalars["DateTime"]>;
-  deletedBy?: Maybe<Scalars["Float"]>;
-  email?: Maybe<Scalars["String"]>;
-  id?: Maybe<Scalars["String"]>;
-  name?: Maybe<Scalars["String"]>;
-  password?: Maybe<Scalars["String"]>;
-  phoneNo?: Maybe<Scalars["String"]>;
-  thumbnailUrl?: Maybe<Scalars["String"]>;
-  updatedAt?: Maybe<Scalars["DateTime"]>;
-  updatedBy?: Maybe<Scalars["Float"]>;
-};
-
-export type UserFilter = {
-  active?: InputMaybe<BooleanFieldComparison>;
-  and?: InputMaybe<Array<UserFilter>>;
+export type Counter_TypeFilter = {
+  and?: InputMaybe<Array<Counter_TypeFilter>>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   deletedBy?: InputMaybe<NumberFieldComparison>;
-  email?: InputMaybe<StringFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<UserFilter>>;
-  password?: InputMaybe<StringFieldComparison>;
-  phoneNo?: InputMaybe<StringFieldComparison>;
-  thumbnailUrl?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<Counter_TypeFilter>>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
-export type UserMaxAggregate = {
-  __typename?: "UserMaxAggregate";
+export type Counter_TypeMaxAggregate = {
+  __typename?: "counter_typeMaxAggregate";
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
-  email?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
-  password?: Maybe<Scalars["String"]>;
-  phoneNo?: Maybe<Scalars["String"]>;
-  thumbnailUrl?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type UserMinAggregate = {
-  __typename?: "UserMinAggregate";
+export type Counter_TypeMinAggregate = {
+  __typename?: "counter_typeMinAggregate";
   createdAt?: Maybe<Scalars["DateTime"]>;
   createdBy?: Maybe<Scalars["Float"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
-  email?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["String"]>;
   name?: Maybe<Scalars["String"]>;
-  password?: Maybe<Scalars["String"]>;
-  phoneNo?: Maybe<Scalars["String"]>;
-  thumbnailUrl?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type UserSort = {
+export type Counter_TypeSort = {
   direction: SortDirection;
-  field: UserSortFields;
+  field: Counter_TypeSortFields;
   nulls?: InputMaybe<SortNulls>;
 };
 
-export enum UserSortFields {
-  Active = "active",
+export enum Counter_TypeSortFields {
   CreatedAt = "createdAt",
   CreatedBy = "createdBy",
   DeletedAt = "deletedAt",
   DeletedBy = "deletedBy",
-  Email = "email",
   Id = "id",
   Name = "name",
-  Password = "password",
-  PhoneNo = "phoneNo",
-  ThumbnailUrl = "thumbnailUrl",
   UpdatedAt = "updatedAt",
   UpdatedBy = "updatedBy",
 }
 
-export type UserSumAggregate = {
-  __typename?: "UserSumAggregate";
+export type Counter_TypeSumAggregate = {
+  __typename?: "counter_typeSumAggregate";
   createdBy?: Maybe<Scalars["Float"]>;
   deletedBy?: Maybe<Scalars["Float"]>;
   updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type UserUpdateFilter = {
-  active?: InputMaybe<BooleanFieldComparison>;
-  and?: InputMaybe<Array<UserUpdateFilter>>;
+export type Counter_TypeUpdateFilter = {
+  and?: InputMaybe<Array<Counter_TypeUpdateFilter>>;
   createdAt?: InputMaybe<DateFieldComparison>;
   createdBy?: InputMaybe<NumberFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   deletedBy?: InputMaybe<NumberFieldComparison>;
-  email?: InputMaybe<StringFieldComparison>;
   id?: InputMaybe<StringFieldComparison>;
   name?: InputMaybe<StringFieldComparison>;
-  or?: InputMaybe<Array<UserUpdateFilter>>;
-  password?: InputMaybe<StringFieldComparison>;
-  phoneNo?: InputMaybe<StringFieldComparison>;
-  thumbnailUrl?: InputMaybe<StringFieldComparison>;
+  or?: InputMaybe<Array<Counter_TypeUpdateFilter>>;
   updatedAt?: InputMaybe<DateFieldComparison>;
   updatedBy?: InputMaybe<NumberFieldComparison>;
 };
 
-export type EmployeeFieldsFragment = {
-  __typename?: "Employee";
-  createdAt: any;
-  id: string;
-  name: string;
-  icNo: string;
-  employeeNo: string;
-  employeeEpf?: number | null;
-  employerEpf?: number | null;
-  employeeSocso?: number | null;
-  employerSocso?: number | null;
-  backPayment?: number | null;
-  loan?: number | null;
-  accountNo?: number | null;
-  bankType?: string | null;
-  isAccepted?: boolean | null;
+export type Queue = {
+  __typename?: "queue";
+  createdAt: Scalars["DateTime"];
+  createdBy?: Maybe<Scalars["Float"]>;
+  currentNumber?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id: Scalars["String"];
+  number?: Maybe<Scalars["Float"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
 };
 
-export type GetEmployeesQueryVariables = Exact<{
+export type QueueAggregateGroupBy = {
+  __typename?: "queueAggregateGroupBy";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  currentNumber?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["String"]>;
+  number?: Maybe<Scalars["Float"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type QueueAvgAggregate = {
+  __typename?: "queueAvgAggregate";
+  createdBy?: Maybe<Scalars["Float"]>;
+  currentNumber?: Maybe<Scalars["Float"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  number?: Maybe<Scalars["Float"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type QueueCountAggregate = {
+  __typename?: "queueCountAggregate";
+  createdAt?: Maybe<Scalars["Int"]>;
+  createdBy?: Maybe<Scalars["Int"]>;
+  currentNumber?: Maybe<Scalars["Int"]>;
+  deletedAt?: Maybe<Scalars["Int"]>;
+  deletedBy?: Maybe<Scalars["Int"]>;
+  id?: Maybe<Scalars["Int"]>;
+  number?: Maybe<Scalars["Int"]>;
+  updatedAt?: Maybe<Scalars["Int"]>;
+  updatedBy?: Maybe<Scalars["Int"]>;
+};
+
+export type QueueDeleteFilter = {
+  and?: InputMaybe<Array<QueueDeleteFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  currentNumber?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  number?: InputMaybe<NumberFieldComparison>;
+  or?: InputMaybe<Array<QueueDeleteFilter>>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type QueueFilter = {
+  and?: InputMaybe<Array<QueueFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  currentNumber?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  number?: InputMaybe<NumberFieldComparison>;
+  or?: InputMaybe<Array<QueueFilter>>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type QueueMaxAggregate = {
+  __typename?: "queueMaxAggregate";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  currentNumber?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["String"]>;
+  number?: Maybe<Scalars["Float"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type QueueMinAggregate = {
+  __typename?: "queueMinAggregate";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  createdBy?: Maybe<Scalars["Float"]>;
+  currentNumber?: Maybe<Scalars["Float"]>;
+  deletedAt?: Maybe<Scalars["DateTime"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  id?: Maybe<Scalars["String"]>;
+  number?: Maybe<Scalars["Float"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type QueueSort = {
+  direction: SortDirection;
+  field: QueueSortFields;
+  nulls?: InputMaybe<SortNulls>;
+};
+
+export enum QueueSortFields {
+  CreatedAt = "createdAt",
+  CreatedBy = "createdBy",
+  CurrentNumber = "currentNumber",
+  DeletedAt = "deletedAt",
+  DeletedBy = "deletedBy",
+  Id = "id",
+  Number = "number",
+  UpdatedAt = "updatedAt",
+  UpdatedBy = "updatedBy",
+}
+
+export type QueueSumAggregate = {
+  __typename?: "queueSumAggregate";
+  createdBy?: Maybe<Scalars["Float"]>;
+  currentNumber?: Maybe<Scalars["Float"]>;
+  deletedBy?: Maybe<Scalars["Float"]>;
+  number?: Maybe<Scalars["Float"]>;
+  updatedBy?: Maybe<Scalars["Float"]>;
+};
+
+export type QueueUpdateFilter = {
+  and?: InputMaybe<Array<QueueUpdateFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
+  createdBy?: InputMaybe<NumberFieldComparison>;
+  currentNumber?: InputMaybe<NumberFieldComparison>;
+  deletedAt?: InputMaybe<DateFieldComparison>;
+  deletedBy?: InputMaybe<NumberFieldComparison>;
+  id?: InputMaybe<StringFieldComparison>;
+  number?: InputMaybe<NumberFieldComparison>;
+  or?: InputMaybe<Array<QueueUpdateFilter>>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
+  updatedBy?: InputMaybe<NumberFieldComparison>;
+};
+
+export type AdminsFieldsFragment = {
+  __typename?: "Admin";
+  id: string;
+  name?: string | null;
+  email?: string | null;
+  thumbnail: string;
+  phoneNo?: string | null;
+};
+
+export type GetAdminsQueryVariables = Exact<{
   paging?: InputMaybe<OffsetPaging>;
-  filter?: InputMaybe<EmployeeFilter>;
-  sorting?: InputMaybe<Array<EmployeeSort> | EmployeeSort>;
+  filter?: InputMaybe<AdminFilter>;
+  sorting?: InputMaybe<Array<AdminSort> | AdminSort>;
 }>;
 
-export type GetEmployeesQuery = {
+export type GetAdminsQuery = {
   __typename?: "Query";
-  employees: {
-    __typename?: "EmployeeConnection";
+  admins: {
+    __typename?: "AdminConnection";
     totalCount: number;
     nodes: Array<{
-      __typename?: "Employee";
-      createdAt: any;
+      __typename?: "Admin";
       id: string;
-      name: string;
-      icNo: string;
-      employeeNo: string;
-      employeeEpf?: number | null;
-      employerEpf?: number | null;
-      employeeSocso?: number | null;
-      employerSocso?: number | null;
-      backPayment?: number | null;
-      loan?: number | null;
-      accountNo?: number | null;
-      bankType?: string | null;
-      isAccepted?: boolean | null;
+      name?: string | null;
+      email?: string | null;
+      thumbnail: string;
+      phoneNo?: string | null;
     }>;
   };
 };
 
-export type GetOneEmployeeQueryVariables = Exact<{
+export type GetAdminQueryVariables = Exact<{
   id: Scalars["String"];
 }>;
 
-export type GetOneEmployeeQuery = {
+export type GetAdminQuery = {
   __typename?: "Query";
-  employee?: {
-    __typename?: "Employee";
-    createdAt: any;
+  admin?: {
+    __typename?: "Admin";
     id: string;
-    name: string;
-    icNo: string;
-    employeeNo: string;
-    employeeEpf?: number | null;
-    employerEpf?: number | null;
-    employeeSocso?: number | null;
-    employerSocso?: number | null;
-    backPayment?: number | null;
-    loan?: number | null;
-    accountNo?: number | null;
-    bankType?: string | null;
-    isAccepted?: boolean | null;
+    name?: string | null;
+    email?: string | null;
+    thumbnail: string;
+    phoneNo?: string | null;
   } | null;
 };
 
-export type CreateEmployeeMutationVariables = Exact<{
-  input: CreateOneEmployeeInput;
+export type CreateAdminMutationVariables = Exact<{
+  input: CreateOneAdminInput;
 }>;
 
-export type CreateEmployeeMutation = {
+export type CreateAdminMutation = {
   __typename?: "Mutation";
-  createOneEmployee: { __typename?: "Employee"; id: string };
+  createOneAdmin: { __typename?: "Admin"; id: string };
 };
 
-export type UpdateEmployeeMutationVariables = Exact<{
-  input: UpdateOneEmployeeInput;
+export type UpdateAdminMutationVariables = Exact<{
+  input: UpdateOneAdminInput;
 }>;
 
-export type UpdateEmployeeMutation = {
+export type UpdateAdminMutation = {
   __typename?: "Mutation";
-  updateOneEmployee: { __typename?: "Employee"; id: string };
+  updateOneAdmin: { __typename?: "Admin"; id: string };
 };
 
-export type DeleteEmployeeMutationVariables = Exact<{
-  input: DeleteOneEmployeeInput;
+export type DeleteAdminMutationVariables = Exact<{
+  input: UpdateOneAdminInput;
 }>;
 
-export type DeleteEmployeeMutation = {
+export type DeleteAdminMutation = {
   __typename?: "Mutation";
-  deleteOneEmployee: {
-    __typename?: "EmployeeDeleteResponse";
-    id?: string | null;
-  };
-};
-
-export type LocationFieldsFragment = {
-  __typename?: "Location";
-  id: string;
-  location?: string | null;
-  lang?: number | null;
-  lat?: number | null;
-  range: number;
-};
-
-export type GetLocationsQueryVariables = Exact<{
-  paging?: InputMaybe<OffsetPaging>;
-  filter?: InputMaybe<LocationFilter>;
-  sorting?: InputMaybe<Array<LocationSort> | LocationSort>;
-}>;
-
-export type GetLocationsQuery = {
-  __typename?: "Query";
-  locations: {
-    __typename?: "LocationConnection";
-    totalCount: number;
-    nodes: Array<{
-      __typename?: "Location";
-      id: string;
-      location?: string | null;
-      lang?: number | null;
-      lat?: number | null;
-      range: number;
-    }>;
-  };
-};
-
-export type GetOneLocationQueryVariables = Exact<{
-  id: Scalars["ID"];
-}>;
-
-export type GetOneLocationQuery = {
-  __typename?: "Query";
-  location?: {
-    __typename?: "Location";
-    id: string;
-    location?: string | null;
-    lang?: number | null;
-    lat?: number | null;
-    range: number;
-  } | null;
-};
-
-export type UpdateLocationMutationVariables = Exact<{
-  input: UpdateOneLocationInput;
-}>;
-
-export type UpdateLocationMutation = {
-  __typename?: "Mutation";
-  updateOneLocation: { __typename?: "Location"; id: string };
+  updateOneAdmin: { __typename?: "Admin"; id: string };
 };
 
 export type MeFieldsFragment = {
-  __typename?: "User";
+  __typename?: "Admin";
   id: string;
   name?: string | null;
   email?: string | null;
@@ -2106,7 +2782,7 @@ export type GetMeQueryVariables = Exact<{ [key: string]: never }>;
 export type GetMeQuery = {
   __typename?: "Query";
   getMe: {
-    __typename?: "User";
+    __typename?: "Admin";
     id: string;
     name?: string | null;
     email?: string | null;
@@ -2119,375 +2795,52 @@ export type UpdateMeMutationVariables = Exact<{
 
 export type UpdateMeMutation = {
   __typename?: "Mutation";
-  updateMe: { __typename?: "User"; createdAt: any };
+  updateMe: { __typename?: "Admin"; createdAt: any };
 };
 
-export type ShiftOptionFieldsFragment = {
-  __typename?: "ShiftOption";
-  id: string;
-  name?: string | null;
-  rate?: number | null;
-  otRate?: number | null;
-};
-
-export type GetShiftsOptionsQueryVariables = Exact<{
-  paging?: InputMaybe<OffsetPaging>;
-  filter?: InputMaybe<ShiftOptionFilter>;
-  sorting?: InputMaybe<Array<ShiftOptionSort> | ShiftOptionSort>;
-}>;
-
-export type GetShiftsOptionsQuery = {
-  __typename?: "Query";
-  shiftOptions: {
-    __typename?: "ShiftOptionConnection";
-    totalCount: number;
-    nodes: Array<{
-      __typename?: "ShiftOption";
-      id: string;
-      name?: string | null;
-      rate?: number | null;
-      otRate?: number | null;
-    }>;
-  };
-};
-
-export type GetOneShiftOptionQueryVariables = Exact<{
-  id: Scalars["String"];
-}>;
-
-export type GetOneShiftOptionQuery = {
-  __typename?: "Query";
-  shiftOption?: {
-    __typename?: "ShiftOption";
-    id: string;
-    name?: string | null;
-    rate?: number | null;
-    otRate?: number | null;
-  } | null;
-};
-
-export type CreateShiftOptionMutationVariables = Exact<{
-  input: CreateOneShiftOptionInput;
-}>;
-
-export type CreateShiftOptionMutation = {
-  __typename?: "Mutation";
-  createOneShiftOption: { __typename?: "ShiftOption"; id: string };
-};
-
-export type UpdateShiftOptionsMutationVariables = Exact<{
-  input: UpdateOneShiftOptionInput;
-}>;
-
-export type UpdateShiftOptionsMutation = {
-  __typename?: "Mutation";
-  updateOneShiftOption: { __typename?: "ShiftOption"; id: string };
-};
-
-export type DeleteShiftOptionsMutationVariables = Exact<{
-  input: DeleteOneShiftOptionInput;
-}>;
-
-export type DeleteShiftOptionsMutation = {
-  __typename?: "Mutation";
-  deleteOneShiftOption: {
-    __typename?: "ShiftOptionDeleteResponse";
-    id?: string | null;
-  };
-};
-
-export type ShiftFieldsFragment = {
-  __typename?: "Shift";
-  id: string;
-  date?: any | null;
-  hours?: number | null;
-  breakPunchIn?: any | null;
-  breakPunchOut?: any | null;
-  clockIn?: any | null;
-  clockOut?: any | null;
-  allowance?: number | null;
-  total: number;
-  shiftOptionId: number;
-  shiftOptions?: {
-    __typename?: "ShiftOption";
-    id: string;
-    name?: string | null;
-    rate?: number | null;
-    otRate?: number | null;
-  } | null;
-  employee?: { __typename?: "Employee"; name: string } | null;
-};
-
-export type GetShiftsQueryVariables = Exact<{
-  paging?: InputMaybe<OffsetPaging>;
-  filter?: InputMaybe<ShiftFilter>;
-  sorting?: InputMaybe<Array<ShiftSort> | ShiftSort>;
-}>;
-
-export type GetShiftsQuery = {
-  __typename?: "Query";
-  shifts: {
-    __typename?: "ShiftConnection";
-    totalCount: number;
-    nodes: Array<{
-      __typename?: "Shift";
-      id: string;
-      date?: any | null;
-      hours?: number | null;
-      breakPunchIn?: any | null;
-      breakPunchOut?: any | null;
-      clockIn?: any | null;
-      clockOut?: any | null;
-      allowance?: number | null;
-      total: number;
-      shiftOptionId: number;
-      shiftOptions?: {
-        __typename?: "ShiftOption";
-        id: string;
-        name?: string | null;
-        rate?: number | null;
-        otRate?: number | null;
-      } | null;
-      employee?: { __typename?: "Employee"; name: string } | null;
-    }>;
-  };
-};
-
-export type GetOneShiftQueryVariables = Exact<{
-  id: Scalars["String"];
-}>;
-
-export type GetOneShiftQuery = {
-  __typename?: "Query";
-  shift?: {
-    __typename?: "Shift";
-    id: string;
-    date?: any | null;
-    hours?: number | null;
-    breakPunchIn?: any | null;
-    breakPunchOut?: any | null;
-    clockIn?: any | null;
-    clockOut?: any | null;
-    allowance?: number | null;
-    total: number;
-    shiftOptionId: number;
-    shiftOptions?: {
-      __typename?: "ShiftOption";
-      id: string;
-      name?: string | null;
-      rate?: number | null;
-      otRate?: number | null;
-    } | null;
-    employee?: { __typename?: "Employee"; name: string } | null;
-  } | null;
-};
-
-export type CreateShiftMutationVariables = Exact<{
-  input: CreateOneShiftInput;
-}>;
-
-export type CreateShiftMutation = {
-  __typename?: "Mutation";
-  createOneShift: { __typename?: "Shift"; id: string };
-};
-
-export type UpdateShiftMutationVariables = Exact<{
-  input: UpdateOneShiftInput;
-}>;
-
-export type UpdateShiftMutation = {
-  __typename?: "Mutation";
-  updateOneShift: { __typename?: "Shift"; id: string };
-};
-
-export type DeleteShiftMutationVariables = Exact<{
-  input: DeleteOneShiftInput;
-}>;
-
-export type DeleteShiftMutation = {
-  __typename?: "Mutation";
-  deleteOneShift: { __typename?: "ShiftDeleteResponse"; id?: string | null };
-};
-
-export type UsersFieldsFragment = {
-  __typename?: "User";
-  id: string;
-  name?: string | null;
-  email?: string | null;
-  thumbnailUrl: string;
-  active?: boolean | null;
-  phoneNo?: string | null;
-};
-
-export type GetUsersQueryVariables = Exact<{
-  paging?: InputMaybe<OffsetPaging>;
-  filter?: InputMaybe<UserFilter>;
-  sorting?: InputMaybe<Array<UserSort> | UserSort>;
-}>;
-
-export type GetUsersQuery = {
-  __typename?: "Query";
-  users: {
-    __typename?: "UserConnection";
-    totalCount: number;
-    nodes: Array<{
-      __typename?: "User";
-      id: string;
-      name?: string | null;
-      email?: string | null;
-      thumbnailUrl: string;
-      active?: boolean | null;
-      phoneNo?: string | null;
-    }>;
-  };
-};
-
-export type GetOneUserQueryVariables = Exact<{
-  id: Scalars["String"];
-}>;
-
-export type GetOneUserQuery = {
-  __typename?: "Query";
-  user?: {
-    __typename?: "User";
-    id: string;
-    name?: string | null;
-    email?: string | null;
-    thumbnailUrl: string;
-    active?: boolean | null;
-    phoneNo?: string | null;
-  } | null;
-};
-
-export type CreateUserMutationVariables = Exact<{
-  input: CreateOneUserInput;
-}>;
-
-export type CreateUserMutation = {
-  __typename?: "Mutation";
-  createOneUser: { __typename?: "User"; id: string };
-};
-
-export type UpdateUserMutationVariables = Exact<{
-  input: UpdateOneUserInput;
-}>;
-
-export type UpdateUserMutation = {
-  __typename?: "Mutation";
-  updateOneUser: { __typename?: "User"; id: string };
-};
-
-export type DeleteUserMutationVariables = Exact<{
-  input: DeleteOneUserInput;
-}>;
-
-export type DeleteUserMutation = {
-  __typename?: "Mutation";
-  deleteOneUser: { __typename?: "UserDeleteResponse"; id?: string | null };
-};
-
-export const EmployeeFieldsFragmentDoc = gql`
-  fragment EmployeeFields on Employee {
-    createdAt
-    id
-    name
-    icNo
-    employeeNo
-    employeeEpf
-    employerEpf
-    employeeSocso
-    employerSocso
-    backPayment
-    loan
-    accountNo
-    bankType
-    isAccepted
-  }
-`;
-export const LocationFieldsFragmentDoc = gql`
-  fragment LocationFields on Location {
-    id
-    location
-    lang
-    lat
-    range
-  }
-`;
-export const MeFieldsFragmentDoc = gql`
-  fragment MeFields on User {
+export const AdminsFieldsFragmentDoc = gql`
+  fragment AdminsFields on Admin {
     id
     name
     email
-  }
-`;
-export const ShiftOptionFieldsFragmentDoc = gql`
-  fragment ShiftOptionFields on ShiftOption {
-    id
-    name
-    rate
-    otRate
-  }
-`;
-export const ShiftFieldsFragmentDoc = gql`
-  fragment ShiftFields on Shift {
-    id
-    date
-    hours
-    breakPunchIn
-    breakPunchOut
-    clockIn
-    clockOut
-    allowance
-    total
-    shiftOptionId
-    shiftOptions {
-      id
-      name
-      rate
-      otRate
-    }
-    employee {
-      name
-    }
-  }
-`;
-export const UsersFieldsFragmentDoc = gql`
-  fragment UsersFields on User {
-    id
-    name
-    email
-    thumbnailUrl
-    active
+    thumbnail
     phoneNo
   }
 `;
-export const GetEmployeesDocument = gql`
-  query getEmployees(
+export const MeFieldsFragmentDoc = gql`
+  fragment MeFields on Admin {
+    id
+    name
+    email
+  }
+`;
+export const GetAdminsDocument = gql`
+  query getAdmins(
     $paging: OffsetPaging
-    $filter: EmployeeFilter
-    $sorting: [EmployeeSort!]
+    $filter: AdminFilter
+    $sorting: [AdminSort!]
   ) {
-    employees(paging: $paging, filter: $filter, sorting: $sorting) {
+    admins(paging: $paging, filter: $filter, sorting: $sorting) {
       totalCount
       nodes {
-        ...EmployeeFields
+        ...AdminsFields
       }
     }
   }
-  ${EmployeeFieldsFragmentDoc}
+  ${AdminsFieldsFragmentDoc}
 `;
 
 /**
- * __useGetEmployeesQuery__
+ * __useGetAdminsQuery__
  *
- * To run a query within a React component, call `useGetEmployeesQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetEmployeesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetAdminsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAdminsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetEmployeesQuery({
+ * const { data, loading, error } = useGetAdminsQuery({
  *   variables: {
  *      paging: // value for 'paging'
  *      filter: // value for 'filter'
@@ -2495,425 +2848,238 @@ export const GetEmployeesDocument = gql`
  *   },
  * });
  */
-export function useGetEmployeesQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetEmployeesQuery,
-    GetEmployeesQueryVariables
-  >
+export function useGetAdminsQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetAdminsQuery, GetAdminsQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetEmployeesQuery, GetEmployeesQueryVariables>(
-    GetEmployeesDocument,
+  return Apollo.useQuery<GetAdminsQuery, GetAdminsQueryVariables>(
+    GetAdminsDocument,
     options
   );
 }
-export function useGetEmployeesLazyQuery(
+export function useGetAdminsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
-    GetEmployeesQuery,
-    GetEmployeesQueryVariables
+    GetAdminsQuery,
+    GetAdminsQueryVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetEmployeesQuery, GetEmployeesQueryVariables>(
-    GetEmployeesDocument,
+  return Apollo.useLazyQuery<GetAdminsQuery, GetAdminsQueryVariables>(
+    GetAdminsDocument,
     options
   );
 }
-export type GetEmployeesQueryHookResult = ReturnType<
-  typeof useGetEmployeesQuery
+export type GetAdminsQueryHookResult = ReturnType<typeof useGetAdminsQuery>;
+export type GetAdminsLazyQueryHookResult = ReturnType<
+  typeof useGetAdminsLazyQuery
 >;
-export type GetEmployeesLazyQueryHookResult = ReturnType<
-  typeof useGetEmployeesLazyQuery
+export type GetAdminsQueryResult = Apollo.QueryResult<
+  GetAdminsQuery,
+  GetAdminsQueryVariables
 >;
-export type GetEmployeesQueryResult = Apollo.QueryResult<
-  GetEmployeesQuery,
-  GetEmployeesQueryVariables
->;
-export const GetOneEmployeeDocument = gql`
-  query getOneEmployee($id: String!) {
-    employee(id: $id) {
-      ...EmployeeFields
+export const GetAdminDocument = gql`
+  query getAdmin($id: String!) {
+    admin(id: $id) {
+      ...AdminsFields
     }
   }
-  ${EmployeeFieldsFragmentDoc}
+  ${AdminsFieldsFragmentDoc}
 `;
 
 /**
- * __useGetOneEmployeeQuery__
+ * __useGetAdminQuery__
  *
- * To run a query within a React component, call `useGetOneEmployeeQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetOneEmployeeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetAdminQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAdminQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetOneEmployeeQuery({
+ * const { data, loading, error } = useGetAdminQuery({
  *   variables: {
  *      id: // value for 'id'
  *   },
  * });
  */
-export function useGetOneEmployeeQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    GetOneEmployeeQuery,
-    GetOneEmployeeQueryVariables
-  >
+export function useGetAdminQuery(
+  baseOptions: Apollo.QueryHookOptions<GetAdminQuery, GetAdminQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetOneEmployeeQuery, GetOneEmployeeQueryVariables>(
-    GetOneEmployeeDocument,
+  return Apollo.useQuery<GetAdminQuery, GetAdminQueryVariables>(
+    GetAdminDocument,
     options
   );
 }
-export function useGetOneEmployeeLazyQuery(
+export function useGetAdminLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
-    GetOneEmployeeQuery,
-    GetOneEmployeeQueryVariables
+    GetAdminQuery,
+    GetAdminQueryVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetOneEmployeeQuery, GetOneEmployeeQueryVariables>(
-    GetOneEmployeeDocument,
+  return Apollo.useLazyQuery<GetAdminQuery, GetAdminQueryVariables>(
+    GetAdminDocument,
     options
   );
 }
-export type GetOneEmployeeQueryHookResult = ReturnType<
-  typeof useGetOneEmployeeQuery
+export type GetAdminQueryHookResult = ReturnType<typeof useGetAdminQuery>;
+export type GetAdminLazyQueryHookResult = ReturnType<
+  typeof useGetAdminLazyQuery
 >;
-export type GetOneEmployeeLazyQueryHookResult = ReturnType<
-  typeof useGetOneEmployeeLazyQuery
+export type GetAdminQueryResult = Apollo.QueryResult<
+  GetAdminQuery,
+  GetAdminQueryVariables
 >;
-export type GetOneEmployeeQueryResult = Apollo.QueryResult<
-  GetOneEmployeeQuery,
-  GetOneEmployeeQueryVariables
->;
-export const CreateEmployeeDocument = gql`
-  mutation createEmployee($input: CreateOneEmployeeInput!) {
-    createOneEmployee(input: $input) {
+export const CreateAdminDocument = gql`
+  mutation createAdmin($input: CreateOneAdminInput!) {
+    createOneAdmin(input: $input) {
       id
     }
   }
 `;
-export type CreateEmployeeMutationFn = Apollo.MutationFunction<
-  CreateEmployeeMutation,
-  CreateEmployeeMutationVariables
+export type CreateAdminMutationFn = Apollo.MutationFunction<
+  CreateAdminMutation,
+  CreateAdminMutationVariables
 >;
 
 /**
- * __useCreateEmployeeMutation__
+ * __useCreateAdminMutation__
  *
- * To run a mutation, you first call `useCreateEmployeeMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateEmployeeMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useCreateAdminMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateAdminMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [createEmployeeMutation, { data, loading, error }] = useCreateEmployeeMutation({
+ * const [createAdminMutation, { data, loading, error }] = useCreateAdminMutation({
  *   variables: {
  *      input: // value for 'input'
  *   },
  * });
  */
-export function useCreateEmployeeMutation(
+export function useCreateAdminMutation(
   baseOptions?: Apollo.MutationHookOptions<
-    CreateEmployeeMutation,
-    CreateEmployeeMutationVariables
+    CreateAdminMutation,
+    CreateAdminMutationVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    CreateEmployeeMutation,
-    CreateEmployeeMutationVariables
-  >(CreateEmployeeDocument, options);
+  return Apollo.useMutation<CreateAdminMutation, CreateAdminMutationVariables>(
+    CreateAdminDocument,
+    options
+  );
 }
-export type CreateEmployeeMutationHookResult = ReturnType<
-  typeof useCreateEmployeeMutation
+export type CreateAdminMutationHookResult = ReturnType<
+  typeof useCreateAdminMutation
 >;
-export type CreateEmployeeMutationResult =
-  Apollo.MutationResult<CreateEmployeeMutation>;
-export type CreateEmployeeMutationOptions = Apollo.BaseMutationOptions<
-  CreateEmployeeMutation,
-  CreateEmployeeMutationVariables
+export type CreateAdminMutationResult =
+  Apollo.MutationResult<CreateAdminMutation>;
+export type CreateAdminMutationOptions = Apollo.BaseMutationOptions<
+  CreateAdminMutation,
+  CreateAdminMutationVariables
 >;
-export const UpdateEmployeeDocument = gql`
-  mutation updateEmployee($input: UpdateOneEmployeeInput!) {
-    updateOneEmployee(input: $input) {
+export const UpdateAdminDocument = gql`
+  mutation updateAdmin($input: UpdateOneAdminInput!) {
+    updateOneAdmin(input: $input) {
       id
     }
   }
 `;
-export type UpdateEmployeeMutationFn = Apollo.MutationFunction<
-  UpdateEmployeeMutation,
-  UpdateEmployeeMutationVariables
+export type UpdateAdminMutationFn = Apollo.MutationFunction<
+  UpdateAdminMutation,
+  UpdateAdminMutationVariables
 >;
 
 /**
- * __useUpdateEmployeeMutation__
+ * __useUpdateAdminMutation__
  *
- * To run a mutation, you first call `useUpdateEmployeeMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateEmployeeMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useUpdateAdminMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateAdminMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [updateEmployeeMutation, { data, loading, error }] = useUpdateEmployeeMutation({
+ * const [updateAdminMutation, { data, loading, error }] = useUpdateAdminMutation({
  *   variables: {
  *      input: // value for 'input'
  *   },
  * });
  */
-export function useUpdateEmployeeMutation(
+export function useUpdateAdminMutation(
   baseOptions?: Apollo.MutationHookOptions<
-    UpdateEmployeeMutation,
-    UpdateEmployeeMutationVariables
+    UpdateAdminMutation,
+    UpdateAdminMutationVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateEmployeeMutation,
-    UpdateEmployeeMutationVariables
-  >(UpdateEmployeeDocument, options);
+  return Apollo.useMutation<UpdateAdminMutation, UpdateAdminMutationVariables>(
+    UpdateAdminDocument,
+    options
+  );
 }
-export type UpdateEmployeeMutationHookResult = ReturnType<
-  typeof useUpdateEmployeeMutation
+export type UpdateAdminMutationHookResult = ReturnType<
+  typeof useUpdateAdminMutation
 >;
-export type UpdateEmployeeMutationResult =
-  Apollo.MutationResult<UpdateEmployeeMutation>;
-export type UpdateEmployeeMutationOptions = Apollo.BaseMutationOptions<
-  UpdateEmployeeMutation,
-  UpdateEmployeeMutationVariables
+export type UpdateAdminMutationResult =
+  Apollo.MutationResult<UpdateAdminMutation>;
+export type UpdateAdminMutationOptions = Apollo.BaseMutationOptions<
+  UpdateAdminMutation,
+  UpdateAdminMutationVariables
 >;
-export const DeleteEmployeeDocument = gql`
-  mutation deleteEmployee($input: DeleteOneEmployeeInput!) {
-    deleteOneEmployee(input: $input) {
+export const DeleteAdminDocument = gql`
+  mutation deleteAdmin($input: UpdateOneAdminInput!) {
+    updateOneAdmin(input: $input) {
       id
     }
   }
 `;
-export type DeleteEmployeeMutationFn = Apollo.MutationFunction<
-  DeleteEmployeeMutation,
-  DeleteEmployeeMutationVariables
+export type DeleteAdminMutationFn = Apollo.MutationFunction<
+  DeleteAdminMutation,
+  DeleteAdminMutationVariables
 >;
 
 /**
- * __useDeleteEmployeeMutation__
+ * __useDeleteAdminMutation__
  *
- * To run a mutation, you first call `useDeleteEmployeeMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDeleteEmployeeMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useDeleteAdminMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteAdminMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [deleteEmployeeMutation, { data, loading, error }] = useDeleteEmployeeMutation({
+ * const [deleteAdminMutation, { data, loading, error }] = useDeleteAdminMutation({
  *   variables: {
  *      input: // value for 'input'
  *   },
  * });
  */
-export function useDeleteEmployeeMutation(
+export function useDeleteAdminMutation(
   baseOptions?: Apollo.MutationHookOptions<
-    DeleteEmployeeMutation,
-    DeleteEmployeeMutationVariables
+    DeleteAdminMutation,
+    DeleteAdminMutationVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    DeleteEmployeeMutation,
-    DeleteEmployeeMutationVariables
-  >(DeleteEmployeeDocument, options);
-}
-export type DeleteEmployeeMutationHookResult = ReturnType<
-  typeof useDeleteEmployeeMutation
->;
-export type DeleteEmployeeMutationResult =
-  Apollo.MutationResult<DeleteEmployeeMutation>;
-export type DeleteEmployeeMutationOptions = Apollo.BaseMutationOptions<
-  DeleteEmployeeMutation,
-  DeleteEmployeeMutationVariables
->;
-export const GetLocationsDocument = gql`
-  query getLocations(
-    $paging: OffsetPaging
-    $filter: LocationFilter
-    $sorting: [LocationSort!]
-  ) {
-    locations(paging: $paging, filter: $filter, sorting: $sorting) {
-      totalCount
-      nodes {
-        ...LocationFields
-      }
-    }
-  }
-  ${LocationFieldsFragmentDoc}
-`;
-
-/**
- * __useGetLocationsQuery__
- *
- * To run a query within a React component, call `useGetLocationsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetLocationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetLocationsQuery({
- *   variables: {
- *      paging: // value for 'paging'
- *      filter: // value for 'filter'
- *      sorting: // value for 'sorting'
- *   },
- * });
- */
-export function useGetLocationsQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetLocationsQuery,
-    GetLocationsQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetLocationsQuery, GetLocationsQueryVariables>(
-    GetLocationsDocument,
+  return Apollo.useMutation<DeleteAdminMutation, DeleteAdminMutationVariables>(
+    DeleteAdminDocument,
     options
   );
 }
-export function useGetLocationsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetLocationsQuery,
-    GetLocationsQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetLocationsQuery, GetLocationsQueryVariables>(
-    GetLocationsDocument,
-    options
-  );
-}
-export type GetLocationsQueryHookResult = ReturnType<
-  typeof useGetLocationsQuery
+export type DeleteAdminMutationHookResult = ReturnType<
+  typeof useDeleteAdminMutation
 >;
-export type GetLocationsLazyQueryHookResult = ReturnType<
-  typeof useGetLocationsLazyQuery
->;
-export type GetLocationsQueryResult = Apollo.QueryResult<
-  GetLocationsQuery,
-  GetLocationsQueryVariables
->;
-export const GetOneLocationDocument = gql`
-  query getOneLocation($id: ID!) {
-    location(id: $id) {
-      ...LocationFields
-    }
-  }
-  ${LocationFieldsFragmentDoc}
-`;
-
-/**
- * __useGetOneLocationQuery__
- *
- * To run a query within a React component, call `useGetOneLocationQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetOneLocationQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetOneLocationQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useGetOneLocationQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    GetOneLocationQuery,
-    GetOneLocationQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetOneLocationQuery, GetOneLocationQueryVariables>(
-    GetOneLocationDocument,
-    options
-  );
-}
-export function useGetOneLocationLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetOneLocationQuery,
-    GetOneLocationQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetOneLocationQuery, GetOneLocationQueryVariables>(
-    GetOneLocationDocument,
-    options
-  );
-}
-export type GetOneLocationQueryHookResult = ReturnType<
-  typeof useGetOneLocationQuery
->;
-export type GetOneLocationLazyQueryHookResult = ReturnType<
-  typeof useGetOneLocationLazyQuery
->;
-export type GetOneLocationQueryResult = Apollo.QueryResult<
-  GetOneLocationQuery,
-  GetOneLocationQueryVariables
->;
-export const UpdateLocationDocument = gql`
-  mutation updateLocation($input: UpdateOneLocationInput!) {
-    updateOneLocation(input: $input) {
-      id
-    }
-  }
-`;
-export type UpdateLocationMutationFn = Apollo.MutationFunction<
-  UpdateLocationMutation,
-  UpdateLocationMutationVariables
->;
-
-/**
- * __useUpdateLocationMutation__
- *
- * To run a mutation, you first call `useUpdateLocationMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateLocationMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [updateLocationMutation, { data, loading, error }] = useUpdateLocationMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useUpdateLocationMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateLocationMutation,
-    UpdateLocationMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateLocationMutation,
-    UpdateLocationMutationVariables
-  >(UpdateLocationDocument, options);
-}
-export type UpdateLocationMutationHookResult = ReturnType<
-  typeof useUpdateLocationMutation
->;
-export type UpdateLocationMutationResult =
-  Apollo.MutationResult<UpdateLocationMutation>;
-export type UpdateLocationMutationOptions = Apollo.BaseMutationOptions<
-  UpdateLocationMutation,
-  UpdateLocationMutationVariables
+export type DeleteAdminMutationResult =
+  Apollo.MutationResult<DeleteAdminMutation>;
+export type DeleteAdminMutationOptions = Apollo.BaseMutationOptions<
+  DeleteAdminMutation,
+  DeleteAdminMutationVariables
 >;
 export const GetMeDocument = gql`
   query getMe {
@@ -3009,821 +3175,4 @@ export type UpdateMeMutationResult = Apollo.MutationResult<UpdateMeMutation>;
 export type UpdateMeMutationOptions = Apollo.BaseMutationOptions<
   UpdateMeMutation,
   UpdateMeMutationVariables
->;
-export const GetShiftsOptionsDocument = gql`
-  query getShiftsOptions(
-    $paging: OffsetPaging
-    $filter: ShiftOptionFilter
-    $sorting: [ShiftOptionSort!]
-  ) {
-    shiftOptions(paging: $paging, filter: $filter, sorting: $sorting) {
-      totalCount
-      nodes {
-        ...ShiftOptionFields
-      }
-    }
-  }
-  ${ShiftOptionFieldsFragmentDoc}
-`;
-
-/**
- * __useGetShiftsOptionsQuery__
- *
- * To run a query within a React component, call `useGetShiftsOptionsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetShiftsOptionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetShiftsOptionsQuery({
- *   variables: {
- *      paging: // value for 'paging'
- *      filter: // value for 'filter'
- *      sorting: // value for 'sorting'
- *   },
- * });
- */
-export function useGetShiftsOptionsQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetShiftsOptionsQuery,
-    GetShiftsOptionsQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetShiftsOptionsQuery, GetShiftsOptionsQueryVariables>(
-    GetShiftsOptionsDocument,
-    options
-  );
-}
-export function useGetShiftsOptionsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetShiftsOptionsQuery,
-    GetShiftsOptionsQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    GetShiftsOptionsQuery,
-    GetShiftsOptionsQueryVariables
-  >(GetShiftsOptionsDocument, options);
-}
-export type GetShiftsOptionsQueryHookResult = ReturnType<
-  typeof useGetShiftsOptionsQuery
->;
-export type GetShiftsOptionsLazyQueryHookResult = ReturnType<
-  typeof useGetShiftsOptionsLazyQuery
->;
-export type GetShiftsOptionsQueryResult = Apollo.QueryResult<
-  GetShiftsOptionsQuery,
-  GetShiftsOptionsQueryVariables
->;
-export const GetOneShiftOptionDocument = gql`
-  query getOneShiftOption($id: String!) {
-    shiftOption(id: $id) {
-      ...ShiftOptionFields
-    }
-  }
-  ${ShiftOptionFieldsFragmentDoc}
-`;
-
-/**
- * __useGetOneShiftOptionQuery__
- *
- * To run a query within a React component, call `useGetOneShiftOptionQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetOneShiftOptionQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetOneShiftOptionQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useGetOneShiftOptionQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    GetOneShiftOptionQuery,
-    GetOneShiftOptionQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    GetOneShiftOptionQuery,
-    GetOneShiftOptionQueryVariables
-  >(GetOneShiftOptionDocument, options);
-}
-export function useGetOneShiftOptionLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetOneShiftOptionQuery,
-    GetOneShiftOptionQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    GetOneShiftOptionQuery,
-    GetOneShiftOptionQueryVariables
-  >(GetOneShiftOptionDocument, options);
-}
-export type GetOneShiftOptionQueryHookResult = ReturnType<
-  typeof useGetOneShiftOptionQuery
->;
-export type GetOneShiftOptionLazyQueryHookResult = ReturnType<
-  typeof useGetOneShiftOptionLazyQuery
->;
-export type GetOneShiftOptionQueryResult = Apollo.QueryResult<
-  GetOneShiftOptionQuery,
-  GetOneShiftOptionQueryVariables
->;
-export const CreateShiftOptionDocument = gql`
-  mutation createShiftOption($input: CreateOneShiftOptionInput!) {
-    createOneShiftOption(input: $input) {
-      id
-    }
-  }
-`;
-export type CreateShiftOptionMutationFn = Apollo.MutationFunction<
-  CreateShiftOptionMutation,
-  CreateShiftOptionMutationVariables
->;
-
-/**
- * __useCreateShiftOptionMutation__
- *
- * To run a mutation, you first call `useCreateShiftOptionMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateShiftOptionMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [createShiftOptionMutation, { data, loading, error }] = useCreateShiftOptionMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useCreateShiftOptionMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    CreateShiftOptionMutation,
-    CreateShiftOptionMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    CreateShiftOptionMutation,
-    CreateShiftOptionMutationVariables
-  >(CreateShiftOptionDocument, options);
-}
-export type CreateShiftOptionMutationHookResult = ReturnType<
-  typeof useCreateShiftOptionMutation
->;
-export type CreateShiftOptionMutationResult =
-  Apollo.MutationResult<CreateShiftOptionMutation>;
-export type CreateShiftOptionMutationOptions = Apollo.BaseMutationOptions<
-  CreateShiftOptionMutation,
-  CreateShiftOptionMutationVariables
->;
-export const UpdateShiftOptionsDocument = gql`
-  mutation updateShiftOptions($input: UpdateOneShiftOptionInput!) {
-    updateOneShiftOption(input: $input) {
-      id
-    }
-  }
-`;
-export type UpdateShiftOptionsMutationFn = Apollo.MutationFunction<
-  UpdateShiftOptionsMutation,
-  UpdateShiftOptionsMutationVariables
->;
-
-/**
- * __useUpdateShiftOptionsMutation__
- *
- * To run a mutation, you first call `useUpdateShiftOptionsMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateShiftOptionsMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [updateShiftOptionsMutation, { data, loading, error }] = useUpdateShiftOptionsMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useUpdateShiftOptionsMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateShiftOptionsMutation,
-    UpdateShiftOptionsMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateShiftOptionsMutation,
-    UpdateShiftOptionsMutationVariables
-  >(UpdateShiftOptionsDocument, options);
-}
-export type UpdateShiftOptionsMutationHookResult = ReturnType<
-  typeof useUpdateShiftOptionsMutation
->;
-export type UpdateShiftOptionsMutationResult =
-  Apollo.MutationResult<UpdateShiftOptionsMutation>;
-export type UpdateShiftOptionsMutationOptions = Apollo.BaseMutationOptions<
-  UpdateShiftOptionsMutation,
-  UpdateShiftOptionsMutationVariables
->;
-export const DeleteShiftOptionsDocument = gql`
-  mutation deleteShiftOptions($input: DeleteOneShiftOptionInput!) {
-    deleteOneShiftOption(input: $input) {
-      id
-    }
-  }
-`;
-export type DeleteShiftOptionsMutationFn = Apollo.MutationFunction<
-  DeleteShiftOptionsMutation,
-  DeleteShiftOptionsMutationVariables
->;
-
-/**
- * __useDeleteShiftOptionsMutation__
- *
- * To run a mutation, you first call `useDeleteShiftOptionsMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDeleteShiftOptionsMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [deleteShiftOptionsMutation, { data, loading, error }] = useDeleteShiftOptionsMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useDeleteShiftOptionsMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    DeleteShiftOptionsMutation,
-    DeleteShiftOptionsMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    DeleteShiftOptionsMutation,
-    DeleteShiftOptionsMutationVariables
-  >(DeleteShiftOptionsDocument, options);
-}
-export type DeleteShiftOptionsMutationHookResult = ReturnType<
-  typeof useDeleteShiftOptionsMutation
->;
-export type DeleteShiftOptionsMutationResult =
-  Apollo.MutationResult<DeleteShiftOptionsMutation>;
-export type DeleteShiftOptionsMutationOptions = Apollo.BaseMutationOptions<
-  DeleteShiftOptionsMutation,
-  DeleteShiftOptionsMutationVariables
->;
-export const GetShiftsDocument = gql`
-  query getShifts(
-    $paging: OffsetPaging
-    $filter: ShiftFilter
-    $sorting: [ShiftSort!]
-  ) {
-    shifts(paging: $paging, filter: $filter, sorting: $sorting) {
-      totalCount
-      nodes {
-        ...ShiftFields
-      }
-    }
-  }
-  ${ShiftFieldsFragmentDoc}
-`;
-
-/**
- * __useGetShiftsQuery__
- *
- * To run a query within a React component, call `useGetShiftsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetShiftsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetShiftsQuery({
- *   variables: {
- *      paging: // value for 'paging'
- *      filter: // value for 'filter'
- *      sorting: // value for 'sorting'
- *   },
- * });
- */
-export function useGetShiftsQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetShiftsQuery, GetShiftsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetShiftsQuery, GetShiftsQueryVariables>(
-    GetShiftsDocument,
-    options
-  );
-}
-export function useGetShiftsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetShiftsQuery,
-    GetShiftsQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetShiftsQuery, GetShiftsQueryVariables>(
-    GetShiftsDocument,
-    options
-  );
-}
-export type GetShiftsQueryHookResult = ReturnType<typeof useGetShiftsQuery>;
-export type GetShiftsLazyQueryHookResult = ReturnType<
-  typeof useGetShiftsLazyQuery
->;
-export type GetShiftsQueryResult = Apollo.QueryResult<
-  GetShiftsQuery,
-  GetShiftsQueryVariables
->;
-export const GetOneShiftDocument = gql`
-  query getOneShift($id: String!) {
-    shift(id: $id) {
-      ...ShiftFields
-    }
-  }
-  ${ShiftFieldsFragmentDoc}
-`;
-
-/**
- * __useGetOneShiftQuery__
- *
- * To run a query within a React component, call `useGetOneShiftQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetOneShiftQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetOneShiftQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useGetOneShiftQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    GetOneShiftQuery,
-    GetOneShiftQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetOneShiftQuery, GetOneShiftQueryVariables>(
-    GetOneShiftDocument,
-    options
-  );
-}
-export function useGetOneShiftLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetOneShiftQuery,
-    GetOneShiftQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetOneShiftQuery, GetOneShiftQueryVariables>(
-    GetOneShiftDocument,
-    options
-  );
-}
-export type GetOneShiftQueryHookResult = ReturnType<typeof useGetOneShiftQuery>;
-export type GetOneShiftLazyQueryHookResult = ReturnType<
-  typeof useGetOneShiftLazyQuery
->;
-export type GetOneShiftQueryResult = Apollo.QueryResult<
-  GetOneShiftQuery,
-  GetOneShiftQueryVariables
->;
-export const CreateShiftDocument = gql`
-  mutation createShift($input: CreateOneShiftInput!) {
-    createOneShift(input: $input) {
-      id
-    }
-  }
-`;
-export type CreateShiftMutationFn = Apollo.MutationFunction<
-  CreateShiftMutation,
-  CreateShiftMutationVariables
->;
-
-/**
- * __useCreateShiftMutation__
- *
- * To run a mutation, you first call `useCreateShiftMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateShiftMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [createShiftMutation, { data, loading, error }] = useCreateShiftMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useCreateShiftMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    CreateShiftMutation,
-    CreateShiftMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<CreateShiftMutation, CreateShiftMutationVariables>(
-    CreateShiftDocument,
-    options
-  );
-}
-export type CreateShiftMutationHookResult = ReturnType<
-  typeof useCreateShiftMutation
->;
-export type CreateShiftMutationResult =
-  Apollo.MutationResult<CreateShiftMutation>;
-export type CreateShiftMutationOptions = Apollo.BaseMutationOptions<
-  CreateShiftMutation,
-  CreateShiftMutationVariables
->;
-export const UpdateShiftDocument = gql`
-  mutation updateShift($input: UpdateOneShiftInput!) {
-    updateOneShift(input: $input) {
-      id
-    }
-  }
-`;
-export type UpdateShiftMutationFn = Apollo.MutationFunction<
-  UpdateShiftMutation,
-  UpdateShiftMutationVariables
->;
-
-/**
- * __useUpdateShiftMutation__
- *
- * To run a mutation, you first call `useUpdateShiftMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateShiftMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [updateShiftMutation, { data, loading, error }] = useUpdateShiftMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useUpdateShiftMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateShiftMutation,
-    UpdateShiftMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<UpdateShiftMutation, UpdateShiftMutationVariables>(
-    UpdateShiftDocument,
-    options
-  );
-}
-export type UpdateShiftMutationHookResult = ReturnType<
-  typeof useUpdateShiftMutation
->;
-export type UpdateShiftMutationResult =
-  Apollo.MutationResult<UpdateShiftMutation>;
-export type UpdateShiftMutationOptions = Apollo.BaseMutationOptions<
-  UpdateShiftMutation,
-  UpdateShiftMutationVariables
->;
-export const DeleteShiftDocument = gql`
-  mutation deleteShift($input: DeleteOneShiftInput!) {
-    deleteOneShift(input: $input) {
-      id
-    }
-  }
-`;
-export type DeleteShiftMutationFn = Apollo.MutationFunction<
-  DeleteShiftMutation,
-  DeleteShiftMutationVariables
->;
-
-/**
- * __useDeleteShiftMutation__
- *
- * To run a mutation, you first call `useDeleteShiftMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDeleteShiftMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [deleteShiftMutation, { data, loading, error }] = useDeleteShiftMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useDeleteShiftMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    DeleteShiftMutation,
-    DeleteShiftMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<DeleteShiftMutation, DeleteShiftMutationVariables>(
-    DeleteShiftDocument,
-    options
-  );
-}
-export type DeleteShiftMutationHookResult = ReturnType<
-  typeof useDeleteShiftMutation
->;
-export type DeleteShiftMutationResult =
-  Apollo.MutationResult<DeleteShiftMutation>;
-export type DeleteShiftMutationOptions = Apollo.BaseMutationOptions<
-  DeleteShiftMutation,
-  DeleteShiftMutationVariables
->;
-export const GetUsersDocument = gql`
-  query getUsers(
-    $paging: OffsetPaging
-    $filter: UserFilter
-    $sorting: [UserSort!]
-  ) {
-    users(paging: $paging, filter: $filter, sorting: $sorting) {
-      totalCount
-      nodes {
-        ...UsersFields
-      }
-    }
-  }
-  ${UsersFieldsFragmentDoc}
-`;
-
-/**
- * __useGetUsersQuery__
- *
- * To run a query within a React component, call `useGetUsersQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetUsersQuery({
- *   variables: {
- *      paging: // value for 'paging'
- *      filter: // value for 'filter'
- *      sorting: // value for 'sorting'
- *   },
- * });
- */
-export function useGetUsersQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetUsersQuery, GetUsersQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetUsersQuery, GetUsersQueryVariables>(
-    GetUsersDocument,
-    options
-  );
-}
-export function useGetUsersLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetUsersQuery,
-    GetUsersQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetUsersQuery, GetUsersQueryVariables>(
-    GetUsersDocument,
-    options
-  );
-}
-export type GetUsersQueryHookResult = ReturnType<typeof useGetUsersQuery>;
-export type GetUsersLazyQueryHookResult = ReturnType<
-  typeof useGetUsersLazyQuery
->;
-export type GetUsersQueryResult = Apollo.QueryResult<
-  GetUsersQuery,
-  GetUsersQueryVariables
->;
-export const GetOneUserDocument = gql`
-  query getOneUser($id: String!) {
-    user(id: $id) {
-      ...UsersFields
-    }
-  }
-  ${UsersFieldsFragmentDoc}
-`;
-
-/**
- * __useGetOneUserQuery__
- *
- * To run a query within a React component, call `useGetOneUserQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetOneUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetOneUserQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useGetOneUserQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    GetOneUserQuery,
-    GetOneUserQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetOneUserQuery, GetOneUserQueryVariables>(
-    GetOneUserDocument,
-    options
-  );
-}
-export function useGetOneUserLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetOneUserQuery,
-    GetOneUserQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetOneUserQuery, GetOneUserQueryVariables>(
-    GetOneUserDocument,
-    options
-  );
-}
-export type GetOneUserQueryHookResult = ReturnType<typeof useGetOneUserQuery>;
-export type GetOneUserLazyQueryHookResult = ReturnType<
-  typeof useGetOneUserLazyQuery
->;
-export type GetOneUserQueryResult = Apollo.QueryResult<
-  GetOneUserQuery,
-  GetOneUserQueryVariables
->;
-export const CreateUserDocument = gql`
-  mutation createUser($input: CreateOneUserInput!) {
-    createOneUser(input: $input) {
-      id
-    }
-  }
-`;
-export type CreateUserMutationFn = Apollo.MutationFunction<
-  CreateUserMutation,
-  CreateUserMutationVariables
->;
-
-/**
- * __useCreateUserMutation__
- *
- * To run a mutation, you first call `useCreateUserMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateUserMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [createUserMutation, { data, loading, error }] = useCreateUserMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useCreateUserMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    CreateUserMutation,
-    CreateUserMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<CreateUserMutation, CreateUserMutationVariables>(
-    CreateUserDocument,
-    options
-  );
-}
-export type CreateUserMutationHookResult = ReturnType<
-  typeof useCreateUserMutation
->;
-export type CreateUserMutationResult =
-  Apollo.MutationResult<CreateUserMutation>;
-export type CreateUserMutationOptions = Apollo.BaseMutationOptions<
-  CreateUserMutation,
-  CreateUserMutationVariables
->;
-export const UpdateUserDocument = gql`
-  mutation updateUser($input: UpdateOneUserInput!) {
-    updateOneUser(input: $input) {
-      id
-    }
-  }
-`;
-export type UpdateUserMutationFn = Apollo.MutationFunction<
-  UpdateUserMutation,
-  UpdateUserMutationVariables
->;
-
-/**
- * __useUpdateUserMutation__
- *
- * To run a mutation, you first call `useUpdateUserMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateUserMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [updateUserMutation, { data, loading, error }] = useUpdateUserMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useUpdateUserMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateUserMutation,
-    UpdateUserMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<UpdateUserMutation, UpdateUserMutationVariables>(
-    UpdateUserDocument,
-    options
-  );
-}
-export type UpdateUserMutationHookResult = ReturnType<
-  typeof useUpdateUserMutation
->;
-export type UpdateUserMutationResult =
-  Apollo.MutationResult<UpdateUserMutation>;
-export type UpdateUserMutationOptions = Apollo.BaseMutationOptions<
-  UpdateUserMutation,
-  UpdateUserMutationVariables
->;
-export const DeleteUserDocument = gql`
-  mutation deleteUser($input: DeleteOneUserInput!) {
-    deleteOneUser(input: $input) {
-      id
-    }
-  }
-`;
-export type DeleteUserMutationFn = Apollo.MutationFunction<
-  DeleteUserMutation,
-  DeleteUserMutationVariables
->;
-
-/**
- * __useDeleteUserMutation__
- *
- * To run a mutation, you first call `useDeleteUserMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDeleteUserMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [deleteUserMutation, { data, loading, error }] = useDeleteUserMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useDeleteUserMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    DeleteUserMutation,
-    DeleteUserMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<DeleteUserMutation, DeleteUserMutationVariables>(
-    DeleteUserDocument,
-    options
-  );
-}
-export type DeleteUserMutationHookResult = ReturnType<
-  typeof useDeleteUserMutation
->;
-export type DeleteUserMutationResult =
-  Apollo.MutationResult<DeleteUserMutation>;
-export type DeleteUserMutationOptions = Apollo.BaseMutationOptions<
-  DeleteUserMutation,
-  DeleteUserMutationVariables
 >;

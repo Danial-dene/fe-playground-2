@@ -1,4 +1,4 @@
-fragment MeFields on User {
+fragment MeFields on Admin {
   id
   name
   email

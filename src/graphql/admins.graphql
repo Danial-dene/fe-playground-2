@@ -2,17 +2,17 @@ fragment AdminsFields on Admin {
   id
   name
   email
-  thumbnailUrl
-  active
+  thumbnail
+  # active
   phoneNo
 }
 
 query getAdmins(
   $paging: OffsetPaging
-  $filter: UserFilter
-  $sorting: [UserSort!]
+  $filter: AdminFilter
+  $sorting: [AdminSort!]
 ) {
-  users(paging: $paging, filter: $filter, sorting: $sorting) {
+  admins(paging: $paging, filter: $filter, sorting: $sorting) {
     totalCount
     nodes {
       ...AdminsFields
@@ -21,7 +21,7 @@ query getAdmins(
 }
 
 query getAdmin($id: String!) {
-  user(id: $id) {
+  admin(id: $id) {
     ...AdminsFields
   }
 }
