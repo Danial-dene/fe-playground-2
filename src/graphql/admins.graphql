@@ -3,7 +3,7 @@ fragment AdminsFields on Admin {
   name
   email
   thumbnail
-  # active
+  active
   phoneNo
 }
 
@@ -38,8 +38,8 @@ mutation updateAdmin($input: UpdateOneAdminInput!) {
   }
 }
 
-mutation deleteAdmin($input: UpdateOneAdminInput!) {
-  updateOneAdmin(input: $input) {
+mutation deleteAdmin($input: DeleteOneAdminInput!) {
+  deleteOneAdmin(input: $input) {
     id
   }
 }

@@ -1,17 +1,19 @@
-import { useHeader } from "@components/HeaderProvider";
-import AccountSettingsTabLayout from "@components/settings/AccountSettingsTabLayout";
-import * as Gql from "@graphql";
-import { isValidPhoneNumber } from "libphonenumber-js";
-import { Button, Col, Form, Input, message, Row, Select } from "antd";
-import { useForm } from "antd/lib/form/Form";
-import { useEffect } from "react";
-import { AvatarUploadInput, ImageUploadInput, PhoneNumberInput } from "@forms";
 import { Breadcrumb, Card } from "@commons";
+import { useHeader } from "@components/HeaderProvider";
+import { ImageUploadInput } from "@forms";
+import {
+  useCreateAdminMutation,
+  useGetAdminLazyQuery,
+  useUpdateAdminMutation,
+} from "@graphql";
+import { onError, onSuccess } from "@utils";
+import { Button, Col, Form, Input, Row, Select, message } from "antd";
+import { useForm } from "antd/lib/form/Form";
 import _ from "lodash";
-import { getErrorMessage } from "@utils";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-const CustomerEdit = () => {
+const AdminEdit = () => {
   const { setTitle } = useHeader();
   const [form] = useForm();
   const router = useRouter();
@@ -35,37 +37,27 @@ const CustomerEdit = () => {
     );
   }, []);
 
-  const [getAdmin, { data, loading: adminLoading }] =
-    Gql.useGetOneUserLazyQuery({
-      onCompleted: (obj) => {
-        form.setFieldsValue(obj.user);
-      },
-      onError: (e) => {
-        message.error(getErrorMessage(e));
-      },
-    });
+  const [getAdmin, { loading: adminLoading }] = useGetAdminLazyQuery({
+    onCompleted: (obj) => {
+      form.setFieldsValue(obj.admin);
+    },
+    onError: onError,
+  });
 
   useEffect(() => {
     if (id) getAdmin({ variables: { id: _.toString(id) } });
   }, [router]);
 
-  const [updateAdmin, { loading: isSubmitting }] = Gql.useUpdateUserMutation({
-    onCompleted: () => {
-      message.success("User successfully saved!");
-      router.back();
-    },
-    onError: (e) => {
-      message.error(getErrorMessage(e));
-    },
+  const [updateAdmin, { loading: isSubmitting }] = useUpdateAdminMutation({
+    onCompleted: () =>
+      onSuccess({ type: "update", title: "Admin", router, goBack: false }),
+    onError: onError,
   });
 
-  const [addAdmin, { loading: addAdminLoading }] = Gql.useCreateUserMutation({
-    onCompleted: () => {
-      message.success("User successfully added!");
-    },
-    onError: (e) => {
-      message.error(getErrorMessage(e));
-    },
+  const [addAdmin, { loading: addAdminLoading }] = useCreateAdminMutation({
+    onCompleted: () =>
+      onSuccess({ type: "create", title: "Admin", router, goBack: false }),
+    onError: onError,
   });
 
   // console.log(error);
@@ -78,9 +70,8 @@ const CustomerEdit = () => {
         variables: { input: { id: _.toString(id), update: values } },
       });
     } else {
-      addAdmin({ variables: { input: { user: values } } });
+      addAdmin({ variables: { input: { admin: values } } });
       router.back();
-      // form.resetFields()
     }
   };
 
@@ -92,18 +83,8 @@ const CustomerEdit = () => {
         <Col md={12}>
           <Card loading={loading}>
             <h1 className="text-h3 mb-5">Profile</h1>
-            <Form
-              layout="vertical"
-              form={form}
-              onFinish={onFinish}
-              initialValues={data?.user ? data?.user : {}}
-              requiredMark={false}
-            >
-              <Form.Item
-                label="Thumbnail"
-                name="thumbnailUrl"
-                rules={[{ required: true }]}
-              >
+            <Form layout="vertical" form={form} onFinish={onFinish}>
+              <Form.Item label="Thumbnail" name="thumbnail">
                 <ImageUploadInput />
               </Form.Item>
 
@@ -158,6 +139,6 @@ const CustomerEdit = () => {
   );
 };
 
-CustomerEdit.auth = true;
+AdminEdit.auth = true;
 
-export default CustomerEdit;
+export default AdminEdit;
