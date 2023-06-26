@@ -26,7 +26,7 @@ export default NextAuth({
 
           const res = await axios({
             method: "post",
-            url: `${process.env.NEXT_PUBLIC_API_URL}/auth/user/sign-in`,
+            url: `${process.env.NEXT_PUBLIC_API_URL}/auth/admin/sign-in`,
             headers: {
               "Content-Type": "application/json",
             },

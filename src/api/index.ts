@@ -80,7 +80,7 @@ export class PagedResultDto<T = any> implements IPagedResult<T> {
 // customer definition
 // empty
 
-export class UserAuthService {
+export class AdminAuthService {
   /**
    *
    */
@@ -92,7 +92,7 @@ export class UserAuthService {
     options: IRequestOptions = {}
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/auth/user/sign-in';
+      let url = basePath + '/auth/admin/sign-in';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
@@ -114,7 +114,7 @@ export class UserAuthService {
     options: IRequestOptions = {}
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/auth/user/forget-password';
+      let url = basePath + '/auth/admin/forget-password';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
@@ -136,7 +136,7 @@ export class UserAuthService {
     options: IRequestOptions = {}
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/auth/user/reset-password';
+      let url = basePath + '/auth/admin/reset-password';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
@@ -158,7 +158,7 @@ export class UserAuthService {
     options: IRequestOptions = {}
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/auth/user/change-password';
+      let url = basePath + '/auth/admin/change-password';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
@@ -174,7 +174,7 @@ export class UserAuthService {
    */
   static logout(options: IRequestOptions = {}): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/auth/user/logout';
+      let url = basePath + '/auth/admin/logout';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
@@ -196,7 +196,7 @@ export class UserAuthService {
     options: IRequestOptions = {}
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/auth/user/revoke-authentication';
+      let url = basePath + '/auth/admin/revoke-authentication';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
@@ -209,7 +209,7 @@ export class UserAuthService {
   }
 }
 
-export class EmployeeService {
+export class StaffService {
   /**
    *
    */
@@ -221,7 +221,7 @@ export class EmployeeService {
     options: IRequestOptions = {}
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/auth/employee/log-in';
+      let url = basePath + '/auth/staff/log-in';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
@@ -243,7 +243,7 @@ export class EmployeeService {
     options: IRequestOptions = {}
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/auth/employee/change-password';
+      let url = basePath + '/auth/staff/change-password';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
@@ -259,7 +259,7 @@ export class EmployeeService {
    */
   static logout(options: IRequestOptions = {}): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/auth/employee/logout';
+      let url = basePath + '/auth/staff/logout';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 

@@ -56,7 +56,7 @@ const Login: React.FC = () => {
                 </div>
               </div>
               <h1 className="mb-6 text-center text-h1">
-                Login to Salary System Management
+                Login to QS
               </h1>
 
               <Form
