@@ -57,19 +57,25 @@ const items: MenuItemProps[] = [
         icon: UserOutlined,
       },
       {
-        label: "Employees",
+        label: "Staffs",
         key: "employees",
         to: "/employees",
         icon: TeamOutlined,
       },
       {
-        label: "Rates",
+        label: "Departments",
         key: "rates",
         to: "/rates",
         icon: MoneyCollectOutlined,
       },
       {
-        label: "Locations",
+        label: "Counters",
+        key: "locations",
+        to: "/locations",
+        icon: AimOutlined,
+      },
+      {
+        label: "Counter Types",
         key: "locations",
         to: "/locations",
         icon: AimOutlined,
@@ -92,7 +98,7 @@ const items: MenuItemProps[] = [
         icon: PoweroffOutlined,
         onClick: () => {
           signOut();
-          router.push('/')
+          router.push("/");
         },
       },
     ],
